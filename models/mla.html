@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multi-Head Latent Attention &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'models/mla';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reward Model" href="../rm/0.html" />
+    <link rel="prev" title="DeepSeek-V2" href="deepseek-v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multi-Head Latent Attention</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">Reward Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference-optimization/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference-optimization/openrlhf.html">OpenRLHF</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../o1/0.html">Path to o1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../o1/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../o1/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../o1/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodels/mla.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/models/mla.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multi-Head Latent Attention</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-kv-cache">Why KV cache</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-compression-for-queries">Low-Rank Compression for Queries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoupled-rotary-position-embedding">Decoupled Rotary Position Embedding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-attention-mechanisms">Ablation of Attention Mechanisms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-mha-gqa-and-mqa">Ablation of MHA, GQA, and MQA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-mla-and-mha">Comparison Between MLA and MHA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-key-value-cache">Comparison of Key-Value Cache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-head-latent-attention">
+<span id="my-label"></span><h1>Multi-Head Latent Attention<a class="headerlink" href="#multi-head-latent-attention" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Conventional Transformer models usually adopts Multi-Head Attention (MHA)<span id="id1">[<a class="reference internal" href="#id7" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. 2023. URL: https://arxiv.org/abs/1706.03762, arXiv:1706.03762.">VSP+23</a>]</span>, but during generation, its heavy Key-Value (KV) cache will become the bottleneck
+that limit the inference efficiency. In order to reduce the KV cache, Multi-Query Attention
+(MQA)<span id="id2">[<a class="reference internal" href="#id8" title="Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai. Gqa: training generalized multi-query transformer models from multi-head checkpoints. 2023. URL: https://arxiv.org/abs/2305.13245, arXiv:2305.13245.">ALTdJ+23</a>]</span>. and Grouped-Query Attention (GQA)<span id="id3">[<a class="reference internal" href="#id9" title="Noam Shazeer. Fast transformer decoding: one write-head is all you need. 2019. URL: https://arxiv.org/abs/1911.02150, arXiv:1911.02150.">Sha19</a>]</span> are
+proposed. They require a smaller magnitude of KV cache, but their performance does not match
+MHA.</p>
+<p>For DeepSeek-V2, we design an innovative attention mechanism called Multi-head Latent
+Attention (MLA)<span id="id4">[<a class="reference internal" href="#id10" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>. Equipped with <code class="docutils literal notranslate"><span class="pre">low-rank</span> <span class="pre">key-value</span> <span class="pre">joint</span> <span class="pre">compression</span></code>, MLA achieves better
+performance than MHA, but requires a significantly smaller amount of KV cache.</p>
+</div>
+<p><img alt="" src="../_images/mla1.png" /></p>
+<section id="preliminaries-standard-multi-head-attention">
+<h2>Preliminaries: Standard Multi-Head Attention<a class="headerlink" href="#preliminaries-standard-multi-head-attention" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(d\)</span> be the embedding dimension, <span class="math notranslate nohighlight">\(n_h\)</span> be the number of attention heads, <span class="math notranslate nohighlight">\(d_h\)</span> be the dimension per head, and <span class="math notranslate nohighlight">\(\mathbf{h}_{t}\in\mathbb{R}^{d}\)</span> be the attention input of the <span class="math notranslate nohighlight">\(t\)</span>-th token. Standard MHA first produces <span class="math notranslate nohighlight">\(\mathbf{q}_{t},\mathbf{k}_{t}, \mathbf{v}_{t}\in\mathbb{R}^{d_{h}n_h}\)</span> through three matrices <span class="math notranslate nohighlight">\(W^Q,W^K,W^V\in\mathbb{R}^{d_{h}n_{h}\times{d}}\)</span>, respectively:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}_{t} = W^{Q}\mathbf{h}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{k}_{t} = W^{K}\mathbf{h}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{v}_{t} = W^{V}\mathbf{h}_{t}\]</div>
+<p>Then, <span class="math notranslate nohighlight">\(\mathbf{q}_{t}, \mathbf{k}_{t}, \mathbf{v}_{t}\)</span> will be sliced into <span class="math notranslate nohighlight">\(n_h\)</span> heads for the multi-head attention computation:</p>
+<div class="math notranslate nohighlight">
+\[[\mathbf{q}_{t,1};\mathbf{q}_{t,2};\dots;\mathbf{q}_{t,n_h}] = \mathbf{q}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[[\mathbf{k}_{t,1};\mathbf{k}_{t,2};\dots;\mathbf{k}_{t,n_h}] = \mathbf{k}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[[\mathbf{v}_{t,1};\mathbf{v}_{t,2};\dots;\mathbf{v}_{t,n_h}] = \mathbf{v}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{o}_{t,i} = \sum_{j=1}^{t}\text{Softmax}_{j}\left(\frac{\mathbf{q}_{t,i}^{\intercal}\mathbf{k}_{j,i}}{\sqrt{d_h}}\right)\mathbf{v}_{j,i}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{u}_{t} = W^{O}[\mathbf{o}_{t,1};\mathbf{o}_{t,2};\dots;\mathbf{o}_{t,n_h}]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{q}_{t,i},\mathbf{k}_{t,i},\mathbf{v}_{t,i}\in\mathbb{R}^{d_h}\)</span> denote the query, key, and value of the <span class="math notranslate nohighlight">\(i\)</span>-th attention head; <span class="math notranslate nohighlight">\(W^{O}\in\mathbb{R}^{d\times{d_{h}n_{h}}}\)</span> denotes the output projection matrix.</p>
+<figure class="align-default" id="mha">
+<a class="reference internal image-reference" href="../_images/mla-step1.svg"><img alt="../_images/mla-step1.svg" height="500px" src="../_images/mla-step1.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Multi-Head Attention, the red text indicates that it needs to be cached.</span><a class="headerlink" href="#mha" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="why-kv-cache">
+<h3>Why KV cache<a class="headerlink" href="#why-kv-cache" title="Link to this heading">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>During inference, all keys and values need
+to be cached to accelerate inference (the keys and values need to be computed only once), so MHA needs to cache <span class="math notranslate nohighlight">\(2n_{h}d_{h}l\)</span> (<span class="math notranslate nohighlight">\(l\)</span> denote layer num) elements for each token. In
+model deployment, this heavy KV cache is a large bottleneck that limits the maximum batch
+size and sequence length.</p>
+</div>
+</section>
+</section>
+<section id="low-rank-key-value-joint-compression">
+<h2>Low-Rank Key-Value Joint Compression<a class="headerlink" href="#low-rank-key-value-joint-compression" title="Link to this heading">#</a></h2>
+<p>The core of MLA is the low-rank joint compression for keys and values to reduce KV cache:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{c}_{t}^{KV} = W^{DKV}\mathbf{h}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{k}_{t}^{C} = W^{UK}\mathbf{c}_{t}^{KV}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{v}_{t}^{C} = W^{UV}\mathbf{c}_{t}^{KV}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{c}_{t}^{KV}\in\mathbb{R}^{d_c}\)</span> is the compressed latent vector for keys and values, <span class="math notranslate nohighlight">\(d_c\ll d_{h}n_{h}\)</span> denotes the KV
+compression dimension, <span class="math notranslate nohighlight">\(W^{DKV}\in\mathbb{R}^{d_{c}\times d}\)</span> and <span class="math notranslate nohighlight">\(W^{UK},W^{UV}\in\mathbb{R}^{d_{h}n_{h}\times d_c}\)</span>. During inference, MLA only
+needs to cache <span class="math notranslate nohighlight">\(\mathbf{c}_{t}^{KV}\)</span>, so its KV cache has only <span class="math notranslate nohighlight">\(d_{c}l\)</span> elements.</p>
+<figure class="align-default" id="mla-1">
+<a class="reference internal image-reference" href="../_images/mla-step2.svg"><img alt="../_images/mla-step2.svg" height="500px" src="../_images/mla-step2.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Core of MLA: low-rank key-value joint compression.</span><a class="headerlink" href="#mla-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In addition, during inference (omit index <span class="math notranslate nohighlight">\(i\)</span> for brevity):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{q}_{t}^{\intercal}\mathbf{k}_{j}^{C} &amp;= (W^{Q}\mathbf{h}_{t})^{\intercal}W^{UK}\mathbf{c}_{j}^{KV}\\
+&amp;= \mathbf{h}_{t}^{\intercal}(W^{Q})^{\intercal}W^{UK}\mathbf{c}_{j}^{KV}\\
+&amp;= \mathbf{h}_{t}^{\intercal}((W^{UK})^{\intercal}W^{Q})^{\intercal}\mathbf{c}_{j}^{KV}\\
+&amp;= ((W^{UK})^{\intercal}W^{Q}\mathbf{h}_{t})^{\intercal}\mathbf{c}_{j}^{KV}
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(W^{UK}\)</span> can be absorbed into <span class="math notranslate nohighlight">\(W^{Q}\)</span>, that is:</p>
+<div class="math notranslate nohighlight">
+\[W^{Q}\leftarrow(W^{UK})^{\intercal}W^{Q}.\]</div>
+<p>Similarily, <span class="math notranslate nohighlight">\(W^{UV}\)</span> can be absorbed into <span class="math notranslate nohighlight">\(W^{O}\)</span>. We even do not need to compute keys and values out for attention.</p>
+<section id="low-rank-compression-for-queries">
+<h3>Low-Rank Compression for Queries<a class="headerlink" href="#low-rank-compression-for-queries" title="Link to this heading">#</a></h3>
+<p>In order to reduce the activation memory during training, we also perform low-rank compression for the queries, even if it cannot reduce the KV cache:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{c}_{t}^{Q} = W^{DQ}\mathbf{h}_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}_{t}^{C} = W^{UQ}\mathbf{c}_{t}^{Q}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{c}_{t}^{Q}\in\mathbb{R}^{{d_{c}}'}\)</span> is the compressed latent vector for queries, <span class="math notranslate nohighlight">\({d_c}'\ll d_{h}n_{h}\)</span> denotes the query
+compression dimension, <span class="math notranslate nohighlight">\(W^{DQ}\in\mathbb{R}^{{d_c}'\times d}\)</span> and <span class="math notranslate nohighlight">\(W^{UQ}\in\mathbb{R}^{d_{h}n_{h}\times {d_c}'}\)</span>.</p>
+<figure class="align-default" id="mla-2">
+<a class="reference internal image-reference" href="../_images/mla-step3.svg"><img alt="../_images/mla-step3.svg" height="500px" src="../_images/mla-step3.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Compression for queries.</span><a class="headerlink" href="#mla-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="decoupled-rotary-position-embedding">
+<h2>Decoupled Rotary Position Embedding<a class="headerlink" href="#decoupled-rotary-position-embedding" title="Link to this heading">#</a></h2>
+<p>RoPE<span id="id5">[<a class="reference internal" href="#id12" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span> is position-sensitive for both keys and queries:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\text{RoPE}(\mathbf{q}_{t,i})^{\intercal}\text{RoPE}(\mathbf{k}_{j,i}^{C}) &amp;= \text{RoPE}(W^{Q,i}\mathbf{h}_{t})^{\intercal}\text{RoPE}(W^{UK,i}\mathbf{c}_{j}^{KV}) \\
+&amp;= (\mathcal{R}_{t}W^{Q,i}\mathbf{h}_{t})^{\intercal}\mathcal{R}_{j}W^{UK,i}\mathbf{c}_{j}^{KV}\\
+&amp;= \mathbf{h}_{t}^{\intercal}(\mathcal{R}_{t}W^{Q,i})^{\intercal}\mathcal{R}_{j}W^{UK,i}\mathbf{c}_{j}^{KV}\\
+&amp;= \mathbf{h}_{t}^{\intercal}(W^{Q,i})^{\intercal}(\mathcal{R}_{t})^{\intercal}\mathcal{R}_{j}W^{UK,i}\mathbf{c}_{j}^{KV}
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(W^{UK}\)</span> cannot be absorbed into <span class="math notranslate nohighlight">\(W^{Q}\)</span> any more during inference, since a RoPE matrix
+related to the currently generating token will lie between <span class="math notranslate nohighlight">\(W^{Q}\)</span> and <span class="math notranslate nohighlight">\(W^{UK}\)</span> and matrix multiplication
+does not obey a commutative law.</p>
+<p>As a solution, we propose the decoupled RoPE strategy that uses additional multi-head
+queries <span class="math notranslate nohighlight">\(\mathbf{q}_{t,i}^{R}\in\mathbb{R}^{d_h^{R}}\)</span> and a <code class="docutils literal notranslate"><span class="pre">shared</span></code> key <span class="math notranslate nohighlight">\(\mathbf{k}_{t}^{R}\in\mathbb{R}^{d_h^{R}}\)</span> to carry RoPE, where <span class="math notranslate nohighlight">\(d_{h}^{R}\)</span> denotes the per-head
+dimension of the decoupled queries and key. Equipped with the decoupled RoPE strategy, MLA
+performs the following computation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\left[\mathbf{q}_{t,1}^{R},\mathbf{q}_{t,2}^{R},\dots,\mathbf{q}_{t,n_h}^{R}\right] = \mathbf{q}_{t}^{R} &amp;= \text{RoPE}(W^{QR}\mathbf{c}_{t}^{Q})\\
+\mathbf{k}_{t}^{R} &amp;= \text{RoPE}(W^{KR}\mathbf{h}_t)\\
+\mathbf{q}_{t,i} &amp;= [\mathbf{q}_{t,i}^{C};\mathbf{q}_{t,i}^{R}]\\
+\mathbf{k}_{t,i} &amp;= [\mathbf{k}_{t,i}^{C};\mathbf{k}_{t}^{R}]\\
+\mathbf{o}_{t,i} &amp;= \sum_{j=1}^{t}\text{Softmax}_{j}\left(\frac{\mathbf{q}_{t,i}^{\intercal}\mathbf{k}_{j,i}}{\sqrt{d_h+d_{h}^{R}}}\right)\mathbf{v}_{j,i}\\
+\mathbf{u}_{t} &amp;= W^{O}[\mathbf{o}_{t,1};\mathbf{o}_{t,2};\dots;\mathbf{o}_{t,n_h}]
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(W^{QR}\in\mathbb{R}^{d_{h}^{R}n_{h}\times {d_{c}}'}\)</span> and <span class="math notranslate nohighlight">\(W^{KR}\in\mathbb{R}^{d_{h}^{R}n_{h}\times d}\)</span> are matrices to produce the decouples queries and key. During inference, the decoupled key should also be cached. Therefore,
+DeepSeek-V2 requires a total KV cache containing <span class="math notranslate nohighlight">\((d_c+d_{h}^{R})l\)</span> elements.</p>
+<figure class="align-default" id="mla-3">
+<a class="reference internal image-reference" href="../_images/mla-3x.svg"><img alt="../_images/mla-3x.svg" height="600px" src="../_images/mla-3x.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Multi-head Latent Attention.</span><a class="headerlink" href="#mla-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>MLA uses decoupled keys and queries to carry RoPE, where keys are shared across tokens to save cache.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Why a shared key is enough?</p>
+</div>
+</section>
+<section id="ablation-of-attention-mechanisms">
+<h2>Ablation of Attention Mechanisms<a class="headerlink" href="#ablation-of-attention-mechanisms" title="Link to this heading">#</a></h2>
+<section id="ablation-of-mha-gqa-and-mqa">
+<h3>Ablation of MHA, GQA, and MQA<a class="headerlink" href="#ablation-of-mha-gqa-and-mqa" title="Link to this heading">#</a></h3>
+<p>We show the evaluation results for 7B dense models with MHA, GQA, and MQA on four hard
+benchmarks in Table 8. All of these three models are trained on 1.33T tokens, and share the same
+architecture except for the attention mechanisms. In addition, for a fair comparison, we align
+the number of parameters of them to around 7B by adjusting the number of layers. From the
+table, we can find that MHA demonstrates significant advantages over GQA and MQA on these
+benchmarks.</p>
+<p><img alt="" src="../_images/mla-6.png" /></p>
+</section>
+<section id="comparison-between-mla-and-mha">
+<h3>Comparison Between MLA and MHA<a class="headerlink" href="#comparison-between-mla-and-mha" title="Link to this heading">#</a></h3>
+<p>In Table 9, we show the evaluation results for MoE models equipped with MLA and MHA,
+respectively, on four hard benchmarks. For a solid conclusion, we train and evaluate models
+across two scales. Also, two small MoE models and two large MoE models respectively
+share the same architecture except for the attention mechanisms. From the table, we can observe
+that MLA shows better performance than MHA. More importantly, MLA requires a significantly smaller amount of KV cache (14% for small MoE models and 4% for large MoE models) than
+MHA.</p>
+<p><img alt="" src="../_images/mla-7.png" /></p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Comparison Between MLA and MHA for dense models?</p>
+</div>
+</section>
+</section>
+<section id="comparison-of-key-value-cache">
+<h2>Comparison of Key-Value Cache<a class="headerlink" href="#comparison-of-key-value-cache" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We demonstrate a comparison of the KV cache per token among different attention mechanisms
+in Table 1. MLA requires only a small amount of KV cache, equal to GQA with only 2.25 groups,
+but can achieve stronger performance than MHA.</p>
+</div>
+<p><img alt="" src="../_images/mla-4.png" /></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id6">
+<div role="list" class="citation-list">
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">ALTdJ+23</a><span class="fn-bracket">]</span></span>
+<p>Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai. Gqa: training generalized multi-query transformer models from multi-head checkpoints. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/2305.13245">https://arxiv.org/abs/2305.13245</a>, <a class="reference external" href="https://arxiv.org/abs/2305.13245">arXiv:2305.13245</a>.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">DALF+24</a><span class="fn-bracket">]</span></span>
+<p>DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2405.04434">https://arxiv.org/abs/2405.04434</a>, <a class="reference external" href="https://arxiv.org/abs/2405.04434">arXiv:2405.04434</a>.</p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">Sha19</a><span class="fn-bracket">]</span></span>
+<p>Noam Shazeer. Fast transformer decoding: one write-head is all you need. 2019. URL: <a class="reference external" href="https://arxiv.org/abs/1911.02150">https://arxiv.org/abs/1911.02150</a>, <a class="reference external" href="https://arxiv.org/abs/1911.02150">arXiv:1911.02150</a>.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">SLP+23</a><span class="fn-bracket">]</span></span>
+<p>Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/2104.09864">https://arxiv.org/abs/2104.09864</a>, <a class="reference external" href="https://arxiv.org/abs/2104.09864">arXiv:2104.09864</a>.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">VSP+23</a><span class="fn-bracket">]</span></span>
+<p>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/1706.03762">https://arxiv.org/abs/1706.03762</a>, <a class="reference external" href="https://arxiv.org/abs/1706.03762">arXiv:1706.03762</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="deepseek-v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DeepSeek-V2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../rm/0.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reward Model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-kv-cache">Why KV cache</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-compression-for-queries">Low-Rank Compression for Queries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoupled-rotary-position-embedding">Decoupled Rotary Position Embedding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-attention-mechanisms">Ablation of Attention Mechanisms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-mha-gqa-and-mqa">Ablation of MHA, GQA, and MQA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-mla-and-mha">Comparison Between MLA and MHA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-key-value-cache">Comparison of Key-Value Cache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

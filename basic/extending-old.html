@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Extending context window of large language models via position interpolation &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'basic/extending-old';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/mla.html">Multi-Head Latent Attention</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">Reward Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference-optimization/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference-optimization/openrlhf.html">OpenRLHF</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../o1/0.html">Path to o1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../o1/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../o1/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../o1/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbasic/extending-old.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/basic/extending-old.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extending context window of large language models via position interpolation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-rotary-position-embedding-rope">Background: Rotary Position Embedding (RoPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-extrapolation">Direct extrapolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-interpolation">Positional Interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#llama-implementation">Llama implementation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="extending-context-window-of-large-language-models-via-position-interpolation">
+<h1>Extending context window of large language models via position interpolation<a class="headerlink" href="#extending-context-window-of-large-language-models-via-position-interpolation" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We present Position Interpolation (PI) that extends the context window sizes of
+RoPE-based pretrained LLMs such as LLaMA models to up to 32768 with minimal fine-tuning (within 1000 steps), while
+demonstrating strong empirical results on various tasks that require long context.
+Meanwhile, the extended model by Position Interpolation
+preserve quality relatively well on tasks within its original context window.</p>
+</div>
+<section id="background-rotary-position-embedding-rope">
+<h2>Background: Rotary Position Embedding (RoPE)<a class="headerlink" href="#background-rotary-position-embedding-rope" title="Link to this heading">#</a></h2>
+<p>Transformer models require explicit positional information to be injected, typically in the form of
+positional encodings, to represent the order of inputs. We consider Rotary Position Embedding, which is the position encoding used in the LLaMA model.</p>
+<p>Given a position index <span class="math notranslate nohighlight">\(m\in[0, c)\)</span> and an embedding vector <span class="math notranslate nohighlight">\(\mathbf{x} := [x_0, x_1, . . . , x_{d−1}]^{\intercal}\)</span>, where
+<span class="math notranslate nohighlight">\(d\)</span> is the dimension of the attention head, RoPE defines a vector-valued complex function <span class="math notranslate nohighlight">\(f(\mathbf{x}, m)\)</span> as
+follows</p>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{x}, m) = \left[(x_{0} + ix_{1})e^{im\theta_{0}}, (x_{2} + ix_{3})e^{im\theta_{1}},\dots,(x_{d-2} + ix_{d-1})e^{im\theta_{d/2-1}}\right]^{\intercal}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i:=\sqrt{-1}\)</span> is the imaginary unit and <span class="math notranslate nohighlight">\(\theta_{j}=10000^{-2j/d}\)</span>. Using RoPE, the self-attention score</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a(m,n) &amp;= \text{Re}\left \langle f(\mathbf{q}, m), f(\mathbf{k}, n)  \right \rangle \\
+&amp;= \text{Re}\left[\sum_{j=0}^{d/2-1}(q_{2j} + iq_{2j+1})(k_{2j} - ik_{2j+1})e^{i(m-n)\theta_{j}}\right]\\
+&amp;= \sum_{j=0}^{d/2-1}(q_{2j}k_{2j} + q_{2j+1}k_{2j+1})\cos((m-n)\theta_{j}) + (q_{2j}k_{2j+1} - q_{2j+1}k_{2j})\sin((m-n)\theta_{j})\\
+&amp;=: a(m-n)
+\end{aligned}
+\end{split}\]</div>
+<p>is only dependent on relative position <span class="math notranslate nohighlight">\(m− n\)</span> through trigonometric functions. Here <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> are the
+query and key vector for a specific attention head. At each layer, RoPE is applied on both query and
+key embeddings for computing attention scores.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Large language models (LLMs) typically come with a pre-defined context window size. For example,
+inputs to LLaMA models must be fewer than 2048 tokens. This pre-set
+context window limit is frequently exceeded in applications such as conducting long conversations,
+summarizing long documents, or executing long-term planning. For these applications, LLMs with
+longer context windows are preferred. However, training an LLM from scratch with long context
+windows requires significant investments. This naturally leads to a question: Can we extend the
+context window of an existing pre-trained LLM?</p>
+<p>One straightforward approach is to fine-tune an existing pre-trained Transformer with a longer context
+window. However, empirically, we found that models trained this way adapt to long context
+windows very slowly.</p>
+<p>While certain techniques such as ALiBi and LeX enable length
+extrapolation of Transformers, i.e. train on short context windows and inference on longer ones,
+many existing pre-trained LLMs, including LLaMA, use positional encodings
+that have weak extrapolation properties.</p>
+<p>In this work, we introduce Position Interpolation to enable context window extensions for certain
+existing pre-trained LLMs, including LLaMA. The key idea is, instead of extrapolation, we directly
+down-scale the position indices so that the maximum position index matches the previous context
+window limit in the pre-training stage.</p>
+<p><img alt="" src="../_images/extending.png" /></p>
+</section>
+<section id="direct-extrapolation">
+<h2>Direct extrapolation<a class="headerlink" href="#direct-extrapolation" title="Link to this heading">#</a></h2>
+<p>Ideally, we want to see the model trained on a context window of size <span class="math notranslate nohighlight">\(L = 2048\)</span> to still work
+reasonably well on longer context window, but may not have the capability to leverage information
+that appears beyond L. For example, to answer a question located at 3000, the model trained on
+maximal window size of <span class="math notranslate nohighlight">\(L = 2048\)</span> cannot leverage evidences provided at location 0, but still
+can leverage the evidences provided at location 2900. In contrast, in reality we see catastrophic
+behaviors, i.e., question at location 3000 cannot be answered correctly, even if the evidences are
+located at location 2900.</p>
+<p>What is the reason behind? How could this happen if the attention score <span class="math notranslate nohighlight">\(a(m−n)\)</span> decays as the relative
+distance <span class="math notranslate nohighlight">\(|m − n|\)</span> increases, according to the RoPE paper? It turns out that the upper bound derived in the RoPE paper
+may be too loose. In fact, if we treat all trigonometric functions <span class="math notranslate nohighlight">\(e^{is\theta_{j}}\)</span> as basis functions,
+and think about the self-attention score as basis expansion as the following:</p>
+<div class="math notranslate nohighlight">
+\[a(s) = \text{Re}\left[\sum_{j=0}^{d/2-1}h_{j}e^{is\theta_{j}}\right]\]</div>
+<p>Now the the issue becomes clear: <span class="math notranslate nohighlight">\(a(s)\)</span> can be small in magnitude in the range of <span class="math notranslate nohighlight">\([0, 2048]\)</span>, but gives huge values out of the
+region. The underlying reason is that the trigonometric family <span class="math notranslate nohighlight">\(e^{is\theta_{j}}\)</span> (with sufficiently large <span class="math notranslate nohighlight">\(d\)</span>) is
+a universal approximator and can fit any arbitrary functions. Therefore, for <span class="math notranslate nohighlight">\(a(s)\)</span>, there always exist
+coefficients <span class="math notranslate nohighlight">\({h_j}\)</span> (i.e. key and query) that corresponds to small function values in <span class="math notranslate nohighlight">\([0, 2048]\)</span> but
+much larger in regions beyond.</p>
+</section>
+<section id="positional-interpolation">
+<h2>Positional Interpolation<a class="headerlink" href="#positional-interpolation" title="Link to this heading">#</a></h2>
+<p>Instead of extrapolate the attention score to <span class="math notranslate nohighlight">\(s&gt;L\)</span>, we replace RoPE <span class="math notranslate nohighlight">\(f\)</span> by <span class="math notranslate nohighlight">\(f'\)</span> defined as follows</p>
+<div class="math notranslate nohighlight">
+\[f'(\mathbf{x}, m) = f(\mathbf{x}, \frac{mL}{L'})\]</div>
+<p>where <span class="math notranslate nohighlight">\(L'\)</span> is the longer context window. We call this transformation on the position encoding Position Interpolation. In this step, we reduce
+position indices from <span class="math notranslate nohighlight">\([0,L')\)</span> to <span class="math notranslate nohighlight">\([0,L)\)</span> to match the original range of indices before computing RoPE. Since we align the ranges of position indices and relative distances before
+and after extension, we mitigate the effect on attention score computation due to context window
+extensions, which can allow the model easier to adapt.</p>
+<p>(<strong>Interpolation bound</strong>). For attention score <span class="math notranslate nohighlight">\(a(s) = \text{Re}\left[\sum_{j=0}^{d/2-1}h_{j}e^{is\theta_{j}}\right]\)</span>, where <span class="math notranslate nohighlight">\(\theta_{j} = c^{-2j/d}\)</span>, its interpolation value <span class="math notranslate nohighlight">\(a(s)\)</span> for <span class="math notranslate nohighlight">\(s\in[s_{1},s_{2}]\)</span> is bounded as follows:</p>
+<div class="math notranslate nohighlight">
+\[|a(s) - a_{\text{linear}}(s)|\le d(\max_{j}|h_{j}|)\frac{(s-s_{1})(s_{2}-s)}{8\ln{c}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_{\text{linear}}(s)\)</span> is the linear interpolation of two grid point <span class="math notranslate nohighlight">\(a(s_1)\)</span> and <span class="math notranslate nohighlight">\(a(s_2)\)</span> that are known to
+behave well, enforced by LLM pre-training:</p>
+<div class="math notranslate nohighlight">
+\[a_{\text{linear}}(s):=(1-\lambda(s))a(s_{1}) + \lambda(s)a(s_{2}),\quad \lambda(s):=\frac{s-s_{1}}{s_{2}-s_{1}}\]</div>
+<p>Notably, our method of rescaling of position indices does not introduce extra weight, or modify
+the model architecture in any way. This makes it attractive in practical applications, since most
+infrastructure and optimization for the original model can be reused after the extension.</p>
+<p><strong>Fine-tuning.</strong> We can further fine-tune the interpolated model using the next token prediction task
+with interpolated position encodings on the extended context window size using a pre-training corpus
+such as the Pile. In the next section, we show that our fine-tuning process
+only needs tens to hundreds thousands of examples.</p>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+</section>
+<section id="llama-implementation">
+<h2>Llama implementation<a class="headerlink" href="#llama-implementation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+
+<span class="k">def</span> <span class="nf">precompute_freqs_cis</span><span class="p">(</span><span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">theta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10000.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Precompute the frequency tensor for complex exponentials (cis) with given dimensions.</span>
+
+<span class="sd">    This function calculates a frequency tensor with complex exponentials using the given dimension &#39;dim&#39;</span>
+<span class="sd">    and the end index &#39;end&#39;. The &#39;theta&#39; parameter scales the frequencies.</span>
+<span class="sd">    The returned tensor contains complex values in complex64 data type.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dim (int): Dimension of the frequency tensor.</span>
+<span class="sd">        end (int): End index for precomputing frequencies.</span>
+<span class="sd">        theta (float, optional): Scaling factor for frequency computation. Defaults to 10000.0.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor: Precomputed frequency tensor with complex exponentials.</span>
+
+<span class="sd">    </span>
+<span class="sd">        </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># (theta_0, theta_1, ..., theta_{d/2-1})</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">theta</span> <span class="o">**</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="mi">2</span><span class="p">)[:</span> <span class="p">(</span><span class="n">dim</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">/</span> <span class="n">dim</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">freqs</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+    <span class="c1"># torch.polar(abs, angle)</span>
+    <span class="n">freqs_cis</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">polar</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">freqs</span><span class="p">),</span> <span class="n">freqs</span><span class="p">)</span>  <span class="c1"># complex64</span>
+    <span class="k">return</span> <span class="n">freqs_cis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(m\)</span>-th row of <code class="docutils literal notranslate"><span class="pre">freqs_cis</span></code> is:</p>
+<div class="math notranslate nohighlight">
+\[\left[e^{im\theta_{0}}, e^{im\theta_{1}}, \dots, e^{im\theta_{d/2-1}}\right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_{j}=10000^{-2j/d}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reshape_for_broadcast</span><span class="p">(</span><span class="n">freqs_cis</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reshape frequency tensor for broadcasting it with another tensor.</span>
+
+<span class="sd">    This function reshapes the frequency tensor to have the same shape as the target tensor &#39;x&#39;</span>
+<span class="sd">    for the purpose of broadcasting the frequency tensor during element-wise operations.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        freqs_cis (torch.Tensor): Frequency tensor to be reshaped.</span>
+<span class="sd">        x (torch.Tensor): Target tensor for broadcasting compatibility.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        torch.Tensor: Reshaped frequency tensor.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        AssertionError: If the frequency tensor doesn&#39;t match the expected shape.</span>
+<span class="sd">        AssertionError: If the target tensor &#39;x&#39; doesn&#39;t have the expected number of dimensions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">ndim</span>
+    <span class="k">assert</span> <span class="n">freqs_cis</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">freqs_cis</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">apply_rotary_emb</span><span class="p">(</span>
+    <span class="n">xq</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">xk</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">freqs_cis</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply rotary embeddings to input tensors using the given frequency tensor.</span>
+
+<span class="sd">    This function applies rotary embeddings to the given query &#39;xq&#39; and key &#39;xk&#39; tensors using the provided</span>
+<span class="sd">    frequency tensor &#39;freqs_cis&#39;. The input tensors are reshaped as complex numbers, and the frequency tensor</span>
+<span class="sd">    is reshaped for broadcasting compatibility. The resulting tensors contain rotary embeddings and are</span>
+<span class="sd">    returned as real tensors.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        xq (torch.Tensor): Query tensor to apply rotary embeddings.</span>
+<span class="sd">        xk (torch.Tensor): Key tensor to apply rotary embeddings.</span>
+<span class="sd">        freqs_cis (torch.Tensor): Precomputed frequency tensor for complex exponentials.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tuple[torch.Tensor, torch.Tensor]: Tuple of modified query tensor and key tensor with rotary embeddings.</span>
+
+<span class="sd">        </span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xq_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">xq</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">xq</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">xk_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">xk</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">xk</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">freqs_cis</span> <span class="o">=</span> <span class="n">reshape_for_broadcast</span><span class="p">(</span><span class="n">freqs_cis</span><span class="p">,</span> <span class="n">xq_</span><span class="p">)</span>
+    <span class="n">xq_out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">xq_</span> <span class="o">*</span> <span class="n">freqs_cis</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">xk_out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">xk_</span> <span class="o">*</span> <span class="n">freqs_cis</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xq_out</span><span class="o">.</span><span class="n">type_as</span><span class="p">(</span><span class="n">xq</span><span class="p">),</span> <span class="n">xk_out</span><span class="o">.</span><span class="n">type_as</span><span class="p">(</span><span class="n">xk</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>one row of <code class="docutils literal notranslate"><span class="pre">xq_</span></code>:</p>
+<div class="math notranslate nohighlight">
+\[\left[(x_{0} + ix_{1}), (x_{2} + ix_{3}),\dots,(x_{d-2} + ix_{d-1})\right]\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">xq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0, 1, 2, 3],
+         [4, 5, 6, 7]]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xq_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">xq</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">xq</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">xq_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[0.+1.j, 2.+3.j],
+         [4.+5.j, 6.+7.j]]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs_cis</span> <span class="o">=</span> <span class="n">precompute_freqs_cis</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">freqs_cis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[1.0000+0.0000j, 1.0000+0.0000j],
+        [0.5403+0.8415j, 0.9999+0.0100j]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freqs_cis</span> <span class="o">=</span> <span class="n">reshape_for_broadcast</span><span class="p">(</span><span class="n">freqs_cis</span><span class="p">,</span> <span class="n">xq_</span><span class="p">)</span>
+<span class="n">freqs_cis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.0000+0.0000j, 1.0000+0.0000j],
+         [0.5403+0.8415j, 0.9999+0.0100j]]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xq_</span> <span class="o">*</span> <span class="n">freqs_cis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[ 0.0000+1.0000j,  2.0000+3.0000j],
+         [-2.0461+6.0674j,  5.9297+7.0596j]]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">xq_</span> <span class="o">*</span> <span class="n">freqs_cis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[[ 0.0000,  1.0000],
+          [ 2.0000,  3.0000]],
+
+         [[-2.0461,  6.0674],
+          [ 5.9297,  7.0596]]]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./basic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-rotary-position-embedding-rope">Background: Rotary Position Embedding (RoPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-extrapolation">Direct extrapolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-interpolation">Positional Interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#llama-implementation">Llama implementation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
