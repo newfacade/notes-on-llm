@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DeepSeek-Coder-V2 &#8212; My sample book</title>
+    <title>DeepSeek-Coder-V2 &#8212; Notes-on-LLM</title>
   
   
   
@@ -59,8 +59,11 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'models/deepseek-coder-v2';</script>
+    <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DeepSeek V3" href="deepseek-v3.html" />
+    <link rel="prev" title="DeepSeek-V2" href="deepseek-v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -152,8 +153,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="../_static/hutao.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/hutao.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
   
   
 </a></div>
@@ -178,32 +179,67 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama3</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">Reward Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/openrlhf.html">OpenRLHF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preference-optimization/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preference-optimization/openrlhf.html">OpenRLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../o1/0.html">Path to o1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../o1/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../o1/verify.html">Let’s Verify Step by Step</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../o1/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
 </ul>
 
     </div>
@@ -399,8 +435,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-results">Experimental Results</a></li>
 </ul>
             </nav>
         </div>
@@ -416,27 +457,71 @@ document.write(`
 <h1>DeepSeek-Coder-V2<a class="headerlink" href="#deepseek-coder-v2" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>DeepSeek-Coder-V2 is further pre-trained from an intermediate checkpoint of DeepSeek-V2
-with additional 6T tokens.<br>
+<p>DeepSeek-Coder-V2<span id="id1">[<a class="reference internal" href="../reference.html#id33" title="DeepSeek-AI, Qihao Zhu, Daya Guo, Zhihong Shao, Dejian Yang, Peiyi Wang, Runxin Xu, Y. Wu, Yukun Li, Huazuo Gao, Shirong Ma, Wangding Zeng, Xiao Bi, Zihui Gu, Hanwei Xu, Damai Dai, Kai Dong, Liyue Zhang, Yishi Piao, Zhibin Gou, Zhenda Xie, Zhewen Hao, Bingxuan Wang, Junxiao Song, Deli Chen, Xin Xie, Kang Guan, Yuxiang You, Aixin Liu, Qiushi Du, Wenjun Gao, Xuan Lu, Qinyu Chen, Yaohui Wang, Chengqi Deng, Jiashi Li, Chenggang Zhao, Chong Ruan, Fuli Luo, and Wenfeng Liang. Deepseek-coder-v2: breaking the barrier of closed-source models in code intelligence. 2024. URL: https://arxiv.org/abs/2406.11931, arXiv:2406.11931.">DAZG+24</a>]</span> is further pre-trained from an intermediate checkpoint of DeepSeek-V2<span id="id2">[<a class="reference internal" href="../reference.html#id23" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>
+with additional 6 trillion tokens.<br>
 In standard benchmark evaluations, DeepSeek-Coder-V2 achieves
-superior performance compared to closed-source models such as GPT4-Turbo in coding and math benchmarks.</p>
+superior performance compared to closed-source models such as GPT4-Turbo, Claude 3 Opus,
+and Gemini 1.5 Pro in coding and math benchmarks.</p>
 </div>
-<p><img alt="" src="../_images/deepseek-coder-v2-1.png" /></p>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>In the pre-training phase, the dataset of DeepSeek-Coder-V2 is created with a composition
-of 60% source code, 10% math corpus, and 30% natural language corpus.</p>
-<p>To accommodate longer code inputs, we extend the context length from 16K to 128K tokens.</p>
-<p>In the alignment phase, we first construct an instruction training dataset that includes code
-and math data, as
-well as general instruction data. This dataset is used to
-fine-tune the base model. Then, in the reinforcement learning phase, we employ Group Relative
-Policy Optimization (GRPO) algorithm to align its behavior with human preferences. Preference
-data is collected in the coding domain using <strong>compiler feedback and test cases</strong>, and a reward
-model is developed to guide the training of the policy model.</p>
-</section>
+<figure class="align-default" id="ds-coder-v2-1">
+<a class="reference internal image-reference" href="../_images/deepseek-coder-v2-1.png"><img alt="../_images/deepseek-coder-v2-1.png" src="../_images/deepseek-coder-v2-1.png" style="height: 400px;" /></a>
+</figure>
 <section id="data-collection">
 <h2>Data Collection<a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h2>
+<p>The pre-training data for DeepSeek-Coder-V2 primarily consists of 60% source code, 10% math
+corpus, and 30% natural language corpus. Since the natural language corpus is directly sampled
+from the training dataset of DeepSeek-V2, this section focuses on the collection, cleaning, and
+filtering processes of the code and math data.</p>
+<p>We collect public repositories created before November 2023 on GitHub, We first apply the
+same filtering rules and near-deduplication as those used in the DeepSeek-Coder<span id="id3">[<a class="reference internal" href="../reference.html#id34" title="Daya Guo, Qihao Zhu, Dejian Yang, Zhenda Xie, Kai Dong, Wentao Zhang, Guanting Chen, Xiao Bi, Y. Wu, Y. K. Li, Fuli Luo, Yingfei Xiong, and Wenfeng Liang. Deepseek-coder: when the large language model meets programming – the rise of code intelligence. 2024. URL: https://arxiv.org/abs/2401.14196, arXiv:2401.14196.">GZY+24</a>]</span>. By
+applying these filtering rules and near-deduplication, we obtain 821B code encompassing 338
+programming languages and 185B code-related text, such as markdown and issues.</p>
+<p>To collect code-related and math-related web texts from Common Crawl, we follow the
+same pipeline as DeepSeekMath<span id="id4">[<a class="reference internal" href="../reference.html#id31" title="Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y. K. Li, Y. Wu, and Daya Guo. Deepseekmath: pushing the limits of mathematical reasoning in open language models. 2024. URL: https://arxiv.org/abs/2402.03300, arXiv:2402.03300.">SWZ+24</a>]</span>.</p>
+</section>
+<section id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h2>
+<section id="supervised-fine-tuning">
+<h3>Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Link to this heading">#</a></h3>
+<p>To build DeepSeek-Coder-V2 Chat, we construct the instruction training dataset mixed with
+code and math data. We first collect 20k code-related instruction data and 30k math related data
+from DeepSeek-Coder and DeepSeek-Math. To maintain the general ability, we also sample
+several data from the instruction data of DeepSeek-V2. Finally, we use a instruction dataset
+of 300M tokens.</p>
+</section>
+<section id="reinforcement-learning">
+<h3>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h3>
+<p><strong>Prompts</strong> Considerable effort was spent collecting prompts related to code and math from
+various sources, and <code class="docutils literal notranslate"><span class="pre">each</span> <span class="pre">code</span> <span class="pre">prompt</span> <span class="pre">comes</span> <span class="pre">with</span> <span class="pre">corresponding</span> <span class="pre">test</span> <span class="pre">cases</span></code>. After filtering the
+prompts, there are approximately 40k data in total.</p>
+<p><strong>Reward Modeling</strong> Reward models play crucial roles in the RL training. In terms of mathematical
+preference data, we obtain them using the ground-truth labels. In terms of code preference
+data, although the code compiler itself can already provide 0-1 feedback (whether the code pass
+all test cases or not), some code prompts may have a limited number of test cases, and do not
+provide full coverage, and hence directly using 0-1 feedback from the compiler may be noisy
+and sub-optimal. Therefore, we still decide to train a reward model on the data provided by the
+<code class="docutils literal notranslate"><span class="pre">compiler</span></code>, and use the reward model to provide signal during RL training, which is more robust and has better generalization ability, in comparison with raw compiler signal. As illustrated in
+Figure 2, in our in-house test sets (Leetcode and Leetcode-zh), using a reward model to provide
+RL training signal clearly outperforms using raw compiler signal.</p>
+<p><strong>Reinforcement Learning Algorithm</strong> We employ Group Relative Policy Optimization<a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">Group Relative Policy Optimization</span></a> as our RL algorithm, which is the same as what DeepSeek-V2 uses. Notably,
+GRPO is proven to be quite effective and has less cost compared with PPO, since there is no
+need to maintain an additional critic model.</p>
+<figure class="align-default" id="ds-coder-v2-2">
+<a class="reference internal image-reference" href="../_images/deepseek-coder-v2-2.png"><img alt="../_images/deepseek-coder-v2-2.png" src="../_images/deepseek-coder-v2-2.png" style="height: 300px;" /></a>
+</figure>
+</section>
+</section>
+<section id="experimental-results">
+<h2>Experimental Results<a class="headerlink" href="#experimental-results" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/deepseek-coder-v2-bench1.png" src="../_images/deepseek-coder-v2-bench1.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/deepseek-coder-v2-bench2.png" src="../_images/deepseek-coder-v2-bench2.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/deepseek-coder-v2-bench3.png" src="../_images/deepseek-coder-v2-bench3.png" />
+</figure>
 </section>
 </section>
 
@@ -470,6 +555,24 @@ model is developed to guide the training of the policy model.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="deepseek-v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DeepSeek-V2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="deepseek-v3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DeepSeek V3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -486,8 +589,13 @@ model is developed to guide the training of the policy model.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection">Data Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-results">Experimental Results</a></li>
 </ul>
   </nav></div>
 
@@ -502,7 +610,7 @@ model is developed to guide the training of the policy model.</p>
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By newfacade
 </p>
 
   </div>

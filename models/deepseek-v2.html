@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DeepSeek-V2 &#8212; My sample book</title>
+    <title>DeepSeek-V2 &#8212; Notes-on-LLM</title>
   
   
   
@@ -61,10 +61,11 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'models/deepseek-v2';</script>
+    <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multi-Head Latent Attention" href="mla.html" />
-    <link rel="prev" title="Llama3" href="llama3.html" />
+    <link rel="next" title="DeepSeek-Coder-V2" href="deepseek-coder-v2.html" />
+    <link rel="prev" title="Qwen2.5-Coder" href="qwen25-coder.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,8 +155,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="../_static/hutao.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/hutao.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
   
   
 </a></div>
@@ -181,31 +182,66 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DeepSeek-V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">Reward Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/openrlhf.html">OpenRLHF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preference-optimization/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preference-optimization/openrlhf.html">OpenRLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../o1/0.html">Path to o1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../o1/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../o1/verify.html">Let’s Verify Step by Step</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../o1/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
 </ul>
 
     </div>
@@ -401,17 +437,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-latent-attention">Multi-head Latent Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-construction">Data Construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameters">Hyper-Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-results">Evaluation Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepseekmoe">DeepSeekMoE</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-grained-expert-segmentation">Fine-Grained Expert Segmentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-expert-isolation">Shared Expert Isolation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-balance-consideration">Load Balance Consideration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a></li>
 </ul>
             </nav>
         </div>
@@ -427,7 +466,7 @@ document.write(`
 <h1>DeepSeek-V2<a class="headerlink" href="#deepseek-v2" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>DeepSeek-V2 is a strong Mixture-of-Experts (MoE) language model characterized by
+<p>DeepSeek-V2<span id="id1">[<a class="reference internal" href="../reference.html#id23" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span> is a strong Mixture-of-Experts (MoE) language model characterized by
 economical training and efficient inference.<br>
 It comprises 236B total parameters, of which 21B
 are activated for each token, and supports a context length of 128K tokens. DeepSeek-V2 adopts
@@ -435,113 +474,224 @@ innovative architectures including Multi-head Latent Attention (MLA) and DeepSee
 </div>
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
-<section id="multi-head-latent-attention">
-<h3>Multi-head Latent Attention<a class="headerlink" href="#multi-head-latent-attention" title="Link to this heading">#</a></h3>
-<p>See <a class="reference internal" href="mla.html"><span class="doc std std-doc">Multi-Head Latent Attention</span></a></p>
-</section>
-</section>
-<section id="deepseekmoe">
-<h2>DeepSeekMoE<a class="headerlink" href="#deepseekmoe" title="Link to this heading">#</a></h2>
-<p>For FFNs, we employ the DeepSeekMoE architecture. DeepSeekMoE has two
-key ideas:</p>
-<ol class="arabic simple">
-<li><p>segmenting experts into finer granularity;</p></li>
-<li><p>isolating some shared experts.</p></li>
-</ol>
-<p>A standard Transformer language model is constructed by stacking <span class="math notranslate nohighlight">\(L\)</span> layers of standard
-Transformer blocks, where each block can be represented as follows:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{u}_{1:T}^{l} &amp;= \text{Self-Att}(\mathbf{h}_{1:T}^{l-1}) + \mathbf{h}_{1:T}^{l-1}\\
-\mathbf{h}_{t}^{l} &amp;= \text{FFN}(\mathbf{u}_{t}^{l}) + \mathbf{u}_{t}^{l}
-\end{aligned}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(T\)</span> denotes the sequence length, <span class="math notranslate nohighlight">\(\text{Self-Att}(·)\)</span> denotes the self-attention module, <span class="math notranslate nohighlight">\(\text{FFN}(·)\)</span>
-denotes the Feed-Forward Network (FFN), <span class="math notranslate nohighlight">\(\mathbf{u}_{1:T}^{l}\in\mathbb{R}^{T\times d}\)</span> are the hidden states of all tokens after
-the <span class="math notranslate nohighlight">\(l\)</span>-th attention module, and <span class="math notranslate nohighlight">\(\mathbf{h}_{t}^{l}\in\mathbb{R}^{d}\)</span> is the output hidden state of the <span class="math notranslate nohighlight">\(t\)</span>-th token after the <span class="math notranslate nohighlight">\(l\)</span>-th Transformer block. We omit the layer normalization in the above formulations for brevity.</p>
-<p>A typical practice to construct an MoE language model usually substitutes FFNs in a Transformer
-with MoE layers. An MoE layer is composed of multiple experts, where each expert is
-structurally identical to a standard FFN. Then, each token will be assigned to one or two experts. If the <span class="math notranslate nohighlight">\(l\)</span>-th FFN is substituted with an MoE layer:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{h}_{t}^{l} &amp;= \sum_{i=1}^{N}(g_{i,t}\text{FFN}_{i}(\mathbf{u_{t}^{l}})) + \mathbf{u}_{t}^{l}\\
-g_{i,t} &amp;= 
-\begin{cases}
-s_{i,t},\quad &amp;s_{i,t}\in\text{Topk}(\{s_{j,t}|1\le j\le N\}, K)\\
-0, &amp;\text{otherwise}
-\end{cases}\\
-s_{i,t} &amp;= \text{Softmax}_{i}({\mathbf{u}_{t}^{l}}^{\intercal}\mathbf{e}_{i}^{l})
-\end{aligned}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> denotes the total number of experts, <span class="math notranslate nohighlight">\(\text{FFN}_{i}\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th expert FFN, <span class="math notranslate nohighlight">\(g_{i,t}\)</span> denotes the
-gate value for the <span class="math notranslate nohighlight">\(i\)</span>-th expert, <span class="math notranslate nohighlight">\(s_{i,t}\)</span> denotes the token-to-expert affinity, <span class="math notranslate nohighlight">\(\text{Topk}(\cdot,K)\)</span> denotes the set
-comprising <span class="math notranslate nohighlight">\(K\)</span> highest affinity scores among those calculated for the <span class="math notranslate nohighlight">\(t\)</span>-th token and all <span class="math notranslate nohighlight">\(N\)</span> experts, and <span class="math notranslate nohighlight">\(\mathbf{e}_{i}^{l}\)</span> is the centroid of the <span class="math notranslate nohighlight">\(i\)</span>-th expert in the <span class="math notranslate nohighlight">\(l\)</span>-th layer (parameter of the gate).</p>
-<section id="fine-grained-expert-segmentation">
-<h3>Fine-Grained Expert Segmentation<a class="headerlink" href="#fine-grained-expert-segmentation" title="Link to this heading">#</a></h3>
-<p>While maintaining a consistent number of expert parameters and
-computational cost, we segment the experts with a finer grain. The finer expert segmentation
-enables a more flexible and adaptable combination of activated experts.</p>
-<p>To be specific, we segment each expert FFN into <span class="math notranslate nohighlight">\(m\)</span> smaller
-experts by reducing the FFN intermediate hidden dimension to <span class="math notranslate nohighlight">\(\frac{1}{m}\)</span> times its original size. Since
-each expert becomes smaller, in response, we also increase the number of activated experts to
-<span class="math notranslate nohighlight">\(m\)</span> times to keep the same computation cost.</p>
-<p><img alt="" src="../_images/deepseek-moe.png" /></p>
-</section>
-<section id="shared-expert-isolation">
-<h3>Shared Expert Isolation<a class="headerlink" href="#shared-expert-isolation" title="Link to this heading">#</a></h3>
-<p>Tokens assigned to different experts may necessitate some
-common knowledge or information. As a result, multiple experts may converge in acquiring
-shared knowledge in their respective parameters, thereby resulting in redundancy in expert
-parameters. However, if there are shared experts dedicated to capturing and consolidating
-common knowledge across varying contexts, the parameter redundancy among other routed
-experts will be alleviated.</p>
-<p>Towards this objective, in addition to the fine-grained expert segmentation strategy, we
-further isolate <span class="math notranslate nohighlight">\(K_{s}\)</span> experts to serve as shared experts. In order to maintain a constant
-computational cost, the number of activated experts among the other routed experts will be
-decreased by <span class="math notranslate nohighlight">\(K_{s}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{h}_{t}^{l} &amp;= \sum_{i=1}^{K_s}\text{FFN}_{i}(\mathbf{u}_{t}^{l}) + \sum_{i=K_s}^{mN}(g_{i,t}\text{FFN}_{i}(\mathbf{u_{t}^{l}})) + \mathbf{u}_{t}^{l}\\
-g_{i,t} &amp;= 
-\begin{cases}
-s_{i,t},\quad &amp;s_{i,t}\in\text{Topk}(\{s_{j,t}|K_s\le j\le mN\}, mK-K_s)\\
-0, &amp;\text{otherwise}
-\end{cases}\\
-s_{i,t} &amp;= \text{Softmax}_{i}({\mathbf{u}_{t}^{l}}^{\intercal}\mathbf{e}_{i}^{l})
-\end{aligned}
-\end{split}\]</div>
-</section>
-<section id="load-balance-consideration">
-<h3>Load Balance Consideration<a class="headerlink" href="#load-balance-consideration" title="Link to this heading">#</a></h3>
-<p>Automatically learned routing strategies may encounter the issue of load imbalance.</p>
-<p><strong>Expert-Level Balance Loss.</strong> Imbalance leeds to higher loss.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathcal{L}_{\text{ExpBal}} &amp;= \alpha_{1}\sum_{i=1}^{mN-K_s}f_{i}P_{i}\\
-f_{i} &amp;= \frac{mN-K_{s}}{(mK-K_s)T}\sum_{t=1}^{T}\mathbb{1}(\text{Token }t\text{ selects Expert }i)\\
-P_{i} &amp;= \frac{1}{T}\sum_{t=1}^{T}s_{i,t}
-\end{aligned}
-\end{split}\]</div>
-<p><strong>Device-Level Balance Loss.</strong> In addition to the expert-level balance loss, we additionally
-design a device-level balance loss to ensure balanced computation across different devices. If we partition all routed experts into <span class="math notranslate nohighlight">\(D\)</span> groups
-<span class="math notranslate nohighlight">\(\{\mathcal{E}_{1}, \mathcal{E}_{2}, \dots, \mathcal{E}_{D}\}\)</span>, and deploy each group on a single device, the device-level balance loss is
-computed as follows:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathcal{L}_{\text{DevBal}} &amp;= \alpha_{2}\sum_{i=1}^{D}f_{i}'P_{i}'\\
-f_{i}' &amp;= \frac{1}{|\mathcal{E}_{i}|}\sum_{j\in\mathcal{E}_{i}}f_{j}\\
-P_{i}' &amp;= \sum_{j\in\mathcal{E}_{i}}P_{j}
-\end{aligned}
-\end{split}\]</div>
-</section>
+<p><a class="reference internal" href="../techniques/mla.html#mla"><span class="std std-ref">Multi-Head Latent Attention</span></a></p>
+<p><a class="reference internal" href="../techniques/deepseek-moe.html#deepseekmoe"><span class="std std-ref">DeepSeekMoE</span></a></p>
 </section>
 <section id="pre-training">
 <h2>Pre-Training<a class="headerlink" href="#pre-training" title="Link to this heading">#</a></h2>
+<section id="data-construction">
+<h3>Data Construction<a class="headerlink" href="#data-construction" title="Link to this heading">#</a></h3>
+<p>While maintaining the same data processing stages as for DeepSeek 67B<span id="id2">[<a class="reference internal" href="../reference.html#id30" title="DeepSeek-AI, :, Xiao Bi, Deli Chen, Guanting Chen, Shanhuang Chen, Damai Dai, Chengqi Deng, Honghui Ding, Kai Dong, Qiushi Du, Zhe Fu, Huazuo Gao, Kaige Gao, Wenjun Gao, Ruiqi Ge, Kang Guan, Daya Guo, Jianzhong Guo, Guangbo Hao, Zhewen Hao, Ying He, Wenjie Hu, Panpan Huang, Erhang Li, Guowei Li, Jiashi Li, Yao Li, Y. K. Li, Wenfeng Liang, Fangyun Lin, A. X. Liu, Bo Liu, Wen Liu, Xiaodong Liu, Xin Liu, Yiyuan Liu, Haoyu Lu, Shanghao Lu, Fuli Luo, Shirong Ma, Xiaotao Nie, Tian Pei, Yishi Piao, Junjie Qiu, Hui Qu, Tongzheng Ren, Zehui Ren, Chong Ruan, Zhangli Sha, Zhihong Shao, Junxiao Song, Xuecheng Su, Jingxiang Sun, Yaofeng Sun, Minghui Tang, Bingxuan Wang, Peiyi Wang, Shiyu Wang, Yaohui Wang, Yongji Wang, Tong Wu, Y. Wu, Xin Xie, Zhenda Xie, Ziwei Xie, Yiliang Xiong, Hanwei Xu, R. X. Xu, Yanhong Xu, Dejian Yang, Yuxiang You, Shuiping Yu, Xingkai Yu, B. Zhang, Haowei Zhang, Lecong Zhang, Liyue Zhang, Mingchuan Zhang, Minghua Zhang, Wentao Zhang, Yichao Zhang, Chenggang Zhao, Yao Zhao, Shangyan Zhou, Shunfeng Zhou, Qihao Zhu, and Yuheng Zou. Deepseek llm: scaling open-source language models with longtermism. 2024. URL: https://arxiv.org/abs/2401.02954, arXiv:2401.02954.">DAB+24</a>]</span>, we extend the amount of data and elevate the data quality.</p>
+<p>We adopt the same tokenizer as used in DeepSeek 67B, which is built based on the Byte-level
+Byte-Pair Encoding (BBPE) algorithm and has a vocabulary size of 100K. Our tokenized pretraining
+corpus contains 8.1T tokens, where Chinese tokens are approximately 12% more than
+English ones.</p>
+</section>
+<section id="hyper-parameters">
+<h3>Hyper-Parameters<a class="headerlink" href="#hyper-parameters" title="Link to this heading">#</a></h3>
+<p>We set the number of Transformer layers to 60 and the hidden
+dimension to 5120. In MLA, we set the number of attention heads <span class="math notranslate nohighlight">\(n_h\)</span> to 128 and the per-head dimension <span class="math notranslate nohighlight">\(d_h\)</span>
+to 128. The KV compression dimension <span class="math notranslate nohighlight">\(d_c\)</span> is set to 512, and the query compression dimension
+<span class="math notranslate nohighlight">\(d_{c}'\)</span> is set to 1536. For the decoupled queries and key, we set the per-head dimension <span class="math notranslate nohighlight">\(d_{h}^{R}\)</span> to 64. We substitute all FFNs except for the first layer with MoE layers.
+Each MoE layer consists of 2 shared experts and 160 routed experts, where the intermediate
+hidden dimension of each expert is 1536. Among the routed experts, 6 experts will be activated
+for each token. Under this configuration, DeepSeek-V2 comprises 236B total
+parameters, of which 21B are activated for each token.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">#</span><span class="w"> </span><span class="err">DeepSeek</span><span class="mi">-</span><span class="err">V</span><span class="mi">2</span><span class="err">/co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;vocab_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5120</span><span class="p">,</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nt">&quot;num_attention_heads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;qk_nope_head_dim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;v_head_dim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kv_lora_rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;q_lora_rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;qk_rope_head_dim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;first_k_dense_replace&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;intermediate_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12288</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n_shared_experts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n_routed_experts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;moe_intermediate_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;num_experts_per_tok&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now Let’s calculate the number of parameters of DeepSeek-V2 step by step:</p>
+<ol class="arabic simple">
+<li><p>Embedding and UnEmbedding: 1048576000</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeepseekV2Model</span><span class="p">(</span><span class="n">DeepseekV2PreTrainedModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">DeepseekV2Config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="c1"># 102400 * 5120</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_tokens</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_idx</span>
+        <span class="p">)</span>
+        
+<span class="k">class</span> <span class="nc">DeepseekV2ForCausalLM</span><span class="p">(</span><span class="n">DeepseekV2PreTrainedModel</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="c1"># 5120 * 102400</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lm_head</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>MLA: 149225472 per layer (omit RMSNorm weight etc.)</p></li>
+</ol>
+<figure class="align-default" id="mla-3">
+<a class="reference internal image-reference" href="../_images/mla-3x.svg"><img alt="../_images/mla-3x.svg" height="600px" src="../_images/mla-3x.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Multi-head Latent Attention.</span><a class="headerlink" href="#mla-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeepseekV2Attention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">DeepseekV2Config</span><span class="p">,</span> <span class="n">layer_idx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">num_attention_heads</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_lora_rank</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qk_rope_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_rope_head_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_lora_rank</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">v_head_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qk_nope_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_nope_head_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_nope_head_dim</span> <span class="o">+</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_rope_head_dim</span>
+
+        <span class="c1"># 5120 * 1536</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_a_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">attention_bias</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_a_layernorm</span> <span class="o">=</span> <span class="n">DeepseekV2RMSNorm</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span><span class="p">)</span>
+        <span class="c1"># 1536 * 128 * (128 + 64)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_b_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_head_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 5120 * (512 + 64)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_a_proj_with_mqa</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span> <span class="o">+</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_rope_head_dim</span><span class="p">,</span>
+            <span class="n">bias</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">attention_bias</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_a_layernorm</span> <span class="o">=</span> <span class="n">DeepseekV2RMSNorm</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span><span class="p">)</span>
+        <span class="c1"># 512 * 128 * (128 + 128)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_b_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span>
+            <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q_head_dim</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">qk_rope_head_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_head_dim</span><span class="p">),</span>
+            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 128 * 128 * 5120</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">o_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_head_dim</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span>
+            <span class="n">bias</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">attention_bias</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>MOE:</p>
+<ul class="simple">
+<li><p>first layer: 188743680</p></li>
+<li><p>other layer total parameters: 3822059520</p></li>
+<li><p>other layer activated parameters: 188743680</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeepseekV2MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intermediate_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span> <span class="k">if</span> <span class="n">hidden_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">intermediate_size</span> <span class="k">if</span> <span class="n">intermediate_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">intermediate_size</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 5120 * intermediate_size * 3</span>
+        <span class="c1"># intermediate_size = 12288 if layer_idx=0 else 1536</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gate_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">down_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Conclude our calculation:</p>
+<ul class="simple">
+<li><p>total parameters: 235692359680</p></li>
+<li><p>activated parameters: 21326725120</p></li>
+</ul>
+</section>
+<section id="evaluation-results">
+<h3>Evaluation Results<a class="headerlink" href="#evaluation-results" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/deepseek-v2-bench1.png" src="../_images/deepseek-v2-bench1.png" />
+</figure>
+</section>
+</section>
+<section id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h2>
+<section id="supervised-fine-tuning">
+<h3>Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Link to this heading">#</a></h3>
+<p>We curate our instruction tuning datasets
+to include 1.5M instances, comprising 1.2M instances for helpfulness and 0.3M instances for
+safety. In comparison to the initial version, we improve the data quality to mitigate hallucinatory
+responses and enhance writing proficiency.</p>
+<p>We fine-tune DeepSeek-V2 with 2 epochs, and
+the learning rate is set to 5 × 10−6.</p>
+</section>
+<section id="reinforcement-learning">
+<h3>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h3>
+<p>In order to further unlock the potential of DeepSeek-V2 and align it with human preference, we
+conduct Reinforcement Learning (RL) to adjust its preference.</p>
+<p><strong>Reinforcement Learning Algorithm.</strong> <a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">Group Relative Policy Optimization</span></a></p>
+<p><strong>Training Strategy.</strong> In our preliminary experiments, we find that the RL training on reasoning
+data, such as code and math prompts, exhibits unique characteristics that are distinct from the
+training on general data. For example, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">mathematical</span> <span class="pre">and</span> <span class="pre">coding</span> <span class="pre">abilities</span> <span class="pre">of</span> <span class="pre">our</span> <span class="pre">model</span> <span class="pre">can</span> <span class="pre">keep</span> <span class="pre">improving</span> <span class="pre">over</span> <span class="pre">a</span> <span class="pre">longer</span> <span class="pre">period</span> <span class="pre">of</span> <span class="pre">training</span> <span class="pre">steps</span></code>. Therefore, we employ a two-stage RL
+training strategy, which first performs reasoning alignment, and then performs human preference
+alignment. In the first reasoning alignment stage, we train a reward model <span class="math notranslate nohighlight">\(RM_{reasoning}\)</span> for
+code and math reasoning tasks, and optimize the policy model with the feedback of <span class="math notranslate nohighlight">\(RM_{reasoning}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[r_{i} = RM_{reasoning}(o_{i}).\]</div>
+<p>In the second human preference alignment stage, we adopt a multi-reward framework, which
+acquires rewards from a helpful reward model <span class="math notranslate nohighlight">\(RM_{helpful}\)</span> , a safety reward model <span class="math notranslate nohighlight">\(RM_{safety}\)</span>, and a
+rule-based reward model <span class="math notranslate nohighlight">\(RM_{rule}\)</span>. The final reward of a response <span class="math notranslate nohighlight">\(o_{i}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[r_{i} = c_{1}\cdot RM_{helpful}(o_{i}) + c_{2}\cdot RM_{safety}(o_{i}) + c_{3}\cdot RM_{rule}(o_{i}).\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In order to obtain reliable reward models that play crucial roles in the RL training, we
+carefully collect preference data, and meticulously conduct <code class="docutils literal notranslate"><span class="pre">quality</span> <span class="pre">filtering</span></code> and <code class="docutils literal notranslate"><span class="pre">proportion</span> <span class="pre">adjustments</span></code>. We obtain code preference data based on <code class="docutils literal notranslate"><span class="pre">compiler-feedback</span></code>, and mathematical
+preference data based on the ground-truth labels. For reward model training, we initialize
+the reward models with DeepSeek-V2 Chat (SFT) and train them with either a point-wise or
+a pair-wise loss.</p>
+</div>
+</section>
+<section id="id3">
+<h3>Evaluation Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/deepseek-v2-bench2.png" src="../_images/deepseek-v2-bench2.png" />
+</figure>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
+<p><strong>Amount of SFT Data.</strong> The discussion surrounding the necessity of a large SFT corpus has been
+a topic of intense debate. Previous works argue that fewer
+than 10K instances of SFT data are enough to produce satisfactory results. However, in our
+experiments, we observe a significant performance decline on the IFEval benchmark if we use
+fewer than 10K instances. Moreover, the quality
+of SFT data is also crucial.</p>
+<p><strong>Online Reinforcement Learning.</strong> In our preference alignment experiments, we find that the
+online approach significantly outperforms the offline approach. Therefore, we invest tremendous
+efforts in implementing an online RL framework for aligning DeepSeek-V2. The conclusion
+about online or offline preference alignment can vary in different contexts, and we reserve a
+more thorough comparison and analysis between them for future work.</p>
+</section>
 </section>
 </section>
 
@@ -576,20 +726,20 @@ P_{i}' &amp;= \sum_{j\in\mathcal{E}_{i}}P_{j}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="llama3.html"
+       href="qwen25-coder.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Llama3</p>
+        <p class="prev-next-title">Qwen2.5-Coder</p>
       </div>
     </a>
     <a class="right-next"
-       href="mla.html"
+       href="deepseek-coder-v2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multi-Head Latent Attention</p>
+        <p class="prev-next-title">DeepSeek-Coder-V2</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -609,17 +759,20 @@ P_{i}' &amp;= \sum_{j\in\mathcal{E}_{i}}P_{j}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-head-latent-attention">Multi-head Latent Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-construction">Data Construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameters">Hyper-Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-results">Evaluation Results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepseekmoe">DeepSeekMoE</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-grained-expert-segmentation">Fine-Grained Expert Segmentation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-expert-isolation">Shared Expert Isolation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-balance-consideration">Load Balance Consideration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a></li>
 </ul>
   </nav></div>
 
@@ -634,7 +787,7 @@ P_{i}' &amp;= \sum_{j\in\mathcal{E}_{i}}P_{j}
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By newfacade
 </p>
 
   </div>
