@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -452,6 +452,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-tuned-model">Instruction-tuned Model</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
             </nav>
         </div>
@@ -467,17 +468,12 @@ document.write(`
 <h1>Qwen 2.5<a class="headerlink" href="#qwen-2-5" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Compared to previous iterations, Qwen 2.5 has
+<p>Compared to previous iterations, Qwen 2.5<span id="id1">[<a class="reference internal" href="../reference.html#id15" title="Qwen, :, An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jingren Zhou, Junyang Lin, Kai Dang, Keming Lu, Keqin Bao, Kexin Yang, Le Yu, Mei Li, Mingfeng Xue, Pei Zhang, Qin Zhu, Rui Men, Runji Lin, Tianhao Li, Tianyi Tang, Tingyu Xia, Xingzhang Ren, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yu Wan, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, and Zihan Qiu. Qwen2.5 technical report. 2025. URL: https://arxiv.org/abs/2412.15115, arXiv:2412.15115.">QY+25</a>]</span> has
 been significantly improved during both the pre-training and post-training stages. In
 terms of pre-training, we have scaled the high-quality pre-training datasets from the
 previous 7 trillion tokens to 18 trillion tokens. In terms of post-training,
 we implement intricate supervised finetuning with over 1 million samples, as well as
-multistage reinforcement learning, including <code class="docutils literal notranslate"><span class="pre">offline</span> <span class="pre">learning</span> <span class="pre">DPO</span></code> and <code class="docutils literal notranslate"><span class="pre">online</span> <span class="pre">learning</span> <span class="pre">GRPO</span></code>.<br>
-To handle diverse and varied use cases effectively, we present Qwen2.5 LLM series in rich
-configurations. Specifically, the open-weight flagship Qwen2.5-72B-Instruct outperforms
-a number of open and proprietary models and demonstrates competitive performance to
-the state-of-the-art open-weight model, Llama-3-405B-Instruct, which is around 5 times
-larger.</p>
+multistage reinforcement learning, including <code class="docutils literal notranslate"><span class="pre">offline</span> <span class="pre">learning</span> <span class="pre">DPO</span></code> and <code class="docutils literal notranslate"><span class="pre">online</span> <span class="pre">learning</span> <span class="pre">GRPO</span></code>.</p>
 </div>
 <section id="architecture-tokenizer">
 <h2>Architecture &amp; Tokenizer<a class="headerlink" href="#architecture-tokenizer" title="Link to this heading">#</a></h2>
@@ -532,16 +528,12 @@ output quality.</p></li>
 <p>In this section, we detail the key enhancements made during the SFT phase of Qwen2.5, focusing on
 several critical areas:</p>
 <p><strong>Coding:</strong> To enhance coding capabilities, we incorporate the instruction tuning data of Qwen2.5-
-Coder. We use multiple language-specific agents into a collaborative framework,
-generating diverse and high-quality instruction pairs across nearly 40 programming languages.
-We expand our instruction dataset by <code class="docutils literal notranslate"><span class="pre">synthesizing</span> <span class="pre">new</span> <span class="pre">examples</span> <span class="pre">from</span> <span class="pre">code-related</span> <span class="pre">Q&amp;A</span> <span class="pre">websites</span></code> and gathering <code class="docutils literal notranslate"><span class="pre">algorithmic</span> <span class="pre">code</span> <span class="pre">snippets</span> <span class="pre">from</span> <span class="pre">GitHub</span></code>. A <code class="docutils literal notranslate"><span class="pre">comprehensive</span> <span class="pre">multilingual</span> <span class="pre">sandbox</span></code> is used to perform static code checking and validate code snippets through automated
+Coder. We expand our instruction dataset by <code class="docutils literal notranslate"><span class="pre">synthesizing</span> <span class="pre">new</span> <span class="pre">examples</span> <span class="pre">from</span> <span class="pre">code-related</span> <span class="pre">Q&amp;A</span> <span class="pre">websites</span></code> and gathering <code class="docutils literal notranslate"><span class="pre">algorithmic</span> <span class="pre">code</span> <span class="pre">snippets</span> <span class="pre">from</span> <span class="pre">GitHub</span></code>. A <code class="docutils literal notranslate"><span class="pre">comprehensive</span> <span class="pre">multilingual</span> <span class="pre">sandbox</span></code> is used to perform static code checking and validate code snippets through automated
 unit testing, ensuring code quality and correctness.</p>
 </section>
 <section id="offline-reinforcement-learning">
 <h3>Offline Reinforcement Learning<a class="headerlink" href="#offline-reinforcement-learning" title="Link to this heading">#</a></h3>
-<p>Compared to Online Reinforcement Learning (RL), Offline RL enables the pre-preparation of training
-signals, which is particularly advantageous for tasks where standard answers exist but are challenging to
-evaluate using reward model. In this study, we focus on objective query domains such as mathematics,
+<p>In this study, we focus on objective query domains such as mathematics,
 coding, instruction following, and logical reasoning, where obtaining accurate evaluations can be complex.
 In the previous phase, we extensively employ strategies like <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">feedback</span></code> and answer matching to
 ensure the quality of responses. For the current phase, we reuse that pipeline, employing the SFT model
@@ -585,6 +577,40 @@ for each query.</p>
 <img alt="../_images/qwen25-2.png" src="../_images/qwen25-2.png" />
 </figure>
 </section>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SFT data:</p>
+<ul class="simple">
+<li><p>synthesizing new examples from code-related Q&amp;A websites</p></li>
+<li><p>algorithmic code snippets from GitHub</p></li>
+<li><p>a comprehensive multilingual sandbox is used</p></li>
+</ul>
+<p>Offline Reinforcement Learning:</p>
+<ul class="simple">
+<li><p>employ strategies like execution feedback and answer matching</p></li>
+<li><p>make use of both human and automated review processes</p></li>
+</ul>
+<p>Online Reinforcement Learning:</p>
+<ul class="simple">
+<li><p>reward model:</p>
+<ul>
+<li><p>publicly available open-source data</p></li>
+<li><p>proprietary query set characterized by higher complexity</p></li>
+<li><p>Responses are generated from checkpoints of the Qwen models, those responses are sampled at different temperature settings</p></li>
+<li><p>combine DPO dataset</p></li>
+</ul>
+</li>
+<li><p>GRPO</p>
+<ul>
+<li><p>The query set utilized for training the reward model is identical to the one used in the RL training phase</p></li>
+<li><p>queries with higher variance in response scores are prioritized to ensure more effective learning</p></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -669,6 +695,7 @@ for each query.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-tuned-model">Instruction-tuned Model</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
   </nav></div>
 

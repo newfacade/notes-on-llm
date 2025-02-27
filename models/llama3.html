@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -725,13 +725,36 @@ optimal downstream performance.</p>
 <h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<ol class="arabic simple">
-<li><p>Iterative SFT and DPO using rejection sampling, while RM use all preference data, DPO only use the latest preference data.</p></li>
-<li><p>Careful data mix, cleaning and quality control including topic classification, quality scoring using RM or LLM as judge, difficulty scoring and semantic deduplication.</p></li>
-<li><p>Train a code expert model to collect high-quality data.</p></li>
-<li><p>Synthetic data generation using Magicoder, static analysis and unit test.</p></li>
-<li><p>System prompt steering during rejection sampling.</p></li>
-</ol>
+<p>Preference data:</p>
+<ul class="simple">
+<li><p>Response from two different models with different data mixes and alignment recipes</p></li>
+<li><p>Human annotate significantly better, better, slightly better, or marginally better. Only use significantly better and better.</p></li>
+<li><p>Discard samples with similar responses</p></li>
+</ul>
+<p>SFT data:</p>
+<ul class="simple">
+<li><p>Rejection sampling using RM, system prompt steering during rejection sampling.</p></li>
+<li><p>Synthetic data:</p>
+<ul>
+<li><p>Execution feedback (Magicoder)</p></li>
+<li><p>Programming language translation</p></li>
+<li><p>Backtranslation (code explain, debug)</p></li>
+</ul>
+</li>
+</ul>
+<p>Data process and quality control:</p>
+<ul class="simple">
+<li><p>Topic classification</p></li>
+<li><p>Quality scoring</p>
+<ul>
+<li><p>LLM as judge (for challenging prompts, revise responses until met criteria)</p></li>
+<li><p>Or top quartile of RM</p></li>
+</ul>
+</li>
+<li><p>Difficulty scoring</p></li>
+<li><p>Semantic deduplication</p></li>
+<li><p>Data mix carefully across these axes</p></li>
+</ul>
 </div>
 </section>
 </section>

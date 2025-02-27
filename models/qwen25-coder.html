@@ -454,6 +454,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruct-models">Instruct Models</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
             </nav>
         </div>
@@ -553,18 +554,7 @@ coding concepts.</p></li>
 </ol>
 <p>After gaining all scores <span class="math notranslate nohighlight">\((s_1, \dots, s_n)\)</span>, we can get the final score with
 <span class="math notranslate nohighlight">\(s = w_1 s_1 + \dots + w_n s_n\)</span>, where <span class="math notranslate nohighlight">\((w_1, \dots ,w_n)\)</span> are a series of pre-defined weights.</p>
-<p><strong>A multilingual sandbox for code verification</strong> To further verify the correctness of the code
-syntax, we use the code static checking for all extracted code snippets of programming
-languages (e.g. Python, Java, and C++). We parse the code snippet into the abstract syntax
-tree and filter out the code snippet, where the parsed nodes in code snippet have parsing
-errors.</p>
-<p>We create a multilingual sandbox to support the code static checking for the main
-programming language. Further, the multilingual sandbox is a comprehensive platform
-designed to validate code snippets across multiple programming languages. It automates the
-process of generating relevant unit tests based on language-specific samples and evaluates
-whether the provided code snippets can successfully pass these tests. Especially, only the
-self-contained (e.g. algorithm problems) code snippet will be fed into the multilingual
-sandbox. The multilingual verification sandbox is mainly comprised of five parts:</p>
+<p><strong>A multilingual sandbox for code verification</strong> Only the self-contained (e.g. algorithm problems) code snippet will be fed into the multilingual sandbox. The multilingual verification sandbox is mainly comprised of five parts::</p>
 <ol class="arabic simple">
 <li><p><strong>Language Support Module:</strong></p>
 <ul class="simple">
@@ -645,6 +635,21 @@ word-level overlap with the test data was removed.</p>
 <img alt="../_images/qwen25-coder-4.png" src="../_images/qwen25-coder-4.png" />
 </figure>
 </section>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recipe:</p>
+<ul class="simple">
+<li><p>Keep the instruction data of the mainstream programming languages and randomly discard a portion of the instruction data of the long-tail languages. Remove most of the samples without code snippets</p></li>
+<li><p>Instruction Synthesis using Magicoder, Unicoder and Wavecoder. GitHub code snippet and open-source instructions as the seed.</p></li>
+<li><p>Multilingual Code Instruction Data to bridge the gap among different programming languages.</p></li>
+<li><p>Checklist-based Scoring for Instruction Data, <span class="math notranslate nohighlight">\(s = w_1s_1 + \dots + w_ns_n\)</span></p></li>
+<li><p>A multilingual sandbox for code verification (organizes samples by language, difficulty level, and programming concepts)</p></li>
+<li><p>For the algorithm-like and self-contained code snippets, we generate the test cases to check the correctness of the code as the code execution feedback. For other complex code snippets, we use LLM-as-ajudge to decide which code snippet is better.</p></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -729,6 +734,7 @@ word-level overlap with the test data was removed.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruct-models">Instruct Models</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
   </nav></div>
 
