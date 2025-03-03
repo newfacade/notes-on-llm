@@ -224,6 +224,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -242,7 +244,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
@@ -471,8 +473,8 @@ document.write(`
 <h1>Extending context window of LLMs<a class="headerlink" href="#extending-context-window-of-llms" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We present Position Interpolation (PI)<span id="id1">[<a class="reference internal" href="../reference.html#id36" title="Shouyuan Chen, Sherman Wong, Liangjian Chen, and Yuandong Tian. Extending context window of large language models via positional interpolation. 2023. URL: https://arxiv.org/abs/2306.15595, arXiv:2306.15595.">CWCT23</a>]</span> that extends the context window sizes of
-RoPE<span id="id2">[<a class="reference internal" href="../reference.html#id29" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span>-based pretrained LLMs such as LLaMA<span id="id3">[<a class="reference internal" href="../reference.html#id37" title="Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, Aurelien Rodriguez, Armand Joulin, Edouard Grave, and Guillaume Lample. Llama: open and efficient foundation language models. 2023. URL: https://arxiv.org/abs/2302.13971, arXiv:2302.13971.">TLI+23</a>]</span> models to up to 32768 with minimal fine-tuning (within 1000 steps), demonstrating strong empirical results on various tasks that require long context. Meanwhile, the extended model by Position Interpolation preserve quality relatively well on tasks within its original context window.</p>
+<p>We present Position Interpolation (PI)<span id="id1">[]</span> that extends the context window sizes of
+RoPE<span id="id2">[<a class="reference internal" href="../reference.html#id23" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span>-based pretrained LLMs such as LLaMA<span id="id3">[]</span> models to up to 32768 with minimal fine-tuning (within 1000 steps), demonstrating strong empirical results on various tasks that require long context. Meanwhile, the extended model by Position Interpolation preserve quality relatively well on tasks within its original context window.</p>
 </div>
 <section id="background-rotary-position-embedding-rope">
 <h2>Background: Rotary Position Embedding (RoPE)<a class="headerlink" href="#background-rotary-position-embedding-rope" title="Link to this heading">#</a></h2>

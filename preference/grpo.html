@@ -64,7 +64,7 @@
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reasoning Models" href="../reasoning/0.html" />
+    <link rel="next" title="Reasoning" href="../reasoning/0.html" />
     <link rel="prev" title="DPO" href="dpo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -224,6 +224,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -242,7 +244,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
@@ -465,11 +467,11 @@ document.write(`
 <span id="grpo"></span><h1>Group Relative Policy Optimization<a class="headerlink" href="#group-relative-policy-optimization" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Reinforcement learning (RL) has been proven to be effective in further improving the overall ability of LLMs after the Supervised Fine-Tuning (SFT) stage. DeepSeek Math<span id="id1">[<a class="reference internal" href="../reference.html#id32" title="Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, Y. K. Li, Y. Wu, and Daya Guo. Deepseekmath: pushing the limits of mathematical reasoning in open language models. 2024. URL: https://arxiv.org/abs/2402.03300, arXiv:2402.03300.">SWZ+24</a>]</span> introduces an RL algorithm, Group Relative Policy Optimization (GRPO), which has proven to be both efficient and effective.</p>
+<p>Reinforcement learning (RL) has been proven to be effective in further improving the overall ability of LLMs after the Supervised Fine-Tuning (SFT) stage. DeepSeek Math<span id="id1">[]</span> introduces an RL algorithm, Group Relative Policy Optimization (GRPO), which has proven to be both efficient and effective.</p>
 </div>
 <section id="ppo-review">
 <h2>PPO Review<a class="headerlink" href="#ppo-review" title="Link to this heading">#</a></h2>
-<p>Proximal Policy Optimization (PPO)<span id="id2">[<a class="reference internal" href="../reference.html#id33" title="John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. Proximal policy optimization algorithms. 2017. URL: https://arxiv.org/abs/1707.06347, arXiv:1707.06347.">SWD+17</a>]</span> is an actor-critic RL algorithm that is
+<p>Proximal Policy Optimization (PPO)<span id="id2">[]</span> is an actor-critic RL algorithm that is
 widely used in the RL fine-tuning stage of LLMs. In particular, it optimizes
 LLMs by maximizing the following surrogate objective:</p>
 <div class="math notranslate nohighlight">
@@ -664,7 +666,7 @@ new reward model.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reasoning Models</p>
+        <p class="prev-next-title">Reasoning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

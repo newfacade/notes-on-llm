@@ -222,6 +222,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -240,7 +242,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
@@ -444,11 +446,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-tokenizer">Architecture &amp; Tokenizer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training-data">Pre-training Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-law-for-hyper-parameters">Scaling Law for Hyper-parameters</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-tuning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-reinforcement-learning">Offline Reinforcement Learning</a></li>
@@ -486,20 +484,18 @@ multistage reinforcement learning, including <code class="docutils literal notra
 <section id="architecture-tokenizer">
 <h2>Architecture &amp; Tokenizer<a class="headerlink" href="#architecture-tokenizer" title="Link to this heading">#</a></h2>
 <p>Basically, the Qwen2.5 series include dense models for opensource, and MoE models for API service.</p>
-<p>For dense models, we maintain the Transformer-based decoder architecture as Qwen2. The architecture incorporates several key components:
-Grouped Query Attention (GQA) for efficient KV cache utilization, SwiGLU activation
-function for non-linear activation, Rotary Positional Embeddings (RoPE) for encoding position information, QKV bias in the attention mechanism and
-RMSNorm with pre-normalization to ensure stable training.</p>
+<p>For dense models, we maintain the Transformer-based decoder architecture<span id="id2">[<a class="reference internal" href="../reference.html#id2" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. 2023. URL: https://arxiv.org/abs/1706.03762, arXiv:1706.03762.">VSP+23</a>]</span> as Qwen2. The architecture incorporates several key components:
+Grouped Query Attention (GQA<span id="id3">[<a class="reference internal" href="../reference.html#id18" title="Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai. Gqa: training generalized multi-query transformer models from multi-head checkpoints. 2023. URL: https://arxiv.org/abs/2305.13245, arXiv:2305.13245.">ALTdJ+23</a>]</span>) for efficient KV cache utilization, SwiGLU activation
+function<span id="id4">[<a class="reference internal" href="../reference.html#id19" title="Yann N. Dauphin, Angela Fan, Michael Auli, and David Grangier. Language modeling with gated convolutional networks. 2017. URL: https://arxiv.org/abs/1612.08083, arXiv:1612.08083.">DFAG17</a>]</span> for non-linear activation, Rotary Positional Embeddings (RoPE<span id="id5">[<a class="reference internal" href="../reference.html#id23" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span>) for encoding position information, <a class="reference external" href="https://spaces.ac.cn/archives/9577">QKV</a> bias in the attention mechanism and
+RMSNorm<span id="id6">[<a class="reference internal" href="../reference.html#id22" title="Zixuan Jiang, Jiaqi Gu, Hanqing Zhu, and David Z. Pan. Pre-rmsnorm and pre-crmsnorm transformers: equivalent and efficient pre-ln transformers. 2023. URL: https://arxiv.org/abs/2305.14858, arXiv:2305.14858.">JGZP23</a>]</span> with pre-normalization to ensure stable training.</p>
 <p>Building upon the dense model architectures, we extend it to MoE model architectures. This is achieved
 by replacing standard feed-forward network (FFN) layers with specialized MoE layers.</p>
-<p>For tokenization, we utilize Qwen’s tokenizer, which implements byte-level byte-pair
-encoding (BBPE) with a vocabulary of 151,643
+<p>For tokenization, we utilize Qwen’s tokenizer<span id="id7">[<a class="reference internal" href="../reference.html#id21" title="Jinze Bai, Shuai Bai, Yunfei Chu, Zeyu Cui, Kai Dang, Xiaodong Deng, Yang Fan, Wenbin Ge, Yu Han, Fei Huang, Binyuan Hui, Luo Ji, Mei Li, Junyang Lin, Runji Lin, Dayiheng Liu, Gao Liu, Chengqiang Lu, Keming Lu, Jianxin Ma, Rui Men, Xingzhang Ren, Xuancheng Ren, Chuanqi Tan, Sinan Tan, Jianhong Tu, Peng Wang, Shijie Wang, Wei Wang, Shengguang Wu, Benfeng Xu, Jin Xu, An Yang, Hao Yang, Jian Yang, Shusheng Yang, Yang Yao, Bowen Yu, Hongyi Yuan, Zheng Yuan, Jianwei Zhang, Xingxuan Zhang, Yichang Zhang, Zhenru Zhang, Chang Zhou, Jingren Zhou, Xiaohuan Zhou, and Tianhang Zhu. Qwen technical report. 2023. URL: https://arxiv.org/abs/2309.16609, arXiv:2309.16609.">BBC+23</a>]</span>, which implements byte-level byte-pair
+encoding (BBPE<span id="id8">[<a class="reference internal" href="../reference.html#id20" title="Changhan Wang, Kyunghyun Cho, and Jiatao Gu. Neural machine translation with byte-level subwords. 2019. URL: https://arxiv.org/abs/1909.03341, arXiv:1909.03341.">WCG19</a>]</span>) with a vocabulary of 151,643
 regular tokens.</p>
 </section>
 <section id="pre-training">
 <h2>Pre-training<a class="headerlink" href="#pre-training" title="Link to this heading">#</a></h2>
-<section id="pre-training-data">
-<h3>Pre-training Data<a class="headerlink" href="#pre-training-data" title="Link to this heading">#</a></h3>
 <p>Qwen2.5 demonstrates significant enhancements in pre-training data quality compared to its predecessor
 Qwen2. These improvements stem from several key aspects:</p>
 <ol class="arabic simple">
@@ -508,12 +504,8 @@ Qwen2. These improvements stem from several key aspects:</p>
 <li><p>Better synthetic data.</p></li>
 <li><p>Better data mixture.</p></li>
 </ol>
-</section>
-<section id="scaling-law-for-hyper-parameters">
-<h3>Scaling Law for Hyper-parameters<a class="headerlink" href="#scaling-law-for-hyper-parameters" title="Link to this heading">#</a></h3>
 <p>We develop scaling laws for hyper-parameter based on the pre-training data of Qwen2.5. While previous studies primarily used scaling laws to determine optimal model sizes given compute budgets, we
 leverage them to identify optimal hyperparameters across model architectures.</p>
-</section>
 </section>
 <section id="post-training">
 <h2>Post-training<a class="headerlink" href="#post-training" title="Link to this heading">#</a></h2>
@@ -533,10 +525,11 @@ output quality.</p></li>
 </ol>
 <section id="supervised-fine-tuning">
 <h3>Supervised Fine-tuning<a class="headerlink" href="#supervised-fine-tuning" title="Link to this heading">#</a></h3>
-<p>In this section, we detail the key enhancements made during the SFT phase of Qwen2.5, focusing on
+<p>We detail the key enhancements made during the SFT phase of Qwen2.5, focusing on
 several critical areas:</p>
 <p><strong>Coding:</strong> To enhance coding capabilities, we incorporate the instruction tuning data of Qwen2.5-
-Coder. We expand our instruction dataset by <code class="docutils literal notranslate"><span class="pre">synthesizing</span> <span class="pre">new</span> <span class="pre">examples</span> <span class="pre">from</span> <span class="pre">code-related</span> <span class="pre">Q&amp;A</span> <span class="pre">websites</span></code> and gathering <code class="docutils literal notranslate"><span class="pre">algorithmic</span> <span class="pre">code</span> <span class="pre">snippets</span> <span class="pre">from</span> <span class="pre">GitHub</span></code>. A <code class="docutils literal notranslate"><span class="pre">comprehensive</span> <span class="pre">multilingual</span> <span class="pre">sandbox</span></code> is used to perform static code checking and validate code snippets through automated
+Coder. We expand our instruction dataset by synthesizing new examples from code-related Q&amp;A
+websites and gathering algorithmic code snippets from GitHub. A <code class="docutils literal notranslate"><span class="pre">comprehensive</span> <span class="pre">multilingual</span> <span class="pre">sandbox</span></code> is used to perform static code checking and validate code snippets through automated
 unit testing, ensuring code quality and correctness.</p>
 </section>
 <section id="offline-reinforcement-learning">
@@ -546,7 +539,7 @@ coding, instruction following, and logical reasoning, where obtaining accurate e
 In the previous phase, we extensively employ strategies like <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">feedback</span></code> and answer matching to
 ensure the quality of responses. For the current phase, we reuse that pipeline, employing the SFT model
 to resample responses for a new set of queries. Responses that pass our quality checks are used as positive
-examples, while those that fail are treated as negative examples for Direct Preference Optimization (DPO). To further enhance the reliability and accuracy of the training signals, we
+examples, while those that fail are treated as negative examples for Direct Preference Optimization (DPO<span id="id9">[<a class="reference internal" href="../reference.html#id31" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>). To further enhance the reliability and accuracy of the training signals, we
 make use of both <code class="docutils literal notranslate"><span class="pre">human</span> <span class="pre">and</span> <span class="pre">automated</span> <span class="pre">review</span></code> processes.</p>
 </section>
 <section id="online-reinforcement-learning">
@@ -560,12 +553,13 @@ make use of both <code class="docutils literal notranslate"><span class="pre">hu
 <li><p>Harmlessness</p></li>
 <li><p>Debiasing</p></li>
 </ul>
-<p>The queries utilized to train the reward model are drawn from two distinct datasets: <code class="docutils literal notranslate"><span class="pre">publicly</span> <span class="pre">available</span> <span class="pre">open-source</span> <span class="pre">data</span></code> and a <code class="docutils literal notranslate"><span class="pre">proprietary</span> <span class="pre">query</span> <span class="pre">set</span> <span class="pre">characterized</span> <span class="pre">by</span> <span class="pre">higher</span> <span class="pre">complexity</span></code>. Responses are generated
+<p>The queries utilized to train the reward model are drawn from two distinct datasets: publicly available
+open-source data and a proprietary query set characterized by higher complexity. Responses are generated
 from checkpoints of the Qwen models, which have been fine-tuned using different methods—SFT,
 DPO, and RL—at various stages of training. To introduce diversity, those responses are sampled at
 <code class="docutils literal notranslate"><span class="pre">different</span> <span class="pre">temperature</span> <span class="pre">settings</span></code>. Preference pairs are created through both human and automated labeling
 processes, and the training data for DPO is also integrated into this dataset.</p>
-<p>In our online reinforcement learning (RL) framework, we employ Group Relative Policy Optimization. <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">query</span> <span class="pre">set</span> <span class="pre">utilized</span> <span class="pre">for</span> <span class="pre">training</span> <span class="pre">the</span> <span class="pre">reward</span> <span class="pre">model</span> <span class="pre">is</span> <span class="pre">identical</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">one</span> <span class="pre">used</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">RL</span> <span class="pre">training</span> <span class="pre">phase</span></code>. The sequence in which queries are processed during training is determined by
+<p>In our online reinforcement learning (RL) framework, we employ <a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">Group Relative Policy Optimization</span></a>. <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">query</span> <span class="pre">set</span> <span class="pre">utilized</span> <span class="pre">for</span> <span class="pre">training</span> <span class="pre">the</span> <span class="pre">reward</span> <span class="pre">model</span> <span class="pre">is</span> <span class="pre">identical</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">one</span> <span class="pre">used</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">RL</span> <span class="pre">training</span> <span class="pre">phase</span></code>. The sequence in which queries are processed during training is determined by
 the variance of their response scores, as evaluated by the reward model. Specifically, queries with higher
 variance in response scores are prioritized to ensure more effective learning. We sample 8 responses
 for each query.</p>
@@ -590,33 +584,24 @@ for each query.</p>
 <h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SFT data:</p>
+<p>Prompts:</p>
 <ul class="simple">
-<li><p>synthesizing new examples from code-related Q&amp;A websites</p></li>
-<li><p>algorithmic code snippets from GitHub</p></li>
-<li><p>a comprehensive multilingual sandbox is used</p></li>
-</ul>
-<p>Offline Reinforcement Learning:</p>
-<ul class="simple">
-<li><p>employ strategies like execution feedback and answer matching</p></li>
-<li><p>make use of both human and automated review processes</p></li>
-</ul>
-<p>Online Reinforcement Learning:</p>
-<ul class="simple">
-<li><p>reward model:</p>
-<ul>
 <li><p>publicly available open-source data</p></li>
+<li><p>algorithmic code snippets from GitHub</p></li>
+<li><p>synthesizing new examples from code-related Q&amp;A websites</p></li>
 <li><p>proprietary query set characterized by higher complexity</p></li>
-<li><p>Responses are generated from checkpoints of the Qwen models, those responses are sampled at different temperature settings</p></li>
-<li><p>combine DPO dataset</p></li>
 </ul>
-</li>
-<li><p>GRPO</p>
-<ul>
-<li><p>The query set utilized for training the reward model is identical to the one used in the RL training phase</p></li>
-<li><p>queries with higher variance in response scores are prioritized to ensure more effective learning</p></li>
+<p>Check correctness:</p>
+<ul class="simple">
+<li><p>comprehensive multilingual sandbox</p></li>
+<li><p>human and automated review</p></li>
+<li><p>a set of carefully defined labeling criteria</p></li>
 </ul>
-</li>
+<p>Tips:</p>
+<ul class="simple">
+<li><p>sample using different models and temperature settings</p></li>
+<li><p>the query set utilized for training the reward model is identical to the one used in the RL training phase</p></li>
+<li><p>two stage RL: offline DPO and online GRPO</p></li>
 </ul>
 </div>
 </section>
@@ -687,11 +672,7 @@ for each query.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-tokenizer">Architecture &amp; Tokenizer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training-data">Pre-training Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-law-for-hyper-parameters">Scaling Law for Hyper-parameters</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-tuning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-reinforcement-learning">Offline Reinforcement Learning</a></li>

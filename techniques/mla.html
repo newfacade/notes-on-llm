@@ -224,6 +224,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -242,7 +244,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
@@ -477,11 +479,11 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Conventional Transformer models usually adopts Multi-Head Attention (MHA)<span id="id1">[<a class="reference internal" href="../reference.html#id2" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. 2023. URL: https://arxiv.org/abs/1706.03762, arXiv:1706.03762.">VSP+23</a>]</span>, but during generation, its heavy Key-Value (KV) cache will become the bottleneck
 that limit the inference efficiency. In order to reduce the KV cache, Multi-Query Attention
-(MQA)<span id="id2">[<a class="reference internal" href="../reference.html#id22" title="Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai. Gqa: training generalized multi-query transformer models from multi-head checkpoints. 2023. URL: https://arxiv.org/abs/2305.13245, arXiv:2305.13245.">ALTdJ+23</a>]</span>. and Grouped-Query Attention (GQA)<span id="id3">[<a class="reference internal" href="../reference.html#id23" title="Noam Shazeer. Fast transformer decoding: one write-head is all you need. 2019. URL: https://arxiv.org/abs/1911.02150, arXiv:1911.02150.">Sha19</a>]</span> are
+(MQA)<span id="id2">[<a class="reference internal" href="../reference.html#id18" title="Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai. Gqa: training generalized multi-query transformer models from multi-head checkpoints. 2023. URL: https://arxiv.org/abs/2305.13245, arXiv:2305.13245.">ALTdJ+23</a>]</span>. and Grouped-Query Attention (GQA)<span id="id3">[]</span> are
 proposed. They require a smaller magnitude of KV cache, but their performance does not match
 MHA.</p>
 <p>For DeepSeek-V2, we design an innovative attention mechanism called Multi-head Latent
-Attention (MLA)<span id="id4">[<a class="reference internal" href="../reference.html#id24" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>. Equipped with <code class="docutils literal notranslate"><span class="pre">low-rank</span> <span class="pre">key-value</span> <span class="pre">joint</span> <span class="pre">compression</span></code>, MLA achieves better
+Attention (MLA)<span id="id4">[]</span>. Equipped with <code class="docutils literal notranslate"><span class="pre">low-rank</span> <span class="pre">key-value</span> <span class="pre">joint</span> <span class="pre">compression</span></code>, MLA achieves better
 performance than MHA, but requires a significantly smaller amount of KV cache.</p>
 </div>
 <p><img alt="" src="../_images/mla1.png" /></p>
@@ -574,7 +576,7 @@ compression dimension, <span class="math notranslate nohighlight">\(W^{DQ}\in\ma
 </section>
 <section id="decoupled-rotary-position-embedding">
 <h2>Decoupled Rotary Position Embedding<a class="headerlink" href="#decoupled-rotary-position-embedding" title="Link to this heading">#</a></h2>
-<p>RoPE<span id="id5">[<a class="reference internal" href="../reference.html#id29" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span> is position-sensitive for both keys and queries:</p>
+<p>RoPE<span id="id5">[<a class="reference internal" href="../reference.html#id23" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span> is position-sensitive for both keys and queries:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}

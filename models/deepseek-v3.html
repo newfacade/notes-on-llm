@@ -224,6 +224,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -242,7 +244,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
@@ -496,7 +498,7 @@ for its full training.</p>
 <section id="basic-architecture">
 <h3>Basic Architecture<a class="headerlink" href="#basic-architecture" title="Link to this heading">#</a></h3>
 <p>The basic architecture of DeepSeek-V3 is still within the Transformer framework. For efficient inference and economical training, DeepSeek-V3 also adopts <a class="reference internal" href="../techniques/mla.html#mla"><span class="std std-ref">Multi-Head Latent Attention</span></a>
-and <a class="reference internal" href="../techniques/deepseek-moe.html#deepseekmoe"><span class="std std-ref">DeepSeekMoE</span></a>, which have been thoroughly validated by DeepSeek-V2<span id="id1">[<a class="reference internal" href="../reference.html#id24" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>. Compared with
+and <a class="reference internal" href="../techniques/deepseek-moe.html#deepseekmoe"><span class="std std-ref">DeepSeekMoE</span></a>, which have been thoroughly validated by DeepSeek-V2<span id="id1">[]</span>. Compared with
 DeepSeek-V2, an exception is that we additionally introduce an auxiliary-loss-free load balancing strategy for DeepSeekMoE to mitigate the performance degradation induced
 by the effort to ensure load balance.</p>
 <p><img alt="" src="../_images/deepseek-v3-1.png" /></p>
@@ -547,13 +549,13 @@ for better prediction of future tokens. Figure 3 illustrates our implementation 
 of mathematical and programming samples. Also, our data processing pipeline is refined to minimize redundancy
 while maintaining corpus diversity.</p>
 <p>In alignment with
-DeepSeekCoder-V2<span id="id2">[<a class="reference internal" href="../reference.html#id34" title="DeepSeek-AI, Qihao Zhu, Daya Guo, Zhihong Shao, Dejian Yang, Peiyi Wang, Runxin Xu, Y. Wu, Yukun Li, Huazuo Gao, Shirong Ma, Wangding Zeng, Xiao Bi, Zihui Gu, Hanwei Xu, Damai Dai, Kai Dong, Liyue Zhang, Yishi Piao, Zhibin Gou, Zhenda Xie, Zhewen Hao, Bingxuan Wang, Junxiao Song, Deli Chen, Xin Xie, Kang Guan, Yuxiang You, Aixin Liu, Qiushi Du, Wenjun Gao, Xuan Lu, Qinyu Chen, Yaohui Wang, Chengqi Deng, Jiashi Li, Chenggang Zhao, Chong Ruan, Fuli Luo, and Wenfeng Liang. Deepseek-coder-v2: breaking the barrier of closed-source models in code intelligence. 2024. URL: https://arxiv.org/abs/2406.11931, arXiv:2406.11931.">DAZG+24</a>]</span>, we also incorporate the Fill-in-Middle (FIM) strategy in the pre-training of DeepSeek-V3.</p>
+DeepSeekCoder-V2<span id="id2">[]</span>, we also incorporate the Fill-in-Middle (FIM) strategy in the pre-training of DeepSeek-V3.</p>
 </section>
 <section id="long-context-extension">
 <h3>Long Context Extension<a class="headerlink" href="#long-context-extension" title="Link to this heading">#</a></h3>
 <p>After the pre-training stage, we apply <a class="reference internal" href="../techniques/extending.html#yarn"><span class="std std-ref">YaRN: Efficient ContextWindow Extension of Large Language Models</span></a> for context extension and perform two additional training phases, each comprising 1000 steps,
 to progressively expand the context window from 4K to 32K and then to 128K. YaRN was specifically applied to the decoupled
-shared key <span class="math notranslate nohighlight">\(\mathbf{k}_{t}^{R}\)</span> as it is responsible for carrying RoPE<span id="id3">[<a class="reference internal" href="../reference.html#id29" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span>.</p>
+shared key <span class="math notranslate nohighlight">\(\mathbf{k}_{t}^{R}\)</span> as it is responsible for carrying RoPE<span id="id3">[<a class="reference internal" href="../reference.html#id23" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span>.</p>
 </section>
 <section id="evaluation-results">
 <h3>Evaluation Results<a class="headerlink" href="#evaluation-results" title="Link to this heading">#</a></h3>
@@ -604,7 +606,7 @@ rule-based validation wherever possible, we ensure a higher level of reliability
 model to determine whether the response matches the expected ground-truth. The reward model is trained from the DeepSeek-V3 SFT checkpoints. To enhance its
 reliability, we construct preference data that not only provides the final reward but also includes
 the chain-of-thought leading to the reward. This approach helps mitigate the risk of reward
-hacking in specific tasks (LLM as judge?).</p>
+hacking in specific tasks.</p>
 <p><a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">Group Relative Policy Optimization</span></a></p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
