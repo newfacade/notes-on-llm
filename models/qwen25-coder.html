@@ -155,8 +155,8 @@
       
     
     
-    <img src="../_static/hutao.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
-    <script>document.write(`<img src="../_static/hutao.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
   
   
 </a></div>
@@ -230,6 +230,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -240,8 +241,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -249,6 +252,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -480,7 +484,7 @@ document.write(`
 <h1>Qwen2.5-Coder<a class="headerlink" href="#qwen2-5-coder" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Qwen2.5-Coder<span id="id1">[<a class="reference internal" href="../reference.html#id16" title="Binyuan Hui, Jian Yang, Zeyu Cui, Jiaxi Yang, Dayiheng Liu, Lei Zhang, Tianyu Liu, Jiajun Zhang, Bowen Yu, Keming Lu, Kai Dang, Yang Fan, Yichang Zhang, An Yang, Rui Men, Fei Huang, Bo Zheng, Yibo Miao, Shanghaoran Quan, Yunlong Feng, Xingzhang Ren, Xuancheng Ren, Jingren Zhou, and Junyang Lin. Qwen2.5-coder technical report. 2024. URL: https://arxiv.org/abs/2409.12186, arXiv:2409.12186.">HYC+24</a>]</span> is built upon the Qwen2.5<span id="id2">[<a class="reference internal" href="../reference.html#id15" title="Qwen, :, An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jingren Zhou, Junyang Lin, Kai Dang, Keming Lu, Keqin Bao, Kexin Yang, Le Yu, Mei Li, Mingfeng Xue, Pei Zhang, Qin Zhu, Rui Men, Runji Lin, Tianhao Li, Tianyi Tang, Tingyu Xia, Xingzhang Ren, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yu Wan, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, and Zihan Qiu. Qwen2.5 technical report. 2025. URL: https://arxiv.org/abs/2412.15115, arXiv:2412.15115.">QY+25</a>]</span> architecture and continues pretrained
+<p>Qwen2.5-Coder<span id="id1">[<a class="reference internal" href="../reference.html#id17" title="Binyuan Hui, Jian Yang, Zeyu Cui, Jiaxi Yang, Dayiheng Liu, Lei Zhang, Tianyu Liu, Jiajun Zhang, Bowen Yu, Keming Lu, Kai Dang, Yang Fan, Yichang Zhang, An Yang, Rui Men, Fei Huang, Bo Zheng, Yibo Miao, Shanghaoran Quan, Yunlong Feng, Xingzhang Ren, Xuancheng Ren, Jingren Zhou, and Junyang Lin. Qwen2.5-coder technical report. 2024. URL: https://arxiv.org/abs/2409.12186, arXiv:2409.12186.">HYC+24</a>]</span> is built upon the Qwen2.5<span id="id2">[<a class="reference internal" href="../reference.html#id16" title="Qwen, :, An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jingren Zhou, Junyang Lin, Kai Dang, Keming Lu, Keqin Bao, Kexin Yang, Le Yu, Mei Li, Mingfeng Xue, Pei Zhang, Qin Zhu, Rui Men, Runji Lin, Tianhao Li, Tianyi Tang, Tingyu Xia, Xingzhang Ren, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yu Wan, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, and Zihan Qiu. Qwen2.5 technical report. 2025. URL: https://arxiv.org/abs/2412.15115, arXiv:2412.15115.">QY+25</a>]</span> architecture and continues pretrained
 on a vast corpus of over 5.5 trillion tokens. Through meticulous
 data cleaning, scalable synthetic data generation, and balanced data mixing,
 Qwen2.5-Coder demonstrates impressive code generation capabilities
@@ -500,7 +504,7 @@ of training data. We used CodeQwen1.5, the predecessor of Qwen2.5-Coder, to gene
 large-scale synthetic datasets. To mitigate the risk of hallucinations during this process, we
 introduced an executor for validation, ensuring that <code class="docutils literal notranslate"><span class="pre">only</span> <span class="pre">executable</span> <span class="pre">code</span> <span class="pre">was</span> <span class="pre">retained</span></code>.</p>
 <p><strong>Math Data</strong> To enhance the mathematical capabilities of Qwen2.5-Coder, we integrated
-the pre-training corpus from Qwen2.5-Math<span id="id3">[<a class="reference internal" href="../reference.html#id17" title="An Yang, Beichen Zhang, Binyuan Hui, Bofei Gao, Bowen Yu, Chengpeng Li, Dayiheng Liu, Jianhong Tu, Jingren Zhou, Junyang Lin, Keming Lu, Mingfeng Xue, Runji Lin, Tianyu Liu, Xingzhang Ren, and Zhenru Zhang. Qwen2.5-math technical report: toward mathematical expert model via self-improvement. 2024. URL: https://arxiv.org/abs/2409.12122, arXiv:2409.12122.">YZH+24</a>]</span> into the Qwen2.5-Coder dataset. Importantly,
+the pre-training corpus from Qwen2.5-Math<span id="id3">[<a class="reference internal" href="../reference.html#id18" title="An Yang, Beichen Zhang, Binyuan Hui, Bofei Gao, Bowen Yu, Chengpeng Li, Dayiheng Liu, Jianhong Tu, Jingren Zhou, Junyang Lin, Keming Lu, Mingfeng Xue, Runji Lin, Tianyu Liu, Xingzhang Ren, and Zhenru Zhang. Qwen2.5-math technical report: toward mathematical expert model via self-improvement. 2024. URL: https://arxiv.org/abs/2409.12122, arXiv:2409.12122.">YZH+24</a>]</span> into the Qwen2.5-Coder dataset. Importantly,
 the inclusion of mathematical data did not negatively impact the model’s performance on
 code tasks.</p>
 <p><strong>Text Data</strong> Similar to the Math Data, we included high-quality general natural language
@@ -538,11 +542,11 @@ keep the code generation capability of our instruction model.</p>
 <p><strong>Instruction Synthesis from GitHub</strong> For the unsupervised data (code snippets) massively
 existing in many websites (e.g. GitHub), we try to construct the supervised instruction
 dataset using LLM. Specifically, we use the LLM to generate the instruction from the code
-snippets within 1024 tokens and then we use the code LLM to generate the response (Magicoder<span id="id4">[<a class="reference internal" href="../reference.html#id27" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>, Unicoder<span id="id5">[<a class="reference internal" href="../reference.html#id24" title="Tao Sun, Linzheng Chai, Jian Yang, Yuwei Yin, Hongcheng Guo, Jiaheng Liu, Bing Wang, Liqun Yang, and Zhoujun Li. Unicoder: scaling code large language model via universal code. 2024. URL: https://arxiv.org/abs/2406.16441, arXiv:2406.16441.">SCY+24</a>]</span>, Wavecoder<span id="id6">[<a class="reference internal" href="../reference.html#id25" title="Zhaojian Yu, Xin Zhang, Ning Shang, Yangyu Huang, Can Xu, Yishujie Zhao, Wenxiang Hu, and Qiufeng Yin. Wavecoder: widespread and versatile enhancement for code large language models by instruction tuning. 2024. URL: https://arxiv.org/abs/2312.14187, arXiv:2312.14187.">YZS+24</a>]</span>). Finally, we use the LLM scorer to filter the
+snippets within 1024 tokens and then we use the code LLM to generate the response (Magicoder<span id="id4">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>, Unicoder<span id="id5">[<a class="reference internal" href="../reference.html#id25" title="Tao Sun, Linzheng Chai, Jian Yang, Yuwei Yin, Hongcheng Guo, Jiaheng Liu, Bing Wang, Liqun Yang, and Zhoujun Li. Unicoder: scaling code large language model via universal code. 2024. URL: https://arxiv.org/abs/2406.16441, arXiv:2406.16441.">SCY+24</a>]</span>, Wavecoder<span id="id6">[<a class="reference internal" href="../reference.html#id26" title="Zhaojian Yu, Xin Zhang, Ning Shang, Yangyu Huang, Can Xu, Yishujie Zhao, Wenxiang Hu, and Qiufeng Yin. Wavecoder: widespread and versatile enhancement for code large language models by instruction tuning. 2024. URL: https://arxiv.org/abs/2312.14187, arXiv:2312.14187.">YZS+24</a>]</span>). Finally, we use the LLM scorer to filter the
 low-quality ones to obtain the final pair. Given the code snippets of different programming
 languages, we construct an instruction dataset from the code snippets. To fully unleash the
 potential of our proposed method, we also include the open-source instruction dataset (e.g.
-McEval-Instruct<span id="id7">[<a class="reference internal" href="../reference.html#id26" title="Linzheng Chai, Shukai Liu, Jian Yang, Yuwei Yin, Ke Jin, Jiaheng Liu, Tao Sun, Ge Zhang, Changyu Ren, Hongcheng Guo, Zekun Wang, Boyang Wang, Xianjie Wu, Bing Wang, Tongliang Li, Liqun Yang, Sufeng Duan, and Zhoujun Li. Mceval: massively multilingual code evaluation. 2024. URL: https://arxiv.org/abs/2406.07436, arXiv:2406.07436.">CLY+24</a>]</span> for massively multilingual code generation and debugging) in the seed
+McEval-Instruct<span id="id7">[<a class="reference internal" href="../reference.html#id27" title="Linzheng Chai, Shukai Liu, Jian Yang, Yuwei Yin, Ke Jin, Jiaheng Liu, Tao Sun, Ge Zhang, Changyu Ren, Hongcheng Guo, Zekun Wang, Boyang Wang, Xianjie Wu, Bing Wang, Tongliang Li, Liqun Yang, Sufeng Duan, and Zhoujun Li. Mceval: massively multilingual code evaluation. 2024. URL: https://arxiv.org/abs/2406.07436, arXiv:2406.07436.">CLY+24</a>]</span> for massively multilingual code generation and debugging) in the seed
 instruction dataset. Finally, we combine the instruction data from the GitHub code snippet
 and open-source instructions for supervised fine-tuning.</p>
 <p><strong>Multilingual Code Instruction Data</strong> To bridge the gap among different programming

@@ -155,8 +155,8 @@
       
     
     
-    <img src="../_static/hutao.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
-    <script>document.write(`<img src="../_static/hutao.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
   
   
 </a></div>
@@ -230,6 +230,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -240,8 +241,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -249,6 +252,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -472,7 +476,7 @@ document.write(`
 <h1>GPT2<a class="headerlink" href="#gpt2" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Language models are unsupervised multitask learners<span id="id1">[<a class="reference internal" href="../reference.html#id4" title="Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, and others. Language models are unsupervised multitask learners. OpenAI blog, 1(8):9, 2019.">RWC+19</a>]</span></p>
+<p>Language models are unsupervised multitask learners<span id="id1">[<a class="reference internal" href="../reference.html#id3" title="Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, and others. Language models are unsupervised multitask learners. OpenAI blog, 1(8):9, 2019.">RWC+19</a>]</span></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -517,7 +521,7 @@ approaches.</p>
 <h3>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
 <p>We use a Transformer based architecture
 for our LMs. The model largely follows the details
-of the OpenAI GPT<span id="id2">[<a class="reference internal" href="../reference.html#id3">Rad18</a>]</span> model with a few modifications. Layer normalization was moved to the input of each sub-block, depicted in <a class="reference internal" href="../techniques/norm.html#normalization"><span class="std std-ref">Normalization</span></a>, and an
+of the OpenAI GPT<span id="id2">[]</span> model with a few modifications. Layer normalization was moved to the input of each sub-block, depicted in <a class="reference internal" href="../techniques/norm.html#normalization"><span class="std std-ref">Normalization</span></a>, and an
 additional layer normalization was added after the final self-attention
 block.</p>
 </section>
@@ -528,7 +532,7 @@ block.</p>
 log-uniformly spaced sizes. The architectures are summarized
 in Table 2. The smallest model is equivalent to the
 original GPT, and the second smallest equivalent to the
-largest model from BERT<span id="id3">[<a class="reference internal" href="../reference.html#id5" title="Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: pre-training of deep bidirectional transformers for language understanding. 2019. URL: https://arxiv.org/abs/1810.04805, arXiv:1810.04805.">DCLT19</a>]</span>. Our largest
+largest model from BERT<span id="id3">[<a class="reference internal" href="../reference.html#id4" title="Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: pre-training of deep bidirectional transformers for language understanding. 2019. URL: https://arxiv.org/abs/1810.04805, arXiv:1810.04805.">DCLT19</a>]</span>. Our largest
 model, which we call GPT-2, has over an order of magnitude
 more parameters than GPT.</p>
 <figure class="align-default">
