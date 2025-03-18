@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -495,7 +495,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This paper presents a
-new set of foundation models, called Llama 3<span id="id1">[]</span>. It is a herd of language models that natively support
+new set of foundation models, called <a class="reference external" href="https://arxiv.org/abs/2407.21783">Llama 3</a>. It is a herd of language models that natively support
 multilinguality, coding, reasoning, and tool usage. Our largest model is a dense Transformer with
 405B parameters and a context window of up to 128K tokens. We find that Llama 3 delivers comparable quality to leading language
 models such as GPT-4 on a plethora of tasks.</p>
@@ -506,7 +506,7 @@ models such as GPT-4 on a plethora of tasks.</p>
 <section id="post-training">
 <h2>Post-Training<a class="headerlink" href="#post-training" title="Link to this heading">#</a></h2>
 <p>We produce the aligned Llama 3 models by applying several rounds of post-training. Each
-round of post-training involves supervised finetuning (SFT) followed by Direct Preference Optimization (DPO<span id="id2">[<a class="reference internal" href="../reference.html#id32" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>) on examples collected either via human annotations or generated synthetically.</p>
+round of post-training involves supervised finetuning (SFT) followed by Direct Preference Optimization (DPO<span id="id1">[<a class="reference internal" href="../reference.html#id32" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>) on examples collected either via human annotations or generated synthetically.</p>
 <section id="modeling">
 <h3>Modeling<a class="headerlink" href="#modeling" title="Link to this heading">#</a></h3>
 <figure class="align-default">
@@ -525,7 +525,7 @@ human instructions and perform conversational tasks.</p>
 </section>
 <section id="reward-modeling">
 <h4>Reward Modeling<a class="headerlink" href="#reward-modeling" title="Link to this heading">#</a></h4>
-<p>The training objective is the same as Llama 2<span id="id3">[<a class="reference internal" href="../reference.html#id31" title="Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, Dan Bikel, Lukas Blecher, Cristian Canton Ferrer, Moya Chen, Guillem Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin Fu, Brian Fuller, Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony Hartshorn, Saghar Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa, Isabel Kloumann, Artem Korenev, Punit Singh Koura, Marie-Anne Lachaux, Thibaut Lavril, Jenya Lee, Diana Liskovich, Yinghai Lu, Yuning Mao, Xavier Martinet, Todor Mihaylov, Pushkar Mishra, Igor Molybog, Yixin Nie, Andrew Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan Schelten, Ruan Silva, Eric Michael Smith, Ranjan Subramanian, Xiaoqing Ellen Tan, Binh Tang, Ross Taylor, Adina Williams, Jian Xiang Kuan, Puxin Xu, Zheng Yan, Iliyan Zarov, Yuchen Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aurelien Rodriguez, Robert Stojnic, Sergey Edunov, and Thomas Scialom. Llama 2: open foundation and fine-tuned chat models. 2023. URL: https://arxiv.org/abs/2307.09288, arXiv:2307.09288.">TMS+23</a>]</span> except that we remove the margin term in the loss, as we observe
+<p>The training objective is the same as Llama 2<span id="id2">[<a class="reference internal" href="../reference.html#id31" title="Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, Dan Bikel, Lukas Blecher, Cristian Canton Ferrer, Moya Chen, Guillem Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin Fu, Brian Fuller, Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony Hartshorn, Saghar Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa, Isabel Kloumann, Artem Korenev, Punit Singh Koura, Marie-Anne Lachaux, Thibaut Lavril, Jenya Lee, Diana Liskovich, Yinghai Lu, Yuning Mao, Xavier Martinet, Todor Mihaylov, Pushkar Mishra, Igor Molybog, Yixin Nie, Andrew Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan Schelten, Ruan Silva, Eric Michael Smith, Ranjan Subramanian, Xiaoqing Ellen Tan, Binh Tang, Ross Taylor, Adina Williams, Jian Xiang Kuan, Puxin Xu, Zheng Yan, Iliyan Zarov, Yuchen Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aurelien Rodriguez, Robert Stojnic, Sergey Edunov, and Thomas Scialom. Llama 2: open foundation and fine-tuned chat models. 2023. URL: https://arxiv.org/abs/2307.09288, arXiv:2307.09288.">TMS+23</a>]</span> except that we remove the margin term in the loss, as we observe
 diminishing improvements after data scaling. Following Llama 2, we use all of our preference data for reward
 modeling after filtering out samples with similar responses.</p>
 </section>
@@ -617,7 +617,7 @@ score as high quality. The RM and Llama-based scores have high disagreement rate
 combining these signals yield the best recall on our internal test set. Ultimately, we select examples
 that are marked as high quality by the RM <code class="docutils literal notranslate"><span class="pre">or</span></code> the Llama-based filter.</p></li>
 <li><p><strong>Difficulty scoring:</strong> Because we are also interested in prioritizing examples that are more complex for
-the model, we score data using two measures of difficulty: Instag<span id="id4">[]</span> and Llama-based
+the model, we score data using two measures of difficulty: Instag<span id="id3">[]</span> and Llama-based
 scoring.</p></li>
 <li><p><strong>Semantic deduplication:</strong> Finally, we perform semantic deduplication. We first cluster complete dialogs using RoBERTa and within each cluster
 sort them by quality score <span class="math notranslate nohighlight">\(\times\)</span> difficulty score. We then do greedy selection by iterating through all sorted
@@ -656,7 +656,7 @@ even degrade performance). To address this limitation, we introduced execution f
 truth, in particular, we generate large
 dataset of approximately one million synthetic coding dialogues using the following process:</p>
 <ul>
-<li><p><strong>Problem description generation:</strong> Magicoder<span id="id5">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>.</p></li>
+<li><p><strong>Problem description generation:</strong> Magicoder<span id="id4">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>.</p></li>
 <li><p><strong>Solution generation:</strong> Then, we prompt Llama 3 to solve each problem in a given programming language.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
