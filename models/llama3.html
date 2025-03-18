@@ -512,10 +512,6 @@ round of post-training involves supervised finetuning (SFT) followed by Direct P
 <figure class="align-default">
 <img alt="../_images/llama3-2.png" src="../_images/llama3-2.png" />
 </figure>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>To bootstrap, start post-training with publicly available instruction tuning and preference data?</p>
-</div>
 <section id="chat-dialog-format">
 <h4>Chat Dialog Format<a class="headerlink" href="#chat-dialog-format" title="Link to this heading">#</a></h4>
 <p>To tune LLMs for human-AI interaction, we need to define a chat dialog protocol for the model to understand
@@ -525,8 +521,7 @@ human instructions and perform conversational tasks.</p>
 </section>
 <section id="reward-modeling">
 <h4>Reward Modeling<a class="headerlink" href="#reward-modeling" title="Link to this heading">#</a></h4>
-<p>The training objective is the same as Llama 2<span id="id2">[<a class="reference internal" href="../reference.html#id31" title="Hugo Touvron, Louis Martin, Kevin Stone, Peter Albert, Amjad Almahairi, Yasmine Babaei, Nikolay Bashlykov, Soumya Batra, Prajjwal Bhargava, Shruti Bhosale, Dan Bikel, Lukas Blecher, Cristian Canton Ferrer, Moya Chen, Guillem Cucurull, David Esiobu, Jude Fernandes, Jeremy Fu, Wenyin Fu, Brian Fuller, Cynthia Gao, Vedanuj Goswami, Naman Goyal, Anthony Hartshorn, Saghar Hosseini, Rui Hou, Hakan Inan, Marcin Kardas, Viktor Kerkez, Madian Khabsa, Isabel Kloumann, Artem Korenev, Punit Singh Koura, Marie-Anne Lachaux, Thibaut Lavril, Jenya Lee, Diana Liskovich, Yinghai Lu, Yuning Mao, Xavier Martinet, Todor Mihaylov, Pushkar Mishra, Igor Molybog, Yixin Nie, Andrew Poulton, Jeremy Reizenstein, Rashi Rungta, Kalyan Saladi, Alan Schelten, Ruan Silva, Eric Michael Smith, Ranjan Subramanian, Xiaoqing Ellen Tan, Binh Tang, Ross Taylor, Adina Williams, Jian Xiang Kuan, Puxin Xu, Zheng Yan, Iliyan Zarov, Yuchen Zhang, Angela Fan, Melanie Kambadur, Sharan Narang, Aurelien Rodriguez, Robert Stojnic, Sergey Edunov, and Thomas Scialom. Llama 2: open foundation and fine-tuned chat models. 2023. URL: https://arxiv.org/abs/2307.09288, arXiv:2307.09288.">TMS+23</a>]</span> except that we remove the margin term in the loss, as we observe
-diminishing improvements after data scaling. Following Llama 2, we use all of our preference data for reward
+<p>We train a reward model (RM) covering different capabilities on top of the pre-trained checkpoint. We use <code class="docutils literal notranslate"><span class="pre">all</span></code> of our preference data for reward
 modeling after filtering out samples with similar responses.</p>
 </section>
 <section id="supervised-finetuning">
@@ -537,8 +532,8 @@ on the target tokens (while masking loss on prompt tokens).</p>
 </section>
 <section id="direct-preference-optimization">
 <h4>Direct Preference Optimization<a class="headerlink" href="#direct-preference-optimization" title="Link to this heading">#</a></h4>
-<p>We further train our SFT models with Direct Preference Optimizatio for human
-preference alignment. For training, we primarily use the most recent batches of preference data collected using
+<p>We further train our SFT models with DPO for human
+preference alignment. For training, we primarily use the <code class="docutils literal notranslate"><span class="pre">most</span> <span class="pre">recent</span></code> batches of preference data collected using
 the best performing models from the previous alignment rounds.
 the following algorithmic modifications to DPO:</p>
 <ul class="simple">
@@ -548,6 +543,8 @@ the following algorithmic modifications to DPO:</p>
 </section>
 <section id="model-averaging">
 <h4>Model Averaging<a class="headerlink" href="#model-averaging" title="Link to this heading">#</a></h4>
+<p>Finally, we average models obtained from experiments using various versions of data or hyperparameters at
+each RM, SFT, or DPO stage.</p>
 </section>
 <section id="iterative-rounds">
 <h4>Iterative Rounds<a class="headerlink" href="#iterative-rounds" title="Link to this heading">#</a></h4>
@@ -617,7 +614,7 @@ score as high quality. The RM and Llama-based scores have high disagreement rate
 combining these signals yield the best recall on our internal test set. Ultimately, we select examples
 that are marked as high quality by the RM <code class="docutils literal notranslate"><span class="pre">or</span></code> the Llama-based filter.</p></li>
 <li><p><strong>Difficulty scoring:</strong> Because we are also interested in prioritizing examples that are more complex for
-the model, we score data using two measures of difficulty: Instag<span id="id3">[]</span> and Llama-based
+the model, we score data using two measures of difficulty: Instag<span id="id2">[]</span> and Llama-based
 scoring.</p></li>
 <li><p><strong>Semantic deduplication:</strong> Finally, we perform semantic deduplication. We first cluster complete dialogs using RoBERTa and within each cluster
 sort them by quality score <span class="math notranslate nohighlight">\(\times\)</span> difficulty score. We then do greedy selection by iterating through all sorted
@@ -656,7 +653,7 @@ even degrade performance). To address this limitation, we introduced execution f
 truth, in particular, we generate large
 dataset of approximately one million synthetic coding dialogues using the following process:</p>
 <ul>
-<li><p><strong>Problem description generation:</strong> Magicoder<span id="id4">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>.</p></li>
+<li><p><strong>Problem description generation:</strong> Magicoder<span id="id3">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>.</p></li>
 <li><p><strong>Solution generation:</strong> Then, we prompt Llama 3 to solve each problem in a given programming language.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
