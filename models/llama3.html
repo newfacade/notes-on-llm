@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -220,6 +220,9 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
@@ -241,10 +244,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -607,10 +612,7 @@ performance across a wide range of benchmarks.</p>
 all data to classify it into both coarsely-grained buckets (“mathematical reasoning”) and fine-grained buckets (“geometry and trigonometry”).</p></li>
 <li><p><strong>Quality scoring:</strong> We use both reward model and Llama-based signals to obtain a quality score for each
 sample. For an RM-based score, we consider data that is in the top quartile of RM scores as high quality.
-For a Llama-based score, we prompt Llama 3 checkpoint to rate each sample on a three-point scale for
-general English data and a two-point scale
-for coding data (Bug Identification and User Intention), and consider samples that obtain the maximum
-score as high quality. The RM and Llama-based scores have high disagreement rates, and we find that
+For a Llama-based score, we prompt Llama 3 checkpoint to rate each sample. The RM and Llama-based scores have high disagreement rates, and we find that
 combining these signals yield the best recall on our internal test set. Ultimately, we select examples
 that are marked as high quality by the RM <code class="docutils literal notranslate"><span class="pre">or</span></code> the Llama-based filter.</p></li>
 <li><p><strong>Difficulty scoring:</strong> Because we are also interested in prioritizing examples that are more complex for
