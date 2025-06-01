@@ -62,7 +62,7 @@
     <link rel="icon" href="_static/github.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="s1: Simple test-time scaling" href="reasoning/s1.html" />
+    <link rel="prev" title="CodeAct" href="agent/code-act.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,6 +211,8 @@
 <li class="toctree-l2"><a class="reference internal" href="bench/evalplus.html">EvalPlus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bench/livecodebench.html">LiveCodeBench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bench/swe.html">SWE-bench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bench/general.html">General Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bench/math-science.html">Math &amp; Science Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bench/alignment.html">Alignment Benchmarks</a></li>
@@ -255,6 +257,11 @@
 <li class="toctree-l2"><a class="reference internal" href="reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reasoning/s1.html">s1: Simple test-time scaling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="agent/api-bank.html">API-Bank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agent/code-act.html">CodeAct</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">References</a></li>
@@ -503,7 +510,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>DCLT19<span class="fn-bracket">]</span></span>
 <p>Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: pre-training of deep bidirectional transformers for language understanding. 2019. URL: <a class="reference external" href="https://arxiv.org/abs/1810.04805">https://arxiv.org/abs/1810.04805</a>, <a class="reference external" href="https://arxiv.org/abs/1810.04805">arXiv:1810.04805</a>.</p>
 </div>
-<div class="citation" id="id33" role="doc-biblioentry">
+<div class="citation" id="id34" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>GRL+24<span class="fn-bracket">]</span></span>
 <p>Alex Gu, Baptiste Rozière, Hugh Leather, Armando Solar-Lezama, Gabriel Synnaeve, and Sida I. Wang. Cruxeval: a benchmark for code reasoning, understanding and execution. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2401.03065">https://arxiv.org/abs/2401.03065</a>, <a class="reference external" href="https://arxiv.org/abs/2401.03065">arXiv:2401.03065</a>.</p>
 </div>
@@ -515,7 +522,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>HYC+24<span class="fn-bracket">]</span></span>
 <p>Binyuan Hui, Jian Yang, Zeyu Cui, Jiaxi Yang, Dayiheng Liu, Lei Zhang, Tianyu Liu, Jiajun Zhang, Bowen Yu, Keming Lu, Kai Dang, Yang Fan, Yichang Zhang, An Yang, Rui Men, Fei Huang, Bo Zheng, Yibo Miao, Shanghaoran Quan, Yunlong Feng, Xingzhang Ren, Xuancheng Ren, Jingren Zhou, and Junyang Lin. Qwen2.5-coder technical report. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2409.12186">https://arxiv.org/abs/2409.12186</a>, <a class="reference external" href="https://arxiv.org/abs/2409.12186">arXiv:2409.12186</a>.</p>
 </div>
-<div class="citation" id="id35" role="doc-biblioentry">
+<div class="citation" id="id36" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>JHG+24<span class="fn-bracket">]</span></span>
 <p>Naman Jain, King Han, Alex Gu, Wen-Ding Li, Fanjia Yan, Tianjun Zhang, Sida Wang, Armando Solar-Lezama, Koushik Sen, and Ion Stoica. Livecodebench: holistic and contamination free evaluation of large language models for code. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2403.07974">https://arxiv.org/abs/2403.07974</a>, <a class="reference external" href="https://arxiv.org/abs/2403.07974">arXiv:2403.07974</a>.</p>
 </div>
@@ -531,11 +538,11 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>LKB+23<span class="fn-bracket">]</span></span>
 <p>Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. Let's verify step by step. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/2305.20050">https://arxiv.org/abs/2305.20050</a>, <a class="reference external" href="https://arxiv.org/abs/2305.20050">arXiv:2305.20050</a>.</p>
 </div>
-<div class="citation" id="id34" role="doc-biblioentry">
+<div class="citation" id="id35" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LXWZ23<span class="fn-bracket">]</span></span>
 <p>Jiawei Liu, Chunqiu Steven Xia, Yuyao Wang, and Lingming Zhang. Is your code generated by chatGPT really correct? rigorous evaluation of large language models for code generation. In <em>Thirty-seventh Conference on Neural Information Processing Systems</em>. 2023. URL: <a class="reference external" href="https://openreview.net/forum?id=1qvx610Cu7">https://openreview.net/forum?id=1qvx610Cu7</a>.</p>
 </div>
-<div class="citation" id="id30" role="doc-biblioentry">
+<div class="citation" id="id31" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>OWJ+22<span class="fn-bracket">]</span></span>
 <p>Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe. Training language models to follow instructions with human feedback. 2022. URL: <a class="reference external" href="https://arxiv.org/abs/2203.02155">https://arxiv.org/abs/2203.02155</a>, <a class="reference external" href="https://arxiv.org/abs/2203.02155">arXiv:2203.02155</a>.</p>
 </div>
@@ -547,7 +554,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>RWC+19<span class="fn-bracket">]</span></span>
 <p>Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, and others. Language models are unsupervised multitask learners. <em>OpenAI blog</em>, 1(8):9, 2019.</p>
 </div>
-<div class="citation" id="id32" role="doc-biblioentry">
+<div class="citation" id="id33" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RSM+24<span class="fn-bracket">]</span></span>
 <p>Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2305.18290">https://arxiv.org/abs/2305.18290</a>, <a class="reference external" href="https://arxiv.org/abs/2305.18290">arXiv:2305.18290</a>.</p>
 </div>
@@ -567,7 +574,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>WCG19<span class="fn-bracket">]</span></span>
 <p>Changhan Wang, Kyunghyun Cho, and Jiatao Gu. Neural machine translation with byte-level subwords. 2019. URL: <a class="reference external" href="https://arxiv.org/abs/1909.03341">https://arxiv.org/abs/1909.03341</a>, <a class="reference external" href="https://arxiv.org/abs/1909.03341">arXiv:1909.03341</a>.</p>
 </div>
-<div class="citation" id="id28" role="doc-biblioentry">
+<div class="citation" id="id29" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>WWL+24<span class="fn-bracket">]</span></span>
 <p>Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2312.02120">https://arxiv.org/abs/2312.02120</a>, <a class="reference external" href="https://arxiv.org/abs/2312.02120">arXiv:2312.02120</a>.</p>
 </div>
@@ -622,12 +629,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="reasoning/s1.html"
+       href="agent/code-act.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">s1: Simple test-time scaling</p>
+        <p class="prev-next-title">CodeAct</p>
       </div>
     </a>
 </div>

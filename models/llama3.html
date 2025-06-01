@@ -214,6 +214,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
@@ -258,6 +260,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/api-bank.html">API-Bank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -511,7 +518,7 @@ models such as GPT-4 on a plethora of tasks.</p>
 <section id="post-training">
 <h2>Post-Training<a class="headerlink" href="#post-training" title="Link to this heading">#</a></h2>
 <p>We produce the aligned Llama 3 models by applying several rounds of post-training. Each
-round of post-training involves supervised finetuning (SFT) followed by Direct Preference Optimization (DPO<span id="id1">[<a class="reference internal" href="../reference.html#id32" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>) on examples collected either via human annotations or generated synthetically.</p>
+round of post-training involves supervised finetuning (SFT) followed by Direct Preference Optimization (DPO<span id="id1">[<a class="reference internal" href="../reference.html#id33" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>) on examples collected either via human annotations or generated synthetically.</p>
 <section id="modeling">
 <h3>Modeling<a class="headerlink" href="#modeling" title="Link to this heading">#</a></h3>
 <figure class="align-default">
@@ -651,7 +658,7 @@ even degrade performance). To address this limitation, we introduced execution f
 truth, in particular, we generate large
 dataset of approximately one million synthetic coding dialogues using the following process:</p>
 <ul>
-<li><p><strong>Problem description generation:</strong> Magicoder<span id="id3">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>.</p></li>
+<li><p><strong>Problem description generation:</strong> Magicoder<span id="id3">[<a class="reference internal" href="../reference.html#id29" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>.</p></li>
 <li><p><strong>Solution generation:</strong> Then, we prompt Llama 3 to solve each problem in a given programming language.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>

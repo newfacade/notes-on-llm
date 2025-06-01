@@ -214,6 +214,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
@@ -258,6 +260,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/api-bank.html">API-Bank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -514,7 +521,7 @@ is shown to be effective.</p></li>
 <p><strong>Open-source Training Data</strong> To enhance the model training, we collect the open-source instruction
 corpora from the websites, including <a class="reference external" href="https://huggingface.co/datasets/theblackcat102/evol-codealpaca-v1">Evol-Instruct</a>, <a class="reference external" href="https://huggingface.co/datasets/BAAI/Infinity-Instruct">Infinity-Instruct</a>,  <a class="reference external" href="https://huggingface.co/datasets/Multilingual-Multimodal-NLP/McEval-Instruct">McEval</a>. Additionally, we sample real user queries from <a class="reference external" href="https://huggingface.co/datasets/allenai/WildChat-1M">WildChat-1M</a> and <a class="reference external" href="https://huggingface.co/datasets/cognitivecomputations/Code-290k-ShareGPT-Vicuna">Code-290k-ShareGPT</a>. For low-quality responses, we employ a robust LLM to regenerate the content, enhancing the overall data quality.</p>
 <p><strong>Educational Instruction Synthesis</strong> In synthesizing instruction-tuning datasets
-for Python code, we enhance the effectiveness of Magicoder<span id="id1">[<a class="reference internal" href="../reference.html#id28" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>. Specifically, we observe that the educational value of the synthesized data <code class="docutils literal notranslate"><span class="pre">largely</span> <span class="pre">depends</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">quality</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">seed</span> <span class="pre">data</span></code>. Our approach:</p>
+for Python code, we enhance the effectiveness of Magicoder<span id="id1">[<a class="reference internal" href="../reference.html#id29" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>. Specifically, we observe that the educational value of the synthesized data <code class="docutils literal notranslate"><span class="pre">largely</span> <span class="pre">depends</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">quality</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">seed</span> <span class="pre">data</span></code>. Our approach:</p>
 <ol class="arabic simple">
 <li><p>Using only high-quality seed data.</p></li>
 <li><p>Use a teacher model to generate multiple test cases for the code sections in each problem. These test cases

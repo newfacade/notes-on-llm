@@ -212,6 +212,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
@@ -256,6 +258,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/api-bank.html">API-Bank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -548,7 +555,7 @@ coding, instruction following, and logical reasoning, where obtaining accurate e
 In the previous phase, we extensively employ strategies like <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">feedback</span></code> and answer matching to
 ensure the quality of responses. For the current phase, we reuse that pipeline, employing the SFT model
 to resample responses for a new set of queries. Responses that pass our quality checks are used as positive
-examples, while those that fail are treated as negative examples for Direct Preference Optimization (DPO<span id="id9">[<a class="reference internal" href="../reference.html#id32" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>). To further enhance the reliability and accuracy of the training signals, we
+examples, while those that fail are treated as negative examples for Direct Preference Optimization (DPO<span id="id9">[<a class="reference internal" href="../reference.html#id33" title="Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. Direct preference optimization: your language model is secretly a reward model. 2024. URL: https://arxiv.org/abs/2305.18290, arXiv:2305.18290.">RSM+24</a>]</span>). To further enhance the reliability and accuracy of the training signals, we
 make use of both <code class="docutils literal notranslate"><span class="pre">human</span> <span class="pre">and</span> <span class="pre">automated</span> <span class="pre">review</span></code> processes.</p>
 </section>
 <section id="online-reinforcement-learning">
