@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Magicoder &#8212; Notes-on-LLM</title>
+    <title>AGENTLESS &#8212; Notes-on-LLM</title>
   
   
   
@@ -58,12 +58,14 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data/magic';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'agent/agentless';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="UNICODER" href="unicoder.html" />
-    <link rel="prev" title="WizardCoder" href="wizard.html" />
+    <link rel="next" title="References" href="../reference.html" />
+    <link rel="prev" title="SWE-agent" href="swe-agent.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -219,16 +221,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alphacode.html">AlphaCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -260,11 +262,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../agent/api-bank.html">API-Bank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">AGENTLESS</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -339,7 +341,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata/magic.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fagent/agentless.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,7 +371,7 @@
       
       
       
-      <li><a href="../_sources/data/magic.ipynb" target="_blank"
+      <li><a href="../_sources/agent/agentless.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -453,7 +455,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Magicoder</h1>
+    <h1>AGENTLESS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -463,10 +465,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-instruct-instruction-tuning-from-open-source">OSS-INSTRUCT: Instruction Tuning from Open Source</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentless-approach">AGENTLESS Approach</a></li>
 </ul>
             </nav>
         </div>
@@ -478,65 +477,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="magicoder">
-<h1>Magicoder<a class="headerlink" href="#magicoder" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="agentless">
+<h1>AGENTLESS<a class="headerlink" href="#agentless" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We introduce Magicoder, a series of LLMs for code that significantly closes the gap with top
-code models while having no more than 7B parameters. Magicoder models are
-trained on 75K synthetic instruction data using OSS-INSTRUCT, a novel approach
-to enlightening LLMs with open-source code snippets to generate high-quality
-instruction data for code.</p>
+<p>The complexity
+of former agent-based approaches, together with the limited abilities of
+current LLMs, raises the following question: Do we really have to employ
+complex autonomous software agents?<br>
+To attempt to answer this question,
+we build AGENTLESS – an agentless approach to automatically resolve
+software development issues. AGENTLESS employs a simplistic three-phase
+process of localization, repair, and patch validation, without letting the
+LLM decide future actions or operate with complex tools.</p>
 </div>
-<p>paper: <a class="reference external" href="https://arxiv.org/pdf/2312.02120">https://arxiv.org/pdf/2312.02120</a></p>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>To further push the boundaries
-of code generation with open source LLMs, <strong>SELF-INSTRUCT</strong> is adopted to
-bootstrap the instruction-following ability of LLMs. In the realm of code, practitioners commonly
-devise synthetic coding instructions using a stronger teacher model (e.g., ChatGPT and GPT-4) and
-then finetune a weaker student model (e.g., CODELLAMA) with the generated
-data to distill the knowledge from the teacher. For example, <strong>Code
-Alpaca</strong> consists of 20K automatically generated code instructions by applying
-SELF-INSTRUCT on ChatGPT using 21 seed tasks. To further enhance the coding abilities of LLMs, <strong>Code Evol-Instruct</strong> employs various heuristics to increase the
-complexity of seed code instructions (Code Alpaca in this case).</p>
-<p>While these data generation methods can effectively improve the instruction-following capability of
-an LLM, they rely on a narrow range of predefined tasks or heuristics under the hood.</p>
-<p><img alt="" src="../_images/magic1.png" /></p>
-<p>OSS-INSTRUCT leverages a powerful LLM to automatically
-generate new coding problems by <strong>drawing inspiration from any random code snippets collected from
-the open source</strong>. In the end, we generate
-75K synthetic data to finetune CODELLAMA-PYTHON-7B, resulting in Magicoder-CL. While being
-simple and effective, OSS-INSTRUCT is orthogonal to existing data generation methods, and they
-can be combined to further push the boundaries of the models’ coding capabilities. Therefore, we
-continually finetune Magicoder-CL on an open-source Evol-Instruct with 110K entries, producing
-MagicoderS-CL.</p>
-</section>
-<section id="oss-instruct-instruction-tuning-from-open-source">
-<h2>OSS-INSTRUCT: Instruction Tuning from Open Source<a class="headerlink" href="#oss-instruct-instruction-tuning-from-open-source" title="Link to this heading">#</a></h2>
-<p>OSS-INSTRUCT is powered by seed code snippets that can be easily collected from open source. In
-this work, we directly adopt <code class="docutils literal notranslate"><span class="pre">starcoderdata</span></code> as our seed corpus, a filtered version of The Stack dataset that StarCoder is trained on.</p>
-<p>For each code document from the corpus, we randomly
-extract 1–15 consecutive lines as the seed snippet for the model to gain inspiration from and produce
-coding problems. In total, we collected 80K initial seed snippets from 80K code documents. Then, each collected seed code snippet is applied to the prompt template shown below, which a
-teacher model takes as input and outputs both a coding problem and its solution.</p>
-<p><img alt="" src="../_images/magic2.png" /></p>
-</section>
-<section id="implementation-details">
-<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h2>
-<p><strong>Data generation</strong> We use <code class="docutils literal notranslate"><span class="pre">gpt-3.5-turbo-1106</span></code> as the foundation model to do OSS-INSTRUCT. We perform greedy decoding to maximize
-the consistency between the generated problems and solutions.</p>
-<p><strong>Training</strong> We employ CODELLAMA-PYTHON-7B and DeepSeek-Coder-Base 6.7B as the base
-LLMs. To obtain Magicoder series, we first finetune the base models on about 75K synthetic data
-generated through OSS-INSTRUCT. To obtain MagicoderS,
-we continue to finetune Magicoder models with the <code class="docutils literal notranslate"><span class="pre">evol-codealpaca-v1</span></code> dataset, an open-source
-Evol-Instruct implementation containing about 110K samples.</p>
-</section>
-<section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
-<p>Evaluation powered by <code class="docutils literal notranslate"><span class="pre">EvalPlus</span></code>.</p>
-<p><img alt="" src="../_images/magicoder1.png" /></p>
-<p><img alt="" src="../_images/magicoder2.png" /></p>
+<section id="agentless-approach">
+<h2>AGENTLESS Approach<a class="headerlink" href="#agentless-approach" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/agentless1.png" src="../_images/agentless1.png" />
+</figure>
+<p>Figure 1 shows the overview of AGENTLESS, consisting of three phases: <strong>localization</strong>,
+<strong>repair</strong>, and <strong>patch validation</strong>.</p>
+<ol class="arabic simple">
+<li><p>We first take in the issue description and the existing project
+codebase as input. Then, we begin our hierarchical localization process by turning the project codebase into a tree-like structure that illustrates the relative location of each
+file in the project.</p></li>
+<li><p>Next, using this repository structure along with the original issue
+description, we prompt the LLM to localize and rank the top <span class="math notranslate nohighlight">\(N\)</span> most suspicious files that
+likely require editing to solve the issue.</p></li>
+<li><p>Since our repository structure format does not
+contain detailed source code information, we additionally retrieve files with most relevant
+code snippets with the issue description using embedding-based retrieval.</p></li>
+<li><p>We then
+combine the retrieved files with the LLM-localized files to obtain the final list of suspicious
+files. However, not all contents in each file need to be modified. As such, we provide a
+skeleton for each file (i.e., a list of declaration headers of the classes and functions) and
+ask the LLM to output a specific list of classes and functions that we should examine
+more closely to fix the bug.</p></li>
+<li><p>We then provide the complete code content of the previous
+locations and ask the LLM to finalize a smaller set of edit locations (i.e., classes, functions,
+or even specific lines).</p></li>
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">repair</span> <span class="pre">phase</span></code>, we provide the code snippets at these edit
+locations together with the issue description and prompt the LLM to sample multiple
+patches to solve the issue.</p></li>
+<li><p>Next, we enter the patch validation phase, where we first ask
+the LLM to sample multiple reproduction tests that aim to replicate the original issue.</p></li>
+<li><p>and then select the optimal one based on actual execution results on the original codebase.</p></li>
+<li><p>AGENTLESS uses the reproduction test along with existing regression tests for patch
+ranking/selection.</p></li>
+<li><p>Finally, AGENTLESS selects the top-ranked patch as the final patch
+for submission.</p></li>
+</ol>
 </section>
 </section>
 
@@ -553,7 +544,7 @@ Evol-Instruct implementation containing about 110K samples.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./data"
+            path: "./agent"
         },
         predefinedOutput: true
     }
@@ -571,20 +562,20 @@ Evol-Instruct implementation containing about 110K samples.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="wizard.html"
+       href="swe-agent.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">WizardCoder</p>
+        <p class="prev-next-title">SWE-agent</p>
       </div>
     </a>
     <a class="right-next"
-       href="unicoder.html"
+       href="../reference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">UNICODER</p>
+        <p class="prev-next-title">References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -604,10 +595,7 @@ Evol-Instruct implementation containing about 110K samples.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oss-instruct-instruction-tuning-from-open-source">OSS-INSTRUCT: Instruction Tuning from Open Source</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agentless-approach">AGENTLESS Approach</a></li>
 </ul>
   </nav></div>
 

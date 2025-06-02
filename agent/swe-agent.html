@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Notes-on-LLM</title>
+    <title>SWE-agent &#8212; Notes-on-LLM</title>
   
   
   
@@ -62,6 +62,8 @@
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AGENTLESS" href="agentless.html" />
+    <link rel="prev" title="CodeAct" href="code-act.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +179,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
@@ -260,9 +260,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-act.html">CodeAct</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agentless.html">AGENTLESS</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -451,7 +453,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>SWE-agent</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -460,9 +462,11 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-agent-computer-interface">The Agent-Computer Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swe-agent-designing-an-aci-for-software-engineering">SWE-agent: Designing an ACI for Software Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -473,7 +477,66 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="swe-agent">
+<h1>SWE-agent<a class="headerlink" href="#swe-agent" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Just as humans benefit from powerful software
+applications, such as integrated development environments, for complex tasks like
+software engineering, we posit that LM agents represent a new category of end
+users with their own needs and abilities, and would benefit from specially-built
+interfaces to the software they use.</p>
+</div>
+<section id="the-agent-computer-interface">
+<h2>The Agent-Computer Interface<a class="headerlink" href="#the-agent-computer-interface" title="Link to this heading">#</a></h2>
+<p>An LM acts as an agent when it interacts with an environment by iteratively taking actions and
+receiving feedback. We refer to the interface LM agents use to interact with computers as the agent-computer interface
+(ACI). Figure 2 illustrates how ACIs provide LM agents with important functionality to interface
+with computers, similar to how code editors also help humans use computers more effectively.</p>
+<figure class="align-default">
+<img alt="../_images/swe-agent1.png" src="../_images/swe-agent1.png" />
+</figure>
+<p>A well-designed ACI should help the LM agent understand the state of the application
+given previous changes, manage history to avoid unnecessary context from prior observations, and
+provide actions that models can use efficiently and reliably. Several insights about design principles that seem especially
+important for building effective ACIs:</p>
+<ul class="simple">
+<li><p><strong>Actions should be simple and easy to understand for agents.</strong></p></li>
+<li><p><strong>Actions should be compact and efficient.</strong></p></li>
+<li><p><strong>Environment feedback should be informative but concise.</strong></p></li>
+<li><p><strong>Guardrails mitigate error propagation and hasten recovery.</strong> Like humans, LMs make mistakes
+when editing or searching and can struggle to recover from these errors. Building in guardrails,
+such as a code syntax checker that automatically detects mistakes, can help agents recognize and
+quickly correct errors.</p></li>
+</ul>
+</section>
+<section id="swe-agent-designing-an-aci-for-software-engineering">
+<h2>SWE-agent: Designing an ACI for Software Engineering<a class="headerlink" href="#swe-agent-designing-an-aci-for-software-engineering" title="Link to this heading">#</a></h2>
+<p><strong>Search and navigation.</strong> We introduce the special commands <code class="docutils literal notranslate"><span class="pre">find_file</span></code>,
+<code class="docutils literal notranslate"><span class="pre">search_file</span></code>, and <code class="docutils literal notranslate"><span class="pre">search_dir</span></code>. The <code class="docutils literal notranslate"><span class="pre">find_file</span></code> command searches for filenames in the repository, while the
+<code class="docutils literal notranslate"><span class="pre">search_file</span></code> and <code class="docutils literal notranslate"><span class="pre">search_dir</span></code> locates strings in a file(s) of a subdirectory.</p>
+<figure class="align-default">
+<img alt="../_images/swe-agent2.png" src="../_images/swe-agent2.png" />
+</figure>
+<p><strong>File viewer.</strong> After finding a file they want to view, agents use the interactive file viewer by calling
+the command <code class="docutils literal notranslate"><span class="pre">open</span></code> on the relevant file path. The file viewer presents a window of at most 100
+lines of the file at a time. The agent can move this window with the commands <code class="docutils literal notranslate"><span class="pre">scroll_down</span></code> and
+<code class="docutils literal notranslate"><span class="pre">scroll_up</span></code> or access a specific line with the <code class="docutils literal notranslate"><span class="pre">goto</span></code> command.</p>
+<p><strong>File editor.</strong> The <code class="docutils literal notranslate"><span class="pre">edit</span></code> command
+works in conjunction with the file viewer, allowing agents to replace a specific range of lines in the
+open file.</p>
+<p><strong>Context management.</strong> The SWE-agent system uses informative prompts, error messages, and history
+processors to keep agent context concise and informative. At each step, the system instructs
+them to generate both a thought and an action. Malformed generations trigger an error response, asking the agent to try again, which is repeated until a valid generation is received.</p>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/swe-agent3.png" src="../_images/swe-agent3.png" />
+</figure>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -504,6 +567,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="code-act.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CodeAct</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="agentless.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AGENTLESS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -519,9 +600,11 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-agent-computer-interface">The Agent-Computer Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swe-agent-designing-an-aci-for-software-engineering">SWE-agent: Designing an ACI for Software Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
