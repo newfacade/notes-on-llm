@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>WordPiece, ULM and SentencePiece &#8212; Notes-on-LLM</title>
+    <title>Search-R1 &#8212; Notes-on-LLM</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'techniques/tokenize';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'agent/search-r1';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="../reference.html" />
+    <link rel="prev" title="AGENTLESS" href="agentless.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,7 +179,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
@@ -200,12 +198,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="norm.html">Normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rope.html">RoPE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="extending.html">Extending context window of LLMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mla.html">Multi-Head Latent Attention</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepseek-moe.html">DeepSeekMoE</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -262,14 +260,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/api-bank.html">API-Bank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/search-r1.html">Search-R1</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Search-R1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -344,7 +342,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftechniques/tokenize.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fagent/search-r1.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +372,7 @@
       
       
       
-      <li><a href="../_sources/techniques/tokenize.ipynb" target="_blank"
+      <li><a href="../_sources/agent/search-r1.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -445,9 +443,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -458,21 +454,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>WordPiece, ULM and SentencePiece</h1>
+    <h1>Search-R1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wordpiece">WordPiece</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unigram-language-model-ulm">Unigram Language Model (ULM)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencepiece">SentencePiece</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -482,38 +468,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="wordpiece-ulm-and-sentencepiece">
-<h1>WordPiece, ULM and SentencePiece<a class="headerlink" href="#wordpiece-ulm-and-sentencepiece" title="Link to this heading">#</a></h1>
-<section id="wordpiece">
-<h2>WordPiece<a class="headerlink" href="#wordpiece" title="Link to this heading">#</a></h2>
-<p>Google的Bert模型在分词的时候使用的是WordPiece算法。与BPE算法类似，WordPiece算法也是每次从词表中选出两个子词合并成新的子词。与BPE的最大区别在于，如何选择两个子词进行合并：BPE选择频数最高的相邻子词合并，而WordPiece选择能够提升语言模型概率最大的相邻子词加入词表。</p>
-<p>看到这里，你可能不清楚WordPiece是如何选取子词的。这里，通过形式化方法，能够清楚地理解WordPiece在合并这一步是如何作出选择的。假设句子
-<span class="math notranslate nohighlight">\(S=(t_1, t_2,\dots,t_n)\)</span> 由 <span class="math notranslate nohighlight">\(n\)</span> 个子词组成，<span class="math notranslate nohighlight">\(t_{i}\)</span>
-表示子词，且假设各个子词之间是独立存在的，则句子 <span class="math notranslate nohighlight">\(S\)</span> 的语言模型似然值等价于所有子词概率的乘积：</p>
-<div class="math notranslate nohighlight">
-\[\log P(S) = \sum_{i=1}^{n}\log P(t_{i})\]</div>
-<p>假设把相邻位置的x和y两个子词进行合并，合并后产生的子词记为z，此时句子
-似然值的变化可表示为：</p>
-<div class="math notranslate nohighlight">
-\[\log P(t_{z}) - (\log P(t_{x}) + \log P(t_{y})) = \log\left(\frac{P(t_{z})}{P(t_{x})P(t_{y})}\right)\]</div>
-<p>WordPiece每次选择合并的两个子词，他们具有最大的互信息值，也就是两子词在语言模型上具有较强的关联性，它们经常在语料中以相邻方式同时出现。</p>
-</section>
-<section id="unigram-language-model-ulm">
-<h2>Unigram Language Model (ULM)<a class="headerlink" href="#unigram-language-model-ulm" title="Link to this heading">#</a></h2>
-<p>对于句子S，为句子的一个分词结果，由m个子词组成。所以，当前分词下句子S的似然值可以表示为：</p>
-</section>
-<section id="sentencepiece">
-<h2>SentencePiece<a class="headerlink" href="#sentencepiece" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>SentencePiece is a simple and language independent subword tokenizer
-and detokenizer for Neural Text Processing. While existing subword segmentation
-tools assume that the input is pre-tokenized
-into word sequences, SentencePiece can
-train subword models directly from raw
-sentences.</p>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="search-r1">
+<h1>Search-R1<a class="headerlink" href="#search-r1" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -529,7 +485,7 @@ sentences.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./techniques"
+            path: "./agent"
         },
         predefinedOutput: true
     }
@@ -546,29 +502,30 @@ sentences.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="agentless.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AGENTLESS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wordpiece">WordPiece</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unigram-language-model-ulm">Unigram Language Model (ULM)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencepiece">SentencePiece</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
