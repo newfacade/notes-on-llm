@@ -58,10 +58,14 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'models/qwen3';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Qwen 2.5" href="qwen25.html" />
+    <link rel="prev" title="Llama 3 Source Code" href="llama3-source-code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +128,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
@@ -188,14 +190,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Qwen3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -258,16 +262,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../agent/api-bank.html">API-Bank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../agent/search-r1.html">Search-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -443,7 +449,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -459,6 +467,23 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-cot-cold-start">Long-CoT Cold Start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-rl">Reasoning RL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thinking-mode-fusion">Thinking Mode Fusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-rl">General RL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-to-weak-distillation">Strong-to-Weak Distillation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -470,6 +495,129 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="qwen3">
 <h1>Qwen3<a class="headerlink" href="#qwen3" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Qwen3 series includes models of both dense
+and Mixture-of-Expert (MoE) architectures, with parameter scales ranging from 0.6 to
+235 billion. A key innovation in Qwen3 is the integration of thinking mode (for complex,
+multi-step reasoning) and non-thinking mode (for rapid, context-driven responses) into a
+unified framework.</p>
+</div>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<p>The architecture of the Qwen3 dense models is similar to Qwen2.5, including using
+Grouped Query Attention, SwiGLU, Rotary Positional
+Embeddings and RMSNorm with pre-normalization. Besides, we remove QKV-bias used in Qwen2 and introduce <code class="docutils literal notranslate"><span class="pre">QK-Norm</span></code> to the attention mechanism to ensure stable training for Qwen3.</p>
+<p>The Qwen3 MoE models share the same fundamental architecture as the Qwen3 dense models. We follow Qwen2.5-MoE and implement fine-grained expert segmentatio. Unlike Qwen2.5-MoE, the Qwen3-MoE design excludes shared
+experts. Furthermore, we adopt the <code class="docutils literal notranslate"><span class="pre">global-batch</span> <span class="pre">load</span> <span class="pre">balancing</span> <span class="pre">loss</span></code> to encourage expert
+specialization.</p>
+<p>Qwen3 models utilize Qwen’s tokenizer which implements byte-level byte-pair encoding with a vocabulary size of 151,669.</p>
+</section>
+<section id="pre-training">
+<h2>Pre-training<a class="headerlink" href="#pre-training" title="Link to this heading">#</a></h2>
+<p><strong>Pre-training Data.</strong> Compared with Qwen2.5, we have significantly expanded the scale and diversity of
+our training data.</p>
+<p><strong>Pre-training Stage.</strong></p>
+<ol class="arabic simple">
+<li><p>General Stage</p></li>
+<li><p>Reasoning Stage</p></li>
+<li><p>Long Context Stage</p></li>
+</ol>
+<p>Similar to Qwen2.5, we develop scaling laws for optimal hyper-parameters (e.g.,
+learning rate scheduler, and batch size) predictions based on three pre-training stages mentioned above.</p>
+</section>
+<section id="post-training">
+<h2>Post-training<a class="headerlink" href="#post-training" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/qwen3-1.png" src="../_images/qwen3-1.png" />
+</figure>
+<p>As illustrated in Figure 1, the flagship models in the Qwen3 series follow a sophisticated four-stage
+training process. The first two stages focus on developing the models’ “thinking” abilities. The next two
+stages aim to integrate strong “non-thinking” functionalities into the models.</p>
+<section id="long-cot-cold-start">
+<h3>Long-CoT Cold Start<a class="headerlink" href="#long-cot-cold-start" title="Link to this heading">#</a></h3>
+<p>We begin by curating a comprehensive dataset that spans a wide range of categories, including math,
+code, logical reasoning, and general STEM problems. Each problem in the dataset is paired with verified
+reference answers or code-based test cases.</p>
+<p>The dataset construction involves a rigorous two-phase filtering process: query filtering and response
+filtering.</p>
+<ol class="arabic simple">
+<li><p>We use Qwen2.5-72B-Instruct to identify and remove queries that
+are not easily verifiable. Furthermore, we exclude queries that Qwen2.5-72B-Instruct can answer correctly
+without using CoT reasoning. Additionally, we annotate
+each query’s domain using Qwen2.5-72B-Instruct to maintain balanced domain representation across the
+dataset.</p></li>
+<li><p>After reserving a validation query set, we generate <span class="math notranslate nohighlight">\(N\)</span> candidate responses for each remaining query
+using QwQ-32B. For queries with positive <span class="math notranslate nohighlight">\(Pass&#64;N\)</span>,
+further stringent filtering criteria are applied.</p></li>
+</ol>
+<p>The objective at this stage is to instill <code class="docutils literal notranslate"><span class="pre">foundational</span> <span class="pre">reasoning</span> <span class="pre">patterns</span></code> in the model without
+overly emphasizing immediate reasoning performance.</p>
+</section>
+<section id="reasoning-rl">
+<h3>Reasoning RL<a class="headerlink" href="#reasoning-rl" title="Link to this heading">#</a></h3>
+<p>The query-verifier pairs used in the Reasoning RL stage must satisfy the following four criteria:</p>
+<ol class="arabic simple">
+<li><p>They
+were not used during the cold-start phase.</p></li>
+<li><p>They are learnable for the cold-start model.</p></li>
+<li><p>They are
+as challenging as possible.</p></li>
+<li><p>They cover a broad range of sub-domains.</p></li>
+</ol>
+<p>We ultimately collect a total
+of <code class="docutils literal notranslate"><span class="pre">3,995</span></code> query-verifier pairs, and employed GRPO to update the model parameters. We observe that using a large batch size and a high number of rollouts per query, along with off-policy
+training to improve sample efficiency, is beneficial to the training process. We have also addressed how
+to balance exploration and exploitation by controlling the model’s entropy to increase steadily or remain stable, which is crucial for maintaining stable training.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>off-policy? How to balance exploration and exploitation by controlling the model’s entropy?</p>
+</div>
+</section>
+<section id="thinking-mode-fusion">
+<h3>Thinking Mode Fusion<a class="headerlink" href="#thinking-mode-fusion" title="Link to this heading">#</a></h3>
+<p><strong>Construction of SFT data.</strong> The SFT dataset combines both the “thinking” and “non-thinking” data. The
+“thinking” data is generated via rejection sampling on Stage 1 queries using the Stage 2 model itself. The
+“non-thinking” data, on the other hand, is carefully curated to cover a diverse range of tasks, we employ automatically generated checklists for assessing the response
+quality of “non-thinking” data.</p>
+<p><strong>Chat Template Design.</strong> By default, the model operates in thinking mode; therefore, we add
+some thinking mode training samples where the user queries do not include /think flags. For more
+complex multi-turn dialogs, we randomly insert multiple /think and /no_think flags into users’ queries,
+with the model response adhering to the last flag encountered.</p>
+<figure class="align-default">
+<img alt="../_images/qwen3-2.png" src="../_images/qwen3-2.png" />
+</figure>
+<p><strong>Thinking Budget.</strong> An additional advantage of Thinking Mode Fusion is that, once the model learns to
+respond in both non-thinking and thinking modes, it naturally develops the ability to handle intermediate
+cases—generating responses based on incomplete thinking. Specifically, when the length of the
+model’s thinking reaches a user-defined threshold, we manually halt the thinking process and insert
+the stop-thinking instruction: <em>“Considering the limited time by the user, I have to give the
+solution based on the thinking directly now.\n</think>.\n\n”</em>.</p>
+</section>
+<section id="general-rl">
+<h3>General RL<a class="headerlink" href="#general-rl" title="Link to this heading">#</a></h3>
+<p>The General RL stage aims to broadly enhance the models’ capabilities and stability across diverse
+scenarios. To facilitate this, we have established a sophisticated reward system covering over 20 distinct
+tasks, each with customized scoring criteria. We utilized three distinct types of rewards:</p>
+<ul class="simple">
+<li><p>Rule-based Reward</p></li>
+<li><p>Model-based Reward with Reference Answer</p></li>
+<li><p>Model-based Reward without Reference Answer</p></li>
+</ul>
+</section>
+<section id="strong-to-weak-distillation">
+<h3>Strong-to-Weak Distillation<a class="headerlink" href="#strong-to-weak-distillation" title="Link to this heading">#</a></h3>
+<p>The Strong-to-Weak Distillation pipeline is specifically designed to optimize lightweight models, the distillation process is divided into two primary phases:</p>
+<ol class="arabic simple">
+<li><p><strong>Off-policy Distillation:</strong> At this initial phase, we combine the outputs of teacher models generated
+with both /think and /no_think modes for response distillation.</p></li>
+<li><p><strong>On-policy Distillation:</strong> In this phase, the student model generates on-policy sequences for
+fine-tuning. Specifically, prompts are sampled, and the student model produces responses in
+either /think or /no_think mode. The student model is then fine-tuned by aligning its logits
+with those of a teacher model (Qwen3-32B or Qwen3-235B-A22B) to minimize the KL divergence.</p></li>
+</ol>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -502,12 +650,54 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="llama3-source-code.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Llama 3 Source Code</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="qwen25.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Qwen 2.5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#long-cot-cold-start">Long-CoT Cold Start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reasoning-rl">Reasoning RL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thinking-mode-fusion">Thinking Mode Fusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-rl">General RL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-to-weak-distillation">Strong-to-Weak Distillation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

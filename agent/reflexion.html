@@ -191,11 +191,13 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -258,16 +260,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Agent</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="software-survey.html">Agents in Software Engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="react.html">REACT</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Reflexion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-act.html">CodeAct</a></li>
-<li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agentless.html">AGENTLESS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search-r1.html">Search-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swe-smith.html">SWE-smith</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
@@ -443,7 +447,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -459,6 +465,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexion-reinforcement-via-verbal-reflection">Reflexion: reinforcement via verbal reflection</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -470,6 +484,35 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reflexion">
 <h1>Reflexion<a class="headerlink" href="#reflexion" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recent works such as ReAct have demonstrated the feasibility of autonomous decision-making
+agents that are built on top of a large language model (LLM) core. Such approaches have been
+so far limited to using in-context examples as a way of teaching the agents. In this paper, we propose an alternative approach called Reflexion that uses <code class="docutils literal notranslate"><span class="pre">verbal</span></code> reinforcement
+to help agents learn from prior failings.</p>
+</div>
+<section id="reflexion-reinforcement-via-verbal-reflection">
+<h2>Reflexion: reinforcement via verbal reflection<a class="headerlink" href="#reflexion-reinforcement-via-verbal-reflection" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/reflexion1.png" src="../_images/reflexion1.png" />
+</figure>
+<p>Reflexion utilizing three distinct models: an Actor, an Evaluator and a Self-Reflection models.</p>
+<p><strong>Actor</strong> The Actor is built upon a large language model (LLM) that is specifically prompted to
+generate the necessary text and actions conditioned on the state observations. We explore various Actor models, including Chain of
+Thought and ReAct.</p>
+<p><strong>Evaluator</strong> The Evaluator component of the Reflexion framework plays a crucial role in assessing
+the quality of the generated outputs produced by the Actor. For reasoning tasks, we explore reward functions based
+on exact match (EM) grading, ensuring that the generated output aligns closely with the expected
+solution.</p>
+<p><strong>Self-reflection</strong> Given a sparse reward signal, such as a binary success status (success/fail), the current trajectory,
+and its persistent memory <em>mem</em>, the self-reflection model generates nuanced and specific feedback.</p>
+<p><strong>Memory</strong> In the RL setup, the trajectory history serves as the short-term
+memory while outputs from the Self-Reflection model are stored in long-term memory.</p>
+<p><strong>The Reflexion process</strong></p>
+<figure class="align-default">
+<img alt="../_images/reflexion2.png" src="../_images/reflexion2.png" />
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -526,6 +569,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflexion-reinforcement-via-verbal-reflection">Reflexion: reinforcement via verbal reflection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
