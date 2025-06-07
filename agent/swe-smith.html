@@ -267,7 +267,6 @@
 <li class="toctree-l2"><a class="reference internal" href="software-survey.html">Agents in Software Engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="react.html">REACT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reflexion.html">Reflexion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-act.html">CodeAct</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agentless.html">AGENTLESS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
@@ -470,11 +469,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swe-smith-software-task-generation-at-scale">SWE-smith: Software Task Generation at Scale</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection">Collection</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swe-smith-software-task-generation-at-scale">SWE-smith: Software Task Generation at Scale</a></li>
 </ul>
             </nav>
         </div>
@@ -496,28 +491,13 @@ To address this pain point, we introduce
 <a class="reference external" href="https://github.com/SWE-bench/SWE-smith">SWE-smith</a>, a novel pipeline for generating software engineering
 training data at scale. Given any Python codebase, SWE-smith constructs a
 corresponding execution environment, then automatically synthesizes 100s
-to 1,000s of task instances that break existing test(s) in the codebase.<br>
-Using
-SWE-smith, we create a dataset of 50k instances sourced from 128 GitHub
-repositories, an order of magnitude larger than all previous works. We train
-SWE-agent-LM-32B, achieving 40.2% Pass&#64;1 resolve rate on the SWE-bench
-Verified benchmark, state of the art among open source models.</p>
+to 1,000s of task instances that break existing test(s) in the codebase.</p>
 </div>
 <figure class="align-default">
 <img alt="../_images/swe-smith1.png" src="../_images/swe-smith1.png" />
 </figure>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>The current open-source ecosystem offers two kinds of data sources to train LMs on SE tasks.
-One simple approach is to crawl pull requests (PRs) and issues from GitHub repositories (offer no reliable way of
-validating generated solutions). Another line of work has simply extended the SWE-bench collection strategy to a
-new set of repositories for training purposes (scalability of this approach is severely
-limited).</p>
-</section>
 <section id="swe-smith-software-task-generation-at-scale">
 <h2>SWE-smith: Software Task Generation at Scale<a class="headerlink" href="#swe-smith-software-task-generation-at-scale" title="Link to this heading">#</a></h2>
-<section id="collection">
-<h3>Collection<a class="headerlink" href="#collection" title="Link to this heading">#</a></h3>
 <p><strong>Building execution environments for repositories with passing tests.</strong> Given a repository,
 we run SWE-agent on the latest commit for at most 100 steps, instructing
 it to install the codebase and run the test suite. We then manually verify the installation
@@ -548,7 +528,14 @@ existing, passing tests (referred to as Fail-to-Pass or F2P test(s)).</p>
 an LM with the .diff patch, source code of a random F2P test, and execution output from
 running the repository’s test suite with the bug patch applied. We prompt the LM for
 GitHub issue-style text that includes reproduction code based on the F2P test.</p>
-</section>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Using
+SWE-smith, we create a dataset of 50k instances sourced from 128 GitHub
+repositories, an order of magnitude larger than all previous works. We train
+SWE-agent-LM-32B, achieving 40.2% Pass&#64;1 resolve rate on the SWE-bench
+Verified benchmark, state of the art among open source models.</p>
+</div>
 </section>
 </section>
 
@@ -616,11 +603,7 @@ GitHub issue-style text that includes reproduction code based on the F2P test.</
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swe-smith-software-task-generation-at-scale">SWE-smith: Software Task Generation at Scale</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collection">Collection</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swe-smith-software-task-generation-at-scale">SWE-smith: Software Task Generation at Scale</a></li>
 </ul>
   </nav></div>
 

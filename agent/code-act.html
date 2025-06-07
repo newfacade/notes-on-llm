@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="AGENTLESS" href="agentless.html" />
-    <link rel="prev" title="API-Bank" href="api-bank.html" />
+    <link rel="prev" title="Reflexion" href="reflexion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -267,7 +267,6 @@
 <li class="toctree-l2"><a class="reference internal" href="software-survey.html">Agents in Software Engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="react.html">REACT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reflexion.html">Reflexion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">CodeAct</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agentless.html">AGENTLESS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
@@ -470,13 +469,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-makes-llms-better-agents">CodeAct Makes LLMs Better Agents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-codeact">What is CodeAct?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-shows-the-promise-as-a-strong-tool-use-framework">CodeAct Shows the Promise as a Strong Tool Use Framework</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-gets-more-done-with-fewer-interactions">CodeAct Gets More Done with Fewer Interactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-benefits-from-multi-turn-interactions-and-existing-software-packages">CodeAct Benefits from Multi-turn Interactions and Existing Software Packages</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-codeact">What is CodeAct?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-shows-the-promise-as-a-strong-tool-use-framework">CodeAct Shows the Promise as a Strong Tool Use Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-gets-more-done-with-fewer-interactions">CodeAct Gets More Done with Fewer Interactions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-benefits-from-multi-turn-interactions-and-existing-software-packages">CodeAct Benefits from Multi-turn Interactions and Existing Software Packages</a></li>
 </ul>
             </nav>
         </div>
@@ -500,10 +496,8 @@ to use executable Python code to consolidate
 LLM agents’ actions into a unified action space
 (<a class="reference external" href="https://arxiv.org/abs/2402.01030">CodeAct</a>).</p>
 </div>
-<section id="codeact-makes-llms-better-agents">
-<h2>CodeAct Makes LLMs Better Agents<a class="headerlink" href="#codeact-makes-llms-better-agents" title="Link to this heading">#</a></h2>
 <section id="what-is-codeact">
-<h3>What is CodeAct?<a class="headerlink" href="#what-is-codeact" title="Link to this heading">#</a></h3>
+<h2>What is CodeAct?<a class="headerlink" href="#what-is-codeact" title="Link to this heading">#</a></h2>
 <p>In Fig. 2, we first introduce a general multi-turn interaction
 framework for LLM agents’ real-world usage that considers
 three roles: agent, user, and environment. CodeAct employs
@@ -517,7 +511,7 @@ observation.</p>
 </figure>
 </section>
 <section id="codeact-shows-the-promise-as-a-strong-tool-use-framework">
-<h3>CodeAct Shows the Promise as a Strong Tool Use Framework<a class="headerlink" href="#codeact-shows-the-promise-as-a-strong-tool-use-framework" title="Link to this heading">#</a></h3>
+<h2>CodeAct Shows the Promise as a Strong Tool Use Framework<a class="headerlink" href="#codeact-shows-the-promise-as-a-strong-tool-use-framework" title="Link to this heading">#</a></h2>
 <p><strong>Setup.</strong> We re-purpose API-Bank and test
 LLMs’ API-calling performance. For each evaluation instance, we
 instruct LLM to generate one atomic tool call in the format
@@ -531,7 +525,7 @@ CodeAct achieves comparable or better performance even
 in atomic actions (the simplistic tool use scenario).</p>
 </section>
 <section id="codeact-gets-more-done-with-fewer-interactions">
-<h3>CodeAct Gets More Done with Fewer Interactions<a class="headerlink" href="#codeact-gets-more-done-with-fewer-interactions" title="Link to this heading">#</a></h3>
+<h2>CodeAct Gets More Done with Fewer Interactions<a class="headerlink" href="#codeact-gets-more-done-with-fewer-interactions" title="Link to this heading">#</a></h2>
 <p><strong>M3ToolEval.</strong> To the best of our
 knowledge, no existing tool-use benchmarks contain complex
 tasks requiring the composition of multiple tools while
@@ -554,12 +548,11 @@ of turns.</p>
 </figure>
 </section>
 <section id="codeact-benefits-from-multi-turn-interactions-and-existing-software-packages">
-<h3>CodeAct Benefits from Multi-turn Interactions and Existing Software Packages<a class="headerlink" href="#codeact-benefits-from-multi-turn-interactions-and-existing-software-packages" title="Link to this heading">#</a></h3>
+<h2>CodeAct Benefits from Multi-turn Interactions and Existing Software Packages<a class="headerlink" href="#codeact-benefits-from-multi-turn-interactions-and-existing-software-packages" title="Link to this heading">#</a></h2>
 <p>Thanks to its extensive knowledge of Python
 learned during pre-training, the LLM agent can automatically
 import the correct Python libraries to solve tasks
 without requiring user-provided tools or demonstrations.</p>
-</section>
 </section>
 </section>
 
@@ -594,12 +587,12 @@ without requiring user-provided tools or demonstrations.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="api-bank.html"
+       href="reflexion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API-Bank</p>
+        <p class="prev-next-title">Reflexion</p>
       </div>
     </a>
     <a class="right-next"
@@ -627,13 +620,10 @@ without requiring user-provided tools or demonstrations.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-makes-llms-better-agents">CodeAct Makes LLMs Better Agents</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-codeact">What is CodeAct?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-shows-the-promise-as-a-strong-tool-use-framework">CodeAct Shows the Promise as a Strong Tool Use Framework</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-gets-more-done-with-fewer-interactions">CodeAct Gets More Done with Fewer Interactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-benefits-from-multi-turn-interactions-and-existing-software-packages">CodeAct Benefits from Multi-turn Interactions and Existing Software Packages</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-codeact">What is CodeAct?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-shows-the-promise-as-a-strong-tool-use-framework">CodeAct Shows the Promise as a Strong Tool Use Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-gets-more-done-with-fewer-interactions">CodeAct Gets More Done with Fewer Interactions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codeact-benefits-from-multi-turn-interactions-and-existing-software-packages">CodeAct Benefits from Multi-turn Interactions and Existing Software Packages</a></li>
 </ul>
   </nav></div>
 

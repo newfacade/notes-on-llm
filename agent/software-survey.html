@@ -267,7 +267,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Agents in Software Engineering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="react.html">REACT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reflexion.html">Reflexion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-bank.html">API-Bank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-act.html">CodeAct</a></li>
 <li class="toctree-l2"><a class="reference internal" href="agentless.html">AGENTLESS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="swe-agent.html">SWE-agent</a></li>
@@ -473,7 +472,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perception">Perception</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textual-input">Textual Input</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-input">Visual Input</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auditory-input">Auditory Input</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="nav section-nav flex-column">
@@ -504,7 +502,7 @@ document.write(`
 <h1>Agents in Software Engineering<a class="headerlink" href="#agents-in-software-engineering" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this paper, we
+<p>In <a class="reference external" href="https://arxiv.org/abs/2409.09030">this paper</a>, we
 conduct the first survey of the studies on combining
 LLM-based agents with SE and present
 a framework of LLM-based agents in SE
@@ -516,11 +514,14 @@ memory, and action.</p>
 </figure>
 <section id="perception">
 <h2>Perception<a class="headerlink" href="#perception" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>The
 perception module receives external environment
 information of various modalities and converts it
 into an input form that the LLM can understand
 and process.</p>
+</div>
 <section id="textual-input">
 <h3>Textual Input<a class="headerlink" href="#textual-input" title="Link to this heading">#</a></h3>
 <p><strong>Token-based Input.</strong> Token-based input is the most mainstream input mode,
@@ -541,24 +542,21 @@ sketches or UML design drawings as model input
 and makes inference decisions through modeling
 and analysis of images.</p>
 </section>
-<section id="auditory-input">
-<h3>Auditory Input<a class="headerlink" href="#auditory-input" title="Link to this heading">#</a></h3>
-<p>Auditory input takes auditory data such as audio
-as input and interacts with LLM in the form of
-speech.</p>
-</section>
 </section>
 <section id="memory">
 <h2>Memory<a class="headerlink" href="#memory" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>The memory modules can provide additional
 useful information to help LLM make reasoning
 decisions.</p>
+</div>
 <section id="semantic-memory">
 <h3>Semantic Memory<a class="headerlink" href="#semantic-memory" title="Link to this heading">#</a></h3>
 <p>Semantic memory stores acknowledged world
 knowledge of LLM-based agents, usually in the
 form of external knowledge retrieval bases which
-include <code class="docutils literal notranslate"><span class="pre">documents</span></code> and <code class="docutils literal notranslate"><span class="pre">APIs</span></code>. For example, Ren et al. (2023)
+include <code class="docutils literal notranslate"><span class="pre">documents</span></code> and <code class="docutils literal notranslate"><span class="pre">APIs</span></code>. For example, <a class="reference external" href="https://arxiv.org/abs/2309.15606">Ren et al. (2023)</a>
 propose KPC, a novel Knowledge-driven Prompt
 Chaining-based code generation approach, which
 utilizes fine-grained exception-handling knowledge
@@ -573,7 +571,7 @@ in code generation.</p>
 to the current case (such as relevant information
 found in the search database, samples provided by
 In-context learning (ICL) technology, etc.) can provide
-additional knowledge for LLM reasoning. For example, Li et al. (2023c) propose a
+additional knowledge for LLM reasoning. For example, <a class="reference external" href="https://arxiv.org/abs/2303.17780">Li et al. (2023c)</a> propose a
 new prompting technique named AceCoder, which
 selects similar programs as examples in prompts.</p>
 </section>
@@ -589,9 +587,12 @@ code, enabling the agent to operate automatically.</p>
 </section>
 <section id="action">
 <h2>Action<a class="headerlink" href="#action" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>The action module includes two types: internal and
 external actions. The external actions interact with
 the external environment to obtain feedback information.</p>
+</div>
 <section id="internal-action">
 <h3>Internal Action<a class="headerlink" href="#internal-action" title="Link to this heading">#</a></h3>
 <p><strong>Reasoning Action.</strong> A rigorous reasoning process
@@ -609,7 +610,7 @@ the output content obtained by retrieval have different
 types. Specifically, it
 can be divided into the following types:</p>
 <ul class="simple">
-<li><p>Text-Code. For example, Zan et al. (2022a) propose a novel
+<li><p>Text-Code. For example, <a class="reference external" href="https://arxiv.org/abs/2210.17236">Zan et al. (2022a)</a> propose a novel
 framework with APIRetriever and APICoder modules.
 Specifically, the APIRetriever retrieves useful
 APIs, and then the APICoder generates code using these retrieved APIs.</p></li>
@@ -617,13 +618,17 @@ APIs, and then the APICoder generates code using these retrieved APIs.</p></li>
 </ul>
 <p>Existing retrieval
 methods can be divided into sparse-based
-retrieval, dense-based retrieval. The dense-based retrieval method converts
+retrieval, dense-based retrieval.</p>
+<ul class="simple">
+<li><p>The dense-based retrieval method converts
 the input into a high-dimensional vector and
 then compares the semantic similarity to select the
-k samples with the highest similarity, while the
+k samples with the highest similarity.</p></li>
+<li><p>The
 sparse-based retrieval method calculates metrics
 such as BM25 or TF-IDF to evaluate the text similarity
-between samples.</p>
+between samples.</p></li>
+</ul>
 <p><strong>Learning Action.</strong> Learning actions are continuously
 learning and updating knowledge by learning
 and updating semantic and procedural memories.</p>
@@ -709,7 +714,6 @@ can be used as feedback to optimize themselves.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perception">Perception</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textual-input">Textual Input</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-input">Visual Input</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auditory-input">Auditory Input</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="nav section-nav flex-column">
