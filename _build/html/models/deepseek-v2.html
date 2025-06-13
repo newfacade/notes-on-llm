@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DeepSeek-V2 &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'models/deepseek-v2';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DeepSeek-Coder-V2" href="deepseek-coder-v2.html" />
+    <link rel="prev" title="Qwen2.5-Coder" href="qwen25-coder.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodels/deepseek-v2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/models/deepseek-v2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DeepSeek-V2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-construction">Data Construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameters">Hyper-Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-results">Evaluation Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deepseek-v2">
+<h1>DeepSeek-V2<a class="headerlink" href="#deepseek-v2" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DeepSeek-V2<span id="id1">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span> is a strong Mixture-of-Experts (MoE) language model characterized by
+economical training and efficient inference.<br>
+It comprises 236B total parameters, of which 21B
+are activated for each token, and supports a context length of 128K tokens. DeepSeek-V2 adopts
+innovative architectures including Multi-head Latent Attention (MLA) and DeepSeekMoE.</p>
+</div>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../techniques/mla.html#mla"><span class="std std-ref">Multi-Head Latent Attention</span></a></p>
+<p><a class="reference internal" href="../techniques/deepseek-moe.html#deepseekmoe"><span class="std std-ref">DeepSeekMoE</span></a></p>
+</section>
+<section id="pre-training">
+<h2>Pre-Training<a class="headerlink" href="#pre-training" title="Link to this heading">#</a></h2>
+<section id="data-construction">
+<h3>Data Construction<a class="headerlink" href="#data-construction" title="Link to this heading">#</a></h3>
+<p>While maintaining the same data processing stages as for DeepSeek 67B<span id="id2">[<a class="reference internal" href="../reference.html#id7" title="DeepSeek-AI, :, Xiao Bi, Deli Chen, Guanting Chen, Shanhuang Chen, Damai Dai, Chengqi Deng, Honghui Ding, Kai Dong, Qiushi Du, Zhe Fu, Huazuo Gao, Kaige Gao, Wenjun Gao, Ruiqi Ge, Kang Guan, Daya Guo, Jianzhong Guo, Guangbo Hao, Zhewen Hao, Ying He, Wenjie Hu, Panpan Huang, Erhang Li, Guowei Li, Jiashi Li, Yao Li, Y. K. Li, Wenfeng Liang, Fangyun Lin, A. X. Liu, Bo Liu, Wen Liu, Xiaodong Liu, Xin Liu, Yiyuan Liu, Haoyu Lu, Shanghao Lu, Fuli Luo, Shirong Ma, Xiaotao Nie, Tian Pei, Yishi Piao, Junjie Qiu, Hui Qu, Tongzheng Ren, Zehui Ren, Chong Ruan, Zhangli Sha, Zhihong Shao, Junxiao Song, Xuecheng Su, Jingxiang Sun, Yaofeng Sun, Minghui Tang, Bingxuan Wang, Peiyi Wang, Shiyu Wang, Yaohui Wang, Yongji Wang, Tong Wu, Y. Wu, Xin Xie, Zhenda Xie, Ziwei Xie, Yiliang Xiong, Hanwei Xu, R. X. Xu, Yanhong Xu, Dejian Yang, Yuxiang You, Shuiping Yu, Xingkai Yu, B. Zhang, Haowei Zhang, Lecong Zhang, Liyue Zhang, Mingchuan Zhang, Minghua Zhang, Wentao Zhang, Yichao Zhang, Chenggang Zhao, Yao Zhao, Shangyan Zhou, Shunfeng Zhou, Qihao Zhu, and Yuheng Zou. Deepseek llm: scaling open-source language models with longtermism. 2024. URL: https://arxiv.org/abs/2401.02954, arXiv:2401.02954.">DAB+24</a>]</span>, we extend the amount of data and elevate the data quality.</p>
+<p>We adopt the same tokenizer as used in DeepSeek 67B, which is built based on the Byte-level
+Byte-Pair Encoding (BBPE) algorithm and has a vocabulary size of 100K. Our tokenized pretraining
+corpus contains 8.1T tokens, where Chinese tokens are approximately 12% more than
+English ones.</p>
+</section>
+<section id="hyper-parameters">
+<h3>Hyper-Parameters<a class="headerlink" href="#hyper-parameters" title="Link to this heading">#</a></h3>
+<p>We set the number of Transformer layers to 60 and the hidden
+dimension to 5120. In MLA, we set the number of attention heads <span class="math notranslate nohighlight">\(n_h\)</span> to 128 and the per-head dimension <span class="math notranslate nohighlight">\(d_h\)</span>
+to 128. The KV compression dimension <span class="math notranslate nohighlight">\(d_c\)</span> is set to 512, and the query compression dimension
+<span class="math notranslate nohighlight">\(d_{c}'\)</span> is set to 1536. For the decoupled queries and key, we set the per-head dimension <span class="math notranslate nohighlight">\(d_{h}^{R}\)</span> to 64. We substitute all FFNs except for the first layer with MoE layers.
+Each MoE layer consists of 2 shared experts and 160 routed experts, where the intermediate
+hidden dimension of each expert is 1536. Among the routed experts, 6 experts will be activated
+for each token. Under this configuration, DeepSeek-V2 comprises 236B total
+parameters, of which 21B are activated for each token.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">#</span><span class="w"> </span><span class="err">DeepSeek</span><span class="mi">-</span><span class="err">V</span><span class="mi">2</span><span class="err">/co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;vocab_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102400</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;hidden_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5120</span><span class="p">,</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nt">&quot;num_attention_heads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;qk_nope_head_dim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;v_head_dim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kv_lora_rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;q_lora_rank&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;qk_rope_head_dim&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+
+<span class="w">    </span><span class="nt">&quot;first_k_dense_replace&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;intermediate_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12288</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n_shared_experts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n_routed_experts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;moe_intermediate_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;num_experts_per_tok&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now Let’s calculate the number of parameters of DeepSeek-V2 step by step:</p>
+<ol class="arabic simple">
+<li><p>Embedding and UnEmbedding: 1048576000</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeepseekV2Model</span><span class="p">(</span><span class="n">DeepseekV2PreTrainedModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">DeepseekV2Config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="c1"># 102400 * 5120</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_tokens</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_idx</span>
+        <span class="p">)</span>
+        
+<span class="k">class</span> <span class="nc">DeepseekV2ForCausalLM</span><span class="p">(</span><span class="n">DeepseekV2PreTrainedModel</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="c1"># 5120 * 102400</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lm_head</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>MLA: 149225472 per layer (omit RMSNorm weight etc.)</p></li>
+</ol>
+<figure class="align-default" id="mla-3">
+<a class="reference internal image-reference" href="../_images/mla-3x.svg"><img alt="../_images/mla-3x.svg" height="600px" src="../_images/mla-3x.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Multi-head Latent Attention.</span><a class="headerlink" href="#mla-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeepseekV2Attention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">DeepseekV2Config</span><span class="p">,</span> <span class="n">layer_idx</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">num_attention_heads</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_lora_rank</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qk_rope_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_rope_head_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_lora_rank</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">v_head_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qk_nope_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_nope_head_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_head_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_nope_head_dim</span> <span class="o">+</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_rope_head_dim</span>
+
+        <span class="c1"># 5120 * 1536</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_a_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">attention_bias</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_a_layernorm</span> <span class="o">=</span> <span class="n">DeepseekV2RMSNorm</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span><span class="p">)</span>
+        <span class="c1"># 1536 * 128 * (128 + 64)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">q_b_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">q_lora_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_head_dim</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 5120 * (512 + 64)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_a_proj_with_mqa</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span> <span class="o">+</span> <span class="n">config</span><span class="o">.</span><span class="n">qk_rope_head_dim</span><span class="p">,</span>
+            <span class="n">bias</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">attention_bias</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_a_layernorm</span> <span class="o">=</span> <span class="n">DeepseekV2RMSNorm</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span><span class="p">)</span>
+        <span class="c1"># 512 * 128 * (128 + 128)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kv_b_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">kv_lora_rank</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span>
+            <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q_head_dim</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">qk_rope_head_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_head_dim</span><span class="p">),</span>
+            <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 128 * 128 * 5120</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">o_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_head_dim</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span>
+            <span class="n">bias</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">attention_bias</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>MOE:</p>
+<ul class="simple">
+<li><p>first layer: 188743680</p></li>
+<li><p>other layer total parameters: 3822059520</p></li>
+<li><p>other layer activated parameters: 188743680</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DeepseekV2MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">intermediate_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span> <span class="k">if</span> <span class="n">hidden_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">config</span><span class="o">.</span><span class="n">intermediate_size</span> <span class="k">if</span> <span class="n">intermediate_size</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">intermediate_size</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 5120 * intermediate_size * 3</span>
+        <span class="c1"># intermediate_size = 12288 if layer_idx=0 else 1536</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gate_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">down_proj</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intermediate_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Conclude our calculation:</p>
+<ul class="simple">
+<li><p>total parameters: 235692359680</p></li>
+<li><p>activated parameters: 21326725120</p></li>
+</ul>
+</section>
+<section id="evaluation-results">
+<h3>Evaluation Results<a class="headerlink" href="#evaluation-results" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/deepseek-v2-bench1.png" src="../_images/deepseek-v2-bench1.png" />
+</figure>
+</section>
+</section>
+<section id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h2>
+<section id="supervised-fine-tuning">
+<h3>Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Link to this heading">#</a></h3>
+<p>We curate our instruction tuning datasets
+to include 1.5M instances, comprising 1.2M instances for helpfulness and 0.3M instances for
+safety. In comparison to the initial version, we improve the data quality to mitigate hallucinatory
+responses and enhance writing proficiency.</p>
+<p>We fine-tune DeepSeek-V2 with 2 epochs, and
+the learning rate is set to 5 × 10−6.</p>
+</section>
+<section id="reinforcement-learning">
+<h3>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h3>
+<p>In order to further unlock the potential of DeepSeek-V2 and align it with human preference, we
+conduct Reinforcement Learning (RL) to adjust its preference.</p>
+<p><strong>Reinforcement Learning Algorithm.</strong> <a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">Group Relative Policy Optimization</span></a></p>
+<p><strong>Training Strategy.</strong> In our preliminary experiments, we find that the RL training on reasoning
+data, such as code and math prompts, exhibits unique characteristics that are distinct from the
+training on general data. For example, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">mathematical</span> <span class="pre">and</span> <span class="pre">coding</span> <span class="pre">abilities</span> <span class="pre">of</span> <span class="pre">our</span> <span class="pre">model</span> <span class="pre">can</span> <span class="pre">keep</span> <span class="pre">improving</span> <span class="pre">over</span> <span class="pre">a</span> <span class="pre">longer</span> <span class="pre">period</span> <span class="pre">of</span> <span class="pre">training</span> <span class="pre">steps</span></code>. Therefore, we employ a two-stage RL
+training strategy, which first performs reasoning alignment, and then performs human preference
+alignment. In the first reasoning alignment stage, we train a reward model <span class="math notranslate nohighlight">\(RM_{reasoning}\)</span> for
+code and math reasoning tasks, and optimize the policy model with the feedback of <span class="math notranslate nohighlight">\(RM_{reasoning}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[r_{i} = RM_{reasoning}(o_{i}).\]</div>
+<p>In the second human preference alignment stage, we adopt a multi-reward framework, which
+acquires rewards from a helpful reward model <span class="math notranslate nohighlight">\(RM_{helpful}\)</span> , a safety reward model <span class="math notranslate nohighlight">\(RM_{safety}\)</span>, and a
+rule-based reward model <span class="math notranslate nohighlight">\(RM_{rule}\)</span>. The final reward of a response <span class="math notranslate nohighlight">\(o_{i}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[r_{i} = c_{1}\cdot RM_{helpful}(o_{i}) + c_{2}\cdot RM_{safety}(o_{i}) + c_{3}\cdot RM_{rule}(o_{i}).\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In order to obtain reliable reward models that play crucial roles in the RL training, we
+carefully collect preference data, and meticulously conduct <code class="docutils literal notranslate"><span class="pre">quality</span> <span class="pre">filtering</span></code> and <code class="docutils literal notranslate"><span class="pre">proportion</span> <span class="pre">adjustments</span></code>. We obtain code preference data based on <code class="docutils literal notranslate"><span class="pre">compiler-feedback</span></code>, and mathematical
+preference data based on the ground-truth labels. For reward model training, we initialize
+the reward models with DeepSeek-V2 Chat (SFT) and train them with either a point-wise or
+a pair-wise loss.</p>
+</div>
+</section>
+<section id="id3">
+<h3>Evaluation Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/deepseek-v2-bench2.png" src="../_images/deepseek-v2-bench2.png" />
+</figure>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
+<p><strong>Amount of SFT Data.</strong> The discussion surrounding the necessity of a large SFT corpus has been
+a topic of intense debate. Previous works argue that fewer
+than 10K instances of SFT data are enough to produce satisfactory results. However, in our
+experiments, we observe a significant performance decline on the IFEval benchmark if we use
+fewer than 10K instances. Moreover, the quality
+of SFT data is also crucial.</p>
+<p><strong>Online Reinforcement Learning.</strong> In our preference alignment experiments, we find that the
+online approach significantly outperforms the offline approach. Therefore, we invest tremendous
+efforts in implementing an online RL framework for aligning DeepSeek-V2. The conclusion
+about online or offline preference alignment can vary in different contexts, and we reserve a
+more thorough comparison and analysis between them for future work.</p>
+</section>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SFT:</p>
+<ul class="simple">
+<li><p>enough data needed</p></li>
+</ul>
+<p>RM:</p>
+<ul class="simple">
+<li><p>first performs reasoning alignment</p></li>
+<li><p>then performs human preference alignment</p></li>
+<li><p>obtain code preference data based on compiler-feedback, and mathematical preference data based on the ground-truth labels</p></li>
+</ul>
+<p>RL:</p>
+<ul class="simple">
+<li><p>online &gt; offline</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="qwen25-coder.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Qwen2.5-Coder</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="deepseek-coder-v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DeepSeek-Coder-V2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-construction">Data Construction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameters">Hyper-Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-results">Evaluation Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

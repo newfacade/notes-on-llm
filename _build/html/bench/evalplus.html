@@ -1,0 +1,704 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>EvalPlus &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bench/evalplus';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LiveCodeBench" href="livecodebench.html" />
+    <link rel="prev" title="MBPP" href="mbpp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Benchmarks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mbpp.html">MBPP</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbench/evalplus.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/bench/evalplus.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>EvalPlus</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-correctness-evaluation-humaneval-or-mbpp">Code Correctness Evaluation: HumanEval(+) or MBPP(+)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">本地 Evaluate</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="evalplus">
+<h1>EvalPlus<a class="headerlink" href="#evalplus" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>EvalPlus<span id="id1">[<a class="reference internal" href="../reference.html#id35" title="Jiawei Liu, Chunqiu Steven Xia, Yuyao Wang, and Lingming Zhang. Is your code generated by chatGPT really correct? rigorous evaluation of large language models for code generation. In Thirty-seventh Conference on Neural Information Processing Systems. 2023. URL: https://openreview.net/forum?id=1qvx610Cu7.">LXWZ23</a>]</span> is a rigorous evaluation framework for LLM4Code, with:</p>
+<ul class="simple">
+<li><p>✨ HumanEval+: 80x more tests than the original HumanEval!</p></li>
+<li><p>✨ MBPP+: 35x more tests than the original MBPP!</p></li>
+</ul>
+</div>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<section id="code-correctness-evaluation-humaneval-or-mbpp">
+<h3>Code Correctness Evaluation: HumanEval(+) or MBPP(+)<a class="headerlink" href="#code-correctness-evaluation-humaneval-or-mbpp" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span><span class="s2">&quot;evalplus[vllm] @ git+https://github.com/evalplus/evalplus&quot;</span>
+<span class="c1"># Or `pip install &quot;evalplus[vllm]&quot; --upgrade` for the latest stable release</span>
+
+evalplus.evaluate<span class="w"> </span>--model<span class="w"> </span><span class="s2">&quot;ise-uiuc/Magicoder-S-DS-6.7B&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                  </span>--dataset<span class="w"> </span><span class="o">[</span>humaneval<span class="p">|</span>mbpp<span class="o">]</span><span class="w">             </span><span class="se">\</span>
+<span class="w">                  </span>--backend<span class="w"> </span>vllm<span class="w">                         </span><span class="se">\</span>
+<span class="w">                  </span>--greedy
+</pre></div>
+</div>
+<p><strong>Question:</strong> <code class="docutils literal notranslate"><span class="pre">evalplus.evaluate</span></code> 究竟调用的是什么函数？</p>
+<p><strong>Answer:</strong> 在 setup.cfg 文件中有如下配置：</p>
+<div class="highlight-haproxy notranslate"><div class="highlight"><pre><span></span>[options.entry_points]
+console_scripts =
+    evalplus.evaluate = evalplus.evaluate:main
+    evalplus.inputgen = evalplus.inputgen:main
+    evalplus.sanitize = evalplus.sanitize:main
+    evalplus.syncheck = evalplus.syncheck:main
+    evalplus.codegen  = evalplus.codegen:main
+    evalplus.evalperf = evalplus.evalperf:main
+</pre></div>
+</div>
+<p>所以入口是 evalplus/evaluate.py 中的 <code class="docutils literal notranslate"><span class="pre">main</span></code> 函数。</p>
+<p><strong>Question:</strong> 在 evalplus/evaluate.py 中：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">fire</span> <span class="kn">import</span> <span class="n">Fire</span>
+
+    <span class="n">Fire</span><span class="p">(</span><span class="n">evaluate</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>这里 Fire(evaluate) 有什么用，为什么不直接调用 evaluate 函数呢?</p>
+<p><strong>Answer:</strong> <code class="docutils literal notranslate"><span class="pre">Fire(evaluate)</span></code> 是使用 Google 的 fire 库 将 <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> 函数快速转换为命令行接口（CLI）的核心机制。当运行脚本时：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>evalplus.evaluate<span class="w"> </span>--model<span class="w"> </span><span class="s2">&quot;ise-uiuc/Magicoder-S-DS-6.7B&quot;</span><span class="w"> </span>--dataset<span class="w"> </span>humaneval<span class="w"> </span>--backend<span class="w"> </span>vllm<span class="w"> </span>--greedy
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fire</span></code> 解析命令行参数，匹配 <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> 函数的参数列表。</p></li>
+<li><p>将参数值转换为正确的类型（例如字符串、布尔值等）。</p></li>
+<li><p>调用 <code class="docutils literal notranslate"><span class="pre">evaluate(**parsed_args)</span></code>，传入解析后的参数。</p></li>
+</ol>
+</section>
+</section>
+<section id="evaluate">
+<h2>本地 Evaluate<a class="headerlink" href="#evaluate" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:evalplus/evalplus.git
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>evalplus
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>下载 HumanEvalPlus 和 MbppPlus 文件，分别来自 <code class="docutils literal notranslate"><span class="pre">evalplus/humanevalplus_release</span></code> 和 <code class="docutils literal notranslate"><span class="pre">evalplus/mbppplus_release</span></code>.</p></li>
+<li><p>把 HumanEvalPlus.jsonl 放入用户主目录下的 .cache/evalplus，并将其重命名为 HumanEvalPlus-v0.1.10.jsonl；类似地，把 MbppPlus.jsonl 文件放入此目录并重命名为 MbppPlus-v0.2.0.jsonl</p></li>
+<li><p>获取模型的 response，需加上 instruction_prefix：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instruction_prefix</span> <span class="o">=</span> <span class="s2">&quot;Please provide a self-contained Python script that solves the following problem in a markdown code block:&quot;</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instruction_prefix</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">```python</span><span class="se">\n</span><span class="si">{</span><span class="n">prompt</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">```&quot;</span>
+</pre></div>
+</div>
+<p>输出文件 xx.jsonl 需 <code class="docutils literal notranslate"><span class="pre">task_id</span></code> 和 <code class="docutils literal notranslate"><span class="pre">solution</span></code>（即 response）两个字段</p>
+</li>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>evalplus.sanitize<span class="w"> </span>--samples<span class="w"> </span>xx.jsonl
+</pre></div>
+</div>
+</li>
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>evalplus.evaluate<span class="w"> </span>--samples<span class="w"> </span>xx-sanitized.jsonl
+<span class="w">                  </span>--dataset<span class="w"> </span><span class="o">[</span>humaneval<span class="p">|</span>mbpp<span class="o">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./bench"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mbpp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MBPP</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="livecodebench.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LiveCodeBench</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-correctness-evaluation-humaneval-or-mbpp">Code Correctness Evaluation: HumanEval(+) or MBPP(+)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">本地 Evaluate</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

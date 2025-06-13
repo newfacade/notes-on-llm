@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>AlphaCodium &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'models/alphacodium';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodels/alphacodium.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/models/alphacodium.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AlphaCodium</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-proposed-flow">The Proposed Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-stages">Flow stages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-insights">Additional insights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-oriented-design-concepts">Code-Oriented Design Concepts</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="alphacodium">
+<h1>AlphaCodium<a class="headerlink" href="#alphacodium" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With a sparse reward signal, code generation tasks require
+searching in the huge structured space of possible programs.
+Correct solutions to the same problem can look significantly
+different, and judging if a partial or incorrect solution
+is useful is a difficult challenge - a single-character
+edit can completely alter the solution’s behavior. Due to the
+unique nature of code generation tasks, common prompting
+techniques that have been optimized for natural language
+tasks, may not be as effective when applied to
+code generation.</p>
+</div>
+<section id="the-proposed-flow">
+<h2>The Proposed Flow<a class="headerlink" href="#the-proposed-flow" title="Link to this heading">#</a></h2>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p>In this paper, we present AlphaCodium, a code-oriented
+flow. The proposed
+flow, is divided into
+two main phases: a pre-processing phase where we reason
+about the problem in natural language, and an iterative code
+generation phase where we generate, run, and fix a code
+solution against public and AI-generated tests.</p>
+<p><img alt="" src="../_images/alphacodium1.png" /></p>
+</section>
+<section id="flow-stages">
+<h3>Flow stages<a class="headerlink" href="#flow-stages" title="Link to this heading">#</a></h3>
+<p><strong>Problem reflection:</strong> Describe the problem, in bullet
+points, while addressing the problem goal, inputs, outputs,
+rules, constraints, and other relevant details that appear in
+the problem description.</p>
+<p><img alt="" src="../_images/alphacodium2.png" /></p>
+<p><strong>Public tests reasoning:</strong> Explain why each test input leads
+to the output.</p>
+<p><strong>Generate possible solutions:</strong> Generate a list of 2-3 possible
+solutions to the problem, described in <code class="docutils literal notranslate"><span class="pre">natural</span> <span class="pre">language</span></code>.</p>
+<p><strong>Rank solutions:</strong> Rank the possible solutions and choose
+the “best solution”, in terms of correctness, simplicity, and
+robustness.</p>
+<p><strong>Generate additional AI tests:</strong> Generate an additional 6-
+8 diverse input-output tests for the problem. Try to cover
+cases and aspects not covered by the original public tests.</p>
+<p><strong>Initial code solution:</strong> The goal of this stage is to generate
+an initial code solution to the problem. It is essential that
+this code will reasonably ”close” to the correct code, so the run-fix iterations in the next stages will have a better chance
+of succeeding. The stage flow:</p>
+<ul class="simple">
+<li><p>Choose a potential solution. Generate a corresponding code, and run it on selected public and AI tests.</p></li>
+<li><p>Repeat this process until the tests pass, or until a trylimit is reached.</p></li>
+<li><p>The first code that passes the tests, or the code with the closest output, will be used as the base code for the next steps.</p></li>
+</ul>
+<p><strong>Iterate on public tests:</strong> Start from the base code. Iteratively
+run it on the public tests. If the code fails on a specific
+test, try to fix it, given the error message.</p>
+<p><strong>Iterate on AI-generated Tests:</strong> Continue the run-fix iterations
+on the AI-generated tests. Use “test anchors”.</p>
+</section>
+<section id="additional-insights">
+<h3>Additional insights<a class="headerlink" href="#additional-insights" title="Link to this heading">#</a></h3>
+<p>Firstly, the flow relies on knowledge accumulation - trying
+to progress from easy to hard, gaining knowledge and
+insight along the way to help with the more difficult stages.
+For example, the output of the first step, problem reflection,
+can be utilized as prompt input to more difficult steps like
+generate possible solutions.</p>
+<p>Another key observation in designing AlphaCodium is
+that for AI, generating more tests is easier than generating
+a full solution code. Generating additional tests requires
+mainly understanding the problem and basic brute-force or
+logical reasoning. This is in contrast to generating a correct solution
+code, which requires a complete algorithmic solution,
+equivalent to correctly solving any possible pair of inputoutput
+tests. As a result, we can generate more AI tests, and
+then leverage them to improve the code creation phase.</p>
+<p><img alt="" src="../_images/alphacodium3.png" /></p>
+<p>Also note that some steps can be combined into a single
+LLM call. In practice,
+structured output enables to combine
+multiple stages into a single LLM call, in order to save resources,
+or because a model performs better when doing
+specific tasks concurrently.</p>
+</section>
+</section>
+<section id="code-oriented-design-concepts">
+<h2>Code-Oriented Design Concepts<a class="headerlink" href="#code-oriented-design-concepts" title="Link to this heading">#</a></h2>
+<p>Now we will present additional design concepts,
+tricks, and best practices we found beneficial when
+trying to solve code generation problems. AlphaCodium flow extensively uses these design concepts.</p>
+<ul class="simple">
+<li><p>YAML Structured output.</p></li>
+<li><p>Semantic reasoning via bullet points analysis.</p></li>
+<li><p>LLMs do better when generating a modular code: when LLMs are asked to generate a single lengthy function, we observed poor results - the code often contains bugs or logical mistakes. When clearly asking the model to: “divide
+the generated code into small sub-functions, with meaningful
+names and functionality”, we observe a better-produced
+code, with fewer bugs, and higher success rates for the iterative
+fixing stages.</p></li>
+<li><p>Soft decisions with double validation: Quite often, some of the tests the model generates will
+be plain wrong. With a double validation process, we add
+an extra step where, given the generated output, the model
+is asked to re-generate the same output, but correct it if
+needed.</p></li>
+<li><p>Postpone decisions, try to avoid direct questions, and
+leave room for exploration.</p></li>
+<li><p>Test anchors.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-proposed-flow">The Proposed Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-stages">Flow stages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-insights">Additional insights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-oriented-design-concepts">Code-Oriented Design Concepts</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Weak to Strong Generalization &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'methodology/weak-to-strong';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmethodology/weak-to-strong.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/methodology/weak-to-strong.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Weak to Strong Generalization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="weak-to-strong-generalization">
+<h1>Weak to Strong Generalization<a class="headerlink" href="#weak-to-strong-generalization" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Widely used alignment techniques, such as reinforcement learning from human
+feedback (RLHF), rely on the ability of humans to supervise model behavior. However, future superhuman models will behave in complex ways
+too difficult for humans to reliably evaluate; humans will only be able to weakly
+supervise superhuman models.<br>
+We study an analogy to this problem: can weak
+model supervision elicit the full capabilities of a much stronger model? We find that when
+we naively finetune strong pretrained models on labels generated by a weak model,
+they consistently perform better than their weak supervisors, a phenomenon we
+call weak-to-strong generalization.</p>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>We mainly steer or align today’s models with reinforcement learning from human feedback (RLHF):
+we reinforce behaviors that human evaluators rate highly and penalize behaviors that evaluators rate
+poorly. This procedure is very effective when human evaluators can tell if model behavior is
+good or bad and is a core part of training modern language model assistants such as ChatGPT.</p>
+<p>However, superhuman models will be capable of complex and creative behaviors that humans cannot
+fully understand. For example, if a superhuman assistant model generates a million lines of extremely
+complicated code, humans will not be able to provide reliable supervision for key alignmentrelevant
+tasks. As a result, if we finetune a superhuman model with human supervision on a reward modeling
+(RM) or safety classification task, it is unclear how that model will generalize to complicated
+behaviors that humans could not reliably supervise themselves.</p>
+<p>This leads to a fundamental technical challenge of aligning superhuman models (superalignment):
+how can weak supervisors control models much smarter than them?</p>
+<p><img alt="" src="../_images/weak-to-strong1.png" /></p>
+<p>We propose a simple setup for studying the problem of humans supervising superhuman models by
+considering an analogy: can we use weak models to supervise strong models? We can empirically
+test this by finetuning large (strong) pretrained models on labels generated by small (weak) models
+and observing how they generalize.</p>
+<p>Why should weak-to-strong learning be possible? On the one hand, the strong model could simply
+learn to imitate the weak supervisor, including its errors, since that is what we would naively train
+it to do. On the other hand, strong pretrained models should already have good representations of
+the alignment-relevant tasks we care about. For example, if a model can generate complicated code,
+then it should intuitively also know whether that code faithfully adheres to the user’s instructions.
+As a result, for the purposes of alignment we do not need the weak supervisor to teach the strong
+model new capabilities; instead, we simply need the weak supervisor to elicit what the strong model
+already knows.</p>
+<p>We study our weak-to-strong learning setup by finetuning base (i.e. pretrained-only)
+language models from the GPT-4 family, spanning 7 orders of magnitude of pretraining compute, across three settings: a large set of popular natural language processing
+(NLP) benchmarks, chess puzzles, and our internal ChatGPT reward modeling dataset.</p>
+<p><img alt="" src="../_images/weak-to-strong2.png" /></p>
+<p>Our main findings include:</p>
+<ol class="arabic simple">
+<li><p><strong>Strong pretrained models naturally generalize beyond their weak supervisors.</strong> If we naively finetune strong models with labels generated by weak models, they consistently outperform their weak supervisors. For example, on NLP tasks, if we finetune
+GPT-4 with labels from a GPT-2-level model, we typically recover about half of the
+performance gap between the two models.</p></li>
+<li><p><strong>Naively finetuning on weak supervison is not enough.</strong> Despite positive weak-to-strong
+generalization, there still remains a substantial gap between strong models finetuned with
+weak supervision and strong models finetuned with ground truth supervision. Our
+results provide empirical evidence that naive RLHF will likely scale poorly to superhuman
+models without additional work.</p></li>
+<li><p><strong>Improving weak-to-strong generalization is tractable.</strong> We find that we can improve performance
+by encouraging strong models to have confident predictions with an auxiliary
+loss, bootstrapping supervision with intermediate models, and improving model representations
+with unsupervised finetuning. For example, when supervising GPT-4 with a GPT-2-
+level model on NLP tasks using the auxiliary confidence loss, we typically recover nearly
+80% of the performance gap between the weak and strong models.</p></li>
+</ol>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h2>
+<p>For a given task of interest, consisting of a dataset and a performance metric, we:</p>
+<ol class="arabic simple">
+<li><p><strong>Create the weak supervisor.</strong></p></li>
+<li><p><strong>Train a strong student model with weak supervision.</strong></p></li>
+<li><p><strong>Train a strong model with ground truth labels as a ceiling.</strong></p></li>
+</ol>
+<p>Typically, weak-to-strong performance will be between weak performance and strong ceiling performance.
+We define the performance gap recovered (PGR) as a function of the above three
+performances (weak, weak-to-strong, and strong ceiling) as shown in the illustration below.</p>
+<p><img alt="" src="../_images/weak-to-strong3.png" /></p>
+<p><strong>Advantages.</strong> Our setup has a number of advantages, including:</p>
+<ol class="arabic simple">
+<li><p>It can be studied with any pair of weak and strong models, making it easy to study scaling
+laws and not requiring access to expensive state-of-the-art models.</p></li>
+<li><p>It can be studied for any task of interest, making it easy to empirically test across a wide
+range of settings.</p></li>
+<li><p>Success will be practically useful even before we develop superhuman models.</p></li>
+</ol>
+<p><strong>Limitations.</strong> Our setup still has important disanalogies to the ultimate problem of aligning superhuman
+models:</p>
+<ol class="arabic simple">
+<li><p><strong>Imitation saliency (模仿显著性).</strong> Future superhuman models will likely have salient representations
+of human behaviors, but our strong models may not have learned features relevant for
+imitating weak model predictions; simply imitating the weak supervisor may thus be an
+easier failure mode to avoid in our setting than it will be in the future. More generally, the
+types of errors weak models make today may be different from the types of errors humans
+will make when attempting to supervise superhuman models.</p></li>
+<li><p><strong>Pretraining leakage.</strong> Our pretraining data implicitly contains supervision from humans.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./methodology"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

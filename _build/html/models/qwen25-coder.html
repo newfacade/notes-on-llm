@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Qwen2.5-Coder &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'models/qwen25-coder';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DeepSeek-V2" href="deepseek-v2.html" />
+    <link rel="prev" title="Qwen 2.5" href="qwen25.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodels/qwen25-coder.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/models/qwen25-coder.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Qwen2.5-Coder</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-composition">Data Composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mixture">Data Mixture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-policy">Training Policy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-recipe-for-instruction-data">A Recipe for Instruction Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Training Policy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-models">Base Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruct-models">Instruct Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="qwen2-5-coder">
+<h1>Qwen2.5-Coder<a class="headerlink" href="#qwen2-5-coder" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Qwen2.5-Coder<span id="id1">[<a class="reference internal" href="../reference.html#id17" title="Binyuan Hui, Jian Yang, Zeyu Cui, Jiaxi Yang, Dayiheng Liu, Lei Zhang, Tianyu Liu, Jiajun Zhang, Bowen Yu, Keming Lu, Kai Dang, Yang Fan, Yichang Zhang, An Yang, Rui Men, Fei Huang, Bo Zheng, Yibo Miao, Shanghaoran Quan, Yunlong Feng, Xingzhang Ren, Xuancheng Ren, Jingren Zhou, and Junyang Lin. Qwen2.5-coder technical report. 2024. URL: https://arxiv.org/abs/2409.12186, arXiv:2409.12186.">HYC+24</a>]</span> is built upon the Qwen2.5<span id="id2">[<a class="reference internal" href="../reference.html#id16" title="Qwen, :, An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu, Fei Huang, Haoran Wei, Huan Lin, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jingren Zhou, Junyang Lin, Kai Dang, Keming Lu, Keqin Bao, Kexin Yang, Le Yu, Mei Li, Mingfeng Xue, Pei Zhang, Qin Zhu, Rui Men, Runji Lin, Tianhao Li, Tianyi Tang, Tingyu Xia, Xingzhang Ren, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yu Wan, Yuqiong Liu, Zeyu Cui, Zhenru Zhang, and Zihan Qiu. Qwen2.5 technical report. 2025. URL: https://arxiv.org/abs/2412.15115, arXiv:2412.15115.">QY+25</a>]</span> architecture and continues pretrained
+on a vast corpus of over 5.5 trillion tokens. Through meticulous
+data cleaning, scalable synthetic data generation, and balanced data mixing,
+Qwen2.5-Coder demonstrates impressive code generation capabilities
+while retaining general and math skills.</p>
+</div>
+<section id="pre-training">
+<h2>Pre-training<a class="headerlink" href="#pre-training" title="Link to this heading">#</a></h2>
+<section id="data-composition">
+<h3>Data Composition<a class="headerlink" href="#data-composition" title="Link to this heading">#</a></h3>
+<p><strong>Source Code</strong> We collected public repositories from GitHub created before February 2024,
+spanning 92 programming languages.</p>
+<p><strong>Text-Code Grounding Data</strong> We curated a large-scale and high-quality text-code mixed
+dataset from Common Crawl, which includes code-related documentation, tutorials, blogs,
+and more.</p>
+<p><strong>Synthetic Data</strong> Synthetic data offers a promising way to address the anticipated scarcity
+of training data. We used CodeQwen1.5, the predecessor of Qwen2.5-Coder, to generate
+large-scale synthetic datasets. To mitigate the risk of hallucinations during this process, we
+introduced an executor for validation, ensuring that <code class="docutils literal notranslate"><span class="pre">only</span> <span class="pre">executable</span> <span class="pre">code</span> <span class="pre">was</span> <span class="pre">retained</span></code>.</p>
+<p><strong>Math Data</strong> To enhance the mathematical capabilities of Qwen2.5-Coder, we integrated
+the pre-training corpus from Qwen2.5-Math<span id="id3">[<a class="reference internal" href="../reference.html#id18" title="An Yang, Beichen Zhang, Binyuan Hui, Bofei Gao, Bowen Yu, Chengpeng Li, Dayiheng Liu, Jianhong Tu, Jingren Zhou, Junyang Lin, Keming Lu, Mingfeng Xue, Runji Lin, Tianyu Liu, Xingzhang Ren, and Zhenru Zhang. Qwen2.5-math technical report: toward mathematical expert model via self-improvement. 2024. URL: https://arxiv.org/abs/2409.12122, arXiv:2409.12122.">YZH+24</a>]</span> into the Qwen2.5-Coder dataset. Importantly,
+the inclusion of mathematical data did not negatively impact the model’s performance on
+code tasks.</p>
+<p><strong>Text Data</strong> Similar to the Math Data, we included high-quality general natural language
+data from the pre-training corpus of the Qwen2.5 model to preserve Qwen2.5-Coder’s
+general capabilities.</p>
+</section>
+<section id="data-mixture">
+<h3>Data Mixture<a class="headerlink" href="#data-mixture" title="Link to this heading">#</a></h3>
+<p>Balancing Code, Math, and Text data is crucial for building a foundational model. Interestingly, we found that the 7:2:1 ratio outperformed the others, even surpassing the
+performance of groups with a higher proportion of code.</p>
+<figure class="align-default">
+<img alt="../_images/qwen25-coder-1.png" src="../_images/qwen25-coder-1.png" />
+</figure>
+</section>
+<section id="training-policy">
+<h3>Training Policy<a class="headerlink" href="#training-policy" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/qwen25-coder-2.png" src="../_images/qwen25-coder-2.png" />
+</figure>
+<p>We employed a three-stage training approach to train Qwen2.5-Coder,
+including file-level pretraining, repo-level pretraining, and instruction tuning.</p>
+</section>
+</section>
+<section id="post-training">
+<h2>Post-training<a class="headerlink" href="#post-training" title="Link to this heading">#</a></h2>
+<section id="a-recipe-for-instruction-data">
+<h3>A Recipe for Instruction Data<a class="headerlink" href="#a-recipe-for-instruction-data" title="Link to this heading">#</a></h3>
+<p><strong>Multilingual Programming Code Identification</strong> We fine-tune a CodeBERT to perform the language identification model to categorize documents into nearly 100
+programming languages. We keep the instruction data of the mainstream programming
+languages and randomly discard a portion of the instruction data of the long-tail languages.
+If a given sample contains very little code data or even no code snippets, the sample will
+possibly be classified into “No Programming Language” tag. Since too many instruction
+samples without code snippets hurt the model performance on code generation tasks, we remove most of the samples without code snippets to
+keep the code generation capability of our instruction model.</p>
+<p><strong>Instruction Synthesis from GitHub</strong> For the unsupervised data (code snippets) massively
+existing in many websites (e.g. GitHub), we try to construct the supervised instruction
+dataset using LLM. Specifically, we use the LLM to generate the instruction from the code
+snippets within 1024 tokens and then we use the code LLM to generate the response (Magicoder<span id="id4">[<a class="reference internal" href="../reference.html#id29" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>, Unicoder<span id="id5">[<a class="reference internal" href="../reference.html#id25" title="Tao Sun, Linzheng Chai, Jian Yang, Yuwei Yin, Hongcheng Guo, Jiaheng Liu, Bing Wang, Liqun Yang, and Zhoujun Li. Unicoder: scaling code large language model via universal code. 2024. URL: https://arxiv.org/abs/2406.16441, arXiv:2406.16441.">SCY+24</a>]</span>, Wavecoder<span id="id6">[<a class="reference internal" href="../reference.html#id26" title="Zhaojian Yu, Xin Zhang, Ning Shang, Yangyu Huang, Can Xu, Yishujie Zhao, Wenxiang Hu, and Qiufeng Yin. Wavecoder: widespread and versatile enhancement for code large language models by instruction tuning. 2024. URL: https://arxiv.org/abs/2312.14187, arXiv:2312.14187.">YZS+24</a>]</span>). Finally, we use the LLM scorer to filter the
+low-quality ones to obtain the final pair. Given the code snippets of different programming
+languages, we construct an instruction dataset from the code snippets. To fully unleash the
+potential of our proposed method, we also include the open-source instruction dataset (e.g.
+McEval-Instruct<span id="id7">[<a class="reference internal" href="../reference.html#id27" title="Linzheng Chai, Shukai Liu, Jian Yang, Yuwei Yin, Ke Jin, Jiaheng Liu, Tao Sun, Ge Zhang, Changyu Ren, Hongcheng Guo, Zekun Wang, Boyang Wang, Xianjie Wu, Bing Wang, Tongliang Li, Liqun Yang, Sufeng Duan, and Zhoujun Li. Mceval: massively multilingual code evaluation. 2024. URL: https://arxiv.org/abs/2406.07436, arXiv:2406.07436.">CLY+24</a>]</span> for massively multilingual code generation and debugging) in the seed
+instruction dataset. Finally, we combine the instruction data from the GitHub code snippet
+and open-source instructions for supervised fine-tuning.</p>
+<p><strong>Multilingual Code Instruction Data</strong> To bridge the gap among different programming
+languages, we propose a multilingual multi-agent collaborative framework to synthesize
+the multilingual instruction corpora.</p>
+<p><strong>Checklist-based Scoring for Instruction Data</strong> To completely evaluate the quality of the
+created instruction pair, we introduce several scoring points for each sample:</p>
+<ol class="arabic simple">
+<li><p>Question&amp;Answer Consistency: Whether Q&amp;A are consistent and correct for fine-tuning.</p></li>
+<li><p>Question&amp;Answer Relevance: Whether Q&amp;A are related to the computer field.</p></li>
+<li><p>Question&amp;Answer Difficulty: Whether Q&amp;A are sufficiently challenging.</p></li>
+<li><p>Code Exist: Whether the code is provided in question or answer.</p></li>
+<li><p>Code Correctness: Evaluate whether the provided code is free from syntax errors and logical flaws.</p></li>
+<li><p>Consider factors like proper variable naming, code indentation, and adherence to best practices.</p></li>
+<li><p>Code Clarity: Assess how clear and understandable the code is.</p></li>
+<li><p>Code Comments: Evaluate the presence of comments and their usefulness in explaining the code’s functionality.</p></li>
+<li><p>Easy to Learn: determine its educational value for a student whose goal is to learn basic
+coding concepts.</p></li>
+</ol>
+<p>After gaining all scores <span class="math notranslate nohighlight">\((s_1, \dots, s_n)\)</span>, we can get the final score with
+<span class="math notranslate nohighlight">\(s = w_1 s_1 + \dots + w_n s_n\)</span>, where <span class="math notranslate nohighlight">\((w_1, \dots ,w_n)\)</span> are a series of pre-defined weights.</p>
+<p><strong>A multilingual sandbox for code verification</strong> Only the self-contained (e.g. algorithm problems) code snippet will be fed into the multilingual sandbox. The multilingual verification sandbox is mainly comprised of five parts:</p>
+<ol class="arabic simple">
+<li><p><strong>Language Support Module:</strong></p>
+<ul class="simple">
+<li><p>Implements support for multiple languages (e.g., Python, Java, C++, JavaScript)</p></li>
+<li><p>Maintains language-specific parsing and execution environments</p></li>
+<li><p>Handles syntax and semantic analysis for each supported language</p></li>
+</ul>
+</li>
+<li><p><strong>Sample Code Repository:</strong></p>
+<ul class="simple">
+<li><p>Stores a diverse collection of code samples for each supported language</p></li>
+<li><p>Organizes samples by language, difficulty level, and programming concepts</p></li>
+<li><p>Regularly updated and curated by language experts</p></li>
+</ul>
+</li>
+<li><p><strong>Unit Test Generator:</strong></p>
+<ul class="simple">
+<li><p>Analyzes sample code to identify key functionalities and edge cases</p></li>
+<li><p>Automatically generates unit tests based on the expected behavior</p></li>
+<li><p>Produces test cases covering various input scenarios and expected outputs</p></li>
+</ul>
+</li>
+<li><p><strong>Code Execution Engine:</strong></p>
+<ul class="simple">
+<li><p>Provides isolated environments for executing code snippets securely</p></li>
+<li><p>Supports parallel execution of multiple test cases</p></li>
+<li><p>Handles resource allocation and timeout mechanisms</p></li>
+</ul>
+</li>
+<li><p><strong>Result Analyzer:</strong></p>
+<ul class="simple">
+<li><p>Compares the output of code snippets against expected results from unit tests</p></li>
+<li><p>Generates detailed reports on test case successes and failures</p></li>
+<li><p>Provides suggestions for improvements based on failed test cases</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id8">
+<h3>Training Policy<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p><strong>Coarse-to-fine Fine-tuning</strong> We first synthesized tens of millions of low-quality but diverse
+instruction samples to fine-tune the base model. In the second stage, we adopt millions
+of high-quality instruction samples to improve the performance of the instruction model
+with rejection sampling and supervised fine-tuning. For the same query, we use the LLM
+to generate multiple candidates and then use the <code class="docutils literal notranslate"><span class="pre">LLM</span></code> to score the best one for supervised
+fine-tuning.</p>
+<p><strong>Mixed Tuning</strong> We
+optimize the instruction model with a majority of standard SFT data and a small part of
+FIM instruction samples.</p>
+<p><strong>Direct Preference Optimization for Code</strong> After obtaining the SFT model, we further align
+the Qwen2.5-Coder with the help of offline direct preference optimization (DPO). Given that human feedback is highly labor-intensive, we use a multilingual
+code sandbox to provide code execution feedback, while an LLM is utilized for human
+judgment feedback. For the <code class="docutils literal notranslate"><span class="pre">algorithm-like</span> <span class="pre">and</span> <span class="pre">self-contained</span> <span class="pre">code</span> <span class="pre">snippets</span></code>, we generate
+the test cases to check the correctness of the code as the code execution feedback, including
+Python, Java, and other languages. For other complex code snippets, we use <code class="docutils literal notranslate"><span class="pre">LLM-as-ajudge</span></code> to decide which code snippet is better. Further, we combine the
+code DPO data and common data for offline DPO training.</p>
+</section>
+</section>
+<section id="decontamination">
+<h2>Decontamination<a class="headerlink" href="#decontamination" title="Link to this heading">#</a></h2>
+<p>To ensure that Qwen2.5-Coder does not produce inflated results due to test set leakage,
+we performed decontamination on all data, including both pre-training and post-training
+datasets. We removed key datasets such as HumanEval, MBPP, GSM8K, and MATH. The
+filtering was done using a 10-gram overlap method, where any training data with a 10-gram
+word-level overlap with the test data was removed.</p>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<section id="base-models">
+<h3>Base Models<a class="headerlink" href="#base-models" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/qwen25-coder-3.png" src="../_images/qwen25-coder-3.png" />
+</figure>
+</section>
+<section id="instruct-models">
+<h3>Instruct Models<a class="headerlink" href="#instruct-models" title="Link to this heading">#</a></h3>
+<figure class="align-default">
+<img alt="../_images/qwen25-coder-4.png" src="../_images/qwen25-coder-4.png" />
+</figure>
+</section>
+</section>
+<section id="takeaway">
+<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recipe:</p>
+<ul class="simple">
+<li><p>Keep the instruction data of the mainstream programming languages and randomly discard a portion of the instruction data of the long-tail languages. Remove most of the samples without code snippets</p></li>
+<li><p>Instruction Synthesis using Magicoder, Unicoder and Wavecoder. GitHub code snippet and open-source instructions as the seed.</p></li>
+<li><p>Multilingual Code Instruction Data to bridge the gap among different programming languages.</p></li>
+<li><p>Checklist-based Scoring for Instruction Data, <span class="math notranslate nohighlight">\(s = w_1s_1 + \dots + w_ns_n\)</span></p></li>
+<li><p>A multilingual sandbox for code verification (organizes samples by language, difficulty level, and programming concepts)</p></li>
+<li><p>For the algorithm-like and self-contained code snippets, we generate the test cases to check the correctness of the code as the code execution feedback. For other complex code snippets, we use LLM-as-ajudge to decide which code snippet is better.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./models"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="qwen25.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Qwen 2.5</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="deepseek-v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DeepSeek-V2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-composition">Data Composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mixture">Data Mixture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-policy">Training Policy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-recipe-for-instruction-data">A Recipe for Instruction Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Training Policy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-models">Base Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruct-models">Instruct Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

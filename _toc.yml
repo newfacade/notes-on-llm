@@ -1,0 +1,89 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: base/0
+  sections:
+  - file: base/attention
+  - file: base/gpt
+  - file: base/gpt2
+  - file: base/gpt3
+  - file: base/instruct-gpt
+- file: models/0
+  sections:
+  - file: models/llama3
+  - file: models/llama3-source-code
+  - file: models/qwen3
+  - file: models/qwen25
+  - file: models/qwen25-coder
+  - file: models/deepseek-v2
+  - file: models/deepseek-coder-v2
+  - file: models/deepseek-v3
+  - file: models/seed-coder
+- file: techniques/0
+  sections:
+  - file: techniques/norm
+  - file: techniques/rope
+  - file: techniques/extending
+  - file: techniques/mla
+  - file: techniques/deepseek-moe
+- file: bench/0
+  sections:
+  - file: bench/humaneval
+  - file: bench/mbpp
+  - file: bench/evalplus
+  - file: bench/livecodebench
+  - file: bench/cruxeval
+  - file: bench/bigcodebench
+  - file: bench/swe
+  - file: bench/general
+  - file: bench/math-science
+  - file: bench/alignment
+- file: data/0
+  sections:
+  - file: data/apps
+  - file: data/taco
+  - file: data/alphacode
+  - file: data/self-instruct
+  - file: data/code-alpaca
+  - file: data/wizard
+  - file: data/magic
+  - file: data/unicoder
+  - file: data/opencoder
+- file: sft/0
+  sections:
+  - file: sft/rs
+  - file: sft/lima
+- file: preference/0
+  sections:
+  - file: preference/rlaif-1
+  - file: preference/rlaif-2
+  - file: preference/rlcd
+  - file: preference/west-of-n
+  - file: preference/ee
+  - file: preference/deepseek-grm
+  - file: preference/ppo
+  - file: preference/dpo
+  - file: preference/grpo
+  - file: preference/reinforce++
+  - file: preference/dapo
+- file: reasoning/0
+  sections:
+  - file: reasoning/cot
+  - file: reasoning/verify
+  - file: reasoning/self-correct-rl
+  - file: reasoning/deepseek-r1
+  - file: reasoning/s1
+  - file: reasoning/opencodereasoning
+- file: agent/0
+  sections:
+  - file: agent/software-survey
+  - file: agent/react
+  - file: agent/reflexion
+  - file: agent/code-act
+  - file: agent/agentless
+  - file: agent/swe-agent
+  - file: agent/swe-smith
+- file: reference

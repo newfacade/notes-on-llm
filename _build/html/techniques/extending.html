@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Extending context window of LLMs &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'techniques/extending';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multi-Head Latent Attention" href="mla.html" />
+    <link rel="prev" title="RoPE" href="rope.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rope.html">RoPE</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftechniques/extending.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/techniques/extending.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extending context window of LLMs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-rotary-position-embedding-rope">Background: Rotary Position Embedding (RoPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-interpolation">Position interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">高频外推低频内插</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yarn-efficient-contextwindow-extension-of-large-language-models">YaRN: Efficient ContextWindow Extension of Large Language Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-high-frequency-information-ntk-aware-interpolation">Loss of High Frequency information - “NTK-aware” interpolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-relative-local-distances-ntk-by-parts-interpolation">Loss of Relative Local Distances - “NTK-by-parts” interpolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-scaling-dynamic-ntk-interpolation">Dynamic Scaling - “Dynamic NTK” interpolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">YaRN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rope">RoPE 的远程衰减</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="extending-context-window-of-llms">
+<h1>Extending context window of LLMs<a class="headerlink" href="#extending-context-window-of-llms" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We present Position Interpolation (PI)<span id="id1">[]</span> that extends the context window sizes of
+RoPE<span id="id2">[<a class="reference internal" href="../reference.html#id24" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span>-based pretrained LLMs such as LLaMA<span id="id3">[]</span> models to up to 32768 with minimal fine-tuning (within 1000 steps), demonstrating strong empirical results on various tasks that require long context. Meanwhile, the extended model by Position Interpolation preserve quality relatively well on tasks within its original context window.</p>
+</div>
+<section id="background-rotary-position-embedding-rope">
+<h2>Background: Rotary Position Embedding (RoPE)<a class="headerlink" href="#background-rotary-position-embedding-rope" title="Link to this heading">#</a></h2>
+<p>Transformer models require explicit positional information to be injected, typically in the form of
+positional encodings, to represent the order of inputs. We consider Rotary Position Embedding, which is the position encoding used in the LLaMA model.</p>
+<p>Given a position index <span class="math notranslate nohighlight">\(m\in[0, c)\)</span> and an embedding vector <span class="math notranslate nohighlight">\(\mathbf{x} := [x_0, x_1, . . . , x_{d−1}]^{\intercal}\)</span>, where
+<span class="math notranslate nohighlight">\(d\)</span> is the dimension of the attention head, RoPE defines a vector-valued complex function <span class="math notranslate nohighlight">\(f(\mathbf{x}, m)\)</span> as
+follows</p>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{x}, m) = \left[(x_{0} + ix_{1})e^{im\theta_{0}}, (x_{2} + ix_{3})e^{im\theta_{1}},\dots,(x_{d-2} + ix_{d-1})e^{im\theta_{d/2-1}}\right]^{\intercal}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i:=\sqrt{-1}\)</span> is the imaginary unit and <span class="math notranslate nohighlight">\(\theta_{j}=10000^{-2j/d}\)</span>. Using RoPE, the self-attention score</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a(m,n) &amp;= \text{Re}\left \langle f(\mathbf{q}, m), f(\mathbf{k}, n)  \right \rangle \\
+&amp;= \text{Re}\left[\sum_{j=0}^{d/2-1}(q_{2j} + iq_{2j+1})(k_{2j} - ik_{2j+1})e^{i(m-n)\theta_{j}}\right]\\
+&amp;= \sum_{j=0}^{d/2-1}(q_{2j}k_{2j} + q_{2j+1}k_{2j+1})\cos((m-n)\theta_{j}) + (q_{2j}k_{2j+1} - q_{2j+1}k_{2j})\sin((m-n)\theta_{j})\\
+&amp;=: a(m-n)
+\end{aligned}
+\end{split}\]</div>
+<p>is only dependent on relative position <span class="math notranslate nohighlight">\(m− n\)</span> through trigonometric functions. Here <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> are the
+query and key vector for a specific attention head. At each layer, RoPE is applied on both query and
+key embeddings for computing attention scores.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><span class="math notranslate nohighlight">\(\left \langle x,y \right \rangle := x\bar{y}\quad \text{for }x,y\in\mathbb{C}\)</span> and write complex numbers in the polar coordinate system. Similarily:</p>
+<div class="math notranslate nohighlight">
+\[b(m,n) = \text{Im}\left \langle f(\mathbf{q}, m), f(\mathbf{k}, n)  \right \rangle =: b(m-n)\]</div>
+</div>
+</section>
+<section id="position-interpolation">
+<h2>Position interpolation<a class="headerlink" href="#position-interpolation" title="Link to this heading">#</a></h2>
+<p>Large language models (LLMs) typically come with a pre-defined context window size. For example,
+inputs to LLaMA models must be fewer than 2048 tokens. This pre-set
+context window limit is frequently exceeded in application. However, training an LLM from scratch with long context
+windows requires significant investments. This naturally leads to a question: Can we extend the
+context window of an existing pre-trained LLM?</p>
+<p>One straightforward approach is to fine-tune an existing pre-trained Transformer with a longer context
+window. However, empirically, we found that models trained this way adapt to long context
+windows very slowly.</p>
+<p>Here, we introduce Position Interpolation to enable context window extensions for certain
+existing pre-trained LLMs, including LLaMA. The key idea is, instead of extrapolation, we directly
+down-scale the position indices so that the maximum position index matches the previous context
+window limit in the pre-training stage.</p>
+<p><img alt="" src="../_images/extending.png" /></p>
+</section>
+<section id="id4">
+<h2>高频外推低频内插<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>低维（<span class="math notranslate nohighlight">\(i\to 0\)</span>）部分频率高（<span class="math notranslate nohighlight">\(\theta_{i}\to 1\)</span>）</p></li>
+<li><p>高维（<span class="math notranslate nohighlight">\(i\to d/2-1\)</span>）部分频率低（<span class="math notranslate nohighlight">\(\theta_{i}\to 1/10000\)</span>）</p></li>
+</ul>
+<p>原本在低维度上，旋转角度较大，意味着这些维度上的信号变化非常迅速，能够精细地区分相邻位置。如果在低维度进行内插，对用低维区分不同位置间的能力影响更大，这种现象称之为<code class="docutils literal notranslate"><span class="pre">高频信息的损失</span></code>。因此我们可采用高频外推，低频内插的方式。</p>
+</section>
+<section id="yarn-efficient-contextwindow-extension-of-large-language-models">
+<span id="yarn"></span><h2>YaRN: Efficient ContextWindow Extension of Large Language Models<a class="headerlink" href="#yarn-efficient-contextwindow-extension-of-large-language-models" title="Link to this heading">#</a></h2>
+<section id="loss-of-high-frequency-information-ntk-aware-interpolation">
+<h3>Loss of High Frequency information - “NTK-aware” interpolation<a class="headerlink" href="#loss-of-high-frequency-information-ntk-aware-interpolation" title="Link to this heading">#</a></h3>
+<p>Instead of scaling every dimension
+of RoPE equally by a factor <span class="math notranslate nohighlight">\(s=\frac{L'}{L}\)</span>, we spread out the interpolation pressure across multiple dimensions
+by scaling high frequencies less and low frequencies more.</p>
+<p><strong>Definition 1</strong> The “NTK-aware” interpolation is a modification of RoPE with the
+following functions.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+g(m) &amp;= m \\
+h(\theta_{d}) &amp;= b'^{-2d/|D|},
+\end{aligned}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+b' = b\cdot s^{\frac{|D|}{|D|-2}}.
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For small <span class="math notranslate nohighlight">\(d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[b'^{-2d/|D|}\approx b^{2d/|D|}\]</div>
+<p>thus extrapolation.</p>
+<p>To let <span class="math notranslate nohighlight">\((L', b')\)</span> equals to <span class="math notranslate nohighlight">\((L, b)\)</span> on the lowest frequency (<span class="math notranslate nohighlight">\(d=\frac{|D|}{2}-1\)</span>), thus interpolation, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{L'}{b'^{\frac{2}{|D|}(\frac{|D|}{2}-1)}} = \frac{L}{b^{\frac{2}{|D|}(\frac{|D|}{2}-1)}}
+\]</div>
+<p>this leads to <span class="math notranslate nohighlight">\(b' = b\cdot s^{\frac{|D|}{|D|-2}}\)</span>.</p>
+</div>
+</section>
+<section id="loss-of-relative-local-distances-ntk-by-parts-interpolation">
+<h3>Loss of Relative Local Distances - “NTK-by-parts” interpolation<a class="headerlink" href="#loss-of-relative-local-distances-ntk-by-parts-interpolation" title="Link to this heading">#</a></h3>
+<p>We choose not
+to interpolate the higher frequency dimensions at all while always interpolating the lower frequency
+dimensions. In particular,</p>
+<ul class="simple">
+<li><p>if the wavelength <span class="math notranslate nohighlight">\(\lambda\)</span> is much smaller than the context size <span class="math notranslate nohighlight">\(L\)</span>, we do not interpolate;</p></li>
+<li><p>if the wavelength <span class="math notranslate nohighlight">\(\lambda\)</span> is equal to or bigger than the context size <span class="math notranslate nohighlight">\(L\)</span>, we want to only interpolate
+and avoid any extrapolation (unlike the previous “NTK-aware” method);</p></li>
+<li><p>dimensions in-between can have a bit of both, similar to the “NTK-aware” interpolation.</p></li>
+</ul>
+<p>In the <span class="math notranslate nohighlight">\(d\)</span>-th hidden state, the ratio <span class="math notranslate nohighlight">\(r\)</span> depends on <span class="math notranslate nohighlight">\(d\)</span> in the following way:</p>
+<div class="math notranslate nohighlight">
+\[
+r(d) = \frac{L}{\lambda_{d}} = \frac{L}{2\pi b'^{\frac{2d}{|D|}}}.
+\]</div>
+<p>In order to define the boundary of the different interpolation strategies as above, we introduce
+two extra parameters <span class="math notranslate nohighlight">\(\alpha,\beta\)</span> and define the ramp function <span class="math notranslate nohighlight">\(\gamma\)</span> to be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\gamma(r)=
+\begin{cases}
+0, \quad&amp;\text{if }r&lt;\alpha\\
+1, \quad&amp;\text{if }r&gt;\beta\\
+\frac{r-\alpha}{\beta - \alpha}, &amp;\text{otherwise.}
+\end{cases}
+\end{split}\]</div>
+<p>With the help of the ramp function, the “NTK-by-parts” method can be described as follows.</p>
+<p><strong>Definition 2</strong> The “NTK-by-parts” interpolation is a modification of RoPE with the
+following functions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+g(m) &amp;= m\\
+h(\theta) &amp;= \left(1 - \gamma(r(d))\right)\frac{\theta_d}{s} + \gamma(r(d))\theta_{d}.
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="dynamic-scaling-dynamic-ntk-interpolation">
+<h3>Dynamic Scaling - “Dynamic NTK” interpolation<a class="headerlink" href="#dynamic-scaling-dynamic-ntk-interpolation" title="Link to this heading">#</a></h3>
+<p>In a lot of use cases, multiple forward-passes are performed with varying sequence lengths from 1 to
+the maximal context size. A typical example is the autoregressive generation where the sequence
+lengths increment by 1 after each step. There are two ways of applying an interpolation method that
+uses a scale factor <span class="math notranslate nohighlight">\(s\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Fixed scale factor <span class="math notranslate nohighlight">\(s=L'/L\)</span>.</p></li>
+<li><p>In each forward-pass, the position embedding updates the scale factor <span class="math notranslate nohighlight">\(s=\max(1, l'/L)\)</span> where <span class="math notranslate nohighlight">\(l'\)</span> is the sequence length of the current sequence.</p></li>
+</ol>
+</section>
+<section id="id5">
+<h3>YaRN<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>In addition to the previous interpolation techniques, we also observe that introducing a temperature t
+on the logits before the attention softmax has a uniform impact on perplexity, that is</p>
+<div class="math notranslate nohighlight">
+\[
+\text{softmax}\left(\frac{\mathbf{q}_{m}^{T}\mathbf{k}_{n}}{t\sqrt{D}}\right).
+\]</div>
+<p>We can use a “length scaling” trick which scales both <span class="math notranslate nohighlight">\(\mathbf{q}_{m}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{k}_{n}\)</span> by a
+constant factor <span class="math notranslate nohighlight">\(\sqrt{{1}/{t}}\)</span> by simply scaling the complex RoPE embeddings by the same amount. Combining it with the “NTK-by-parts” interpolation, we have
+the YaRN method.</p>
+<p><strong>Definition 3</strong> By the “YaRN method”, we refer to a combination of the attention scaling and
+the “NTK-by-parts” interpolation.</p>
+</section>
+</section>
+<section id="rope">
+<h2>RoPE 的远程衰减<a class="headerlink" href="#rope" title="Link to this heading">#</a></h2>
+<p>计算 <span class="math notranslate nohighlight">\(a(m,n)\)</span> 时：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(n\)</span> 越近，<span class="math notranslate nohighlight">\(\mathbf{R}_{n-m}\)</span> 旋转得越少，高频维度少低频维度多。</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(n\)</span> 越远，<span class="math notranslate nohighlight">\(\mathbf{R}_{n-m}\)</span> 旋转得越多，有很多高频维度转了很多圈，随机性很大，一部分正负抵消一部分振荡。</p></li>
+</ul>
+<p>最终导致 RoPE 远程衰减曲线如下：</p>
+<p><img alt="" src="../_images/rope_3.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./techniques"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rope.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">RoPE</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mla.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multi-Head Latent Attention</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-rotary-position-embedding-rope">Background: Rotary Position Embedding (RoPE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-interpolation">Position interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">高频外推低频内插</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yarn-efficient-contextwindow-extension-of-large-language-models">YaRN: Efficient ContextWindow Extension of Large Language Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-high-frequency-information-ntk-aware-interpolation">Loss of High Frequency information - “NTK-aware” interpolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-of-relative-local-distances-ntk-by-parts-interpolation">Loss of Relative Local Distances - “NTK-by-parts” interpolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-scaling-dynamic-ntk-interpolation">Dynamic Scaling - “Dynamic NTK” interpolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">YaRN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rope">RoPE 的远程衰减</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

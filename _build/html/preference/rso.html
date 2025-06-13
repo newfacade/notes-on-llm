@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RSO &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'preference/rso';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dpo.html">DPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dapo.html">DAPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpreference/rso.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/preference/rso.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>RSO</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rso-approach">RSO APPROACH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-rejection-sampling-algorithm">STATISTICAL REJECTION SAMPLING ALGORITHM</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rso">
+<h1>RSO<a class="headerlink" href="#rso" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maximum likelihood estimator
+(MLE) of the target optimal policy requires labeled preference pairs sampled from
+that policy, DPO’s lack of a reward model constrains its ability to sample preference
+pairs from the optimal policy. To address these limitations, we introduce a novel
+approach called Statistical Rejection Sampling Optimization (RSO) that aims to
+source preference data from the target optimal policy using rejection sampling.</p>
+</div>
+<section id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Link to this heading">#</a></h2>
+<p><strong>Learning from Human Feedback</strong> algorithms take two inputs:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\pi_{\text{sft}}(y|x):\)</span> a supervised fine-tuned policy (SFT), where <span class="math notranslate nohighlight">\(x\)</span> is the prompt and <span class="math notranslate nohighlight">\(y\)</span> is the response.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{D}_{\text{hf}} = \{x^{(i)}, y_{w}^{(i)}, y_{l}^{(i)}\}_{i=1}^{N}:\)</span> a human preference dataset that distinguishes the better response from the worse given the same prompt.</p></li>
+</ol>
+<p><strong>KL-Constrained Reward Maximization Objective</strong> Starting with a reward function <span class="math notranslate nohighlight">\(r(x, y)\)</span> and input prompt distribution <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, the DPO and RLHF optimizes for the following objective:</p>
+<div class="math notranslate nohighlight">
+\[\max_{\pi}\mathbb{E}_{x\sim\mathcal{P},y\sim\pi}\left[r(x, y)\right] - \beta\mathbb{D}_{\text{KL}}\left[\pi(y|x)\ ||\ \pi_{\text{sft}}(y|x)\right]\]</div>
+<p><strong>Optimal Policy</strong> DPO showed that the optimal policy <span class="math notranslate nohighlight">\(\pi_{r}(y|x)\)</span> that maximizes the
+above objective is:</p>
+<div class="math notranslate nohighlight">
+\[\pi_{r}(y|x) = \frac{1}{Z(x)}\pi_{\text{sft}}(y|x)\exp\left(\frac{1}{\beta}r(x, y)\right)\]</div>
+<p>for all <span class="math notranslate nohighlight">\(x\in\mathcal{P}\)</span>, where <span class="math notranslate nohighlight">\(Z(x) = \sum_{y}\pi_{\text{sft}}(y|x)\exp(\frac{1}{\beta}r(x, y))\)</span>. Rearrange the Equation we get</p>
+<div class="math notranslate nohighlight">
+\[r(x, y) = \beta\log\frac{\pi_{r}(y|x)}{\pi_{\text{sft}}(y|x)} + \beta\log Z(x)\]</div>
+<p>These two equations establish the relation between optimal policy and the reward function. One
+can infer the other. In reality, the final goal is to have a good policy for response generation and <span class="math notranslate nohighlight">\(\pi_{r}(y|x)\)</span> is usually of more interest. The key is to effectively estimate the <span class="math notranslate nohighlight">\(\pi_{r}(y|x)\)</span> from the human
+preference data.</p>
+<p><strong>Preference Model</strong> Let the ground-truth reward function be <span class="math notranslate nohighlight">\(r^{\ast}\)</span>, and let <span class="math notranslate nohighlight">\(\pi^{\ast}\)</span> be the optimal policy associated
+with <span class="math notranslate nohighlight">\(r^{\ast}\)</span>. For two responses <span class="math notranslate nohighlight">\((y_{1}, y_{2})\)</span> from the same input <span class="math notranslate nohighlight">\(x\)</span>, one can assume that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}(y_{1}\succ y_{2}|x) &amp;= g(r^{\ast}(x, y_{1}) - r^{\ast}(x, y_{2}))\\
+&amp;=g\left(\beta\log\frac{\pi^{\ast}(y_{1}|x)}{\pi_{\text{sft}}(y_{1}|x)} -  \beta\log\frac{\pi^{\ast}(y_{2}|x)}{\pi_{\text{sft}}(y_{2}|x)}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(g:\mathbb{R}\to[0, 1]\)</span> is a monotonically non-decreasing function that converts the reward difference
+into winning probability. Specifically, if we set <span class="math notranslate nohighlight">\(g\)</span> as sigmoid function <span class="math notranslate nohighlight">\(\sigma\)</span>, we get the Bradley-Terry (BT) model.</p>
+<p><strong>Policy Estimation on Preference Pairs</strong> In statistical density estimation
+problem, the preference pairs should be generated from <span class="math notranslate nohighlight">\(\pi^{\ast}\)</span>, the density to be estimated, while DPO
+uses preference pairs from some unknown distribution. Thus DPO is not the MLE of <span class="math notranslate nohighlight">\(\pi^{\ast}\)</span>, this motivates us to develop
+an approach that can obtain preference pairs from <span class="math notranslate nohighlight">\(\pi^{\ast}\)</span>.</p>
+<p><strong>Reward Model</strong> Usually the reward model is a pointwise score assigned to a (prompt, response)
+pair. The model is trained based on BT model. We argue
+that it is an easier and more straightforward way to train a pairwise reward model from (prompt,
+worse response, better response) triplets.</p>
+</section>
+<section id="rso-approach">
+<h2>RSO APPROACH<a class="headerlink" href="#rso-approach" title="Link to this heading">#</a></h2>
+<p><img alt="" src="../_images/rso2.png" /></p>
+<p><strong>Choice of preference data distribution</strong> In reality, we have
+access to <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{hf}} = \{(x^{(i)}, y_{w}^{(i)}, y_{l}^{(i)})| y_{w}^{(i)}, y_{l}^{(i)}\sim \pi_{\text{unk}}(y|x^{(i)})\}\)</span> where <span class="math notranslate nohighlight">\(\pi_{\text{unk}}\)</span> denotes some mixed
+unknown policies. The mixed unknown policies can include SFT policy, current RLHF policy, or
+policies from other agents, or even web mined preference pairs.</p>
+<p>Given <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{hf}}\)</span>, we consider the following three choices:</p>
+<ol class="arabic simple">
+<li><p>directly fit the policy on <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{hf}}\)</span>, this is the approach used in DPO.</p></li>
+<li><p>first train a reward-ranking model <span class="math notranslate nohighlight">\(\rho_{\psi}(x, y_{1}, y_{2})\)</span> on <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{hf}}\)</span>. Then use <span class="math notranslate nohighlight">\(\pi_{\text{sft}}(y|x)\)</span> to sample response pairs and label them by <span class="math notranslate nohighlight">\(\rho_{\psi}\)</span>. The results in a preference dataset <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{sft}}\)</span>.</p></li>
+<li><p>first train a reward-ranking model <span class="math notranslate nohighlight">\(\rho_{\psi}(x, y_{1}, y_{2})\)</span> on <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{hf}}\)</span>. Then use <span class="math notranslate nohighlight">\(\pi_{r_{\psi}}(y|x)\)</span> induced by <span class="math notranslate nohighlight">\(r_{\psi}\)</span> to sample response pairs, where <span class="math notranslate nohighlight">\(r_{\psi}\)</span> is induced from <span class="math notranslate nohighlight">\(\rho_{\psi}(x, y_{1}, y_{2})\)</span>. After that we label response pairs using <span class="math notranslate nohighlight">\(\rho_{\psi}\)</span> to construct the preference dataset <span class="math notranslate nohighlight">\(\mathcal{D}_{r_{\psi}}\)</span>.</p></li>
+</ol>
+<p>Statistically speaking, since we are estimating <span class="math notranslate nohighlight">\(\pi^{\ast}(y|x)\)</span>, it is desired to draw samples from <span class="math notranslate nohighlight">\(\pi^{\ast}(y|x)\)</span>. <span class="math notranslate nohighlight">\(\pi_{r_{\psi}}\)</span> is closer to <span class="math notranslate nohighlight">\(\pi^{\ast}\)</span> than <span class="math notranslate nohighlight">\(\pi_{\text{unk}}\)</span> used in direct and <span class="math notranslate nohighlight">\(\pi_{\text{sft}}\)</span> used in sft-sample-rank. However,
+sampling from <span class="math notranslate nohighlight">\(\pi_{r_{\psi}}\)</span> is not straightforward, and we propose a statistical rejection sampling
+approach to achieve this.</p>
+<section id="statistical-rejection-sampling-algorithm">
+<h3>STATISTICAL REJECTION SAMPLING ALGORITHM<a class="headerlink" href="#statistical-rejection-sampling-algorithm" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../_images/rso.png" /></p>
+<p>If we want to generate a distribution of density <span class="math notranslate nohighlight">\(\pi_{r_{\psi}}\)</span>, we can:</p>
+<ol class="arabic simple">
+<li><p>Generate <span class="math notranslate nohighlight">\(y\sim\pi_{\text{sft}}(y|x)\)</span> and <span class="math notranslate nohighlight">\(u\sim U[0, 1]\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(M = \min\{m| m\cdot\pi_{\text{sft}}(y|x) \ge \pi_{r_{\psi}}(y|x) \text{ for all } y\}\)</span>. If <span class="math notranslate nohighlight">\(u&lt;\frac{\pi_{\psi}(y|x)}{M\pi_{\text{sft}}(y|x)}\)</span>, then we accept <span class="math notranslate nohighlight">\(y\)</span>, otherwise, we reject <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ol>
+<p><strong>Derivation of Statistical Rejection Sampling Algorithm:</strong> We have</p>
+<div class="math notranslate nohighlight">
+\[\pi_{r_{\psi}}(y|x) = \frac{1}{Z_{\psi}(x)}\pi_{\text{sft}}(y|x)\exp\left(\frac{1}{\beta}r_{\psi}(x, y)\right)\]</div>
+<p>which is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[\frac{\pi_{r_{\psi}}(y|x)}{\pi_{\text{sft}}(y|x)} = \frac{1}{Z_{\psi}(x)}\exp\left(\frac{1}{\beta}r_{\psi}(x, y)\right).\]</div>
+<p>Let <span class="math notranslate nohighlight">\(M_{D_{x}} = \min\{m|m\cdot\pi_{\text{sft}}(y|x) \ge \pi_{r_{\psi}}(y|x) \text{ for all } y\notin D_{x}\} = \max_{y\notin D_{x}}\frac{\pi_{r_{\psi}}(y|x)}{\pi_{\text{sft}}(y|x)}\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[M_{D_{x}} = \frac{1}{Z_{\psi}(x)}\max_{y\notin D_{x}}\left[\exp\left(\frac{1}{\beta}r_{\psi}(x, y)\right)\right]\]</div>
+<p>Then we have</p>
+<div class="math notranslate nohighlight">
+\[\frac{\pi_{r_{\psi}}(y|x)}{M_{D_{x}}\pi_{\text{sft}}(y|x)} = \exp\left(\frac{1}{\beta}\left(r_{\psi}(x, y) - \max_{y\notin D_{x}}r_{\psi}(x, y)\right)\right)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">conduct_rejection_sampling</span><span class="p">(</span><span class="n">response_candidates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                               <span class="n">response_rewards</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+                               <span class="n">num_samples</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                               <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conducts rejection sampling guided by rewards.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        response_candidates: Response candidates from sft policy.</span>
+<span class="sd">        response_rewards: Response rewards corresponding to each candidate.</span>
+<span class="sd">        num_samples: Number of samples to sub-sample.</span>
+<span class="sd">        beta: Beta parameter in KL-constrained reward maximization objective.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A list of rejection sampled sequences from the optimal policy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Combine candidates and their rewards into a dictionary for easy access</span>
+    <span class="n">candidates</span> <span class="o">=</span> <span class="p">{</span><span class="n">candidate</span><span class="p">:</span> <span class="n">reward</span> <span class="k">for</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">reward</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">response_candidates</span><span class="p">,</span> <span class="n">response_rewards</span><span class="p">)}</span>
+    
+    <span class="c1"># List to store accepted candidates</span>
+    <span class="n">accepted</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Continue sampling until we have the desired number of samples</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">accepted</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">num_samples</span><span class="p">:</span>
+        <span class="c1"># Find the maximum reward among the candidates</span>
+        <span class="n">max_reward</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">candidates</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+        <span class="c1"># List to track candidates to be removed after iteration</span>
+        <span class="n">to_remove</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Iterate through candidates and perform rejection sampling</span>
+        <span class="k">for</span> <span class="n">candidate</span><span class="p">,</span> <span class="n">reward</span> <span class="ow">in</span> <span class="n">candidates</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># Sample a uniform random number</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">()</span>
+
+            <span class="c1"># Accept the candidate based on the comparison with max_reward adjusted by beta</span>
+            <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">reward</span> <span class="o">-</span> <span class="n">max_reward</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta</span><span class="p">):</span>
+                <span class="n">accepted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+                <span class="n">to_remove</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+
+                <span class="c1"># Break if we have enough samples</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">accepted</span><span class="p">)</span> <span class="o">==</span> <span class="n">num_samples</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+        <span class="c1"># Remove accepted candidates from the pool to avoid re-sampling</span>
+        <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">to_remove</span><span class="p">:</span>
+            <span class="n">candidates</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">accepted</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./preference"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rso-approach">RSO APPROACH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-rejection-sampling-algorithm">STATISTICAL REJECTION SAMPLING ALGORITHM</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
