@@ -58,14 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'models/deepseek-v2';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="DeepSeek-Coder-V2" href="deepseek-coder-v2.html" />
-    <link rel="prev" title="Qwen2.5-Coder" href="qwen25-coder.html" />
+    <link rel="prev" title="Llama 3 Source Code" href="llama3-source-code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,16 +191,19 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
@@ -232,12 +233,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -251,7 +256,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">GRPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
 </ul>
@@ -260,9 +265,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,21 +475,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-construction">Data Construction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameters">Hyper-Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-results">Evaluation Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-parameters">Number of Parameters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation Results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
 </ul>
             </nav>
         </div>
@@ -502,8 +496,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>DeepSeek-V2<span id="id1">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span> is a strong Mixture-of-Experts (MoE) language model characterized by
-economical training and efficient inference.<br>
-It comprises 236B total parameters, of which 21B
+economical training and efficient inference. It comprises 236B total parameters, of which 21B
 are activated for each token, and supports a context length of 128K tokens. DeepSeek-V2 adopts
 innovative architectures including Multi-head Latent Attention (MLA) and DeepSeekMoE.</p>
 </div>
@@ -511,27 +504,8 @@ innovative architectures including Multi-head Latent Attention (MLA) and DeepSee
 <h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="../techniques/mla.html#mla"><span class="std std-ref">Multi-Head Latent Attention</span></a></p>
 <p><a class="reference internal" href="../techniques/deepseek-moe.html#deepseekmoe"><span class="std std-ref">DeepSeekMoE</span></a></p>
-</section>
-<section id="pre-training">
-<h2>Pre-Training<a class="headerlink" href="#pre-training" title="Link to this heading">#</a></h2>
-<section id="data-construction">
-<h3>Data Construction<a class="headerlink" href="#data-construction" title="Link to this heading">#</a></h3>
-<p>While maintaining the same data processing stages as for DeepSeek 67B<span id="id2">[<a class="reference internal" href="../reference.html#id7" title="DeepSeek-AI, :, Xiao Bi, Deli Chen, Guanting Chen, Shanhuang Chen, Damai Dai, Chengqi Deng, Honghui Ding, Kai Dong, Qiushi Du, Zhe Fu, Huazuo Gao, Kaige Gao, Wenjun Gao, Ruiqi Ge, Kang Guan, Daya Guo, Jianzhong Guo, Guangbo Hao, Zhewen Hao, Ying He, Wenjie Hu, Panpan Huang, Erhang Li, Guowei Li, Jiashi Li, Yao Li, Y. K. Li, Wenfeng Liang, Fangyun Lin, A. X. Liu, Bo Liu, Wen Liu, Xiaodong Liu, Xin Liu, Yiyuan Liu, Haoyu Lu, Shanghao Lu, Fuli Luo, Shirong Ma, Xiaotao Nie, Tian Pei, Yishi Piao, Junjie Qiu, Hui Qu, Tongzheng Ren, Zehui Ren, Chong Ruan, Zhangli Sha, Zhihong Shao, Junxiao Song, Xuecheng Su, Jingxiang Sun, Yaofeng Sun, Minghui Tang, Bingxuan Wang, Peiyi Wang, Shiyu Wang, Yaohui Wang, Yongji Wang, Tong Wu, Y. Wu, Xin Xie, Zhenda Xie, Ziwei Xie, Yiliang Xiong, Hanwei Xu, R. X. Xu, Yanhong Xu, Dejian Yang, Yuxiang You, Shuiping Yu, Xingkai Yu, B. Zhang, Haowei Zhang, Lecong Zhang, Liyue Zhang, Mingchuan Zhang, Minghua Zhang, Wentao Zhang, Yichao Zhang, Chenggang Zhao, Yao Zhao, Shangyan Zhou, Shunfeng Zhou, Qihao Zhu, and Yuheng Zou. Deepseek llm: scaling open-source language models with longtermism. 2024. URL: https://arxiv.org/abs/2401.02954, arXiv:2401.02954.">DAB+24</a>]</span>, we extend the amount of data and elevate the data quality.</p>
-<p>We adopt the same tokenizer as used in DeepSeek 67B, which is built based on the Byte-level
-Byte-Pair Encoding (BBPE) algorithm and has a vocabulary size of 100K. Our tokenized pretraining
-corpus contains 8.1T tokens, where Chinese tokens are approximately 12% more than
-English ones.</p>
-</section>
-<section id="hyper-parameters">
-<h3>Hyper-Parameters<a class="headerlink" href="#hyper-parameters" title="Link to this heading">#</a></h3>
-<p>We set the number of Transformer layers to 60 and the hidden
-dimension to 5120. In MLA, we set the number of attention heads <span class="math notranslate nohighlight">\(n_h\)</span> to 128 and the per-head dimension <span class="math notranslate nohighlight">\(d_h\)</span>
-to 128. The KV compression dimension <span class="math notranslate nohighlight">\(d_c\)</span> is set to 512, and the query compression dimension
-<span class="math notranslate nohighlight">\(d_{c}'\)</span> is set to 1536. For the decoupled queries and key, we set the per-head dimension <span class="math notranslate nohighlight">\(d_{h}^{R}\)</span> to 64. We substitute all FFNs except for the first layer with MoE layers.
-Each MoE layer consists of 2 shared experts and 160 routed experts, where the intermediate
-hidden dimension of each expert is 1536. Among the routed experts, 6 experts will be activated
-for each token. Under this configuration, DeepSeek-V2 comprises 236B total
-parameters, of which 21B are activated for each token.</p>
+<section id="number-of-parameters">
+<h3>Number of Parameters<a class="headerlink" href="#number-of-parameters" title="Link to this heading">#</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="err">#</span><span class="w"> </span><span class="err">DeepSeek</span><span class="mi">-</span><span class="err">V</span><span class="mi">2</span><span class="err">/co</span><span class="kc">nf</span><span class="err">ig.jso</span><span class="kc">n</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;vocab_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102400</span><span class="p">,</span>
@@ -662,90 +636,25 @@ parameters, of which 21B are activated for each token.</p>
 <li><p>activated parameters: 21326725120</p></li>
 </ul>
 </section>
-<section id="evaluation-results">
-<h3>Evaluation Results<a class="headerlink" href="#evaluation-results" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/deepseek-v2-bench1.png" src="../_images/deepseek-v2-bench1.png" />
-</figure>
-</section>
-</section>
-<section id="alignment">
-<h2>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h2>
-<section id="supervised-fine-tuning">
-<h3>Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Link to this heading">#</a></h3>
-<p>We curate our instruction tuning datasets
-to include 1.5M instances, comprising 1.2M instances for helpfulness and 0.3M instances for
-safety. In comparison to the initial version, we improve the data quality to mitigate hallucinatory
-responses and enhance writing proficiency.</p>
-<p>We fine-tune DeepSeek-V2 with 2 epochs, and
-the learning rate is set to 5 × 10−6.</p>
 </section>
 <section id="reinforcement-learning">
-<h3>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h3>
+<h2>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h2>
 <p>In order to further unlock the potential of DeepSeek-V2 and align it with human preference, we
 conduct Reinforcement Learning (RL) to adjust its preference.</p>
-<p><strong>Reinforcement Learning Algorithm.</strong> <a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">Group Relative Policy Optimization</span></a></p>
+<p><strong>Reinforcement Learning Algorithm.</strong> <a class="reference internal" href="../preference/grpo.html#grpo"><span class="std std-ref">GRPO</span></a></p>
 <p><strong>Training Strategy.</strong> In our preliminary experiments, we find that the RL training on reasoning
 data, such as code and math prompts, exhibits unique characteristics that are distinct from the
-training on general data. For example, <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">mathematical</span> <span class="pre">and</span> <span class="pre">coding</span> <span class="pre">abilities</span> <span class="pre">of</span> <span class="pre">our</span> <span class="pre">model</span> <span class="pre">can</span> <span class="pre">keep</span> <span class="pre">improving</span> <span class="pre">over</span> <span class="pre">a</span> <span class="pre">longer</span> <span class="pre">period</span> <span class="pre">of</span> <span class="pre">training</span> <span class="pre">steps</span></code>. Therefore, we employ a two-stage RL
+training on general data. For example, the mathematical and coding abilities of our model can
+keep improving over a longer period of training steps. Therefore, we employ a two-stage RL
 training strategy, which first performs reasoning alignment, and then performs human preference
-alignment. In the first reasoning alignment stage, we train a reward model <span class="math notranslate nohighlight">\(RM_{reasoning}\)</span> for
-code and math reasoning tasks, and optimize the policy model with the feedback of <span class="math notranslate nohighlight">\(RM_{reasoning}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[r_{i} = RM_{reasoning}(o_{i}).\]</div>
-<p>In the second human preference alignment stage, we adopt a multi-reward framework, which
-acquires rewards from a helpful reward model <span class="math notranslate nohighlight">\(RM_{helpful}\)</span> , a safety reward model <span class="math notranslate nohighlight">\(RM_{safety}\)</span>, and a
-rule-based reward model <span class="math notranslate nohighlight">\(RM_{rule}\)</span>. The final reward of a response <span class="math notranslate nohighlight">\(o_{i}\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[r_{i} = c_{1}\cdot RM_{helpful}(o_{i}) + c_{2}\cdot RM_{safety}(o_{i}) + c_{3}\cdot RM_{rule}(o_{i}).\]</div>
+alignment.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>In order to obtain reliable reward models that play crucial roles in the RL training, we
-carefully collect preference data, and meticulously conduct <code class="docutils literal notranslate"><span class="pre">quality</span> <span class="pre">filtering</span></code> and <code class="docutils literal notranslate"><span class="pre">proportion</span> <span class="pre">adjustments</span></code>. We obtain code preference data based on <code class="docutils literal notranslate"><span class="pre">compiler-feedback</span></code>, and mathematical
-preference data based on the ground-truth labels. For reward model training, we initialize
-the reward models with DeepSeek-V2 Chat (SFT) and train them with either a point-wise or
-a pair-wise loss.</p>
-</div>
-</section>
-<section id="id3">
-<h3>Evaluation Results<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/deepseek-v2-bench2.png" src="../_images/deepseek-v2-bench2.png" />
-</figure>
-</section>
-<section id="discussion">
-<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
-<p><strong>Amount of SFT Data.</strong> The discussion surrounding the necessity of a large SFT corpus has been
-a topic of intense debate. Previous works argue that fewer
-than 10K instances of SFT data are enough to produce satisfactory results. However, in our
-experiments, we observe a significant performance decline on the IFEval benchmark if we use
-fewer than 10K instances. Moreover, the quality
-of SFT data is also crucial.</p>
-<p><strong>Online Reinforcement Learning.</strong> In our preference alignment experiments, we find that the
-online approach significantly outperforms the offline approach. Therefore, we invest tremendous
-efforts in implementing an online RL framework for aligning DeepSeek-V2. The conclusion
-about online or offline preference alignment can vary in different contexts, and we reserve a
-more thorough comparison and analysis between them for future work.</p>
-</section>
-</section>
-<section id="takeaway">
-<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>SFT:</p>
-<ul class="simple">
-<li><p>enough data needed</p></li>
-</ul>
-<p>RM:</p>
-<ul class="simple">
-<li><p>first performs reasoning alignment</p></li>
-<li><p>then performs human preference alignment</p></li>
-<li><p>obtain code preference data based on compiler-feedback, and mathematical preference data based on the ground-truth labels</p></li>
-</ul>
-<p>RL:</p>
-<ul class="simple">
-<li><p>online &gt; offline</p></li>
-</ul>
+<p>We <span style="color: red">obtain code preference data based on compiler-feedback,</span> and mathematical
+preference data based on the ground-truth labels (still train a reward model).<br>
+In our preference alignment experiments, we find that <span style="color: red">the
+online approach significantly outperforms the offline approach.</span> Therefore, we invest tremendous
+efforts in implementing an online RL framework for aligning DeepSeek-V2.</p>
 </div>
 </section>
 </section>
@@ -781,12 +690,12 @@ more thorough comparison and analysis between them for future work.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="qwen25-coder.html"
+       href="llama3-source-code.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Qwen2.5-Coder</p>
+        <p class="prev-next-title">Llama 3 Source Code</p>
       </div>
     </a>
     <a class="right-next"
@@ -814,21 +723,11 @@ more thorough comparison and analysis between them for future work.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-training">Pre-Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-construction">Data Construction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyper-parameters">Hyper-Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-results">Evaluation Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-parameters">Number of Parameters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">Supervised Fine-Tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Evaluation Results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement Learning</a></li>
 </ul>
   </nav></div>
 

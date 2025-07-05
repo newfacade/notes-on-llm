@@ -193,16 +193,19 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extending.html">Extending context window of LLMs</a></li>
@@ -232,12 +235,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -251,7 +258,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">GRPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
 </ul>
@@ -260,9 +267,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,21 +477,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-kv-cache">Why KV cache</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-compression-for-queries">Low-Rank Compression for Queries</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoupled-rotary-position-embedding">Decoupled Rotary Position Embedding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-attention-mechanisms">Ablation of Attention Mechanisms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-mha-gqa-and-mqa">Ablation of MHA, GQA, and MQA</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-mla-and-mha">Comparison Between MLA and MHA</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-key-value-cache">Comparison of Key-Value Cache</a></li>
 </ul>
             </nav>
         </div>
@@ -503,11 +497,11 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Conventional Transformer models usually adopts Multi-Head Attention (MHA)<span id="id1">[<a class="reference internal" href="../reference.html#id2" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. 2023. URL: https://arxiv.org/abs/1706.03762, arXiv:1706.03762.">VSP+23</a>]</span>, but during generation, its heavy Key-Value (KV) cache will become the bottleneck
 that limit the inference efficiency. In order to reduce the KV cache, Multi-Query Attention
-(MQA)<span id="id2">[<a class="reference internal" href="../reference.html#id19" title="Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai. Gqa: training generalized multi-query transformer models from multi-head checkpoints. 2023. URL: https://arxiv.org/abs/2305.13245, arXiv:2305.13245.">ALTdJ+23</a>]</span>. and Grouped-Query Attention (GQA)<span id="id3">[]</span> are
+(MQA). and Grouped-Query Attention (GQA) are
 proposed. They require a smaller magnitude of KV cache, but their performance does not match
 MHA.</p>
 <p>For DeepSeek-V2, we design an innovative attention mechanism called Multi-head Latent
-Attention (MLA)<span id="id4">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>. Equipped with <code class="docutils literal notranslate"><span class="pre">low-rank</span> <span class="pre">key-value</span> <span class="pre">joint</span> <span class="pre">compression</span></code>, MLA achieves better
+Attention (MLA)<span id="id2">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>. Equipped with <span style="color: red">low-rank key-value joint compression,</span> MLA achieves better
 performance than MHA, but requires a significantly smaller amount of KV cache.</p>
 </div>
 <p><img alt="" src="../_images/mla1.png" /></p>
@@ -538,16 +532,12 @@ performance than MHA, but requires a significantly smaller amount of KV cache.</
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Multi-Head Attention, the red text indicates that it needs to be cached.</span><a class="headerlink" href="#mha" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="why-kv-cache">
-<h3>Why KV cache<a class="headerlink" href="#why-kv-cache" title="Link to this heading">#</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>During inference, all keys and values need
-to be cached to accelerate inference (the keys and values need to be computed only once), so MHA needs to cache <span class="math notranslate nohighlight">\(2n_{h}d_{h}l\)</span> (<span class="math notranslate nohighlight">\(l\)</span> denote layer num) elements for each token. In
+<p>During inference, <code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">keys</span> <span class="pre">and</span> <span class="pre">values</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">cached</span> <span class="pre">to</span> <span class="pre">accelerate</span> <span class="pre">inference</span></code> (the keys and values need to be computed only once), so MHA needs to cache <span class="math notranslate nohighlight">\(2n_{h}d_{h}l\)</span> (<span class="math notranslate nohighlight">\(l\)</span> denote layer num) elements for each token. In
 model deployment, this heavy KV cache is a large bottleneck that limits the maximum batch
 size and sequence length.</p>
 </div>
-</section>
 </section>
 <section id="low-rank-key-value-joint-compression">
 <h2>Low-Rank Key-Value Joint Compression<a class="headerlink" href="#low-rank-key-value-joint-compression" title="Link to this heading">#</a></h2>
@@ -581,15 +571,16 @@ needs to cache <span class="math notranslate nohighlight">\(\mathbf{c}_{t}^{KV}\
 <div class="math notranslate nohighlight">
 \[W^{Q}\leftarrow(W^{UK})^{\intercal}W^{Q}.\]</div>
 <p>Similarily, <span class="math notranslate nohighlight">\(W^{UV}\)</span> can be absorbed into <span class="math notranslate nohighlight">\(W^{O}\)</span>. We even do not need to compute keys and values out for attention.</p>
-<section id="low-rank-compression-for-queries">
-<h3>Low-Rank Compression for Queries<a class="headerlink" href="#low-rank-compression-for-queries" title="Link to this heading">#</a></h3>
-<p>In order to reduce the activation memory during training, we also perform low-rank compression for the queries, even if it cannot reduce the KV cache:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In order to reduce the activation memory during training (count params), we also perform low-rank compression for the queries, even if it cannot reduce the KV cache:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{c}_{t}^{Q} = W^{DQ}\mathbf{h}_{t}\]</div>
 <div class="math notranslate nohighlight">
 \[\mathbf{q}_{t}^{C} = W^{UQ}\mathbf{c}_{t}^{Q}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{c}_{t}^{Q}\in\mathbb{R}^{{d_{c}}'}\)</span> is the compressed latent vector for queries, <span class="math notranslate nohighlight">\({d_c}'\ll d_{h}n_{h}\)</span> denotes the query
 compression dimension, <span class="math notranslate nohighlight">\(W^{DQ}\in\mathbb{R}^{{d_c}'\times d}\)</span> and <span class="math notranslate nohighlight">\(W^{UQ}\in\mathbb{R}^{d_{h}n_{h}\times {d_c}'}\)</span>.</p>
+</div>
 <figure class="align-default" id="mla-2">
 <a class="reference internal image-reference" href="../_images/mla-step3.svg"><img alt="../_images/mla-step3.svg" height="500px" src="../_images/mla-step3.svg" /></a>
 <figcaption>
@@ -597,10 +588,9 @@ compression dimension, <span class="math notranslate nohighlight">\(W^{DQ}\in\ma
 </figcaption>
 </figure>
 </section>
-</section>
 <section id="decoupled-rotary-position-embedding">
 <h2>Decoupled Rotary Position Embedding<a class="headerlink" href="#decoupled-rotary-position-embedding" title="Link to this heading">#</a></h2>
-<p>RoPE<span id="id5">[<a class="reference internal" href="../reference.html#id24" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span> is position-sensitive for both keys and queries:</p>
+<p>RoPE<span id="id3">[<a class="reference internal" href="../reference.html#id24" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span> is position-sensitive for both keys and queries:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -638,49 +628,8 @@ DeepSeek-V2 requires a total KV cache containing <span class="math notranslate n
 </figure>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>MLA uses decoupled keys and queries to carry RoPE, where keys are shared across tokens to save cache.</p>
+<p>MLA uses <span style="color: red">decoupled keys and queries to carry RoPE, where keys are shared across tokens</span> to save cache.</p>
 </div>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Why a shared key is enough?</p>
-</div>
-</section>
-<section id="ablation-of-attention-mechanisms">
-<h2>Ablation of Attention Mechanisms<a class="headerlink" href="#ablation-of-attention-mechanisms" title="Link to this heading">#</a></h2>
-<section id="ablation-of-mha-gqa-and-mqa">
-<h3>Ablation of MHA, GQA, and MQA<a class="headerlink" href="#ablation-of-mha-gqa-and-mqa" title="Link to this heading">#</a></h3>
-<p>We show the evaluation results for 7B dense models with MHA, GQA, and MQA on four hard
-benchmarks in Table 8. All of these three models are trained on 1.33T tokens, and share the same
-architecture except for the attention mechanisms. In addition, for a fair comparison, we align
-the number of parameters of them to around 7B by adjusting the number of layers. From the
-table, we can find that MHA demonstrates significant advantages over GQA and MQA on these
-benchmarks.</p>
-<p><img alt="" src="../_images/mla-6.png" /></p>
-</section>
-<section id="comparison-between-mla-and-mha">
-<h3>Comparison Between MLA and MHA<a class="headerlink" href="#comparison-between-mla-and-mha" title="Link to this heading">#</a></h3>
-<p>In Table 9, we show the evaluation results for MoE models equipped with MLA and MHA,
-respectively, on four hard benchmarks. For a solid conclusion, we train and evaluate models
-across two scales. Also, two small MoE models and two large MoE models respectively
-share the same architecture except for the attention mechanisms. From the table, we can observe
-that MLA shows better performance than MHA. More importantly, MLA requires a significantly smaller amount of KV cache (14% for small MoE models and 4% for large MoE models) than
-MHA.</p>
-<p><img alt="" src="../_images/mla-7.png" /></p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Comparison Between MLA and MHA for dense models?</p>
-</div>
-</section>
-</section>
-<section id="comparison-of-key-value-cache">
-<h2>Comparison of Key-Value Cache<a class="headerlink" href="#comparison-of-key-value-cache" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We demonstrate a comparison of the KV cache per token among different attention mechanisms
-in Table 1. MLA requires only a small amount of KV cache, equal to GQA with only 2.25 groups,
-but can achieve stronger performance than MHA.</p>
-</div>
-<p><img alt="" src="../_images/mla-4.png" /></p>
 </section>
 </section>
 
@@ -748,21 +697,9 @@ but can achieve stronger performance than MHA.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-kv-cache">Why KV cache</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-compression-for-queries">Low-Rank Compression for Queries</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries-standard-multi-head-attention">Preliminaries: Standard Multi-Head Attention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#low-rank-key-value-joint-compression">Low-Rank Key-Value Joint Compression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoupled-rotary-position-embedding">Decoupled Rotary Position Embedding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-attention-mechanisms">Ablation of Attention Mechanisms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-of-mha-gqa-and-mqa">Ablation of MHA, GQA, and MQA</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-mla-and-mha">Comparison Between MLA and MHA</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-key-value-cache">Comparison of Key-Value Cache</a></li>
 </ul>
   </nav></div>
 

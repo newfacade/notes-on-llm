@@ -193,16 +193,19 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="norm.html">Normalization</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extending.html">Extending context window of LLMs</a></li>
@@ -232,12 +235,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -251,7 +258,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">GRPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
 </ul>
@@ -260,9 +267,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,12 +477,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation">Formulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-case">2D case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form">General form</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-case">2D case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form">General form</a></li>
 </ul>
             </nav>
         </div>
@@ -492,19 +494,15 @@ document.write(`
 <h1>RoPE<a class="headerlink" href="#rope" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Position encoding enables valuable supervision for dependency modeling between elements at different positions of the sequence.<br/>
-Rotary Position Embedding (RoPE)<span id="id1">[<a class="reference internal" href="../reference.html#id24" title="Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. Roformer: enhanced transformer with rotary position embedding. 2023. URL: https://arxiv.org/abs/2104.09864, arXiv:2104.09864.">SLP+23</a>]</span> is a novel method to effectively leverage the positional information.</p>
-</div>
-<section id="formulation">
-<h2>Formulation<a class="headerlink" href="#formulation" title="Link to this heading">#</a></h2>
 <p>Transformer-based language modeling usually leverages the position information of individual tokens through a self-attention
 mechanism. <span class="math notranslate nohighlight">\(\mathbf{q}_{m}^{\intercal}\mathbf{k}_{n}\)</span> typically enables knowledge transfer between
 tokens at different positions. In order to incorporate relative position information, we require the inner product of query
-<span class="math notranslate nohighlight">\(\mathbf{q}_{m}\)</span> and key <span class="math notranslate nohighlight">\(\mathbf{k}_{n}\)</span> to be formulated by a function <span class="math notranslate nohighlight">\(g\)</span>, which takes only the word embeddings <span class="math notranslate nohighlight">\(\mathbf{x}_{m}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}_{n}\)</span>, and their relative position <span class="math notranslate nohighlight">\(m-n\)</span> as input variables.</p>
+<span class="math notranslate nohighlight">\(\mathbf{q}_{m}\)</span> and key <span class="math notranslate nohighlight">\(\mathbf{k}_{n}\)</span> to be formulated by a function <span class="math notranslate nohighlight">\(g\)</span>, which <span style="color: red">takes only the word embeddings <span class="math notranslate nohighlight">\(\mathbf{x}_{m}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}_{n}\)</span>, and their relative position <span class="math notranslate nohighlight">\(m-n\)</span> as input variables.</span></p>
 <div class="math notranslate nohighlight">
 \[f_{q}(\mathbf{x}_{m}, m)^{\intercal}f_{k}(\mathbf{x}_{n}, n) = g(\mathbf{x}_{m}, \mathbf{x}_{n}, m-n)\]</div>
+</div>
 <section id="d-case">
-<h3>2D case<a class="headerlink" href="#d-case" title="Link to this heading">#</a></h3>
+<h2>2D case<a class="headerlink" href="#d-case" title="Link to this heading">#</a></h2>
 <p>Begin with <span class="math notranslate nohighlight">\(d=2\)</span>, we make use of the property of the rotary matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -539,7 +537,7 @@ f_{q}(\mathbf{x}_{m}, m)^{\intercal}f_{k}(\mathbf{x}_{n}, n) &amp;= (\mathbf{R}_
 </div>
 </section>
 <section id="general-form">
-<h3>General form<a class="headerlink" href="#general-form" title="Link to this heading">#</a></h3>
+<h2>General form<a class="headerlink" href="#general-form" title="Link to this heading">#</a></h2>
 <p>In order to generalize our results in 2D to any <span class="math notranslate nohighlight">\(\mathbf{x}_{i}\in\mathbb{R}^{d}\)</span> where <span class="math notranslate nohighlight">\(d\)</span> is even, we divide the d-dimensional space into <span class="math notranslate nohighlight">\(d/2\)</span> sub-spaces:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -554,7 +552,8 @@ R_{m,\Theta}^{d} =
   0&amp;  0&amp;  0&amp;  0&amp;  \dots&amp;  \sin m\theta_{d/2} &amp;  \cos m\theta_{d/2}
 \end{pmatrix}
 \end{split}\]</div>
-<p>is the rotary matrix with pre-defined parameters <span class="math notranslate nohighlight">\(\Theta = \{\theta_{i}=10000^{-2(i-1)/d},i\in[1,2,\dots,d/2]\}\)</span>. RoPE encodes the absolute position with a rotation matrix and meanwhile incorporates the explicit relative relative position dependency in self-attention formulation.</p>
+<p>is the rotary matrix with pre-defined parameters <span class="math notranslate nohighlight">\(\Theta = \{\theta_{i}=10000^{-2(i-1)/d},i\in[1,2,\dots,d/2]\}\)</span>. RoPE encodes the absolute position with a rotation matrix
+and meanwhile incorporates the explicit relative position dependency in self-attention formulation.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <div class="math notranslate nohighlight">
@@ -564,42 +563,6 @@ R_{m,\Theta}^{d} =
 <figure class="align-default" id="rope-1">
 <a class="reference internal image-reference" href="../_images/rope-1.png"><img alt="../_images/rope-1.png" src="../_images/rope-1.png" style="height: 400px;" /></a>
 </figure>
-</section>
-</section>
-<section id="takeaway">
-<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>In order to incorporate <code class="docutils literal notranslate"><span class="pre">relative</span></code> position information, we require:</p>
-<div class="math notranslate nohighlight">
-\[f_{q}(\mathbf{x}_{m}, m)^{\intercal}f_{k}(\mathbf{x}_{n}, n) = g(\mathbf{x}_{m}, \mathbf{x}_{n}, m-n)\]</div>
-<p>In the 2D case, left multiply the rotary matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{R}_{m\theta} &amp;= \begin{pmatrix}
-  \cos m\theta &amp; -\sin m\theta \\
-  \sin m\theta &amp; \cos m\theta
-\end{pmatrix}
-\end{aligned}
-\end{split}\]</div>
-<p>equals rotate by <span class="math notranslate nohighlight">\(m\theta\)</span>.</p>
-<p>In the general case, left multiply</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-R_{m,\Theta}^{d} = 
-\begin{pmatrix}
-  \cos m\theta_{1} &amp; -\sin m\theta_{1} &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0 \\
-  \sin m\theta_{1} &amp;  \cos m\theta_{1} &amp; 0 &amp; 0 &amp; \dots &amp; 0 &amp; 0\\
-  0 &amp; 0 &amp;  \cos m\theta_{2} &amp; -\sin m\theta_{2}  &amp; \dots &amp; 0 &amp; 0\\
-  0 &amp; 0 &amp;  \sin m\theta_{2} &amp;  \cos m\theta_{2}  &amp; \dots &amp; 0 &amp; 0\\
-  \vdots&amp;  \vdots&amp;  \vdots&amp;  \vdots&amp; \ddots &amp;\vdots  &amp;\vdots \\
-  0&amp;  0&amp;  0&amp;  0&amp;  \dots&amp;  \cos m\theta_{d/2} &amp; -\sin m\theta_{d/2} \\
-  0&amp;  0&amp;  0&amp;  0&amp;  \dots&amp;  \sin m\theta_{d/2} &amp;  \cos m\theta_{d/2}
-\end{pmatrix}
-\end{split}\]</div>
-<p>where different <span class="math notranslate nohighlight">\(\theta_{i}\)</span> indicate different rotate frequency.</p>
-</div>
 </section>
 </section>
 
@@ -667,12 +630,8 @@ R_{m,\Theta}^{d} =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation">Formulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-case">2D case</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form">General form</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-case">2D case</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form">General form</a></li>
 </ul>
   </nav></div>
 

@@ -193,16 +193,19 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
@@ -232,12 +235,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -251,7 +258,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">GRPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
 </ul>
@@ -260,9 +267,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,12 +477,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-and-experimental-details">Methods and experimental details</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-methodology">High-level methodology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-methodology">High-level methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 </ul>
             </nav>
@@ -493,63 +496,32 @@ document.write(`
 <h1>InstructGPT<a class="headerlink" href="#instructgpt" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Training language models to follow instructions with human feedback<span id="id1">[<a class="reference internal" href="../reference.html#id31" title="Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe. Training language models to follow instructions with human feedback. 2022. URL: https://arxiv.org/abs/2203.02155, arXiv:2203.02155.">OWJ+22</a>]</span></p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p>Making language models bigger does not inherently make them better at following
 a user’s intent. For example, large language models can generate outputs that
 are untruthful, toxic, or simply not helpful to the user. In other words, these
 models are not aligned with their users. In this paper, we show an avenue for
-aligning language models with user intent on a wide range of tasks by fine-tuning
+<span style="color: red">aligning language models with user intent</span> on a wide range of tasks by fine-tuning
 with human feedback.</p>
 </div>
-<section id="methods-and-experimental-details">
-<h2>Methods and experimental details<a class="headerlink" href="#methods-and-experimental-details" title="Link to this heading">#</a></h2>
 <section id="high-level-methodology">
-<h3>High-level methodology<a class="headerlink" href="#high-level-methodology" title="Link to this heading">#</a></h3>
+<h2>High-level methodology<a class="headerlink" href="#high-level-methodology" title="Link to this heading">#</a></h2>
 <figure class="align-default">
 <img alt="../_images/instructgpt-1.png" src="../_images/instructgpt-1.png" />
 </figure>
-<p>We start with a pretrained language
-model, a distribution of prompts on which we want our model to produce aligned outputs, and a team
-of trained human labelers. We then apply the following three steps.</p>
-<p><strong>Step 1: Collect demonstration data, and train a supervised policy.</strong> Our labelers provide demonstrations
-of the desired behavior on the input prompt distribution. We then fine-tune a pretrained GPT-3<span id="id2">[<a class="reference internal" href="../reference.html#id5" title="Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. Language models are few-shot learners. 2020. URL: https://arxiv.org/abs/2005.14165, arXiv:2005.14165.">BMR+20</a>]</span> model on this data using supervised learning.</p>
-<p><strong>Step 2: Collect comparison data, and train a reward model.</strong> We collect a dataset of comparisons
-between model outputs, where labelers indicate which output they prefer for a given input. We then
-train a reward model to predict the human-preferred output.</p>
-<p><strong>Step 3: Optimize a policy against the reward model using PPO.</strong> We use the output of the
-RM as a scalar reward. We fine-tune the supervised policy to optimize this reward using the PPO
-algorithm. We call the resulting models InstructGPT.</p>
-<p>Steps 2 and 3 can be iterated continuously; more comparison data is collected on the current best
-policy, which is used to train a new RM and then a new policy.</p>
 </section>
 <section id="dataset">
-<h3>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
-<p>Our prompt dataset consists primarily of text prompts submitted to the OpenAI API, specifically
-those using an earlier version of the InstructGPT models (trained via supervised learning on a subset
-of our demonstration data) on the Playground interface. We heuristically deduplicate prompts by checking for prompts that share a long common
+<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<p>Our prompt dataset consists primarily of text prompts submitted to the OpenAI API. We heuristically deduplicate prompts by checking for prompts that share a long common
 prefix, and we limit the number of prompts to 200 per user ID. We also create our train, validation,
-and test splits based on user ID, so that the validation and test sets contain no data from users whose
-data is in the training set. To avoid the models learning potentially sensitive customer details, we
+and test splits based on user ID. To avoid the models learning potentially sensitive customer details, we
 filter all prompts in the training split for personally identifiable information (PII).</p>
-<p>To train the very first InstructGPT models, we asked labelers to write prompts themselves. We asked labelers
-to write three kinds of prompts:</p>
-<ul class="simple">
-<li><p><strong>Plain:</strong> We simply ask the labelers to come up with an arbitrary task, while ensuring the
-tasks had sufficient diversity.</p></li>
-<li><p><strong>Few-shot:</strong> We ask the labelers to come up with an instruction, and multiple query/response
-pairs for that instruction.</p></li>
-<li><p><strong>User-based:</strong> We had a number of use-cases stated in waitlist applications to the OpenAI
-API. We asked labelers to come up with prompts corresponding to these use cases.</p></li>
-</ul>
+<p>To train the very first InstructGPT models, we asked labelers to write prompts themselves.</p>
 <p>From these prompts, we produce three different datasets used in our fine-tuning procedure. The SFT dataset contains about 13k training
 prompts (from the API and labeler-written), the RM dataset has 33k training prompts (from the API
 and labeler-written), and the PPO dataset has 31k training prompts (only from the API).</p>
 </section>
 <section id="models">
-<h3>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h3>
+<h2>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h2>
 <p><strong>Supervised fine-tuning (SFT).</strong> We fine-tune GPT-3 on our labeler demonstrations using supervised
 learning.</p>
 <p><strong>Reward modeling (RM).</strong> Starting from the SFT model with the final unembedding layer removed,
@@ -564,13 +536,13 @@ we trained a model to take in a prompt and response, and output a scalar reward.
 comparisons.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>We employ the Bradley-Terry model for pairwise comparison of competitors, where the strength parameter for <span class="math notranslate nohighlight">\((x, y)\)</span> is set to <span class="math notranslate nohighlight">\(\exp(r(x, y))\)</span>. Then:</p>
+<p>We employ the <span style="color: red">Bradley-Terry model for pairwise comparison of competitors</span>, where the strength parameter for <span class="math notranslate nohighlight">\((x, y)\)</span> is set to <span class="math notranslate nohighlight">\(\exp(r(x, y))\)</span>. Then:</p>
 <div class="math notranslate nohighlight">
 \[p(y_{1}\succ y_{2}|x) = \frac{\exp(r(x, y_1))}{\exp(r(x, y_1)) + \exp(r(x, y_2))}=\sigma(r(x,y_1) - r(x,y_2))\]</div>
 </div>
 <p><strong>Reinforcement learning (RL).</strong> We fine-tuned the SFT model on our environment using PPO. Given
-the prompt and response, the reward model produces a reward and ends the episode. In addition, we add a per-token KL penalty from the SFT model at each token to mitigate over-optimization
-of the reward model. The value function is initialized from the RM. We call these
+the prompt and response, the reward model produces a reward and ends the episode. In addition, <span style="color: red">we add a per-token KL penalty from the SFT model at each token to mitigate over-optimization
+of the reward model. The value function is initialized from the RM.</span> We call these
 models “PPO.”</p>
 <p>We also experiment with mixing the pretraining gradients into the PPO gradients, in order to fix the
 performance regressions on public NLP datasets. We call these models “PPO-ptx.” We maximize the
@@ -602,7 +574,6 @@ the strength of the KL penalty and pretraining gradients respectively.</p>
 <p class="admonition-title">Tip</p>
 <p>The implementation details of PPO can be found in <a class="reference external" href="https://newfacade.github.io/notes-on-reinforcement-learning/17-ppo-trl.html">this blog</a>.</p>
 </div>
-</section>
 </section>
 <section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
@@ -676,12 +647,9 @@ the strength of the KL penalty and pretraining gradients respectively.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-and-experimental-details">Methods and experimental details</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-methodology">High-level methodology</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-methodology">High-level methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 </ul>
   </nav></div>

@@ -191,16 +191,19 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="techniques/norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="techniques/rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="techniques/extending.html">Extending context window of LLMs</a></li>
@@ -230,12 +233,16 @@
 <li class="toctree-l2"><a class="reference internal" href="data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data/magic.html">Magicoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data/unicoder.html">UNICODER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data/opencodereasoning.html">OpenCodeReasoning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sft/instag.html">Instag</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -249,7 +256,7 @@
 <li class="toctree-l2"><a class="reference internal" href="preference/deepseek-grm.html">DeepSeek-GRM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preference/ppo.html">PPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preference/grpo.html">Group Relative Policy Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preference/grpo.html">GRPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preference/reinforce%2B%2B.html">REINFORCE++</a></li>
 <li class="toctree-l2"><a class="reference internal" href="preference/dapo.html">DAPO</a></li>
 </ul>
@@ -258,9 +265,8 @@
 <li class="toctree-l2"><a class="reference internal" href="reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -534,10 +540,6 @@ then the bibliography is inserted with:</p>
 <span class="label"><span class="fn-bracket">[</span>BBC+23<span class="fn-bracket">]</span></span>
 <p>Jinze Bai, Shuai Bai, Yunfei Chu, Zeyu Cui, Kai Dang, Xiaodong Deng, Yang Fan, Wenbin Ge, Yu Han, Fei Huang, Binyuan Hui, Luo Ji, Mei Li, Junyang Lin, Runji Lin, Dayiheng Liu, Gao Liu, Chengqiang Lu, Keming Lu, Jianxin Ma, Rui Men, Xingzhang Ren, Xuancheng Ren, Chuanqi Tan, Sinan Tan, Jianhong Tu, Peng Wang, Shijie Wang, Wei Wang, Shengguang Wu, Benfeng Xu, Jin Xu, An Yang, Hao Yang, Jian Yang, Shusheng Yang, Yang Yao, Bowen Yu, Hongyi Yuan, Zheng Yuan, Jianwei Zhang, Xingxuan Zhang, Yichang Zhang, Zhenru Zhang, Chang Zhou, Jingren Zhou, Xiaohuan Zhou, and Tianhang Zhu. Qwen technical report. 2023. URL: <a class="reference external" href="https://arxiv.org/abs/2309.16609">https://arxiv.org/abs/2309.16609</a>, <a class="reference external" href="https://arxiv.org/abs/2309.16609">arXiv:2309.16609</a>.</p>
 </div>
-<div class="citation" id="id6" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>BMR+20<span class="fn-bracket">]</span></span>
-<p>Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. Language models are few-shot learners. 2020. URL: <a class="reference external" href="https://arxiv.org/abs/2005.14165">https://arxiv.org/abs/2005.14165</a>, <a class="reference external" href="https://arxiv.org/abs/2005.14165">arXiv:2005.14165</a>.</p>
-</div>
 <div class="citation" id="id28" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>CLY+24<span class="fn-bracket">]</span></span>
 <p>Linzheng Chai, Shukai Liu, Jian Yang, Yuwei Yin, Ke Jin, Jiaheng Liu, Tao Sun, Ge Zhang, Changyu Ren, Hongcheng Guo, Zekun Wang, Boyang Wang, Xianjie Wu, Bing Wang, Tongliang Li, Liqun Yang, Sufeng Duan, and Zhoujun Li. Mceval: massively multilingual code evaluation. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2406.07436">https://arxiv.org/abs/2406.07436</a>, <a class="reference external" href="https://arxiv.org/abs/2406.07436">arXiv:2406.07436</a>.</p>
@@ -557,10 +559,6 @@ then the bibliography is inserted with:</p>
 <div class="citation" id="id21" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DFAG17<span class="fn-bracket">]</span></span>
 <p>Yann N. Dauphin, Angela Fan, Michael Auli, and David Grangier. Language modeling with gated convolutional networks. 2017. URL: <a class="reference external" href="https://arxiv.org/abs/1612.08083">https://arxiv.org/abs/1612.08083</a>, <a class="reference external" href="https://arxiv.org/abs/1612.08083">arXiv:1612.08083</a>.</p>
-</div>
-<div class="citation" id="id8" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>DAB+24<span class="fn-bracket">]</span></span>
-<p>DeepSeek-AI, :, Xiao Bi, Deli Chen, Guanting Chen, Shanhuang Chen, Damai Dai, Chengqi Deng, Honghui Ding, Kai Dong, Qiushi Du, Zhe Fu, Huazuo Gao, Kaige Gao, Wenjun Gao, Ruiqi Ge, Kang Guan, Daya Guo, Jianzhong Guo, Guangbo Hao, Zhewen Hao, Ying He, Wenjie Hu, Panpan Huang, Erhang Li, Guowei Li, Jiashi Li, Yao Li, Y. K. Li, Wenfeng Liang, Fangyun Lin, A. X. Liu, Bo Liu, Wen Liu, Xiaodong Liu, Xin Liu, Yiyuan Liu, Haoyu Lu, Shanghao Lu, Fuli Luo, Shirong Ma, Xiaotao Nie, Tian Pei, Yishi Piao, Junjie Qiu, Hui Qu, Tongzheng Ren, Zehui Ren, Chong Ruan, Zhangli Sha, Zhihong Shao, Junxiao Song, Xuecheng Su, Jingxiang Sun, Yaofeng Sun, Minghui Tang, Bingxuan Wang, Peiyi Wang, Shiyu Wang, Yaohui Wang, Yongji Wang, Tong Wu, Y. Wu, Xin Xie, Zhenda Xie, Ziwei Xie, Yiliang Xiong, Hanwei Xu, R. X. Xu, Yanhong Xu, Dejian Yang, Yuxiang You, Shuiping Yu, Xingkai Yu, B. Zhang, Haowei Zhang, Lecong Zhang, Liyue Zhang, Mingchuan Zhang, Minghua Zhang, Wentao Zhang, Yichao Zhang, Chenggang Zhao, Yao Zhao, Shangyan Zhou, Shunfeng Zhou, Qihao Zhu, and Yuheng Zou. Deepseek llm: scaling open-source language models with longtermism. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2401.02954">https://arxiv.org/abs/2401.02954</a>, <a class="reference external" href="https://arxiv.org/abs/2401.02954">arXiv:2401.02954</a>.</p>
 </div>
 <div class="citation" id="id7" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DALF+24<span class="fn-bracket">]</span></span>
@@ -601,10 +599,6 @@ then the bibliography is inserted with:</p>
 <div class="citation" id="id36" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LXWZ23<span class="fn-bracket">]</span></span>
 <p>Jiawei Liu, Chunqiu Steven Xia, Yuyao Wang, and Lingming Zhang. Is your code generated by chatGPT really correct? rigorous evaluation of large language models for code generation. In <em>Thirty-seventh Conference on Neural Information Processing Systems</em>. 2023. URL: <a class="reference external" href="https://openreview.net/forum?id=1qvx610Cu7">https://openreview.net/forum?id=1qvx610Cu7</a>.</p>
-</div>
-<div class="citation" id="id32" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>OWJ+22<span class="fn-bracket">]</span></span>
-<p>Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe. Training language models to follow instructions with human feedback. 2022. URL: <a class="reference external" href="https://arxiv.org/abs/2203.02155">https://arxiv.org/abs/2203.02155</a>, <a class="reference external" href="https://arxiv.org/abs/2203.02155">arXiv:2203.02155</a>.</p>
 </div>
 <div class="citation" id="id17" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>QY+25<span class="fn-bracket">]</span></span>
