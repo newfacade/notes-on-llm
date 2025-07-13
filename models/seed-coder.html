@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Techniques" href="../techniques/0.html" />
-    <link rel="prev" title="Gemini 2.5" href="gemini2.5.html" />
+    <link rel="prev" title="Seed1.5-Thinking" href="seed1.5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Seed-Coder</a></li>
 </ul>
 </details></li>
@@ -237,6 +238,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -511,7 +514,7 @@ document.write(`
 <h1>Seed-Coder<a class="headerlink" href="#seed-coder" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We introduce Seed-Coder, a series of open-source LLMs comprising base,
+<p>Seed-Coder is a series of open-source LLMs comprising base,
 instruct and reasoning models of 8B size, <span style="color: red">minimizing human involvement in data construction</span>.</p>
 </div>
 <section id="pretraining">
@@ -521,31 +524,23 @@ instruct and reasoning models of 8B size, <span style="color: red">minimizing hu
 </figure>
 <section id="github-data">
 <h3>GitHub Data<a class="headerlink" href="#github-data" title="Link to this heading">#</a></h3>
-<p><strong>Preprocessing.</strong> We performed exact-deduplication using SHA256 hashes of contents and neardeduplication
+<p><strong>Preprocessing.</strong> We performed exact-deduplication using SHA256 hashes of contents and near-deduplication
 via the MinHash algorithm. Following the deduplication, we checked the remaining files
 via syntax parsers such as Tree-sitter and discarded those with syntax errors.</p>
 <p><strong>Quality Filtering.</strong> To overcome the shortness of human-oriented filter designs, we propose <span style="color: red">a file-level scoring
 model</span> to filter out low-quality code files from GitHub data in one shot. To construct the specific training set for this filter, we randomly
 sampled 222, 066 code files from the most commonly used programming languages and queried
 DeepSeek-V2-Chat to assess
-four key aspects: readability, modularity, clarity, and reusability (LLM as judge). To scale the scorer to the full pretraining GitHub dataset, we opted for
-a regression model rather than a binary classifier.</p>
-<figure class="align-default">
-<img alt="../_images/seedcoder2.png" src="../_images/seedcoder2.png" />
-</figure>
+four key aspects: readability, modularity, clarity, and reusability (LLM as judge).</p>
 </section>
 <section id="commits-data">
 <h3>Commits Data<a class="headerlink" href="#commits-data" title="Link to this heading">#</a></h3>
-<p>To utilize GitHub commits data for pretraining, we format each sample as a code change prediction
-task: given a commit message and its associated context, the model predicts the modified file
+<p>To utilize GitHub commits data for pretraining, we <code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">each</span> <span class="pre">sample</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">code</span> <span class="pre">change</span> <span class="pre">prediction</span> <span class="pre">task</span></code>: given a commit message and its associated context, the model predicts the modified file
 paths and the corresponding code changes.</p>
 </section>
 <section id="code-relatedweb-data">
 <h3>Code-RelatedWeb Data<a class="headerlink" href="#code-relatedweb-data" title="Link to this heading">#</a></h3>
 <p>Our extraction framework incorporates preprocessing and quality filtering mechanisms.</p>
-<figure class="align-default">
-<img alt="../_images/seedcoder3.png" src="../_images/seedcoder3.png" />
-</figure>
 <ul class="simple">
 <li><p><strong>FastText Recall:</strong> We trained a
 <span style="color: red">fastText model</span> designed to identify and retrieve additional code-related
@@ -685,12 +680,12 @@ and rollout number during training.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="gemini2.5.html"
+       href="seed1.5.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Gemini 2.5</p>
+        <p class="prev-next-title">Seed1.5-Thinking</p>
       </div>
     </a>
     <a class="right-next"

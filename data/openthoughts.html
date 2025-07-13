@@ -58,10 +58,14 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'data/openthoughts';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AM-Thinking-v1" href="am-think.html" />
+    <link rel="prev" title="OpenCodeReasoning" href="opencodereasoning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +128,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
@@ -199,6 +201,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
@@ -224,7 +227,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="alphacode.html">AlphaCode</a></li>
@@ -237,6 +240,8 @@
 <li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -452,7 +457,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -468,6 +475,21 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openthoughts3-data-pipeline">OpenThoughts3 Data Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-soucing">Question Soucing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixing-questions">Mixing Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-filtering">Question Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deduplication-and-sampling-multiple-answers-per-question-and-answer-filtering">Deduplication and Sampling Multiple Answers Per Question and Answer Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teacher-model">Teacher Model</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -479,6 +501,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="openthoughts">
 <h1>OpenThoughts<a class="headerlink" href="#openthoughts" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data recipes for reasoning models.</p>
+</div>
+<section id="openthoughts3-data-pipeline">
+<h2>OpenThoughts3 Data Pipeline<a class="headerlink" href="#openthoughts3-data-pipeline" title="Link to this heading">#</a></h2>
+<p>The experiments ablate each pipeline step independently, and we select the best-performing strategy based on downstream performance.</p>
+<section id="question-soucing">
+<h3>Question Soucing<a class="headerlink" href="#question-soucing" title="Link to this heading">#</a></h3>
+<p>Our experiments cover 27 different question sources for code questions. Among them, <code class="docutils literal notranslate"><span class="pre">CodeGolf</span></code> questions from StackExchange and
+competitive coding questions from <code class="docutils literal notranslate"><span class="pre">OpenCodeReasoning</span></code> perform well.</p>
+</section>
+<section id="mixing-questions">
+<h3>Mixing Questions<a class="headerlink" href="#mixing-questions" title="Link to this heading">#</a></h3>
+<p>After obtaining high-quality questions from various question sources, the challenge becomes how to
+combine them effectively. For simplicity, we use the rankings of the previous step in our pipeline, Our mixing strategy selects the top-ranked N datasets, randomly
+samples <span class="math notranslate nohighlight">\(\frac{31600}{N}\)</span> questions from each source, and concatenates them to form a dataset of size <span class="math notranslate nohighlight">\(31600\)</span>.
+We sweep values of <span class="math notranslate nohighlight">\(N \in \{1, 2, 4, 8, 16\}\)</span>: mixing at most two sources yields the best results across all data domains.</p>
+</section>
+<section id="question-filtering">
+<h3>Question Filtering<a class="headerlink" href="#question-filtering" title="Link to this heading">#</a></h3>
+<p><span style="color: red">Difficulty-based filtering</span> asks an LLM (GPT-4o-mini) to assess the difficulty of each
+question, then retains the most difficult questions. Difficulty-based filtering is the winning strategy
+for code.</p>
+</section>
+<section id="deduplication-and-sampling-multiple-answers-per-question-and-answer-filtering">
+<h3>Deduplication and Sampling Multiple Answers Per Question and Answer Filtering<a class="headerlink" href="#deduplication-and-sampling-multiple-answers-per-question-and-answer-filtering" title="Link to this heading">#</a></h3>
+<p>For code and science data, various combinations of
+deduplication and multiple answer generation yield similar results. We do not perform answer filtering because no filtering strategy outperformed the
+baseline, which uses all the answers.</p>
+</section>
+<section id="teacher-model">
+<h3>Teacher Model<a class="headerlink" href="#teacher-model" title="Link to this heading">#</a></h3>
+<p>We use QwQ-32B as the teacher model.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -511,12 +569,52 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="opencodereasoning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OpenCodeReasoning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="am-think.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AM-Thinking-v1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openthoughts3-data-pipeline">OpenThoughts3 Data Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-soucing">Question Soucing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixing-questions">Mixing Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-filtering">Question Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deduplication-and-sampling-multiple-answers-per-question-and-answer-filtering">Deduplication and Sampling Multiple Answers Per Question and Answer Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teacher-model">Teacher Model</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
