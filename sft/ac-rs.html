@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Skywork Open Reasoner 1 &#8212; Notes-on-LLM</title>
+    <title>Breaking the Attention Trap in Code LLMs &#8212; Notes-on-LLM</title>
   
   
   
@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -58,14 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'models/skywork-or1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sft/ac-rs';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Techniques" href="../techniques/0.html" />
-    <link rel="prev" title="Seed-Coder" href="seed-coder.html" />
+    <link rel="next" title="RM" href="../rm/0.html" />
+    <link rel="prev" title="Instag" href="instag.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,20 +188,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepseek-r1.html">DeepSeek-R1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen25-coder.html">Qwen2.5-Coder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gemini2.5.html">Gemini 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="seed1.5.html">Seed1.5-Thinking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Skywork Open Reasoner 1</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -214,6 +211,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -247,11 +246,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">SFT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sft-source-code.html">SFT with RL2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Breaking the Attention Trap in Code LLMs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -278,6 +278,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../rl/dapo.html">DAPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/vapo.html">VAPO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rl/gspo.html">GSPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/skywork-or1.html">Skywork Open Reasoner 1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -287,7 +288,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/shorter-better.html">ShorterBetter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/think-only-need.html">Think Only When You Need</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -372,7 +372,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodels/skywork-or1.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsft/ac-rs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,7 +402,7 @@
       
       
       
-      <li><a href="../_sources/models/skywork-or1.ipynb" target="_blank"
+      <li><a href="../_sources/sft/ac-rs.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -486,7 +486,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Skywork Open Reasoner 1</h1>
+    <h1>Breaking the Attention Trap in Code LLMs</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -496,22 +496,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-in-skywork-or1">MAGIC in Skywork-OR1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-stage-training">Multi-Stage Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-advantage-mask-for-truncated-responses">No Advantage Mask for Truncated Responses</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-temperature-sampling">High-temperature Sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-entropy-control">Adaptive Entropy Control</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-kl-loss">No KL Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-cracking">Attention Cracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rejection-sampling">Rejection Sampling</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-studies-on-mitigating-policy-entropy-collapse">Empirical Studies on Mitigating Policy Entropy Collapse</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premature-entropy-collapse-generally-manifests-as-worse-performance">Premature Entropy Collapse Generally Manifests as Worse Performance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impact-of-rollout-diversity-related-hyperparameters">The Impact of Rollout-Diversity-Related Hyperparameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impact-of-off-policy-update-by-increasing-n-text-sgd">The Impact of Off-policy Update by Increasing <span class="math notranslate nohighlight">\(N_{\text{SGD}}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preventing-premature-entropy-collapse">Preventing Premature Entropy Collapse</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-studies-on-training-resource-allocation">Empirical Studies on Training Resource Allocation</a></li>
 </ul>
             </nav>
         </div>
@@ -523,178 +512,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="skywork-open-reasoner-1">
-<h1>Skywork Open Reasoner 1<a class="headerlink" href="#skywork-open-reasoner-1" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="breaking-the-attention-trap-in-code-llms">
+<h1>Breaking the Attention Trap in Code LLMs<a class="headerlink" href="#breaking-the-attention-trap-in-code-llms" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Building on the
-DeepSeek-R1-Distill model series, our <code class="docutils literal notranslate"><span class="pre">RL</span> <span class="pre">approach</span></code> achieves notable performance gains, increasing average
-accuracy across AIME24, AIME25, and LiveCodeBench.<br>
-Additionally, we
-thoroughly <code class="docutils literal notranslate"><span class="pre">investigate</span> <span class="pre">the</span> <span class="pre">phenomenon</span> <span class="pre">of</span> <span class="pre">entropy</span> <span class="pre">collapse.</span></code></p>
-</div>
-<section id="magic-in-skywork-or1">
-<h2>MAGIC in Skywork-OR1<a class="headerlink" href="#magic-in-skywork-or1" title="Link to this heading">#</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>We made the following refinements to the training strategy of vanilla GRPO:</p>
+<p>This study identifies that, the Attention Trap phenomenon in training data constitutes a key constraint on model performance. To address this phenomenon, we propose the Attention Cracking with Rejection Sampling (AC-RS) method. Our method contains two stages:</p>
 <ol class="arabic simple">
-<li><p>Multi-Stage Training.</p></li>
-<li><p>No Advantage Mask for Truncated Responses.</p></li>
-<li><p>High-Temperature Sampling.</p></li>
-<li><p>On-Policy Training.</p></li>
-</ol>
-<p>We introduce the following characteristics into the loss function:</p>
-<ol class="arabic simple">
-<li><p>Adaptive Entropy Control.</p></li>
-<li><p>No KL Loss.</p></li>
-</ol>
-</div>
-<section id="multi-stage-training">
-<h3>Multi-Stage Training<a class="headerlink" href="#multi-stage-training" title="Link to this heading">#</a></h3>
-<p>we used a shorter context length <span class="math notranslate nohighlight">\(T\)</span> in the initial stages. Once the model’s performance converged,
-we increased <span class="math notranslate nohighlight">\(T\)</span> in the subsequent stage. Our findings
-demonstrate that multi-stage training not only improves token efficiency in the initial stage but
-also preserves scaling ability.</p>
-</section>
-<section id="no-advantage-mask-for-truncated-responses">
-<h3>No Advantage Mask for Truncated Responses<a class="headerlink" href="#no-advantage-mask-for-truncated-responses" title="Link to this heading">#</a></h3>
-<p>We investigated several advantage
-mask strategies aimed at reducing the influence of truncated responses. However, our findings show that
-assigning negative advantages to truncated samples not only improves token efficiency but also preserves the
-model’s scaling ability in later stages. As a result, we did not apply any mask strategies in our final training
-pipeline.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Ablation Experiments: Different Advantage Mask Strategies</p>
-<ol class="arabic simple">
-<li><p>No-Adv-Mask: We do not employ any advantage mask strategy.</p></li>
-<li><p>Adv-Mask-Before: The truncated responses are <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">involved</span></code> in the group advantage calculation
-for non-truncated responses, and the advantage of these truncated responses are set to 0.</p></li>
-<li><p>Adv-Mask-After: The truncated responses are <code class="docutils literal notranslate"><span class="pre">still</span> <span class="pre">involved</span></code> in the group advantage calculation
-for non-truncated responses, and the advantage of these truncated responses are set to 0.</p></li>
+<li><p>Attention Cracking (AC) modifies training data to eliminate attention traps.</p></li>
+<li><p>Rejection Sampling (RS)  employs self-generated model outputs for secondary training, preventing performance degradation from manual data modifications.</p></li>
 </ol>
 </div>
 <figure class="align-default">
-<img alt="../_images/sky-or1-1.png" src="../_images/sky-or1-1.png" />
+<a class="reference internal image-reference" href="../_images/ac-rs1.png"><img alt="../_images/ac-rs1.png" src="../_images/ac-rs1.png" style="height: 350px;" /></a>
 </figure>
-</section>
-<section id="high-temperature-sampling">
-<h3>High-temperature Sampling<a class="headerlink" href="#high-temperature-sampling" title="Link to this heading">#</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Ablation Experiments: Different Online Sampling Temperatures <span class="math notranslate nohighlight">\(\tau\)</span></p>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<p>To ensure fair comparison and better prepare for subsequent training data generation, we first train LC-Base model using Leetcode data through Rejection Sampling.</p>
+<figure class="align-default">
+<img alt="../_images/ac-rs2.png" src="../_images/ac-rs2.png" />
+</figure>
+<section id="attention-cracking">
+<h3>Attention Cracking<a class="headerlink" href="#attention-cracking" title="Link to this heading">#</a></h3>
+<p><span style="color: red">By removing target outputs from queries, we prevent models from relying on superficial pattern matching.</span> This forces models to allocate attention to problem descriptions and generated code for output reasoning. The AC stage modifies LeetCode queries through two operations:</p>
 <ol class="arabic simple">
-<li><p>High Temperature: <span class="math notranslate nohighlight">\(\tau\)</span> = 1.0.</p></li>
-<li><p>Low Temperature: <span class="math notranslate nohighlight">\(\tau\)</span> = 0.6.</p></li>
+<li><p><strong>AC Queries</strong>: Remove target outputs from examples in original queries for training. (i.e., Remove “Output: 5” and “Output: 8” in Figure 1)</p></li>
+<li><p><strong>Fetch Queries</strong>: Append “Please give all the examples in the answer.” at query endings, increasing the likelihood of including examples in retrieved results.</p></li>
 </ol>
-</div>
+<p>Fetch Queries collect generation results from the LC-Base model. Generated results are processed by selecting responses with the same examples as queries, prioritizing those passing tests. Finally, we fine-tune the Instruct model using AC Queries and processed results to drive the AC model.</p>
+</section>
+<section id="rejection-sampling">
+<h3>Rejection Sampling<a class="headerlink" href="#rejection-sampling" title="Link to this heading">#</a></h3>
+<p>To prevent performance degradation from AC stage data modifications, we introduce a RS stage. This mechanism directly uses AC queries to obtain outputs from AC-trained models, eliminating attention distortion caused by query-output mismatches.</p>
 <figure class="align-default">
-<img alt="../_images/sky-or1-2.png" src="../_images/sky-or1-2.png" />
+<a class="reference internal image-reference" href="../_images/ac-rs3.png"><img alt="../_images/ac-rs3.png" src="../_images/ac-rs3.png" style="height: 700px;" /></a>
 </figure>
 </section>
-<section id="adaptive-entropy-control">
-<h3>Adaptive Entropy Control<a class="headerlink" href="#adaptive-entropy-control" title="Link to this heading">#</a></h3>
-<p>While preventing premature entropy collapse
-via entropy regularization is beneficial, selecting an appropriate entropy loss coefficient is challenging – we
-introduce Adaptive Entropy Control, a method that adaptively adjusts the entropy loss coefficient based
-on the target and current entropy.</p>
-<div class="math notranslate nohighlight">
-\[
-\alpha_{k} = c_k\cdot\mathbb{I}\{e_k\le\mathbf{tgt\_ent}\}
-\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-c_{k+1} =
-\begin{cases}
-c_k + \Delta,\quad&amp;\text{if }e_k&lt;\mathbf{tgt\_ent}\\
-c_k - \Delta,\quad&amp;\text{if }e_k&gt;\mathbf{tgt\_ent}
-\end{cases}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(c_0=0\)</span> denote the initial adaptive coefficient.</p>
-</section>
-<section id="no-kl-loss">
-<h3>No KL Loss<a class="headerlink" href="#no-kl-loss" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/sky-or1-3.png" src="../_images/sky-or1-3.png" />
-</figure>
-<p>We observe that, in Stage 2, the <code class="docutils literal notranslate"><span class="pre">KL</span> <span class="pre">loss</span> <span class="pre">strongly</span> <span class="pre">pulls</span> <span class="pre">the</span> <span class="pre">actor</span> <span class="pre">model’s</span> <span class="pre">policy</span> <span class="pre">back</span> <span class="pre">toward</span> <span class="pre">the</span> <span class="pre">reference</span> <span class="pre">model.</span></code> As a result, performance
-on AIME24 fails to improve significantly once the actor’s policy becomes too similar to the reference policy. Based on this observation, we set <span class="math notranslate nohighlight">\(\beta = 0\)</span> for all training stages of our released models.</p>
-</section>
-</section>
-<section id="empirical-studies-on-mitigating-policy-entropy-collapse">
-<h2>Empirical Studies on Mitigating Policy Entropy Collapse<a class="headerlink" href="#empirical-studies-on-mitigating-policy-entropy-collapse" title="Link to this heading">#</a></h2>
-<p>We hypothesize that the following two sources may influence the
-model’s entropy and convergence behavior:</p>
-<ul class="simple">
-<li><p><strong>Rollout diversity.</strong> If the rollout data contain a greater diversity of correct responses, this prevents the
-model from overfitting to a single correct trajectory.</p></li>
-<li><p><strong>Policy update.</strong> We also investigate how different components of the policy update influence entropy.
-We focus primarily on the number of stochastic gradient descent (SGD) steps per training
-step and the use of additional entropy control methods (e.g., entropy loss).</p></li>
-</ul>
-<section id="premature-entropy-collapse-generally-manifests-as-worse-performance">
-<h3>Premature Entropy Collapse Generally Manifests as Worse Performance<a class="headerlink" href="#premature-entropy-collapse-generally-manifests-as-worse-performance" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/sky-or1-4.png" src="../_images/sky-or1-4.png" />
-</figure>
-</section>
-<section id="the-impact-of-rollout-diversity-related-hyperparameters">
-<h3>The Impact of Rollout-Diversity-Related Hyperparameters<a class="headerlink" href="#the-impact-of-rollout-diversity-related-hyperparameters" title="Link to this heading">#</a></h3>
-<p>We investigated how the rollout batch size <span class="math notranslate nohighlight">\(D_R\)</span>, group size <span class="math notranslate nohighlight">\(gs\)</span>, and sampling temperature <span class="math notranslate nohighlight">\(\tau\)</span> influence entropy
-dynamics. Our results indicate no significant differences in entropy
-dynamics across on-policy configurations by adjust <span class="math notranslate nohighlight">\(D_R\)</span> and <span class="math notranslate nohighlight">\(gs\)</span>. None of these experiments exhibited entropy collapse.</p>
-<p>Regarding the sampling temperature <span class="math notranslate nohighlight">\(\tau\)</span> , as stated, we found that using a properly chosen but <span style="color: red">relatively high temperature</span>
-led to lower test accuracy during the initial training steps, but ultimately resulted in greater performance
-improvements.</p>
-</section>
-<section id="the-impact-of-off-policy-update-by-increasing-n-text-sgd">
-<h3>The Impact of Off-policy Update by Increasing <span class="math notranslate nohighlight">\(N_{\text{SGD}}\)</span><a class="headerlink" href="#the-impact-of-off-policy-update-by-increasing-n-text-sgd" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/sky-or1-6.png" src="../_images/sky-or1-6.png" />
-</figure>
-<p>It is clear that the number of SGD steps performed in one training step satisfies:</p>
-<div class="math notranslate nohighlight">
-\[
-N_{\text{SGD}} = \frac{D_R}{D_T}\cdot N_{\text{reuse}}
-\]</div>
-<p>when <span class="math notranslate nohighlight">\(N_{\text{SGD}}=1\)</span>, the policy update is purely on-policy; when <span class="math notranslate nohighlight">\(N_{\text{SGD}}\ge 2\)</span>, the off-policy data is introduced into the policy update.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Ablation Experiments: The Impact of Different Numbers of SGD Steps <span class="math notranslate nohighlight">\(N_{\text{SGD}}\)</span>.</p>
-<p>Consider the quadruple <span class="math notranslate nohighlight">\((N_{\text{SGD}},D_R,D_T ,N_{\text{reuse}})\)</span>.</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(N_{\text{SGD}}=1\)</span>: The baseline experiment with the quadruple (1,64,64,1).</p></li>
-<li><p><span class="math notranslate nohighlight">\(N_{\text{SGD}}=2\)</span>: We ran two experiments with the quadruples (2,64,32,1) and (2,64,64,2).</p></li>
-<li><p><span class="math notranslate nohighlight">\(N_{\text{SGD}}=4\)</span>: We ran two experiments with the quadruples (4,64,16,1) and (4,64,64,4).</p></li>
-</ol>
-</div>
-<figure class="align-default">
-<img alt="../_images/sky-or1-5.png" src="../_images/sky-or1-5.png" />
-</figure>
-<p>Experiments with <span class="math notranslate nohighlight">\(N_{\text{SGD}} \in \{2, 4\}\)</span> exhibit faster policy convergence, with entropy
-decaying to very small values within a few training steps. As a result, test performance fails to improve
-consistently once the model enters a low-entropy state. <span style="color: red">Off-Policy Data Harms Test Performance.</span></p>
-</section>
-<section id="preventing-premature-entropy-collapse">
-<h3>Preventing Premature Entropy Collapse<a class="headerlink" href="#preventing-premature-entropy-collapse" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Entropy Loss Is Sensitive to Training Data.</p></li>
-<li><p><span style="color: red">Adjusting the Coefficient of Entropy Loss Adaptively.</span></p></li>
-<li><p>Using a <span style="color: red">properly chosen higher-clip ratio can prevent premature entropy collapse</span> and lead to better test performance. However, the optimal higher-clip ratio is task-dependent.</p></li>
-</ul>
-</section>
-</section>
-<section id="empirical-studies-on-training-resource-allocation">
-<h2>Empirical Studies on Training Resource Allocation<a class="headerlink" href="#empirical-studies-on-training-resource-allocation" title="Link to this heading">#</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<ol class="arabic simple">
-<li><p>Rollout Time Dominates the Total Training Time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Larger</span> <span class="pre">Batch</span> <span class="pre">Size,</span> <span class="pre">Better</span> <span class="pre">Test</span> <span class="pre">Performance.</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Larger</span> <span class="pre">Group</span> <span class="pre">Size,</span> <span class="pre">Better</span> <span class="pre">Test</span> <span class="pre">Performance.</span></code></p></li>
-</ol>
-</div>
 </section>
 </section>
 
@@ -711,7 +563,7 @@ consistently once the model enters a low-entropy state. <span style="color: red"
         },
         kernelOptions: {
             name: "python3",
-            path: "./models"
+            path: "./sft"
         },
         predefinedOutput: true
     }
@@ -729,20 +581,20 @@ consistently once the model enters a low-entropy state. <span style="color: red"
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="seed-coder.html"
+       href="instag.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Seed-Coder</p>
+        <p class="prev-next-title">Instag</p>
       </div>
     </a>
     <a class="right-next"
-       href="../techniques/0.html"
+       href="../rm/0.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Techniques</p>
+        <p class="prev-next-title">RM</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -762,22 +614,11 @@ consistently once the model enters a low-entropy state. <span style="color: red"
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-in-skywork-or1">MAGIC in Skywork-OR1</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-stage-training">Multi-Stage Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-advantage-mask-for-truncated-responses">No Advantage Mask for Truncated Responses</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-temperature-sampling">High-temperature Sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-entropy-control">Adaptive Entropy Control</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-kl-loss">No KL Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attention-cracking">Attention Cracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rejection-sampling">Rejection Sampling</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-studies-on-mitigating-policy-entropy-collapse">Empirical Studies on Mitigating Policy Entropy Collapse</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#premature-entropy-collapse-generally-manifests-as-worse-performance">Premature Entropy Collapse Generally Manifests as Worse Performance</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impact-of-rollout-diversity-related-hyperparameters">The Impact of Rollout-Diversity-Related Hyperparameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-impact-of-off-policy-update-by-increasing-n-text-sgd">The Impact of Off-policy Update by Increasing <span class="math notranslate nohighlight">\(N_{\text{SGD}}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preventing-premature-entropy-collapse">Preventing Premature Entropy Collapse</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-studies-on-training-resource-allocation">Empirical Studies on Training Resource Allocation</a></li>
 </ul>
   </nav></div>
 
