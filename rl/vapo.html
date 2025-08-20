@@ -203,6 +203,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -232,28 +234,27 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -549,20 +550,17 @@ model with Monte-Carlo return.</span></p></li>
 <li><p>Train the value model until key training metrics, including value loss and explained variance, attain
 sufficiently low values.</p></li>
 </ol>
-<p>The reward signal
-<span class="math notranslate nohighlight">\(R(s_T ,&lt;\text{EOS}&gt;)\)</span> at the termination token propagates backward as <span class="math notranslate nohighlight">\(\lambda^{T-t}R(s_T ,&lt;\text{EOS}&gt;)\)</span> to the <span class="math notranslate nohighlight">\(t\)</span>-th token. <span style="color: red">For
-long sequences where <span class="math notranslate nohighlight">\(T −t \gg 1\)</span>, this discounting reduces the effective reward signal to near zero.</span></p>
 <p><strong>Decoupled-GAE</strong> decouples the advantage computation
-for the value and the policy. For value updates, it is recommended to compute the value-update target
-with <span class="math notranslate nohighlight">\(\lambda_{\text{critic}} = 1.0\)</span>. This choice results in an unbiased gradient-descent optimization, effectively addressing the
+for the value and the policy. For value updates, it is recommended to <span style="color: red">compute the value-update target
+with <span class="math notranslate nohighlight">\(\lambda_{\text{critic}} = 1.0\)</span>.</span> This choice results in an unbiased gradient-descent optimization, effectively addressing the
 reward-decay issues in long CoT tasks. For policy updates, using a smaller <span class="math notranslate nohighlight">\(\lambda_{\text{policy}}\)</span> is advisable to accelerate policy convergence under computational
 and time constraints.</p>
 </section>
 <section id="managing-heterogeneous-sequence-lengths-during-training">
 <h2>Managing Heterogeneous Sequence Lengths during Training<a class="headerlink" href="#managing-heterogeneous-sequence-lengths-during-training" title="Link to this heading">#</a></h2>
 <p><strong>Length-Adaptive GAE</strong> aims to
-ensure a more uniform distribution of TD-errors across both short and long sequences. We design the sum of
-the coefficients <span class="math notranslate nohighlight">\(\lambda_{\text{policy}}\)</span> to be proportional to the output length <span class="math notranslate nohighlight">\(l\)</span>:</p>
+ensure a more uniform distribution of TD-errors across both short and long sequences. We design the <span style="color: red">sum of
+the coefficients <span class="math notranslate nohighlight">\(\lambda_{\text{policy}}\)</span> to be proportional to the output length <span class="math notranslate nohighlight">\(l\)</span>:</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sum_{t=0}^{\infty}\lambda_{\text{policy}}^{t} = \frac{1}{1 - \lambda_{\text{policy}}} = \alpha l
@@ -591,8 +589,7 @@ through a weighting coefficient <span class="math notranslate nohighlight">\(\mu
 \[
 \mathcal{L}(\theta) = \mathcal{L}_{\text{PPO}}(\theta) + \mu\ast\mathcal{L}_{\text{NLL}}(\theta)
 \]</div>
-<p><strong>Group-Sampling</strong> reduces the number of distinct prompts per batch and redirects computational resources toward
-repeated generations. We observed that it is marginally better than sample each prompt only once.</p>
+<p><strong>Group-Sampling</strong> reduces the number of distinct prompts per batch and <code class="docutils literal notranslate"><span class="pre">redirects</span> <span class="pre">computational</span> <span class="pre">resources</span> <span class="pre">toward</span> <span class="pre">repeated</span> <span class="pre">generations</span></code>. We observed that it is marginally better than sample each prompt only once.</p>
 </section>
 </section>
 

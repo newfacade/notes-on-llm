@@ -58,13 +58,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sft/lima';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Instag" href="instag.html" />
+    <link rel="next" title="Breaking the Attention Trap in Code LLMs" href="ac-rs.html" />
     <link rel="prev" title="Scaling Relationship on Learning Mathematical Reasoning with Large Language Models" href="rs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -203,6 +201,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -232,28 +232,27 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">SFT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -499,7 +498,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-data">Alignment Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-lima">Training LIMA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-evaluation">Human Evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablations-on-data-diversity-quality-and-quantity">Ablations on Data Diversity, Quality, and Quantity</a></li>
 </ul>
@@ -525,9 +523,9 @@ document.write(`
 <p>We measure the relative importance of these two stages by training <a class="reference external" href="https://arxiv.org/abs/2305.11206">LIMA</a>, a 65B
 parameter LLaMa language model fine-tuned with the standard supervised loss on
 only 1,000 carefully curated prompts and responses. LIMA demonstrates remarkably strong
-performance, strongly suggest that almost all knowledge in large
+performance, strongly suggest that <span style="color: red">almost all knowledge in large
 language models is learned during pretraining, and only limited instruction tuning
-data is necessary to teach models to produce high quality output.</p>
+data is necessary</span> to teach models to produce high quality output.</p>
 </div>
 <section id="alignment-data">
 <h2>Alignment Data<a class="headerlink" href="#alignment-data" title="Link to this heading">#</a></h2>
@@ -535,14 +533,6 @@ data is necessary to teach models to produce high quality output.</p>
 high-quality responses. We select 750 top questions and answers from community forums, such as
 Stack Exchange and wikiHow, sampling for quality and diversity. In addition, we manually write 250
 examples of prompts and responses.</p>
-</section>
-<section id="training-lima">
-<h2>Training LIMA<a class="headerlink" href="#training-lima" title="Link to this heading">#</a></h2>
-<p>We follow standard fine-tuning hyperparameters: we fine-tune for 15 epochs using
-AdamW with <span class="math notranslate nohighlight">\(\beta_1=0.9\)</span>, <span class="math notranslate nohighlight">\(\beta_2=0.95\)</span>, and weight decay of 0.1.
-Without warmup steps, we set the initial learning rate to <span class="math notranslate nohighlight">\(1e^{-5}\)</span> and linearly decaying to <span class="math notranslate nohighlight">\(1e^{-6}\)</span> by
-the end of training. The batch size is set to 32 examples (64 for smaller models), and texts longer
-than 2048 tokens are trimmed.</p>
 </section>
 <section id="human-evaluation">
 <h2>Human Evaluation<a class="headerlink" href="#human-evaluation" title="Link to this heading">#</a></h2>
@@ -553,11 +543,15 @@ than 2048 tokens are trimmed.</p>
 <section id="ablations-on-data-diversity-quality-and-quantity">
 <h2>Ablations on Data Diversity, Quality, and Quantity<a class="headerlink" href="#ablations-on-data-diversity-quality-and-quantity" title="Link to this heading">#</a></h2>
 <p>We investigate the effects of training data diversity, quality, and quantity through ablation experiments.
-We observe that, for the purpose of alignment, scaling up input <code class="docutils literal notranslate"><span class="pre">diversity</span> <span class="pre">and</span> <span class="pre">output</span> <span class="pre">quality</span></code> have
-measurable positive effects, while scaling up quantity alone might not.</p>
+We observe that, for the purpose of alignment, scaling up input <span style="color: red">diversity and output quality</span> have
+measurable positive effects, while <code class="docutils literal notranslate"><span class="pre">scaling</span> <span class="pre">up</span> <span class="pre">quantity</span> <span class="pre">alone</span> <span class="pre">might</span> <span class="pre">not</span></code>.</p>
 <figure class="align-default">
 <img alt="../_images/lima-2.png" src="../_images/lima-2.png" />
 </figure>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Confilict with the statement that “the model performance has a log-linear relation versus data amount”.</p>
+</div>
 </section>
 </section>
 
@@ -601,11 +595,11 @@ measurable positive effects, while scaling up quantity alone might not.</p>
       </div>
     </a>
     <a class="right-next"
-       href="instag.html"
+       href="ac-rs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Instag</p>
+        <p class="prev-next-title">Breaking the Attention Trap in Code LLMs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -626,7 +620,6 @@ measurable positive effects, while scaling up quantity alone might not.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment-data">Alignment Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-lima">Training LIMA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-evaluation">Human Evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablations-on-data-diversity-quality-and-quantity">Ablations on Data Diversity, Quality, and Quantity</a></li>
 </ul>

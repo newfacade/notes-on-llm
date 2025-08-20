@@ -203,6 +203,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -232,28 +234,27 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -507,7 +508,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch-updates">Mini-Batch Updates</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-setup">Experimental Setup</a></li>
 </ul>
             </nav>
         </div>
@@ -524,15 +524,13 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We present REINFORCE++, an enhanced variant of the classical REINFORCE algorithm
-that incorporates key optimization techniques from PPO while eliminating the need for a critic
-network.</p>
+that <span style="color: red">incorporates key optimization techniques from PPO while eliminating the need for a critic
+network.</span></p>
 </div>
 <section id="background-the-reinforce-algorithm">
 <h2>Background: The REINFORCE Algorithm<a class="headerlink" href="#background-the-reinforce-algorithm" title="Link to this heading">#</a></h2>
-<p>REINFORCE is a foundational policy gradient method in reinforcement learning that directly optimizes the expected
-return of a policy through gradient ascent. The algorithm operates as follows:</p>
-<p><strong>Trajectory Sampling:</strong> The agent interacts with the environment to generate trajectories consisting of states,
-actions, and rewards.</p>
+<p>The algorithm operates as follows:</p>
+<p><strong>Trajectory Sampling.</strong></p>
 <p><strong>Return Calculation:</strong> The discounted cumulative rewards for each trajectory are computed as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -593,10 +591,6 @@ L^{CLIP}(\theta) = \mathbb{E}_{t}\left[\min\left(r_{t}(\theta)\hat{A}_{t}, \mbox
 <li><p><span class="math notranslate nohighlight">\(\hat{A}_{t}\)</span> is the estimated advantage for token <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mbox{clip}(r_{t}(\theta), 1-\epsilon, 1 + \epsilon)\)</span> restricts the probability ratio to be within the range of <span class="math notranslate nohighlight">\([1-\epsilon,1+\epsilon]\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a small hyperparameter.</p></li>
 </ul>
-<p>This formulation effectively allows the algorithm to take advantage of positive advantages while preventing excessively
-large updates that could destabilize training. The use of the minimum function ensures that if the ratio moves too far
-from 1 (either above or below), it does not contribute <code class="docutils literal notranslate"><span class="pre">positively</span></code> to the objective, thus maintaining a form of trust region
-for policy updates.</p>
 </section>
 <section id="advantage-normalization">
 <h3>Advantage Normalization<a class="headerlink" href="#advantage-normalization" title="Link to this heading">#</a></h3>
@@ -610,22 +604,8 @@ A_{t}(s_t, a_t) = r(x,y) - \beta\sum_{i=t}^{T}\mbox{KL}(i)
 \[
 A_{\text{normalized}} = \frac{A - \mu_{A}}{\sigma_{A}}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu_A\)</span> and <span class="math notranslate nohighlight">\(sigma_{A}\)</span> represent the batch mean and standard deviation respectively. Normalization ensures stable gradients
+<p>where <span class="math notranslate nohighlight">\(\mu_A\)</span> and <span class="math notranslate nohighlight">\(\sigma_{A}\)</span> represent the batch mean and standard deviation respectively. Normalization ensures stable gradients
 and prevents divergence during training.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>PPO compute advantages using GAE:</p>
-<ul class="simple">
-<li><p>TD error <span class="math notranslate nohighlight">\(\delta_t = r(s_t, a_t) + \gamma V(s_{t+1}) - V(s_t)\)</span></p></li>
-<li><p>The Generalized Advantage Estimator <span class="math notranslate nohighlight">\(\hat{A}(s_t, a_t) = \sum(\gamma\lambda)^{l}\delta_{t+l}^{V}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{R}_{t} = \hat{A}(s_t, a_t) + V(s_t)\)</span> is the estimated reward to go</p></li>
-</ul>
-<p>Reinforce++ compute advantages using z-score normalization:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(A_{t}(s_t, a_t) = r(x,y) - \beta\sum_{i=t}^{T}\mbox{KL}(i)\)</span> is exactly the reward to go when <span class="math notranslate nohighlight">\(\gamma=1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(A_{\text{normalized}} = \frac{A - \mu_{A}}{\sigma_{A}}\)</span> ensures stable gradients</p></li>
-</ul>
-</div>
 </section>
 <section id="reward-normalization-and-clipping">
 <h3>Reward Normalization and Clipping<a class="headerlink" href="#reward-normalization-and-clipping" title="Link to this heading">#</a></h3>
@@ -644,9 +624,6 @@ and prevents divergence during training.</p>
 <h3>Mini-Batch Updates<a class="headerlink" href="#mini-batch-updates" title="Link to this heading">#</a></h3>
 <p>To enhance training efficiency, we implement mini-batch updates.</p>
 </section>
-</section>
-<section id="experimental-setup">
-<h2>Experimental Setup<a class="headerlink" href="#experimental-setup" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -723,7 +700,6 @@ and prevents divergence during training.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch-updates">Mini-Batch Updates</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-setup">Experimental Setup</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Instag &#8212; Notes-on-LLM</title>
+    <title>Acecoder &#8212; Notes-on-LLM</title>
   
   
   
@@ -60,12 +60,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'sft/instag';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data/acecoder';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Breaking the Attention Trap in Code LLMs" href="ac-rs.html" />
-    <link rel="prev" title="LIMA: Less Is More for Alignment" href="lima.html" />
+    <link rel="next" title="KodCode" href="kod.html" />
+    <link rel="prev" title="MAGPIE" href="magpie.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,6 +203,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,30 +232,29 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecontests.html">CodeContests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magpie.html">MAGPIE</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">SFT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sft-source-code.html">SFT with RL2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Instag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -374,7 +375,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsft/instag.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata/acecoder.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -404,7 +405,7 @@
       
       
       
-      <li><a href="../_sources/sft/instag.ipynb" target="_blank"
+      <li><a href="../_sources/data/acecoder.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -488,7 +489,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Instag</h1>
+    <h1>Acecoder</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -498,17 +499,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Instag</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-set-fine-grained-tagging">Open-Set Fine-Grained Tagging</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tag-normalization">Tag Normalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-evaluation">Quality Evaluation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-analysis">Preliminary Analysis</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instag-for-data-selection">Instag for Data Selection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-setup">Experiment Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoupled-analysis-of-complexity-and-diversity">Decoupled Analysis of Complexity and Diversity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acecode-87k">ACECODE-87K</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-case-synthesis-from-seed-dataset">Test Case Synthesis from Seed Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-case-filtering">Test Case Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preference-pairs-construction">Preference Pairs Construction</a></li>
 </ul>
 </li>
 </ul>
@@ -522,87 +516,66 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="instag">
-<h1>Instag<a class="headerlink" href="#instag" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="acecoder">
+<h1>Acecoder<a class="headerlink" href="#acecoder" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We propose <a class="reference external" href="https://github.com/OFA-Sys/InsTag">INSTAG</a>, an open-set fine-grained
-tagger, to tag samples within SFT datasets based on semantics and intentions</p>
+<p>Synthesizes large-scale reliable question and tests for code generation using a fully automated
+pipeline!</p>
 </div>
-<section id="id1">
-<h2>Instag<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<section id="open-set-fine-grained-tagging">
-<h3>Open-Set Fine-Grained Tagging<a class="headerlink" href="#open-set-fine-grained-tagging" title="Link to this heading">#</a></h3>
-<p>We use the prompt shown in Tab. 4 to employ CHATGPT, providing fine-grained intention tags for
-given queries. The number of original tags annotated by CHATGPT
-is larger than 12K, showing CHATGPT can provide diverse and fine-grained annotations. However, we notice the original tagging results provided by CHATGPT contain noticeable noises,
-including <span style="color: red">inconsistency in word format and granularity</span>. Therefore, we design a systematic method
-to normalize the open-set tagging results from CHATGPT.</p>
 <figure class="align-default">
-<img alt="../_images/instag1.png" src="../_images/instag1.png" />
+<a class="reference internal image-reference" href="../_images/acecoder1.png"><img alt="../_images/acecoder1.png" src="../_images/acecoder1.png" style="height: 500px;" /></a>
+</figure>
+<section id="acecode-87k">
+<h2>ACECODE-87K<a class="headerlink" href="#acecode-87k" title="Link to this heading">#</a></h2>
+<section id="test-case-synthesis-from-seed-dataset">
+<h3>Test Case Synthesis from Seed Dataset<a class="headerlink" href="#test-case-synthesis-from-seed-dataset" title="Link to this heading">#</a></h3>
+<p>We start
+from existing coding datasets with provided question
+<span class="math notranslate nohighlight">\(x\)</span> and corresponding program <span class="math notranslate nohighlight">\(y\)</span>. Specifically,
+we combine <code class="docutils literal notranslate"><span class="pre">Magicoder-Evol-Instruct</span></code>, <code class="docutils literal notranslate"><span class="pre">Magicoder-</span> <span class="pre">OSS-Instruct-75K</span></code>, and <code class="docutils literal notranslate"><span class="pre">StackPyFunction</span></code> as our
+seed dataset.</p>
+<p>We only keep the questions written in
+Python that contain either a function or a class, resulting
+in a total of 124K entries. We find that these
+datasets contain highly noisy questions that cannot
+be easily evaluated using test cases. Therefore,
+we feed every question-solution pair <span class="math notranslate nohighlight">\((x, y)\)</span> into a
+GPT-4o-mini to propose a refined
+LeetCode-style question <span class="math notranslate nohighlight">\(x_r\)</span> with highly structured
+instructions. <span style="color: red">Meanwhile, we also prompt it to
+‘imagine’ around 20 test cases <span class="math notranslate nohighlight">\((t_1, \dots, t_m)\)</span> for each
+refined coding question <span class="math notranslate nohighlight">\(x_r\)</span> based on its understanding
+of the expected behavior of the desired program.</span></p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/acecoder2.png"><img alt="../_images/acecoder2.png" src="../_images/acecoder2.png" style="height: 700px;" /></a>
 </figure>
 </section>
-<section id="tag-normalization">
-<h3>Tag Normalization<a class="headerlink" href="#tag-normalization" title="Link to this heading">#</a></h3>
-<p>We have identified three significant types of noise. We normalize the raw tagging results with the following normalization
-procedure:</p>
-<figure class="align-default">
-<img alt="../_images/instag2.png" src="../_images/instag2.png" />
-</figure>
-<ul class="simple">
-<li><p><strong>Frequency Filtering:</strong> We first filter out long-tail tags appearing less than <span class="math notranslate nohighlight">\(\alpha\)</span> times in the whole
-annotated dataset.</p></li>
-<li><p><strong>Rule Aggregation:</strong> We transform all tags into lower characters and replace all special characters into spaces to further aggregate the tags. Finally,
-we apply stemming to each tag with the support of <code class="docutils literal notranslate"><span class="pre">NLTK</span></code>.</p></li>
-<li><p><strong>Semantic Aggregation:</strong> We employ text embedding models to obtain the semantics of tags. We
-use <code class="docutils literal notranslate"><span class="pre">PHRASEBERT</span></code>, a BERT-based model designed explicitly for embedding
-phrases, such as titles of tags. Then we use <code class="docutils literal notranslate"><span class="pre">DBSCAN</span></code> algorithm to cluster tags
-with a given threshold <span class="math notranslate nohighlight">\(t\)</span> of semantic similarity.</p></li>
-<li><p><strong>Association Aggregation:</strong> We analyze all raw tagging results and employ the <code class="docutils literal notranslate"><span class="pre">FP-Growth</span></code> algorithm to mine association rules between tags. We then recursively merge associated tags
-based on the above association rules and reduce verbosity.</p></li>
-</ul>
+<section id="test-case-filtering">
+<h3>Test Case Filtering<a class="headerlink" href="#test-case-filtering" title="Link to this heading">#</a></h3>
+<p>we facilitated a stronger coder model Qwen2.5-
+Coder-32B-Instruct as a proxy
+to perform quality control. Specifically, we prompt
+it for each <span class="math notranslate nohighlight">\(x_r\)</span> to generate a program <span class="math notranslate nohighlight">\(y'\)</span>. We removed all test cases <span class="math notranslate nohighlight">\(t_i\)</span> where the generated solution program <span class="math notranslate nohighlight">\(y'\)</span> could not pass.</p>
 </section>
-<section id="quality-evaluation">
-<h3>Quality Evaluation<a class="headerlink" href="#quality-evaluation" title="Link to this heading">#</a></h3>
-<p>We employ both GPT-4 and human annotators to provide judgments in a set of randomly sampled
-tagging results. We evaluate the quality of the normalized tagging dataset in precision and consistency:</p>
-<ul class="simple">
-<li><p><strong>Precision.</strong> We define precision as whether tags assigned to a specific query are all correctly related
-to query intentions.</p></li>
-<li><p><strong>Consistency.</strong> An annotation case <span class="math notranslate nohighlight">\((t,\mathcal{I})\)</span> contains a tag <span class="math notranslate nohighlight">\(t\)</span> and a set of randomly selected instructions <span class="math notranslate nohighlight">\(\mathcal{I}\)</span> annotated with such tag. Annotators are required to identify any
-semantic changes in tags across all instructions.</p></li>
-</ul>
-</section>
-<section id="preliminary-analysis">
-<h3>Preliminary Analysis<a class="headerlink" href="#preliminary-analysis" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Diversity</strong> is used to access the range of intentions and semantics covered by queries in a dataset.</p></li>
-<li><p><strong>Complexity</strong> is quantified as the
-average tag number assigned to queries in a dataset.</p></li>
-</ul>
-<figure class="align-default">
-<img alt="../_images/instag3.png" src="../_images/instag3.png" />
-</figure>
-</section>
-</section>
-<section id="instag-for-data-selection">
-<h2>Instag for Data Selection<a class="headerlink" href="#instag-for-data-selection" title="Link to this heading">#</a></h2>
-<section id="experiment-setup">
-<h3>Experiment Setup<a class="headerlink" href="#experiment-setup" title="Link to this heading">#</a></h3>
-<p>WizardLM(Alpaca), WizardLM(ShareGPT), UltraChat, and ShareGPT, these four datasets have the largest average tag numbers. We pool the four datasets, then sample an SFT data subset of 6K samples from the pooled dataset with the
-<span style="color: red">highest sample complexity of an average tag number 16.56 and tag coverage of 100%</span>.</p>
-</section>
-<section id="results">
-<h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/instag4.png" src="../_images/instag4.png" />
-</figure>
-</section>
-<section id="decoupled-analysis-of-complexity-and-diversity">
-<h3>Decoupled Analysis of Complexity and Diversity<a class="headerlink" href="#decoupled-analysis-of-complexity-and-diversity" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/instag5.png" src="../_images/instag5.png" />
-</figure>
+<section id="preference-pairs-construction">
+<h3>Preference Pairs Construction<a class="headerlink" href="#preference-pairs-construction" title="Link to this heading">#</a></h3>
+<p>we
+sample programs <span class="math notranslate nohighlight">\((y_1, \dots, y_n)\)</span> from existing models w.r.t
+<span class="math notranslate nohighlight">\(x_r\)</span> and utilize the test-case pass rate to distinguish positive and negative programs. Our selection rules are:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{1}[s_i &gt; s_j + 0.4, s_i &gt; 0.8, s_j &gt; 0]
+\]</div>
+<p>This is to ensure the preferred program has at least
+a 0.8 pass rate to make sure it represents a more
+correct program. Also, we find that many sampled
+programs with 0 pass rates can be caused by
+some small syntax errors or some Python packaging
+errors during evaluation. We chose not to
+include them as the preference pair to make sure
+our constructed datasets represent only the preference
+based on the valid pass rate.</p>
 </section>
 </section>
 </section>
@@ -620,7 +593,7 @@ average tag number assigned to queries in a dataset.</p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./sft"
+            path: "./data"
         },
         predefinedOutput: true
     }
@@ -638,20 +611,20 @@ average tag number assigned to queries in a dataset.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lima.html"
+       href="magpie.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">LIMA: Less Is More for Alignment</p>
+        <p class="prev-next-title">MAGPIE</p>
       </div>
     </a>
     <a class="right-next"
-       href="ac-rs.html"
+       href="kod.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Breaking the Attention Trap in Code LLMs</p>
+        <p class="prev-next-title">KodCode</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -671,17 +644,10 @@ average tag number assigned to queries in a dataset.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Instag</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-set-fine-grained-tagging">Open-Set Fine-Grained Tagging</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tag-normalization">Tag Normalization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-evaluation">Quality Evaluation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-analysis">Preliminary Analysis</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instag-for-data-selection">Instag for Data Selection</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-setup">Experiment Setup</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decoupled-analysis-of-complexity-and-diversity">Decoupled Analysis of Complexity and Diversity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acecode-87k">ACECODE-87K</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-case-synthesis-from-seed-dataset">Test Case Synthesis from Seed Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-case-filtering">Test Case Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preference-pairs-construction">Preference Pairs Construction</a></li>
 </ul>
 </li>
 </ul>

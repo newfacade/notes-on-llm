@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>AlphaCode &#8212; Notes-on-LLM</title>
+    <title>Tree-sitter &#8212; Notes-on-LLM</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data/alphacode';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data/tree-sitter';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SELF-INSTRUCT" href="self-instruct.html" />
-    <link rel="prev" title="TACO" href="taco.html" />
+    <link rel="next" title="SFT" href="../sft/0.html" />
+    <link rel="prev" title="Instag" href="instag.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,6 +201,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -210,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,28 +232,27 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -372,7 +373,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata/alphacode.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata/tree-sitter.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -402,7 +403,7 @@
       
       
       
-      <li><a href="../_sources/data/alphacode.ipynb" target="_blank"
+      <li><a href="../_sources/data/tree-sitter.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -486,7 +487,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>AlphaCode</h1>
+    <h1>Tree-sitter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -496,7 +497,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codecontests-fine-tuning-dataset">CodeContests fine-tuning dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">使用 Tree-sitter 检测代码中的语法错误</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install">Install</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
             </nav>
         </div>
@@ -508,16 +513,90 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="alphacode">
-<h1>AlphaCode<a class="headerlink" href="#alphacode" title="Link to this heading">#</a></h1>
-<section id="codecontests-fine-tuning-dataset">
-<h2>CodeContests fine-tuning dataset<a class="headerlink" href="#codecontests-fine-tuning-dataset" title="Link to this heading">#</a></h2>
-<p>We curated a new dataset of competitive programming
-problems, named CodeContests. The dataset includes problems, solutions and test cases we scraped
-from the Codeforces platform, along with existing data from Description2Code and CodeNet. The validation and test splits of the dataset consist entirely of newly scraped Codeforces problems.</p>
-<p>To guard against data leakage, we adopted a strict temporal split: all
-pre-training and fine-tuning training data appeared online before any validation problems, and all
-validation problems before test ones.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tree-sitter">
+<h1>Tree-sitter<a class="headerlink" href="#tree-sitter" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://tree-sitter.github.io/tree-sitter/index.html">Tree-sitter</a> 是一个跨语言的语法解析器生成工具，支持 C++、Python、Java 等多种语言。它的特点是：</p>
+<ol class="arabic simple">
+<li><p>能为代码构建抽象语法树（AST），即使代码存在语法错误，也会尝试生成尽可能完整的树，并标记错误位置。</p></li>
+<li><p>提供 API 供开发者遍历语法树，检查节点类型（包括 “错误节点”）。</p></li>
+</ol>
+</div>
+<section id="id1">
+<h2>使用 Tree-sitter 检测代码中的语法错误<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>以使用 Python 绑定库，检测 C++ 代码为例子。核心思路是<span style="color: red">利用其解析能力生成语法树，再通过检查语法树中是否存在 “错误节点” 来判断代码是否有语法问题。</span></p>
+<section id="install">
+<h3>Install<a class="headerlink" href="#install" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装 Python 绑定</span>
+pip<span class="w"> </span>install<span class="w"> </span>tree-sitter
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装 C++ 语言预编译包</span>
+pip<span class="w"> </span>install<span class="w"> </span>tree-sitter-cpp
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tree_sitter</span> <span class="kn">import</span> <span class="n">Parser</span><span class="p">,</span> <span class="n">Language</span>
+<span class="kn">import</span> <span class="nn">tree_sitter_cpp</span> <span class="k">as</span> <span class="nn">tscpp</span>
+
+
+<span class="k">def</span> <span class="nf">has_cpp_syntax_errors</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;检查 C++ 代码是否存在语法错误（基于 tree-sitter-cpp 预编译包）&quot;&quot;&quot;</span>
+    <span class="c1"># 1. 初始化解析器并加载 C++ 语言定义（无需手动编译）</span>
+    <span class="n">CPP_LANGUAGE</span> <span class="o">=</span> <span class="n">Language</span><span class="p">(</span><span class="n">tscpp</span><span class="o">.</span><span class="n">language</span><span class="p">())</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">Parser</span><span class="p">(</span><span class="n">CPP_LANGUAGE</span><span class="p">)</span>
+
+    <span class="c1"># 2. 解析代码生成语法树</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+    <span class="n">root_node</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">root_node</span>
+
+    <span class="c1"># 3. 遍历语法树，检查是否有 ERROR 节点</span>
+    <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">traverse</span><span class="p">(</span><span class="n">child</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">traverse</span><span class="p">(</span><span class="n">root_node</span><span class="p">)</span>
+
+
+<span class="c1"># 有语法错误的 C++ 代码（括号不匹配）</span>
+<span class="n">bad_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#include &lt;iostream&gt;</span>
+<span class="s2">int main() {</span>
+<span class="s2">    std::cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; std::endl</span>
+<span class="s2">    // 缺少分号 }</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># 无语法错误的 C++ 代码</span>
+<span class="n">good_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#include &lt;iostream&gt;</span>
+<span class="s2">int main() {</span>
+<span class="s2">    std::cout &lt;&lt; &quot;Hello World&quot; &lt;&lt; std::endl;</span>
+<span class="s2">    return 0;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bad code has errors:&quot;</span><span class="p">,</span> <span class="n">has_cpp_syntax_errors</span><span class="p">(</span><span class="n">bad_code</span><span class="p">))</span>  <span class="c1"># 输出 True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Good code has errors:&quot;</span><span class="p">,</span> <span class="n">has_cpp_syntax_errors</span><span class="p">(</span><span class="n">good_code</span><span class="p">))</span>  <span class="c1"># 输出 False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bad code has errors: True
+Good code has errors: False
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -552,20 +631,20 @@ validation problems before test ones.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="taco.html"
+       href="instag.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">TACO</p>
+        <p class="prev-next-title">Instag</p>
       </div>
     </a>
     <a class="right-next"
-       href="self-instruct.html"
+       href="../sft/0.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SELF-INSTRUCT</p>
+        <p class="prev-next-title">SFT</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -585,7 +664,11 @@ validation problems before test ones.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codecontests-fine-tuning-dataset">CodeContests fine-tuning dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">使用 Tree-sitter 检测代码中的语法错误</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install">Install</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
   </nav></div>
 

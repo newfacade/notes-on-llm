@@ -203,6 +203,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -232,28 +234,27 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -538,14 +539,14 @@ base model.</p>
 </div>
 <section id="preliminary">
 <h2>Preliminary<a class="headerlink" href="#preliminary" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://newfacade.github.io/notes-on-reinforcement-learning/17-ppo-trl.html">PPO</a></p>
+<p><a class="reference internal" href="ppo.html#ppo"><span class="std std-ref">PPO</span></a></p>
 <p><a class="reference internal" href="grpo.html#grpo"><span class="std std-ref">GRPO</span></a></p>
 <section id="removing-kl-divergence">
 <h3>Removing KL Divergence<a class="headerlink" href="#removing-kl-divergence" title="Link to this heading">#</a></h3>
 <p>The KL penalty term is used to regulate the divergence between the online policy and the frozen reference
 policy. In the RLHF scenario, the goal of RL is to align the model behavior without diverging too far
-from the initial model. However, during training the long-CoT reasoning model, the model distribution can
-diverge significantly from the initial model, thus this restriction is not necessary. Therefore, we will exclude
+from the initial model. However, <span style="color: red">during training the long-CoT reasoning model, the model distribution can
+diverge significantly from the initial model, thus this restriction is not necessary.</span> Therefore, we will exclude
 the KL term from our proposed algorithm.</p>
 </section>
 <section id="rule-based-reward-modeling">
@@ -562,13 +563,13 @@ R(\hat{y},y) =
 \end{split}\]</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Reward hacking is when an AI system finds unexpected ways to maximize its reward function without achieving the intended goal. Different from lack of generalization.</p>
+<p>Reward hacking is when an AI system finds unexpected ways to maximize its reward function without achieving the intended goal.</p>
 </div>
 </section>
 </section>
 <section id="id1">
 <h2>DAPO<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>We propose the Decouple Clip and Dynamic sAmpling Policy Optimization (DAPO) algorithm. DAPO samples
+<p>DAPO samples
 a group of outputs <span class="math notranslate nohighlight">\(\{o_i\}_{i=1}^{G}\)</span> for each question <span class="math notranslate nohighlight">\(q\)</span> paired with the answer <span class="math notranslate nohighlight">\(a\)</span> (ground truth), and optimizes the policy via the
 following objective:</p>
 <div class="math notranslate nohighlight">
@@ -591,7 +592,7 @@ with DAPO.</p>
 <p>In our initial experiments using naive PPO or GRPO, we observed the entropy collapse phenomenon:
 the entropy of the policy decreases quickly as training progresses. The sampled responses of
 certain groups tend to be nearly identical.</p>
-<p>We identify that the <code class="docutils literal notranslate"><span class="pre">upper</span> <span class="pre">clip</span> <span class="pre">can</span> <span class="pre">restrict</span> <span class="pre">the</span> <span class="pre">exploration</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">policy</span></code>. In this case, it
+<p>We identify that the <span style="color: red">upper clip can restrict the exploration of the policy.</span> In this case, it
 is much easier to make an ‘exploitation token’ more probable, than to uplift the probability of an unlikely
 ‘exploration token’. Concretely, when <span class="math notranslate nohighlight">\(\epsilon=0.2\)</span>, consider two actions with probabilities <span class="math notranslate nohighlight">\(\pi_{\theta_{\text{old}}}(o_i|q)=0.01\)</span> and <span class="math notranslate nohighlight">\(0.9\)</span>. The maximum possible updated probabilities <span class="math notranslate nohighlight">\(\pi_{\theta_{\text{old}}}(o_i|q)=0.012\)</span> and <span class="math notranslate nohighlight">\(1.08\)</span>, respectively. This implies that for tokens with a higher probability (e.g., <span class="math notranslate nohighlight">\(0.9\)</span>) is less constrained. Conversely,
 for low-probability tokens, achieving a non-trivial increase in probability is considerably more challenging.</p>
@@ -602,7 +603,7 @@ for low-probability tokens, achieving a non-trivial increase in probability is c
 </section>
 <section id="dynamic-sampling">
 <h3>Dynamic Sampling<a class="headerlink" href="#dynamic-sampling" title="Link to this heading">#</a></h3>
-<p>We propose to over-sample and filter out prompts with the accuracy equal to 1 and 0, leaving all prompts in the batch with effective gradients and keeping a consistent number
+<p>We propose to over-sample and <span style="color: red">filter out prompts with the accuracy equal to 1 and 0,</span> leaving all prompts in the batch with effective gradients and keeping a consistent number
 of prompts. Besides, we find that with dynamic sampling the experiment achieves the same performance
 faster.</p>
 </section>
@@ -616,10 +617,7 @@ reasoning-relevant patterns within them.</p></li>
 <li><p>We observe that excessively long samples often exhibit
 low-quality patterns such as gibberish and repetitive words.</p></li>
 </ol>
-<p>Thus, sample-level loss calculation, due to its
-inability to effectively penalize those undesirable patterns in long samples, leads to an unhealthy increase in
-entropy and response length.</p>
-<p>We introduce a <code class="docutils literal notranslate"><span class="pre">Token-level</span> <span class="pre">Policy</span> <span class="pre">Gradient</span> <span class="pre">Loss</span></code> in the long-CoT RL scenario to address the above limitations. In this setting, longer sequences can have more influence on the overall gradient update compared to shorter
+<p>We introduce a <span style="color: red">Token-level Policy Gradient Loss in the long-CoT RL scenario</span> to address the above limitations. In this setting, longer sequences can have more influence on the overall gradient update compared to shorter
 sequences. Moreover, from the perspective of individual tokens, if a particular generation pattern can lead to
 an increase or decrease in reward, it will be equally prompted or suppressed, regardless of the length of the
 response in which it appears.</p>
@@ -634,7 +632,7 @@ performance.</p>
 <figure class="align-default">
 <img alt="../_images/dapo2.png" src="../_images/dapo2.png" />
 </figure>
-<p>Furthermore, we propose <code class="docutils literal notranslate"><span class="pre">Soft</span> <span class="pre">Overlong</span> <span class="pre">Punishment</span></code>, this penalty is added to the original rule-based correctness reward, thereby signaling
+<p>Furthermore, we propose <span style="color: red">Soft Overlong Punishment,</span> this penalty is added to the original rule-based correctness reward, thereby signaling
 to the model to avoid excessively long responses.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

@@ -64,8 +64,6 @@
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="WaveCoder" href="wavecoder.html" />
-    <link rel="prev" title="Magicoder" href="magic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -128,6 +126,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
@@ -203,6 +203,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,30 +232,29 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magic.html">Magicoder</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -516,7 +517,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this work, we
-introduce the universal code (UniCode<span id="id1">[<a class="reference internal" href="../reference.html#id25" title="Tao Sun, Linzheng Chai, Jian Yang, Yuwei Yin, Hongcheng Guo, Jiaheng Liu, Bing Wang, Liqun Yang, and Zhoujun Li. Unicoder: scaling code large language model via universal code. 2024. URL: https://arxiv.org/abs/2406.16441, arXiv:2406.16441.">SCY+24</a>]</span>) as the
+introduce the universal code<span id="id1">[<a class="reference internal" href="../reference.html#id25" title="Tao Sun, Linzheng Chai, Jian Yang, Yuwei Yin, Hongcheng Guo, Jiaheng Liu, Bing Wang, Liqun Yang, and Zhoujun Li. Unicoder: scaling code large language model via universal code. 2024. URL: https://arxiv.org/abs/2406.16441, arXiv:2406.16441.">SCY+24</a>]</span> as the
 intermediate representation (pseudocode description) between question and answer.<br>
 The alignment between the intermediate
 universal code representation and
@@ -586,24 +587,6 @@ and generation capability of code LLM.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="magic.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Magicoder</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="wavecoder.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">WaveCoder</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

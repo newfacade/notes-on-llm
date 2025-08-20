@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'rl/ppo';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -201,6 +203,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -210,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,28 +234,27 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -473,7 +476,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -489,6 +494,34 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ppo-algorithm">PPO algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-gradient">Policy gradient</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actor-critic">Actor-critic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">PPO</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-into-ppo-trainer">Dive into PPO Trainer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rollout">1. Rollout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">2. Evaluate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-policy-logprobs-and-values">3. Old policy logprobs and values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ref-sft-model-logprobs">4. Ref(SFT) model logprobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-per-token-rewards-and-kl-penalty">5. Compute per token rewards and KL-penalty.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-advantages-using-gae">6. Compute Advantages using GAE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-buffer-and-minibatch">7. Experience buffer and minibatch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-policy-sampling">8. New Policy Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-gradient-loss">9. Policy gradient loss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function-loss">10. Value function loss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">11. Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudocode">Pseudocode</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -499,11 +532,314 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ppo">
-<h1>PPO<a class="headerlink" href="#ppo" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1>PPO<a class="headerlink" href="#ppo" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>See <a class="reference external" href="https://newfacade.github.io/notes-on-reinforcement-learning/17-ppo-trl.html">this blog</a> for more details.</p>
+<p>RLHF framework:</p>
+<ol class="arabic simple">
+<li><p><strong>Rollout:</strong> The language model generates a response based on query.</p></li>
+<li><p><strong>Evaluation:</strong> The query and response are evaluated with a function, model, human feedback or some combination of them. This process should yield a scalar value for each query/response pair.</p></li>
+<li><p><strong>Optimization:</strong> In the optimisation step the query/response pairs are used to calculate the log-probabilities of the tokens in the sequences. This is done with the model that is trained and a reference model. The KL-divergence between the two outputs is used as an additional reward signal to make sure the generated responses don’t deviate too far from the reference language model. The active language model is then trained with PPO.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\text{objective} = &amp;\mathbb{E}_{(x, y)\sim D_{\pi_{\phi}^{\text{RL}}}}\left[r(x, y) - \beta\log\left(\frac{\pi_{\phi}^{\text{RL}}(y|x)}{\pi^{\text{SFT}}(y|x)}\right)\right]
+\end{aligned}
+\]</div>
 </div>
+<section id="ppo-algorithm">
+<h2>PPO algorithm<a class="headerlink" href="#ppo-algorithm" title="Link to this heading">#</a></h2>
+<section id="policy-gradient">
+<h3>Policy gradient<a class="headerlink" href="#policy-gradient" title="Link to this heading">#</a></h3>
+<p>Here, we consider the case of a stochastic, parameterized policy <span class="math notranslate nohighlight">\(\pi_{\theta}\)</span>, We aim to maximize the expected return</p>
+<div class="math notranslate nohighlight">
+\[J(\theta) = \mathbb{E}_{\tau\sim\pi_{\theta}}[R(\tau)].\]</div>
+<p><img alt="" src="../_images/policy4.png" /></p>
+<p>The simplest policy gradient:</p>
+<div class="math notranslate nohighlight">
+\[\theta_{k+1} = \theta_{k} + \alpha\nabla J(\theta_{k})\]</div>
+<p><img alt="" src="../_images/policy5.png" /></p>
+</section>
+<section id="actor-critic">
+<h3>Actor-critic<a class="headerlink" href="#actor-critic" title="Link to this heading">#</a></h3>
+<p>Using a value function to predict <span class="math notranslate nohighlight">\(R(\tau)\)</span>:</p>
+<p><img alt="" src="../_images/ac4.jpeg" /></p>
+</section>
+<section id="id2">
+<h3>PPO<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Off policy: The agent learned and the agent interacting with the environment is different. Our goal is <span style="color: red">to use the sample from <span class="math notranslate nohighlight">\(\theta_{\text{old}}\)</span> to train <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(\theta_{\text{old}}\)</span> is fixed, so we can reuse the sample data.</span></p>
+</div>
+<p>Using importance sampling:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\nabla_{\theta}J(\theta) &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta}}\left[A_{\theta}(s_t,a_t)\nabla_{\theta}\log\pi_{\theta}(a_{t}|s_{t})\right]\\
+&amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta_{\text{old}}}}\left[\frac{\pi_{\theta}(s_t, a_t)}{\pi_{\theta_{\text{old}}}(s_t,a_t)}A_{\theta}(s_t,a_t)\nabla_{\theta}\log\pi_{\theta}(a_{t}|s_{t})\right]\\
+&amp;\approx \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta_{\text{old}}}}\left[\frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}A_{\theta_{\text{old}}}(s_t,a_t)\nabla_{\theta}\log\pi_{\theta}(a_{t}|s_{t})\right]\\
+&amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta_{\text{old}}}}\left[\frac{\nabla\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}A_{\theta_{\text{old}}}(s_t,a_t)\right]
+\end{aligned}
+\end{split}\]</div>
+<p>So the off policy objective can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+J(\theta) = \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta_{\text{old}}}}\left[\frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}A_{\theta_{\text{old}}}(s_t,a_t)\right]
+\]</div>
+<p><img alt="" src="../_images/ppo5.jpeg" /></p>
+<p>By clipping the ratio, we ensure that we do not have a too large policy update because the current policy can’t be too different from the older one.</p>
+<p><img alt="" src="../_images/ppo6.jpeg" /></p>
+</section>
+</section>
+<section id="dive-into-ppo-trainer">
+<h2>Dive into PPO Trainer<a class="headerlink" href="#dive-into-ppo-trainer" title="Link to this heading">#</a></h2>
+<p><img alt="" src="../_images/trl2.png" /></p>
+<p>PPO in RLHF workflow (no LM Loss):</p>
+<section id="rollout">
+<h3>1. Rollout<a class="headerlink" href="#rollout" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is sampled from the user query dataset.</p></li>
+<li><p>With LLM model <span class="math notranslate nohighlight">\(\pi_{\theta_{\text{old}}}^{\text{RL}}\)</span> and query <span class="math notranslate nohighlight">\(x\)</span>, generate response <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_t = (x,y_1,\dots,y_{t-1})\)</span> and <span class="math notranslate nohighlight">\(a_t=y_t\)</span>.</p></li>
+</ul>
+<p>code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response_tensors</span> <span class="o">=</span> <span class="n">ppo_trainer</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">query_tensors</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="evaluate">
+<h3>2. Evaluate<a class="headerlink" href="#evaluate" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>We use the reward model to Compute <span class="math notranslate nohighlight">\(r(x, y)\)</span>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Compute reward score</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="o">+</span> <span class="n">r</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">])]</span>
+<span class="n">pipe_outputs</span> <span class="o">=</span> <span class="n">reward_model</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+<span class="n">rewards</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;score&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">pipe_outputs</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="old-policy-logprobs-and-values">
+<h3>3. Old policy logprobs and values<a class="headerlink" href="#old-policy-logprobs-and-values" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Compute <span class="math notranslate nohighlight">\(\pi_{\theta_{\text{old}}}^{\text{RL}}(a_t|s_t)\)</span> and <span class="math notranslate nohighlight">\(V(s_t)\)</span>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">all_logprobs</span><span class="p">,</span> <span class="n">logits_or_none</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">masks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batched_forward_pass</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">queries</span><span class="p">,</span>
+        <span class="n">responses</span><span class="p">,</span>
+        <span class="n">model_inputs</span><span class="p">,</span>
+        <span class="n">response_masks</span><span class="o">=</span><span class="n">response_masks</span><span class="p">,</span>
+        <span class="n">return_logits</span><span class="o">=</span><span class="n">full_kl_penalty</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logits</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">input_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ref-sft-model-logprobs">
+<h3>4. Ref(SFT) model logprobs<a class="headerlink" href="#ref-sft-model-logprobs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Compute <span class="math notranslate nohighlight">\(\pi^{\text{SFT}}(a_t|s_t)\)</span></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">optional_peft_ctx</span><span class="p">():</span>
+    <span class="n">ref_logprobs</span><span class="p">,</span> <span class="n">ref_logits_or_none</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batched_forward_pass</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_peft_model</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">ref_model</span><span class="p">,</span>
+        <span class="n">queries</span><span class="p">,</span>
+        <span class="n">responses</span><span class="p">,</span>
+        <span class="n">model_inputs</span><span class="p">,</span>
+        <span class="n">return_logits</span><span class="o">=</span><span class="n">full_kl_penalty</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="compute-per-token-rewards-and-kl-penalty">
+<h3>5. Compute per token rewards and KL-penalty.<a class="headerlink" href="#compute-per-token-rewards-and-kl-penalty" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Per token KL-penalty <span class="math notranslate nohighlight">\(\text{KL}(t) = \log({\pi_{\theta_{\text{old}}}(a_t|s_t)^{\text{RL}}}/{\pi^{\text{SFT}}(a_t|s_t)})\)</span></p></li>
+<li><p>Compute <span class="math notranslate nohighlight">\(r(s_t, a_t)\)</span></p>
+<ul>
+<li><p>If <span class="math notranslate nohighlight">\(t\)</span> is not the last token <span class="math notranslate nohighlight">\(r(s_t, a_t) = -\beta\text{KL}(t)\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(t\)</span> is the last token <span class="math notranslate nohighlight">\(r(s_t, a_t) = r(x, y) - \beta\text{KL}(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{t=1}^{T}r(s_t, a_t) = r(x, y) - \beta\log({\pi_{\theta_{\text{old}}}(y|x)^{\text{RL}}}/{\pi^{\text{SFT}}(y|x)})\)</span> is the reward PPO aims to optimize.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_rewards</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scores</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span>
+        <span class="n">logprobs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span>
+        <span class="n">ref_logprobs</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span>
+        <span class="n">masks</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute per token rewards from scores and KL-penalty.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rewards</span><span class="p">,</span> <span class="n">non_score_rewards</span><span class="p">,</span> <span class="n">kls</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">logprob</span><span class="p">,</span> <span class="n">ref_logprob</span><span class="p">,</span> <span class="n">mask</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">logprobs</span><span class="p">,</span> <span class="n">ref_logprobs</span><span class="p">,</span> <span class="n">masks</span><span class="p">):</span>
+            <span class="c1"># compute KL penalty (from difference in logprobs)</span>
+            <span class="n">kl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kl_penalty</span><span class="p">(</span><span class="n">logprob</span><span class="p">,</span> <span class="n">ref_logprob</span><span class="p">)</span>
+            <span class="n">kls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kl</span><span class="p">)</span>
+            <span class="n">non_score_reward</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">kl_ctl</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="n">kl</span>
+            <span class="n">non_score_rewards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">non_score_reward</span><span class="p">)</span>
+            <span class="n">reward</span> <span class="o">=</span> <span class="n">non_score_reward</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+            <span class="n">last_non_masked_index</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="c1"># reward is preference model score + KL penalty</span>
+            <span class="n">reward</span><span class="p">[</span><span class="n">last_non_masked_index</span><span class="p">]</span> <span class="o">+=</span> <span class="n">score</span>
+            <span class="n">rewards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">rewards</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">non_score_rewards</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">kls</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">_kl_penalty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logprob</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">,</span> <span class="n">ref_logprob</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">kl_penalty</span> <span class="o">==</span> <span class="s2">&quot;kl&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">logprob</span> <span class="o">-</span> <span class="n">ref_logprob</span>
+</pre></div>
+</div>
+</section>
+<section id="compute-advantages-using-gae">
+<h3>6. Compute Advantages using GAE<a class="headerlink" href="#compute-advantages-using-gae" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>TD error <span class="math notranslate nohighlight">\(\delta_t = r(s_t, a_t) + \gamma V(s_{t+1}) - V(s_t)\)</span></p></li>
+<li><p>The <span style="color: red">Generalized Advantage Estimator <span class="math notranslate nohighlight">\(\hat{A}(s_t, a_t) = \sum(\gamma\lambda)^{l}\delta_{t+l}^{V}\)</span>, it is a technique to make compromise between bias and variance in estimating <span class="math notranslate nohighlight">\(A(s_{t}, a_{t})\)</span>, controlled by parameter <span class="math notranslate nohighlight">\(\gamma\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>.</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\lambda=0\)</span>: <span class="math notranslate nohighlight">\(\hat{A}(s_t, a_t) = r(s_t, a_t) + \gamma V(s_{t+1}) - V(s_t)\)</span>, it has high bias low variance.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda=1\)</span>: <span class="math notranslate nohighlight">\(\hat{A}(s_t, a_t) = \sum_{l=0}^{\infty}\gamma^{l}r(s_{t+l}, a_{t+l}) - V(s_{t})\)</span>, it has high variance due to the sum of terms.</p></li>
+</ul>
+</li>
+<li><p><span style="color: red"><span class="math notranslate nohighlight">\(\hat{R}_{t} = \hat{A}(s_t, a_t) + V(s_t)\)</span> is the estimated reward to go.</span></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">gen_len</span><span class="p">)):</span>
+    <span class="n">nextvalues</span> <span class="o">=</span> <span class="n">values</span><span class="p">[:,</span> <span class="n">t</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">gen_len</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">rewards</span><span class="p">[:,</span> <span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">nextvalues</span> <span class="o">-</span> <span class="n">values</span><span class="p">[:,</span> <span class="n">t</span><span class="p">]</span>
+    <span class="n">lastgaelam</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">lam</span> <span class="o">*</span> <span class="n">lastgaelam</span>
+    <span class="n">advantages_reversed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lastgaelam</span><span class="p">)</span>
+<span class="n">advantages</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">advantages_reversed</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">returns</span> <span class="o">=</span> <span class="n">advantages</span> <span class="o">+</span> <span class="n">values</span>
+</pre></div>
+</div>
+</section>
+<section id="experience-buffer-and-minibatch">
+<h3>7. Experience buffer and minibatch<a class="headerlink" href="#experience-buffer-and-minibatch" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Collect batch experience buffer <span class="math notranslate nohighlight">\(\{(a_t,s_t), \pi_{\theta_{\text{old}}}^{\text{RL}}(a_t, s_t), \hat{A}(s_t, a_t), \hat{R}_{t}\}\)</span></p></li>
+<li><p>Random sample from the experience buffer, train minibatches.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">ppo_epochs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">early_stop</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">b_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">bs</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">backward_batch_start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">bs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">backward_batch_size</span><span class="p">):</span>
+        <span class="n">backward_batch_end</span> <span class="o">=</span> <span class="n">backward_batch_start</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">backward_batch_size</span>
+        <span class="n">backward_batch_inds</span> <span class="o">=</span> <span class="n">b_inds</span><span class="p">[</span><span class="n">backward_batch_start</span><span class="p">:</span><span class="n">backward_batch_end</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">mini_batch_start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">backward_batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">mini_batch_size</span><span class="p">):</span>
+            <span class="c1"># train minibatch</span>
+</pre></div>
+</div>
+</section>
+<section id="new-policy-sampling">
+<h3>8. New Policy Sampling<a class="headerlink" href="#new-policy-sampling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>We will train many minibatches <span class="math notranslate nohighlight">\(\theta_{\text{old}}^{\text{RL}}=\theta_0,\theta_1,\theta_2,\dots\)</span> within the loop</p></li>
+<li><p>Sample from the newest policy <span class="math notranslate nohighlight">\(\pi_{\theta}^{\text{RL}}\)</span> to get <span class="math notranslate nohighlight">\(\pi_{\theta}^{\text{RL}}(a_t|s_t)\)</span> and <span class="math notranslate nohighlight">\(V_{\phi}\)</span>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logprobs</span><span class="p">,</span> <span class="n">logits</span><span class="p">,</span> <span class="n">vpreds</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batched_forward_pass</span><span class="p">(</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">mini_batch_dict</span><span class="p">[</span><span class="s2">&quot;queries&quot;</span><span class="p">],</span>
+    <span class="n">mini_batch_dict</span><span class="p">[</span><span class="s2">&quot;responses&quot;</span><span class="p">],</span>
+    <span class="n">model_inputs</span><span class="p">,</span>
+    <span class="n">return_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="policy-gradient-loss">
+<h3>9. Policy gradient loss<a class="headerlink" href="#policy-gradient-loss" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\text{PGLoss} = \frac{1}{T}\sum\max\left(-
+\frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}  \hat{A}(s_t,a_t), \;\;
+-\text{clip}\left(\frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}, 1 - \epsilon, 1+\epsilon \right) \hat{A}(s_t,a_t)
+\right).\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pg_losses</span> <span class="o">=</span> <span class="o">-</span><span class="n">advantages</span> <span class="o">*</span> <span class="n">ratio</span>
+<span class="n">pg_losses2</span> <span class="o">=</span> <span class="o">-</span><span class="n">advantages</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cliprange</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cliprange</span><span class="p">)</span>
+
+<span class="n">pg_loss</span> <span class="o">=</span> <span class="n">masked_mean</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pg_losses</span><span class="p">,</span> <span class="n">pg_losses2</span><span class="p">),</span> <span class="n">mask</span><span class="p">)</span>
+<span class="n">pg_clipfrac</span> <span class="o">=</span> <span class="n">masked_mean</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="n">pg_losses2</span><span class="p">,</span> <span class="n">pg_losses</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">(),</span> <span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{T}\)</span> introduce length bias in this PPO implementation.</p>
+</div>
+</section>
+<section id="value-function-loss">
+<h3>10. Value function loss<a class="headerlink" href="#value-function-loss" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\text{VFLoss} = \frac{1}{T}\sum\left(V_{\phi}(s_t) - \hat{R}_{t}\right)^{2}
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vf_losses1</span> <span class="o">=</span> <span class="p">(</span><span class="n">vpreds</span> <span class="o">-</span> <span class="n">returns</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</section>
+<section id="optimization">
+<h3>11. Optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\text{Loss} = \text{PGLoss} + \alpha*\text{VFLoss}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">loss_p</span><span class="p">,</span> <span class="n">loss_v</span><span class="p">,</span> <span class="n">train_stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span>
+    <span class="n">old_logprobs</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">logits</span><span class="p">,</span> <span class="n">vpreds</span><span class="p">,</span> <span class="n">logprobs</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">advantages</span><span class="p">,</span> <span class="n">returns</span>
+<span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">loss_p</span> <span class="o">+</span> <span class="n">loss_v</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">accelerator</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_grad_norm</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">accelerator</span><span class="o">.</span><span class="n">sync_gradients</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accelerator</span><span class="o">.</span><span class="n">clip_grad_norm_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_grad_norm</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pseudocode">
+<h3>Pseudocode<a class="headerlink" href="#pseudocode" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ppo_train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">reward_model</span><span class="p">,</span> <span class="n">dataiter</span><span class="p">):</span>
+    <span class="c1"># Fix ref model</span>
+    <span class="n">ref_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_steps</span><span class="p">):</span>
+        <span class="n">queries</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dataiter</span><span class="p">)</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">queries</span><span class="p">)</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">reward_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">responses</span><span class="p">)</span>
+        
+        <span class="n">all_logprobs</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_forward</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">responses</span><span class="p">)</span>
+        <span class="n">ref_logprobs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ref_model</span><span class="o">.</span><span class="n">batch_forward</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">responses</span><span class="p">)</span>
+        <span class="c1"># KL + rewards</span>
+        <span class="n">rewards</span> <span class="o">=</span> <span class="n">compute_rewards</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">all_logprobs</span><span class="p">,</span> <span class="n">ref_logprobs</span><span class="p">)</span>
+        <span class="n">all_advantages</span><span class="p">,</span> <span class="n">all_returns</span> <span class="o">=</span> <span class="n">compute_advantages</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">rewards</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ppo_epochs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_minibatches</span><span class="p">):</span>
+                <span class="n">minibatch_queries</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+                <span class="n">minibatch_responses</span> <span class="o">=</span> <span class="n">responses</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+                <span class="n">old_logprobs</span> <span class="o">=</span> <span class="n">all_logprobs</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+                <span class="n">advantages</span> <span class="o">=</span> <span class="n">all_advantages</span><span class="p">[</span><span class="n">satrt</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+                <span class="n">returns</span> <span class="o">=</span> <span class="n">all_returns</span><span class="p">[</span><span class="n">start</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+                
+                <span class="n">logprobs</span><span class="p">,</span> <span class="n">vpreds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">batch_forward</span><span class="p">(</span><span class="n">minibatch_queries</span><span class="p">,</span> <span class="n">minibatch_responses</span><span class="p">)</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+                <span class="n">loss_p</span> <span class="o">=</span> <span class="n">policy_loss</span><span class="p">(</span><span class="n">logprobs</span><span class="p">,</span> <span class="n">old_logprobs</span><span class="p">,</span> <span class="n">advantages</span><span class="p">)</span>
+                <span class="n">loss_v</span> <span class="o">=</span> <span class="n">value_loss</span><span class="p">(</span><span class="n">vpreds</span><span class="p">,</span> <span class="n">returns</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_p</span> <span class="o">+</span> <span class="n">loss_v</span>
+                <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+                <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -560,6 +896,41 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ppo-algorithm">PPO algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-gradient">Policy gradient</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#actor-critic">Actor-critic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">PPO</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-into-ppo-trainer">Dive into PPO Trainer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rollout">1. Rollout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">2. Evaluate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#old-policy-logprobs-and-values">3. Old policy logprobs and values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ref-sft-model-logprobs">4. Ref(SFT) model logprobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-per-token-rewards-and-kl-penalty">5. Compute per token rewards and KL-penalty.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-advantages-using-gae">6. Compute Advantages using GAE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-buffer-and-minibatch">7. Experience buffer and minibatch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-policy-sampling">8. New Policy Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-gradient-loss">9. Policy gradient loss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function-loss">10. Value function loss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">11. Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudocode">Pseudocode</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

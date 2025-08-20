@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>OpenCoder &#8212; Notes-on-LLM</title>
+    <title>OpenCodeReasoning &#8212; Notes-on-LLM</title>
   
   
   
@@ -58,14 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data/opencoder';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sft/opencodereasoning';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="OpenCodeReasoning" href="opencodereasoning.html" />
-    <link rel="prev" title="KodCode" href="kod.html" />
+    <link rel="next" title="OpenThoughts" href="openthoughts.html" />
+    <link rel="prev" title="Breaking the Attention Trap in Code LLMs" href="ac-rs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,6 +201,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -212,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,30 +230,29 @@
 <li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alphacode.html">AlphaCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wavecoder.html">WaveCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="magpie.html">MAGPIE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">SFT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sft-source-code.html">SFT with RL2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -374,7 +373,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata/opencoder.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsft/opencodereasoning.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -404,7 +403,7 @@
       
       
       
-      <li><a href="../_sources/data/opencoder.ipynb" target="_blank"
+      <li><a href="../_sources/sft/opencodereasoning.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -488,7 +487,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>OpenCoder</h1>
+    <h1>OpenCodeReasoning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -498,13 +497,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining-data">Pretraining Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining">Pretraining</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-composition">Data Composition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-stage-instruction-tuning">Two-stage Instruction-Tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-details">Training Details</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-construction-and-refinement">Dataset Construction and Refinement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-questions-collection">Coding Questions Collection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-code-generation">Solution Code Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-processing-for-refinement">Post-Processing for Refinement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-up-data-in-stages">Scaling Up Data in Stages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-evaluation">Main Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-and-analyses">Ablation and Analyses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-filtering-by-code-execution">Ablation: Filtering by Code Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-inclusion-of-c-solutions">Ablation: Inclusion of C++ Solutions</a></li>
 </ul>
 </li>
 </ul>
@@ -518,95 +521,92 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opencoder">
-<h1>OpenCoder<a class="headerlink" href="#opencoder" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="opencodereasoning">
+<h1>OpenCodeReasoning<a class="headerlink" href="#opencodereasoning" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We introduce Open-Coder, a top-tier code LLM that not only achieves performance comparable to
-leading models but also serves as an “open cookbook” for the research community.
-Unlike most prior efforts, we release not only model weights and inference
-code, but also the reproducible training data, complete data processing pipeline,
-rigorous experimental ablation results, and detailed training protocols for open
-scientific research.<br/>
-Our key design choices for data curation:</p>
-<ol class="arabic simple">
-<li><p>During the pretraining phase, the importance of data cleaning is highlighted.</p></li>
-<li><p>The impact of deduplication is significant, with file-level deduplication proving to be more effective than repository-level deduplication.</p></li>
-<li><p>Filtering data based on Github star count can possibly reduce data diversity
-and affect the overall data distribution, contributing to a suboptimal result.</p></li>
-<li><p>In the annealing phase, the use of high-quality data is crucial for further enhancing the model’s
-capabilities.</p></li>
-<li><p>During the instruction tuning phase, a two-stage instruction tuning strategy
-is shown to be effective.</p></li>
-</ol>
+<p>Since the advent of reasoning-based large language models, many have found great success from distilling reasoning capabilities into student models. However, much of the progress on distilling reasoning models remains locked. To address this, we construct a superior supervised fine-tuning (SFT) dataset that we use to achieve state-of-the-art coding capability results in models of various sizes.</p>
 </div>
+<section id="dataset-construction-and-refinement">
+<h2>Dataset Construction and Refinement<a class="headerlink" href="#dataset-construction-and-refinement" title="Link to this heading">#</a></h2>
+<section id="coding-questions-collection">
+<h3>Coding Questions Collection<a class="headerlink" href="#coding-questions-collection" title="Link to this heading">#</a></h3>
+<p>To construct OPENCODEREASONING, we gathered
+questions from TACO, APPS, CodeContests, and CodeForces from the OpenR1 project. We performed
+exact-match deduplication, resulting in
+28,904 distinct questions across a range of difficulties.</p>
 <figure class="align-default">
-<img alt="../_images/opencoder-1.png" src="../_images/opencoder-1.png" />
-</figure>
-<section id="pretraining-data">
-<h2>Pretraining Data<a class="headerlink" href="#pretraining-data" title="Link to this heading">#</a></h2>
-</section>
-<section id="pretraining">
-<h2>Pretraining<a class="headerlink" href="#pretraining" title="Link to this heading">#</a></h2>
-</section>
-<section id="post-training">
-<h2>Post Training<a class="headerlink" href="#post-training" title="Link to this heading">#</a></h2>
-<section id="data-composition">
-<h3>Data Composition<a class="headerlink" href="#data-composition" title="Link to this heading">#</a></h3>
-<p><strong>Open-source Training Data</strong> To enhance the model training, we collect the open-source instruction
-corpora from the websites, including <a class="reference external" href="https://huggingface.co/datasets/theblackcat102/evol-codealpaca-v1">Evol-Instruct</a>, <a class="reference external" href="https://huggingface.co/datasets/BAAI/Infinity-Instruct">Infinity-Instruct</a>,  <a class="reference external" href="https://huggingface.co/datasets/Multilingual-Multimodal-NLP/McEval-Instruct">McEval</a>. Additionally, we sample real user queries from <a class="reference external" href="https://huggingface.co/datasets/allenai/WildChat-1M">WildChat-1M</a> and <a class="reference external" href="https://huggingface.co/datasets/cognitivecomputations/Code-290k-ShareGPT-Vicuna">Code-290k-ShareGPT</a>. For low-quality responses, we employ a robust LLM to regenerate the content, enhancing the overall data quality.</p>
-<p><strong>Educational Instruction Synthesis</strong> In synthesizing instruction-tuning datasets
-for Python code, we enhance the effectiveness of Magicoder<span id="id1">[<a class="reference internal" href="../reference.html#id29" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>. Specifically, we observe that the educational value of the synthesized data <code class="docutils literal notranslate"><span class="pre">largely</span> <span class="pre">depends</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">quality</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">seed</span> <span class="pre">data</span></code>. Our approach:</p>
-<ol class="arabic simple">
-<li><p>Using only high-quality seed data.</p></li>
-<li><p>Use a teacher model to generate multiple test cases for the code sections in each problem. These test cases
-are appended to the code snippets and executed using a Python interpreter. Only the data samples
-that successfully pass the tests are retained.</p></li>
-</ol>
-<p><strong>Package-related Instruction Synthesis</strong> Due to a significant amount of outdated package usage in
-the pre-training data, LLM may sometimes employ methods from older versions of libraries when
-generating code. To mitigate this:</p>
-<ol class="arabic simple">
-<li><p>Analyzed commonly used external Python libraries and retrieved API signatures and usage examples via PyDoc.</p></li>
-<li><p>This information was sent to prompt a teacher model that generated accurate and up-to-date question-answer pairs reflecting current usage</p></li>
-</ol>
-<p><strong>Large-scale Diverse Instruction Synthesis</strong> To
-increase the diversity of the instruction dataset:</p>
-<ol class="arabic simple">
-<li><p>An LLM is used first to clean the irrelevant context in the websites and select useful sentences as the seed for further question generation.</p></li>
-<li><p>A task specification module defines programming languages, difficulty levels, and coding task
-types. The prompt engineering component employs a template-based system to generate diverse, contextually rich prompts, incorporating realworld
-scenarios and best practices in software development. We set temperature <span class="math notranslate nohighlight">\(T = 1.0\)</span> for diverse
-questions.</p></li>
-<li><p>An advanced LLM with more parameters first generates the created questions and
-then generates the corresponding answers. The validation module combines automated code execution
-and unit testing to check the correctness.</p></li>
-</ol>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Teacher model needed.</p>
-</div>
-</section>
-<section id="two-stage-instruction-tuning">
-<h3>Two-stage Instruction-Tuning<a class="headerlink" href="#two-stage-instruction-tuning" title="Link to this heading">#</a></h3>
-<p>The first stage of this fine-tuning process focused on synthesizing question-answer (QA) pairs related
-to theoretical computer science. In the second stage of the fine-tuning process, we shifted focus from theoretical knowledge to practical
-coding tasks.</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../_images/opencoder-2.png"><img alt="../_images/opencoder-2.png" src="../_images/opencoder-2.png" style="height: 300px;" /></a>
+<img alt="../_images/open-code-reason1.png" src="../_images/open-code-reason1.png" />
 </figure>
 </section>
-<section id="training-details">
-<h3>Training Details<a class="headerlink" href="#training-details" title="Link to this heading">#</a></h3>
-<p>In the first stage of SFT, we trained for one epoch with a batch size of 4096, a learning rate (LR) of
-2e-5, warmup steps set to 100, and a cosine learning rate <a class="reference external" href="http://scheduler.In">scheduler.In</a> the second stage of SFT, we
-trained for three epochs using a batch size of 512, a learning rate of 5e-5, with 100 warmup steps,
-and the same cosine learning rate scheduler.</p>
+<section id="solution-code-generation">
+<h3>Solution Code Generation<a class="headerlink" href="#solution-code-generation" title="Link to this heading">#</a></h3>
+<p>In this step, we generate multiple solutions per question using the DeepSeek-R1. We primarily generate solutions in Python programming language. All solutions are sampled via Nucleus
+Sampling, using temperature 0.6, top-p 0.95, and explicitly injecting
+<code class="docutils literal notranslate"><span class="pre">&lt;think&gt;</span></code> tag to force the model to generate reasoning traces. We use SGLang for R1 generations with a maximum output sequence length of <span style="color: red">16k tokens</span>.</p>
 </section>
-<section id="decontamination">
-<h3>Decontamination<a class="headerlink" href="#decontamination" title="Link to this heading">#</a></h3>
-<p>We removed any data containing
-the entry points corresponding to test sets such as HumanEval and MBPP. Additionally, we performed 10-gram deduplication, removing any data with a 10-gram overlap with the test sets.</p>
+<section id="post-processing-for-refinement">
+<h3>Post-Processing for Refinement<a class="headerlink" href="#post-processing-for-refinement" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Verify whether the solution includes reasoning
+traces enclosed within <code class="docutils literal notranslate"><span class="pre">&lt;think&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;/think&gt;</span></code> tags.</p></li>
+<li><p>Verify the presence of a
+code block within the solution segments.</p></li>
+<li><p>Filter out responses where the generated reasoning traces contain
+code blocks.</p></li>
+<li><p>Verify the syntactic
+correctness of the solution code blocks by parsing them using <code class="docutils literal notranslate"><span class="pre">Tree</span> <span class="pre">Sitter</span></code>.</p></li>
+</ol>
+</section>
+<section id="scaling-up-data-in-stages">
+<h3>Scaling Up Data in Stages<a class="headerlink" href="#scaling-up-data-in-stages" title="Link to this heading">#</a></h3>
+<p>We find that while reasoning ability itself may be induced with a minute
+amount of data, to achieve state-of-the-art results on coding benchmarks, <span style="color: red">large datasets are
+necessary</span>. The most significant gains in benchmark scores were observed by
+simply increasing the number of unique, varied, and difficult questions.</p>
+<figure class="align-default">
+<img alt="../_images/open-code-reason2.png" src="../_images/open-code-reason2.png" />
+</figure>
+</section>
+</section>
+<section id="main-evaluation">
+<h2>Main Evaluation<a class="headerlink" href="#main-evaluation" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/open-code-reason3.png" src="../_images/open-code-reason3.png" />
+</figure>
+</section>
+<section id="ablation-and-analyses">
+<h2>Ablation and Analyses<a class="headerlink" href="#ablation-and-analyses" title="Link to this heading">#</a></h2>
+<section id="ablation-filtering-by-code-execution">
+<h3>Ablation: Filtering by Code Execution<a class="headerlink" href="#ablation-filtering-by-code-execution" title="Link to this heading">#</a></h3>
+<p>We fine-tuned Qwen-2.5-14B-Instruct using
+three subsamples:</p>
+<ol class="arabic simple">
+<li><p>the full subsample
+of 445k instances;</p></li>
+<li><p>selecting all instances
+that pass unit-tests (151k instances);</p></li>
+<li><p>selecting an equal number of samples
+as in (2) that fail all tests.</p></li>
+</ol>
+<p>Surprisingly, we
+observed that fine-tuning on incorrect solutions results in higher accuracy than on correct
+solutions.</p>
+<figure class="align-default">
+<img alt="../_images/open-code-reason4.png" src="../_images/open-code-reason4.png" />
+</figure>
+<p>Investigating further, we identified that incorrect
+solutions span questions that are <span style="color: red">more challenging</span> than the ones associated with the correct
+solutions.</p>
+<figure class="align-default">
+<img alt="../_images/open-code-reason5.png" src="../_images/open-code-reason5.png" />
+</figure>
+</section>
+<section id="ablation-inclusion-of-c-solutions">
+<h3>Ablation: Inclusion of C++ Solutions<a class="headerlink" href="#ablation-inclusion-of-c-solutions" title="Link to this heading">#</a></h3>
+<p>The inclusion of C++ solutions has
+no positive impact on Python benchmark performance, but does significantly improve
+the accuracy on the C++ benchmark.</p>
 </section>
 </section>
 </section>
@@ -624,7 +624,7 @@ the entry points corresponding to test sets such as HumanEval and MBPP. Addition
         },
         kernelOptions: {
             name: "python3",
-            path: "./data"
+            path: "./sft"
         },
         predefinedOutput: true
     }
@@ -642,20 +642,20 @@ the entry points corresponding to test sets such as HumanEval and MBPP. Addition
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="kod.html"
+       href="ac-rs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">KodCode</p>
+        <p class="prev-next-title">Breaking the Attention Trap in Code LLMs</p>
       </div>
     </a>
     <a class="right-next"
-       href="opencodereasoning.html"
+       href="openthoughts.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">OpenCodeReasoning</p>
+        <p class="prev-next-title">OpenThoughts</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -675,13 +675,17 @@ the entry points corresponding to test sets such as HumanEval and MBPP. Addition
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining-data">Pretraining Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining">Pretraining</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post Training</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-composition">Data Composition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-stage-instruction-tuning">Two-stage Instruction-Tuning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-details">Training Details</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-construction-and-refinement">Dataset Construction and Refinement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-questions-collection">Coding Questions Collection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-code-generation">Solution Code Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-processing-for-refinement">Post-Processing for Refinement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-up-data-in-stages">Scaling Up Data in Stages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-evaluation">Main Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-and-analyses">Ablation and Analyses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-filtering-by-code-execution">Ablation: Filtering by Code Execution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-inclusion-of-c-solutions">Ablation: Inclusion of C++ Solutions</a></li>
 </ul>
 </li>
 </ul>

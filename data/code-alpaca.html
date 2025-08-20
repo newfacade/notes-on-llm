@@ -201,6 +201,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -210,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelism in LLM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,28 +232,27 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -497,10 +498,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stanford-alpaca">Stanford Alpaca</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Alpaca</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -514,76 +511,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="code-alpaca">
 <h1>Code Alpaca<a class="headerlink" href="#code-alpaca" title="Link to this heading">#</a></h1>
-<p>github: <a class="github reference external" href="https://github.com/sahil280114/codealpaca?tab=readme-ov-file#fine-tuning">sahil280114/codealpaca</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://github.com/sahil280114/codealpaca?tab=readme-ov-file#fine-tuning">Code Alpaca</a> is fully based on Stanford Alpaca ,and only changes the data used for training.</p>
+<ul class="simple">
+<li><p>Modified prompt to <span style="color: red">focus on code generation/editing/optimization tasks</span> instead of general tasks.</p></li>
+<li><p>Modified seed tasks to <span style="color: red">only be related to code generation.</span></p></li>
+</ul>
+<p>This produced an instruction-following dataset with 20K examples obtained at a much lower cost.</p>
+</div>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>You are asked to come up with a set of 20 diverse code generation task instructions. These task instructions will be given to a GPT model and we will evaluate the GPT model for completing the instructions.
+
+Here are the requirements:
+1. Try not to repeat the verb for each instruction to maximize diversity.
+2. The language used for the instruction also should be diverse. For example, you should combine questions with imperative instrucitons.
+3. The type of instructions should be diverse. The list should include diverse types of programming tasks like open-ended generation, classification, editing, optimization etc.
+2. A GPT language model should be able to complete the instruction. For example, do not ask the assistant to create any visual or audio output. For another example, do not ask the assistant to wake you up at 5pm or set a reminder because it cannot perform any action.
+3. The instructions should be in English.
+4. The instructions should at least 1 to 2 sentences long. Either an imperative sentence or a question is permitted.
+5. You should generate an appropriate input to the instruction. The input field should contain a specific example provided for the instruction. It should involve realistic data and should not contain simple placeholders. The input should provide substantial content to make the instruction challenging but should ideally not exceed 100 words.
+6. Not all instructions require input. For example, when a instruction asks about some general information, &quot;write a python program to load a file.&quot;, it is not necssary to provide a specific context. In this case, we simply put &quot;&lt;noinput&gt;&quot; in the input field.
+7. The output should be an appropriate response to the instruction and the input.
+8. All tasks should be coding or programming related.
+
+List of 20 tasks:
+</pre></div>
+</div>
 <section id="stanford-alpaca">
 <h2>Stanford Alpaca<a class="headerlink" href="#stanford-alpaca" title="Link to this heading">#</a></h2>
-<p>The current Alpaca model is fine-tuned from a 7B LLaMA model on 52K instruction-following data generated by the techniques in the Self-Instruct, with some modifications.</p>
+<p>Stanford Alpaca is fine-tuned from a 7B LLaMA model on 52K instruction-following data generated by the techniques in the Self-Instruct, with some modifications.</p>
 <ul class="simple">
 <li><p>We used <code class="docutils literal notranslate"><span class="pre">text-davinci-003</span></code> to generate the instruction data instead of <code class="docutils literal notranslate"><span class="pre">davinci</span></code>.</p></li>
-<li><p>We wrote a new prompt (prompt.txt)  that explicitly gave the requirement of instruction generation to <code class="docutils literal notranslate"><span class="pre">text-davinci-003</span></code>.</p></li>
+<li><p>We wrote a new prompt that explicitly gave the requirement of instruction generation to <code class="docutils literal notranslate"><span class="pre">text-davinci-003</span></code>.</p></li>
 <li><p>We adopted much more aggressive batch decoding, i.e., generating 20 instructions at once, which significantly reduced the cost of data generation.</p></li>
 <li><p>We simplified the data generation pipeline by discarding the difference between classification and non-classification instructions.</p></li>
 <li><p>We only generated a single instance for each instruction.</p></li>
 </ul>
-<p>This produced an instruction-following dataset with 52K examples obtained at a much lower cost. We also find our 52K generated data to be much more diverse than the data released by self-instruct.</p>
-<p><code class="docutils literal notranslate"><span class="pre">prompt.txt</span></code>:</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You are asked to come up with a set of 20 diverse task instructions. These task instructions will be given to a GPT model and we will evaluate the GPT model for completing the instructions.</p>
-<p>Here are the requirements:<br></p>
-<ol class="arabic simple">
-<li><p>Try not to repeat the verb for each instruction to maximize diversity.<br></p></li>
-<li><p>The language used for the instruction also should be diverse. For example, you should combine questions with imperative instrucitons.<br></p></li>
-<li><p>The type of instructions should be diverse. The list should include diverse types of tasks like open-ended generation, classification, editing, etc.<br></p></li>
-<li><p>A GPT language model should be able to complete the instruction. For example, do not ask the assistant to create any visual or audio output. For another example, do not ask the assistant to wake you up at 5pm or set a reminder because it cannot perform any action.<br></p></li>
-<li><p>The instructions should be in English.<br></p></li>
-<li><p>The instructions should be 1 to 2 sentences long. Either an imperative sentence or a question is permitted.<br></p></li>
-<li><p>You should generate an appropriate input to the instruction. The input field should contain a specific example provided for the instruction. It should involve realistic data and should not contain simple placeholders. The input should provide substantial content to make the instruction challenging but should ideally not exceed 100 words.<br></p></li>
-<li><p>Not all instructions require input. For example, when a instruction asks about some general information, “what is the highest peak in the world”, it is not necssary to provide a specific context. In this case, we simply put “<noinput>” in the input field.<br></p></li>
-<li><p>The output should be an appropriate response to the instruction and the input. Make sure the output is less than 100 words.</p></li>
-</ol>
-<p>List of 20 tasks:</p>
-</div>
-</section>
-<section id="id1">
-<h2>Code Alpaca<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Code Alpaca is fully based on Stanford Alpaca ,and only changes the data used for training.</p>
-<ul class="simple">
-<li><p>Modified prompt to focus on code generation/editing/optimization tasks instead of general tasks.</p></li>
-<li><p>Modified seed tasks to only be related to code generation.</p></li>
-</ul>
-<p>This produced an instruction-following dataset with 20K examples obtained at a much lower cost (less than $200).</p>
-<section id="data">
-<h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">data/code_alpaca_20k.json</span></code> contains 20K instruction-following data used for fine-tuning the Code Alpaca model. This JSON file is a list of dictionaries, each dictionary contains the following fields <code class="docutils literal notranslate"><span class="pre">instruction</span></code>, <code class="docutils literal notranslate"><span class="pre">input</span></code> and <code class="docutils literal notranslate"><span class="pre">output</span></code>.</p>
-<p>We used the following prompts for fine-tuning the model:</p>
-<ul>
-<li><p>for examples with a non-empty input field:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">instruction</span> <span class="n">that</span> <span class="n">describes</span> <span class="n">a</span> <span class="n">task</span><span class="p">,</span> <span class="n">paired</span> <span class="k">with</span> <span class="n">an</span> <span class="nb">input</span> <span class="n">that</span> <span class="n">provides</span> <span class="n">further</span> <span class="n">context</span><span class="o">.</span> <span class="n">Write</span> <span class="n">a</span> <span class="n">response</span> <span class="n">that</span> <span class="n">appropriately</span> <span class="n">completes</span> <span class="n">the</span> <span class="n">request</span><span class="o">.</span>
-
-<span class="c1">### Instruction:</span>
-<span class="p">{</span><span class="n">instruction</span><span class="p">}</span>
-
-<span class="c1">### Input:</span>
-<span class="p">{</span><span class="nb">input</span><span class="p">}</span>
-
-<span class="c1">### Response:</span>
-</pre></div>
-</div>
-</li>
-<li><p>for examples with an empty input field:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">instruction</span> <span class="n">that</span> <span class="n">describes</span> <span class="n">a</span> <span class="n">task</span><span class="o">.</span> <span class="n">Write</span> <span class="n">a</span> <span class="n">response</span> <span class="n">that</span> <span class="n">appropriately</span> <span class="n">completes</span> <span class="n">the</span> <span class="n">request</span><span class="o">.</span>
-
-<span class="c1">### Instruction:</span>
-<span class="p">{</span><span class="n">instruction</span><span class="p">}</span>
-
-<span class="c1">### Response:</span>
-</pre></div>
-</div>
-</li>
-</ul>
-<p>During inference, we use the user instruction with an empty input field (second option).</p>
-</section>
 </section>
 </section>
 
@@ -652,10 +615,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stanford-alpaca">Stanford Alpaca</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Code Alpaca</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 

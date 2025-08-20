@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Parallelism in LLM &#8212; Notes-on-LLM</title>
+    <title>Parallelisms &#8212; Notes-on-LLM</title>
   
   
   
@@ -201,6 +201,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -210,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-moe.html">DeepSeekMoE</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parallelism in LLM</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parallelisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flash-attention.html">Flash Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
@@ -230,28 +232,27 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/wavecoder.html">WaveCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencodereasoning.html">OpenCodeReasoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/openthoughts.html">OpenThoughts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/am-think.html">AM-Thinking-v1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sft/instag.html">Instag</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -486,7 +487,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Parallelism in LLM</h1>
+    <h1>Parallelisms</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -496,12 +497,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-parallel">数据并行 (Data Parallel)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensor-parallel">张量并行（Tensor Parallel）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-parallel">序列并行（Sequence Parallel）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-data-parallel">Distributed Data Parallel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-parallel-dp">Data Parallel (DP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-data-parallel-ddp">Distributed Data Parallel (DDP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fully-sharded-data-parallel-fsdp">Fully Sharded Data Parallel (FSDP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensor-parallelism-tp">Tensor Parallelism (TP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-parallelism-sp">Sequence Parallelism (SP)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepspeed-zero">DeepSpeed ZeRO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsdp">FSDP</a></li>
 </ul>
             </nav>
         </div>
@@ -513,80 +514,75 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="parallelism-in-llm">
-<h1>Parallelism in LLM<a class="headerlink" href="#parallelism-in-llm" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="parallelisms">
+<h1>Parallelisms<a class="headerlink" href="#parallelisms" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>参考：<a class="reference external" href="https://zhuanlan.zhihu.com/p/1904506837543420662">https://zhuanlan.zhihu.com/p/1904506837543420662</a></p>
+<p>In the modern machine learning the various approaches to parallelism are used to:</p>
+<ol class="arabic simple">
+<li><p>Fit very large models onto limited hardware.</p></li>
+<li><p>Significantly speed up training - finish training that would take a year in hours.</p></li>
+</ol>
 </div>
-<section id="data-parallel">
-<h2>数据并行 (Data Parallel)<a class="headerlink" href="#data-parallel" title="Link to this heading">#</a></h2>
+<section id="data-parallel-dp">
+<h2>Data Parallel (DP)<a class="headerlink" href="#data-parallel-dp" title="Link to this heading">#</a></h2>
+<p>It works by:</p>
 <ul class="simple">
-<li><p>每张卡都放完整的模型，仅对数据做切分，计算完梯度后需做一次 all-reduce，然后使用优化器更新模型。</p></li>
-<li><p>数据并行在所有并行中效率最高，除了一次 all-reduce 外，没有任何额外通信开销。数据并行的缺点是只能放小模型。</p></li>
+<li><p>Replicating the model onto multiple GPUs (one “master” GPU and others as “slaves”).</p></li>
+<li><p>Splitting the input batch into smaller sub-batches, each sent to a different GPU.</p></li>
+<li><p>Each GPU computes forward passes on its sub-batch independently.</p></li>
+<li><p>Collecting all sub-batch outputs back to the master GPU, which computes losses and gradients.</p></li>
+<li><p>Broadcasting gradients from the master GPU to all slave GPUs to update their model copies.</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/parallel1.webp" src="../_images/parallel1.webp" />
+<img alt="../_images/parallel1.png" src="../_images/parallel1.png" />
 </figure>
 </section>
-<section id="tensor-parallel">
-<h2>张量并行（Tensor Parallel）<a class="headerlink" href="#tensor-parallel" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>张量并行是指对模型内部的参数矩阵做切分，然后利用分块矩阵乘法进行计算得到正确结果。</p></li>
-<li><p>张量并行的优点是能分摊模型到多张卡上，缺点是带来了不小的通信开销，影响训练效率。</p></li>
-</ul>
+<section id="distributed-data-parallel-ddp">
+<h2>Distributed Data Parallel (DDP)<a class="headerlink" href="#distributed-data-parallel-ddp" title="Link to this heading">#</a></h2>
+<p>DDP is an optimized, more scalable version of data parallelism and is designed for multi-GPU (or multi-node) training. It uses <code class="docutils literal notranslate"><span class="pre">multiple</span> <span class="pre">independent</span> <span class="pre">processes</span></code> (one per GPU) rather than threads within a single process.</p>
+</section>
+<section id="fully-sharded-data-parallel-fsdp">
+<h2>Fully Sharded Data Parallel (FSDP)<a class="headerlink" href="#fully-sharded-data-parallel-fsdp" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a class="reference external" href="https://engineering.fb.com/2021/07/15/open-source/fsdp/">Fully Sharded Data Parallel: faster AI training with fewer GPUs</a></p>
+</div>
 <figure class="align-default">
-<img alt="../_images/parallel2.jpg" src="../_images/parallel2.jpg" />
+<img alt="../_images/parallel2.webp" src="../_images/parallel2.webp" />
+</figure>
+<p>FSDP 通过 <span style="color: red">“模型分块 + 按需组装 + 用完释放”</span> 三个步骤，让单个 GPU 无需存储完整模型也能完成整个前向传播。举个通俗的例子：用 8 个 GPU 训练一个 8 层 Transformers（Layer 1 到 Layer 8），总参数太大，单个 GPU 装不下。FSDP 会这么做：</p>
+<ol class="arabic simple">
+<li><p><strong>先把模型 “拆成小块”。</strong> FSDP 会将整个模型按层（或更大的子模块）拆分成独立的 “计算单元”。比如，把 8 层 Transformer 拆成 8 个 “子模块”（每个子模块就是一层）。</p></li>
+<li><p><strong>每个子模块的参数 “分片存储” 在所有 GPU 上。</strong> 对于 Layer 1 的参数，FSDP 会把它均匀分成 8 份（因为有 8 个 GPU），每个 GPU 存 1/8。同理，Layer 2 到 Layer 8 的参数也各自分成 8 份，每个 GPU 存每一层的 1/8。</p></li>
+<li><p><strong>前向传播时：“按需临时组装” 子模块参数，用完就删。</strong> FSDP 会让所有 GPU 把自己手里 Layer 1 的 1/8 参数 “发” 给 GPU 0，GPU 0 临时组装出 Layer 1 的完整参数，完成计算后，立即删掉这些完整参数（只保留自己原来的 1/8 分片）。
+此时，输入经过 Layer 1 的输出被传递给下一层。</p></li>
+</ol>
+</section>
+<section id="tensor-parallelism-tp">
+<h2>Tensor Parallelism (TP)<a class="headerlink" href="#tensor-parallelism-tp" title="Link to this heading">#</a></h2>
+<p>Tensor Parallelism (TP) is a model-parallel partitioning method that distributes the parameter tensor of an individual layer across GPUs.</p>
+<figure class="align-default">
+<img alt="../_images/parallel3.png" src="../_images/parallel3.png" />
 </figure>
 </section>
-<section id="sequence-parallel">
-<h2>序列并行（Sequence Parallel）<a class="headerlink" href="#sequence-parallel" title="Link to this heading">#</a></h2>
+<section id="sequence-parallelism-sp">
+<h2>Sequence Parallelism (SP)<a class="headerlink" href="#sequence-parallelism-sp" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>TP 主要处理的是 attention 和 FFN 维度的并行，主要是对参数矩阵进行切分，而输入还是有冗余（每个 TP 在 attention 和 MLP 有相同的输入）。SP 则是对输入矩阵按 sequence 维度进行切分，体现在 layernom 和 dropout 层。</p></li>
 <li><p>SP 与 TP 结合，在进入 attention 和 MLP 时需要做 all-gather，反向时需要做 reduce-scatter；从 attention 和 MLP 出来时需做 reduce-scatter，反向做 all-gather。</p></li>
 </ul>
 <figure class="align-default">
-<img alt="../_images/parallel3.jpg" src="../_images/parallel3.jpg" />
+<img alt="../_images/parallel4.png" src="../_images/parallel4.png" />
 </figure>
-</section>
-<section id="distributed-data-parallel">
-<h2>Distributed Data Parallel<a class="headerlink" href="#distributed-data-parallel" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>DDP 原理：在分类上，DDP 属于 Data Parallel。简单来讲，就是通过提高 batch_size 来增加并行度。</p></li>
-<li><p>为什么快：DDP 通过 Ring-Reduce 的数据交换方法提高了通讯效率，并通过启动多个进程的方式减轻 Python GIL 的限制，从而提高训练速度。</p></li>
-</ul>
 </section>
 <section id="deepspeed-zero">
 <h2>DeepSpeed ZeRO<a class="headerlink" href="#deepspeed-zero" title="Link to this heading">#</a></h2>
-<p>传统数据并行中，每个设备会存储完整的模型参数、梯度和优化器状态（存在大量冗余）。ZeRO 的核心是消除这种冗余，将这些数据在多个设备间进行划分，每个设备只保留一部分，从而大幅减少单设备内存压力。</p>
 <ol class="arabic simple">
-<li><p><strong>ZeRO-1</strong>（Optimizer State Partitioning）</p>
-<ul class="simple">
-<li><p>仅对优化器状态（如 Adam 中的动量和方差）进行划分</p></li>
-<li><p>每个设备只存储优化器状态的 1/N（N 为数据并行数）</p></li>
-<li><p>前向 / 反向传播时，每个设备仍保留完整参数和梯度</p></li>
-</ul>
-</li>
-<li><p><strong>ZeRO-2</strong>（Gradient Partitioning）</p>
-<ul class="simple">
-<li><p>在 ZeRO-1 基础上，增加对梯度的划分</p></li>
-<li><p>每个设备只存储梯度的 1/N</p></li>
-<li><p>仍保留完整的模型参数</p></li>
-</ul>
-</li>
-<li><p><strong>ZeRO-3</strong>（Parameter Partitioning）</p>
-<ul class="simple">
-<li><p>进一步对模型参数进行划分，每个设备只存储 1/N 的参数</p></li>
-<li><p>前向传播时，通过通信获取当前计算所需的参数（计算后释放）</p></li>
-<li><p>反向传播时，同样按需获取参数并计算梯度</p></li>
-</ul>
-</li>
+<li><p><strong>ZeRO-1</strong>（Optimizer State Partitioning）</p></li>
+<li><p><strong>ZeRO-2</strong>（Gradient Partitioning）</p></li>
+<li><p><strong>ZeRO-3</strong>（Parameter Partitioning）</p></li>
 </ol>
-</section>
-<section id="fsdp">
-<h2>FSDP<a class="headerlink" href="#fsdp" title="Link to this heading">#</a></h2>
-<p>FSDP 全称 FullyShardedDataParallel， 是Meta 提出的一个针对LLM 训练的解决方案，它是一个数据并行的策略，通过对模型参数（parameters), 梯度（gradients) 和优化器状态（optimizer states) 在多gpu上点切分实现并行。</p>
-<p>FSDP受启发于DeepSpeed ZeRO-DP，并进行了进一步的延申和拓展。FSDP包括了NO_SGARD（等效于DDP)；SHARD_GRAD_OP（对标ZeRO2）；FULL_SHARD （对标ZeRO3）。</p>
 </section>
 </section>
 
@@ -654,12 +650,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-parallel">数据并行 (Data Parallel)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensor-parallel">张量并行（Tensor Parallel）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-parallel">序列并行（Sequence Parallel）</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-data-parallel">Distributed Data Parallel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-parallel-dp">Data Parallel (DP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-data-parallel-ddp">Distributed Data Parallel (DDP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fully-sharded-data-parallel-fsdp">Fully Sharded Data Parallel (FSDP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensor-parallelism-tp">Tensor Parallelism (TP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-parallelism-sp">Sequence Parallelism (SP)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deepspeed-zero">DeepSpeed ZeRO</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsdp">FSDP</a></li>
 </ul>
   </nav></div>
 
