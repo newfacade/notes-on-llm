@@ -1,0 +1,1086 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SFT with RL2 &#8212; Notes-on-LLM</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sft/sft-source-code';</script>
+    <link rel="icon" href="../_static/github.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scaling Relationship on Learning Mathematical Reasoning with Large Language Models" href="rs.html" />
+    <link rel="prev" title="SFT" href="0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Andromede.jpg" class="logo__image only-light" alt="Notes-on-LLM - Home"/>
+    <script>document.write(`<img src="../_static/Andromede.jpg" class="logo__image only-dark" alt="Notes-on-LLM - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../base/0.html">Base</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../base/attention.html">Attention Is All You Need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt.html">GPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt2.html">GPT2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/gpt3.html">GPT3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/instruct-gpt.html">InstructGPT</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bench/humaneval.html">HumanEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/mbpp.html">MBPP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/evalplus.html">EvalPlus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/livecodebench.html">LiveCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/cruxeval.html">CRUXEval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/bigcodebench.html">BigCodeBench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/swe.html">SWE-bench</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/general.html">General Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/math-science.html">Math &amp; Science Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bench/alignment.html">Alignment Benchmarks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">SFT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SFT with RL2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4M.html">1.4 Million Open-Source Distilled Reasoning Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not-all-equal.html">Not All Correct Answers Are Equal</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/adaptive-step.html">AdaptiveStep</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dpo/0.html">DPO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpo/dpo.html">DPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/0.html">RL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/grpo.html">GRPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/r1-critic.html">Understanding R1-Zero-Like Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/vapo.html">VAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/gspo.html">GSPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/skywork-or1.html">Skywork Open Reasoner 1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/shorter-better.html">ShorterBetter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agent/software-survey.html">Agents in Software Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/react.html">REACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/reflexion.html">Reflexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/code-act.html">CodeAct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/agentless.html">AGENTLESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-agent.html">SWE-agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agent/swe-smith.html">SWE-smith</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsft/sft-source-code.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sft/sft-source-code.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SFT with RL2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizer">Tokenizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch">Mini Batch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trainer">Trainer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worker">Worker</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sft-with-rl2">
+<h1>SFT with RL2<a class="headerlink" href="#sft-with-rl2" title="Link to this heading">#</a></h1>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<section id="tokenizer">
+<h3>Tokenizer<a class="headerlink" href="#tokenizer" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;/Users/xiayunhui/github/notes-on-llm/Qwen2.5-0.5B-Instruct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;1+1=?&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;assistant&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;1+1=2&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;explain why&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;assistant&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;The equation &quot;1 + 1 = 2&quot; is a fundamental principle in basic arithmetic.&#39;</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">message</span> <span class="o">=</span> <span class="n">messages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># add_special_tokens: this is useful if you want to add bos or eos tokens automatically.</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">],</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">state</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[16, 10, 16, 19884]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span><span class="n">messages</span><span class="p">[:</span> <span class="mi">3</span><span class="p">],</span> <span class="n">add_generation_prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&lt;|im_start|&gt;system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\n1+1=?&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\n1+1=2&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\nexplain why&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+
+<span class="k">def</span> <span class="nf">tokenize_messages</span><span class="p">(</span>
+    <span class="n">tokenizer</span><span class="p">,</span>  <span class="c1"># Tokenizer for converting text to tokens</span>
+    <span class="n">messages</span><span class="p">,</span>  <span class="c1"># List of chat messages (each with &quot;role&quot; and &quot;content&quot;)</span>
+    <span class="n">tool</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Optional parameter for tool integration in conversations</span>
+    <span class="n">apply_chat_template</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Whether to use tokenizer&#39;s chat formatting</span>
+<span class="p">):</span>
+    <span class="c1"># states: context tokens (from user/system messages)</span>
+    <span class="c1"># actions: target tokens (from assistant responses)</span>
+    <span class="c1"># action_mask: marks which tokens are training targets (1=assistant, 0=context)</span>
+    <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">action_mask</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">message</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">messages</span><span class="p">):</span>
+        <span class="c1"># Process assistant messages (model&#39;s target outputs)</span>
+        <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;assistant&quot;</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">],</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">actions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>  <span class="c1"># Add assistant tokens to action targets</span>
+            <span class="n">action_mask</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>  <span class="c1"># Mark as training targets</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Process user/system messages (context)</span>
+            <span class="k">if</span> <span class="n">apply_chat_template</span><span class="p">:</span>
+                <span class="c1"># Use tokenizer&#39;s chat template for proper multi-turn formatting</span>
+                <span class="n">next_states</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">apply_chat_template</span><span class="p">(</span>
+                    <span class="n">messages</span><span class="p">[:</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># All messages up to current one</span>
+                    <span class="n">tool</span><span class="o">=</span><span class="n">tool</span><span class="p">,</span>
+                    <span class="c1"># Add generation prompt if next message is from assistant</span>
+                    <span class="n">add_generation_prompt</span><span class="o">=</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span> <span class="ow">and</span> <span class="n">messages</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="s2">&quot;role&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;assistant&quot;</span>
+                <span class="p">)</span>
+                <span class="c1"># Ensure tokenization is incremental (previous tokens remain unchanged)</span>
+                <span class="k">assert</span> <span class="n">next_states</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">)]</span> <span class="o">==</span> <span class="n">states</span><span class="p">,</span> <span class="s2">&quot;Tokenizer must preserve previous message tokens&quot;</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">next_states</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">):]</span>  <span class="c1"># Only take new tokens from current message</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">state</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">],</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            
+            <span class="n">actions</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>  <span class="c1"># No action target for context</span>
+            <span class="n">action_mask</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">))</span>  <span class="c1"># Don&#39;t train on context tokens</span>
+
+        <span class="n">states</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>  <span class="c1"># Build full state sequence</span>
+
+    <span class="c1"># Return tokenized data as PyTorch tensors (shifted for language modeling)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;states&quot;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">states</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>  <span class="c1"># Input context (all except last token)</span>
+        <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>  <span class="c1"># Target outputs (shifted by 1)</span>
+        <span class="s2">&quot;action_mask&quot;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">action_mask</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>  <span class="c1"># Mask for training focus</span>
+        <span class="s2">&quot;position_ids&quot;</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Positional encoding indices</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default">
+<img alt="../_images/sft-source1.svg" src="../_images/sft-source1.svg" /></figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokenize_messages</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;states&#39;: tensor([151644,   8948,    198,   2610,    525,   1207,  16948,     11,   3465,
+            553,  54364,  14817,     13,   1446,    525,    264,  10950,  17847,
+             13, 151645,    198, 151644,    872,    198,     16,     10,     16,
+          19884, 151645,    198, 151644,  77091,    198,     16,     10,     16,
+             28,     17, 151645,    198, 151644,    872,    198,  94344,   3170,
+         151645,    198, 151644,  77091,    198,    785,  23606,    330,     16,
+            488,    220,     16,    284,    220,     17,      1,    374,    264,
+          15811,  17508,    304,   6770,  34784]),
+ &#39;actions&#39;: tensor([    0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+             0,     0,    16,    10,    16,    28,    17,     0,     0,     0,
+             0,     0,     0,     0,     0,     0,     0,     0,     0,   785,
+         23606,   330,    16,   488,   220,    16,   284,   220,    17,     1,
+           374,   264, 15811, 17508,   304,  6770, 34784,    13]),
+ &#39;action_mask&#39;: tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+         0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+         0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+ &#39;position_ids&#39;: tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17,
+         18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
+         36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53,
+         54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67])}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Dataset<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datasets</span>
+
+<span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;@&quot;</span> <span class="ow">in</span> <span class="n">data_path</span><span class="p">:</span>
+        <span class="n">split</span><span class="p">,</span> <span class="n">data_path</span> <span class="o">=</span> <span class="n">data_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;@&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">split</span> <span class="o">=</span> <span class="s2">&quot;train&quot;</span>
+    
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">data_path</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;parquet&quot;</span><span class="p">,</span> <span class="s2">&quot;arrow&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;jsonl&quot;</span><span class="p">:</span>
+            <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;json&quot;</span>
+        <span class="k">return</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">ext</span><span class="p">,</span> <span class="n">data_files</span><span class="o">=</span><span class="n">data_path</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Load from Hugging Face Hub dataset by name if no extension matches</span>
+        <span class="k">return</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">datasets.load_dataset</span></code> 不会一次性将数据全部读入内存，而是通过延迟加载和按需读取实现高效处理。</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for conversational datasets&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_path</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">max_length</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>  <span class="c1"># Load dataset using our custom loader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span>  <span class="c1"># Store tokenizer for processing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_length</span> <span class="o">=</span> <span class="n">max_length</span>  <span class="c1"># Maximum sequence length for truncation/padding</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>  <span class="c1"># Return number of samples in dataset</span>
+
+
+<span class="k">class</span> <span class="nc">SFTDataset</span><span class="p">(</span><span class="n">BaseDataset</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        
+        <span class="n">messages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span>
+        <span class="n">ex</span> <span class="o">=</span> <span class="n">tokenize_messages</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">messages</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">max_length</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ex</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    
+    <span class="k">def</span> <span class="nf">collate_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在 PyTorch 的 <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> 中，<code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> 的核心作用是将多个样本（由 <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> 返回）整理成一个批次（batch）数据。默认情况下，<code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> 会尝试将样本自动拼接成张量，但当样本结构复杂（如长度可变的列表、字典）时，需要自定义 <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> 来处理。<br>
+上面 collate_fn 的输入和输出：<br></p>
+<ul class="simple">
+<li><p>输入：一个列表，包含 <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> 个样本，每个样本是 <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> 返回的结果（在本例中是字典，如 <code class="docutils literal notranslate"><span class="pre">{&quot;states&quot;:</span> <span class="pre">tensor,</span> <span class="pre">&quot;actions&quot;:</span> <span class="pre">tensor,</span> <span class="pre">...}</span></code>）。</p></li>
+<li><p>输出：整理后的批次数据（格式由用户定义，本例中直接返回列表）。</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="mini-batch">
+<h2>Mini Batch<a class="headerlink" href="#mini-batch" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># data_list draw from SFTDataset</span>
+<span class="n">minibatches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">scatter_and_pack_data_list</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scatter_and_pack_data_list</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">pack_minibatches</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">pack_minibatches</span><span class="p">:</span>
+        <span class="o">...</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">all_rank_data_lists</span> <span class="o">=</span> <span class="n">group_data_list_into_all_rank_data_lists</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">pair</span>
+                <span class="p">)</span>
+            <span class="n">data_lists</span> <span class="o">=</span> <span class="n">split_and_scatter_list</span><span class="p">(</span>
+                <span class="n">all_rank_data_lists</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+                <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span>
+            <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">data_lists</span> <span class="o">=</span> <span class="n">scatter_data_lists_along_sp_dim</span><span class="p">(</span>
+            <span class="n">data_lists</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="n">data_lists</span> <span class="o">=</span> <span class="n">scatter_data_lists_along_tp_dim</span><span class="p">(</span>
+        <span class="n">data_lists</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get_local_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">pack_data_lists_into_minibatches</span><span class="p">(</span>
+        <span class="n">data_lists</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">group_data_list_into_all_rank_data_lists</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    
+    <span class="c1"># We use ZigZag Ring Attention to partition sequences, where </span>
+    <span class="c1"># the length of each sequence needs to be multiple of 2 * </span>
+    <span class="c1"># sp size and each rank sequentially get the head and tail.</span>
+    <span class="c1"># See https://zhuanlan.zhihu.com/p/683714620.</span>
+    <span class="n">multiple_of</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ex</span><span class="p">[</span><span class="s2">&quot;states&quot;</span><span class="p">])</span> <span class="o">%</span> <span class="n">multiple_of</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">pad_tokens</span> <span class="o">=</span> <span class="n">multiple_of</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">ex</span><span class="p">[</span><span class="s2">&quot;states&quot;</span><span class="p">])</span> <span class="o">%</span> <span class="n">multiple_of</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ex</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ex</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">pad_tokens</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+            <span class="p">)</span>
+
+    <span class="c1"># We pack trajectories into minibatches for higher throughput.</span>
+    <span class="c1"># To accommodate all trajectories, at least n_minibatches </span>
+    <span class="c1"># minibatches are needed.</span>
+    <span class="n">seq_len_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">ex</span><span class="p">[</span><span class="s2">&quot;states&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">pair</span><span class="p">:</span>
+        <span class="c1"># When pair, every two adjacent trajectories will be </span>
+        <span class="c1"># colocated, so their length are summed.</span>
+        <span class="n">seq_len_list</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">seq_len_list</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">max_length_per_dp</span> <span class="o">=</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;tp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="n">worker</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_length_per_device</span>
+        <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_grad_enabled</span><span class="p">()</span>
+        <span class="k">else</span> <span class="n">worker</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_inference_length_per_device</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">max</span><span class="p">(</span><span class="n">seq_len_list</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_length_per_dp</span><span class="p">,</span> \
+        <span class="sa">f</span><span class="s2">&quot;The longest trajectory has a total length of </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">seq_len_list</span><span class="p">)</span><span class="si">}</span><span class="s2">,&quot;</span> \
+        <span class="sa">f</span><span class="s2">&quot;which exceeds the maximum length per dp </span><span class="si">{</span><span class="n">max_length_per_dp</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="n">n_minibatches</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span>
+        <span class="nb">sum</span><span class="p">(</span><span class="n">seq_len_list</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_length_per_dp</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Every dp should has identical number of minibatches, thus the </span>
+    <span class="c1"># total number of minibatches must be a multiple of dp size.</span>
+    <span class="n">multiple_of</span> <span class="o">=</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">n_minibatches</span> <span class="o">%</span> <span class="n">multiple_of</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">n_minibatches</span> <span class="o">+=</span> <span class="n">multiple_of</span> <span class="o">-</span> <span class="n">n_minibatches</span> <span class="o">%</span> <span class="n">multiple_of</span>
+
+    <span class="c1"># Partition data into n_minibatches balanced minibatches.</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+        <span class="k">global</span> <span class="n">PAD_TRAJECTORIES</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq_len_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n_minibatches</span><span class="p">:</span>
+            <span class="c1"># Perhaps the number of minibatches is larger than the number </span>
+            <span class="c1"># of trajectories so that there are not enough trajectories </span>
+            <span class="c1"># to fill all minibatches.</span>
+            <span class="n">PAD_TRAJECTORIES</span> <span class="o">=</span> <span class="n">n_minibatches</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq_len_list</span><span class="p">)</span>
+            <span class="n">trajectory_length</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+            <span class="n">trajectory</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">trajectory_length</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="n">data_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">PAD_TRAJECTORIES</span> <span class="o">*</span> <span class="p">[</span><span class="n">trajectory</span><span class="p">])</span>
+            <span class="n">seq_len_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">PAD_TRAJECTORIES</span> <span class="o">*</span> <span class="p">[</span><span class="n">trajectory_length</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">PAD_TRAJECTORIES</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">partitions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">get_seqlen_balanced_partitions</span><span class="p">(</span>
+            <span class="n">seq_len_list</span><span class="p">,</span> <span class="n">k_partitions</span><span class="o">=</span><span class="n">n_minibatches</span><span class="p">,</span> <span class="n">equal_size</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">max_minibatch_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span>
+            <span class="nb">sum</span><span class="p">([</span><span class="n">seq_len_list</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">partition</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">partitions</span>
+        <span class="p">])</span>
+        <span class="k">if</span> <span class="n">max_minibatch_length</span> <span class="o">&lt;=</span> <span class="n">max_length_per_dp</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">n_minibatches</span> <span class="o">+=</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="n">n_minibatches_per_dp</span> <span class="o">=</span> <span class="n">n_minibatches</span> <span class="o">//</span> <span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">pair</span><span class="p">:</span>
+        <span class="n">partitions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nb">sum</span><span class="p">([[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">partition</span><span class="p">],</span> <span class="p">[])</span>
+            <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">partitions</span>
+        <span class="p">]</span>
+    <span class="k">global</span> <span class="n">SHUFFLE_INDICES</span>
+    <span class="n">SHUFFLE_INDICES</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">partitions</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="n">data_list</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">partition</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">partitions</span><span class="p">[</span><span class="n">rank</span> <span class="o">*</span> <span class="n">n_minibatches_per_dp</span><span class="p">:(</span><span class="n">rank</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_minibatches_per_dp</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">rank</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">device_mesh</span><span class="p">[</span><span class="s2">&quot;dp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We pack trajectories into minibatches for higher throughput, <code class="docutils literal notranslate"><span class="pre">group_data_list_into_all_rank_data_lists</span></code>:</p>
+<ol class="arabic simple">
+<li><p>for ex in data_list, right pad (with 0) ex to make <code class="docutils literal notranslate"><span class="pre">len(ex)</span></code> multiple of 2 * sp.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_length_per_dp</span> <span class="pre">=</span> <span class="pre">sp</span> <span class="pre">*</span> <span class="pre">tp</span> <span class="pre">*</span> <span class="pre">max_length_per_device</span></code> (correspond to one minibatch), we should have <code class="docutils literal notranslate"><span class="pre">len(ex)</span> <span class="pre">&lt;</span> <span class="pre">max_length_per_dp</span></code>.</p></li>
+<li><p>Every dp should has identical number of minibatches, partition data into n_minibatches balanced minibatches.</p></li>
+</ol>
+<p>Finally, minibatch / n_minibatches_per_dp / dp-rank, one minibatch is a list of ex.</p>
+</div>
+</section>
+<section id="trainer">
+<h2>Trainer<a class="headerlink" href="#trainer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">OmegaConf</span>  <span class="c1"># For managing configuration files (YAML/JSON)</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">import</span> <span class="nn">torch.distributed</span> <span class="k">as</span> <span class="nn">dist</span>  <span class="c1"># For multi-GPU distributed training</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">get_cosine_schedule_with_warmup</span>
+<span class="kn">import</span> <span class="nn">wandb</span>
+
+
+<span class="k">class</span> <span class="nc">Trainer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handles training setup: config management, logging, data loading, and scheduler&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="n">OmegaConf</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>  <span class="c1"># Resolve any interpolations in the config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>  <span class="c1"># Store configuration for later use</span>
+
+        <span class="c1"># Only run on the main process (rank 0) in distributed training</span>
+        <span class="k">if</span> <span class="n">dist</span><span class="o">.</span><span class="n">get_rank</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>  <span class="c1"># Print config for verification</span>
+            <span class="c1"># Initialize W&amp;B unless disabled</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">trainer</span><span class="o">.</span><span class="n">disable_wandb</span><span class="p">:</span>
+                <span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+                    <span class="n">project</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">trainer</span><span class="o">.</span><span class="n">project</span><span class="p">,</span>  <span class="c1"># W&amp;B project name</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">trainer</span><span class="o">.</span><span class="n">experiment_name</span><span class="p">,</span>  <span class="c1"># Name for this run</span>
+                    <span class="n">config</span><span class="o">=</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_container</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>  <span class="c1"># Log config to W&amp;B</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Disable W&amp;B logging by replacing log method with no-op</span>
+                <span class="n">wandb</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">prepare_dataloader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a DataLoader for batching and shuffling data&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DataLoader</span><span class="p">(</span>
+            <span class="n">dataset</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>  <span class="c1"># Shuffle data (typically True for training)</span>
+            <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Discard incomplete batch at end to maintain consistent size</span>
+            <span class="n">collate_fn</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">collate_fn</span>  <span class="c1"># Use dataset&#39;s custom batching logic</span>
+        <span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">prepare_scheduler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worker</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set up cosine learning rate scheduler with warmup&quot;&quot;&quot;</span>
+        <span class="c1"># Calculate total training steps (epochs × batches per epoch)</span>
+        <span class="n">num_training_steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">trainer</span><span class="o">.</span><span class="n">n_epochs</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataloader</span><span class="p">)</span>
+        <span class="c1"># Calculate warmup stepbalanceds (fraction of total steps defined in config)</span>
+        <span class="n">num_warmup_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">worker</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">warmup_ratio</span> <span class="o">*</span> <span class="n">num_training_steps</span><span class="p">)</span>
+
+        <span class="c1"># Return scheduler: starts with warmup, then decays lr cosine-style</span>
+        <span class="k">return</span> <span class="n">get_cosine_schedule_with_warmup</span><span class="p">(</span>
+            <span class="n">worker</span><span class="o">.</span><span class="n">optimizer</span><span class="p">,</span>  <span class="c1"># Optimizer to adjust learning rate for</span>
+            <span class="n">num_warmup_steps</span><span class="o">=</span><span class="n">num_warmup_steps</span><span class="p">,</span>  <span class="c1"># Steps to gradually increase lr</span>
+            <span class="n">num_training_steps</span><span class="o">=</span><span class="n">num_training_steps</span>  <span class="c1"># Total steps for full cycle</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shuffle=True</span></code> 通过打乱数据索引实现随机性，而非加载全部数据后打乱。</p></li>
+<li><p>随机性在每个 epoch 内有效，不同 epoch 打乱结果不同（可通过 <code class="docutils literal notranslate"><span class="pre">torch.manual_seed</span></code> 固定随机性）。</p></li>
+</ul>
+</div>
+</section>
+<section id="worker">
+<h2>Worker<a class="headerlink" href="#worker" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在 PyTorch 分布式训练中，world_size 表示参与分布式训练的总进程数。如果两台机器各有 8 块 GPU，且每块 GPU 分配一个进程（这是最常见的配置），那么 world_size = 16（2 台机器 × 8 GPU / 台 = 16 个进程）。<br>
+<code class="docutils literal notranslate"><span class="pre">dist.get_world_size()</span></code>：返回分布式训练中总进程数量。每个进程通常对应一块 GPU</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sft"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SFT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizer">Tokenizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch">Mini Batch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trainer">Trainer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worker">Worker</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By newfacade
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

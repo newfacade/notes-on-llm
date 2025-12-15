@@ -64,7 +64,7 @@
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DeepSeek-V2" href="deepseek-v2.html" />
+    <link rel="next" title="Qwen3" href="qwen3.html" />
     <link rel="prev" title="Qwen 2.5" href="qwen25.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,21 +193,30 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,44 +234,64 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/1.4M.html">1.4 Million Open-Source Distilled Reasoning Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/adaptive-step.html">AdaptiveStep</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dpo/0.html">DPO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpo/dpo.html">DPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/0.html">RL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/grpo.html">GRPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/r1-critic.html">Understanding R1-Zero-Like Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/vapo.html">VAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/gspo.html">GSPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/skywork-or1.html">Skywork Open Reasoner 1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/shorter-better.html">ShorterBetter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -479,16 +508,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-recipe-for-instruction-data">A Recipe for Instruction Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Training Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Training Policy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-models">Base Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruct-models">Instruct Models</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
             </nav>
         </div>
@@ -553,20 +576,15 @@ including file-level pretraining, repo-level pretraining, and instruction tuning
 <section id="a-recipe-for-instruction-data">
 <h3>A Recipe for Instruction Data<a class="headerlink" href="#a-recipe-for-instruction-data" title="Link to this heading">#</a></h3>
 <p><strong>Multilingual Programming Code Identification</strong> We fine-tune a CodeBERT to perform the language identification model to categorize documents into nearly 100
-programming languages. We keep the instruction data of the mainstream programming
-languages and randomly discard a portion of the instruction data of the long-tail languages.
-If a given sample contains very little code data or even no code snippets, the sample will
-possibly be classified into “No Programming Language” tag. Since too many instruction
-samples without code snippets hurt the model performance on code generation tasks, we remove most of the samples without code snippets to
-keep the code generation capability of our instruction model.</p>
+programming languages.</p>
 <p><strong>Instruction Synthesis from GitHub</strong> For the unsupervised data (code snippets) massively
 existing in many websites (e.g. GitHub), we try to construct the supervised instruction
 dataset using LLM. Specifically, we use the LLM to generate the instruction from the code
-snippets within 1024 tokens and then we use the code LLM to generate the response (Magicoder<span id="id4">[<a class="reference internal" href="../reference.html#id29" title="Yuxiang Wei, Zhe Wang, Jiawei Liu, Yifeng Ding, and Lingming Zhang. Magicoder: empowering code generation with oss-instruct. 2024. URL: https://arxiv.org/abs/2312.02120, arXiv:2312.02120.">WWL+24</a>]</span>, Unicoder<span id="id5">[<a class="reference internal" href="../reference.html#id25" title="Tao Sun, Linzheng Chai, Jian Yang, Yuwei Yin, Hongcheng Guo, Jiaheng Liu, Bing Wang, Liqun Yang, and Zhoujun Li. Unicoder: scaling code large language model via universal code. 2024. URL: https://arxiv.org/abs/2406.16441, arXiv:2406.16441.">SCY+24</a>]</span>, Wavecoder<span id="id6">[<a class="reference internal" href="../reference.html#id26" title="Zhaojian Yu, Xin Zhang, Ning Shang, Yangyu Huang, Can Xu, Yishujie Zhao, Wenxiang Hu, and Qiufeng Yin. Wavecoder: widespread and versatile enhancement for code large language models by instruction tuning. 2024. URL: https://arxiv.org/abs/2312.14187, arXiv:2312.14187.">YZS+24</a>]</span>). Finally, we use the LLM scorer to filter the
+snippets within 1024 tokens and then we use the code LLM to generate the response <span style="color: red">(Magicoder, Unicoder, Wavecoder)</span>. Finally, we use the LLM scorer to filter the
 low-quality ones to obtain the final pair. Given the code snippets of different programming
 languages, we construct an instruction dataset from the code snippets. To fully unleash the
 potential of our proposed method, we also include the open-source instruction dataset (e.g.
-McEval-Instruct<span id="id7">[<a class="reference internal" href="../reference.html#id27" title="Linzheng Chai, Shukai Liu, Jian Yang, Yuwei Yin, Ke Jin, Jiaheng Liu, Tao Sun, Ge Zhang, Changyu Ren, Hongcheng Guo, Zekun Wang, Boyang Wang, Xianjie Wu, Bing Wang, Tongliang Li, Liqun Yang, Sufeng Duan, and Zhoujun Li. Mceval: massively multilingual code evaluation. 2024. URL: https://arxiv.org/abs/2406.07436, arXiv:2406.07436.">CLY+24</a>]</span> for massively multilingual code generation and debugging) in the seed
+McEval-Instruct<span id="id4">[<a class="reference internal" href="../reference.html#id27" title="Linzheng Chai, Shukai Liu, Jian Yang, Yuwei Yin, Ke Jin, Jiaheng Liu, Tao Sun, Ge Zhang, Changyu Ren, Hongcheng Guo, Zekun Wang, Boyang Wang, Xianjie Wu, Bing Wang, Tongliang Li, Liqun Yang, Sufeng Duan, and Zhoujun Li. Mceval: massively multilingual code evaluation. 2024. URL: https://arxiv.org/abs/2406.07436, arXiv:2406.07436.">CLY+24</a>]</span> for massively multilingual code generation and debugging) in the seed
 instruction dataset. Finally, we combine the instruction data from the GitHub code snippet
 and open-source instructions for supervised fine-tuning.</p>
 <p><strong>Multilingual Code Instruction Data</strong> To bridge the gap among different programming
@@ -588,52 +606,19 @@ coding concepts.</p></li>
 </ol>
 <p>After gaining all scores <span class="math notranslate nohighlight">\((s_1, \dots, s_n)\)</span>, we can get the final score with
 <span class="math notranslate nohighlight">\(s = w_1 s_1 + \dots + w_n s_n\)</span>, where <span class="math notranslate nohighlight">\((w_1, \dots ,w_n)\)</span> are a series of pre-defined weights.</p>
-<p><strong>A multilingual sandbox for code verification</strong> Only the self-contained (e.g. algorithm problems) code snippet will be fed into the multilingual sandbox. The multilingual verification sandbox is mainly comprised of five parts:</p>
-<ol class="arabic simple">
-<li><p><strong>Language Support Module:</strong></p>
-<ul class="simple">
-<li><p>Implements support for multiple languages (e.g., Python, Java, C++, JavaScript)</p></li>
-<li><p>Maintains language-specific parsing and execution environments</p></li>
-<li><p>Handles syntax and semantic analysis for each supported language</p></li>
-</ul>
-</li>
-<li><p><strong>Sample Code Repository:</strong></p>
-<ul class="simple">
-<li><p>Stores a diverse collection of code samples for each supported language</p></li>
-<li><p>Organizes samples by language, difficulty level, and programming concepts</p></li>
-<li><p>Regularly updated and curated by language experts</p></li>
-</ul>
-</li>
-<li><p><strong>Unit Test Generator:</strong></p>
-<ul class="simple">
-<li><p>Analyzes sample code to identify key functionalities and edge cases</p></li>
-<li><p>Automatically generates unit tests based on the expected behavior</p></li>
-<li><p>Produces test cases covering various input scenarios and expected outputs</p></li>
-</ul>
-</li>
-<li><p><strong>Code Execution Engine:</strong></p>
-<ul class="simple">
-<li><p>Provides isolated environments for executing code snippets securely</p></li>
-<li><p>Supports parallel execution of multiple test cases</p></li>
-<li><p>Handles resource allocation and timeout mechanisms</p></li>
-</ul>
-</li>
-<li><p><strong>Result Analyzer:</strong></p>
-<ul class="simple">
-<li><p>Compares the output of code snippets against expected results from unit tests</p></li>
-<li><p>Generates detailed reports on test case successes and failures</p></li>
-<li><p>Provides suggestions for improvements based on failed test cases</p></li>
-</ul>
-</li>
-</ol>
+<p><strong>A multilingual sandbox for code verification</strong> Only the self-contained (e.g. algorithm problems) code snippet will be fed into the multilingual sandbox.</p>
 </section>
-<section id="id8">
-<h3>Training Policy<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<p><strong>Coarse-to-fine Fine-tuning</strong> We first synthesized tens of millions of low-quality but diverse
-instruction samples to fine-tune the base model. In the second stage, we adopt millions
+<section id="decontamination">
+<h3>Decontamination<a class="headerlink" href="#decontamination" title="Link to this heading">#</a></h3>
+<p>To ensure that Qwen2.5-Coder does not produce inflated results due to test set leakage, we performed decontamination on all data, including both pre-training and post-training datasets. We removed key datasets such as HumanEval, MBPP, GSM8K, and MATH. The filtering was done using a 10-gram overlap method, where any training data with a 10-gram word-level overlap with the test data was removed.</p>
+</section>
+<section id="id5">
+<h3>Training Policy<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><strong>Coarse-to-fine Fine-tuning</strong> We first <span style="color: red">synthesized tens of millions of low-quality but diverse
+instruction samples</span> to fine-tune the base model. In the second stage, we adopt millions
 of high-quality instruction samples to improve the performance of the instruction model
 with rejection sampling and supervised fine-tuning. For the same query, we use the LLM
-to generate multiple candidates and then use the <code class="docutils literal notranslate"><span class="pre">LLM</span></code> to score the best one for supervised
+to generate multiple candidates and then use the LLM to score the best one for supervised
 fine-tuning.</p>
 <p><strong>Mixed Tuning</strong> We
 optimize the instruction model with a majority of standard SFT data and a small part of
@@ -641,49 +626,11 @@ FIM instruction samples.</p>
 <p><strong>Direct Preference Optimization for Code</strong> After obtaining the SFT model, we further align
 the Qwen2.5-Coder with the help of offline direct preference optimization (DPO). Given that human feedback is highly labor-intensive, we use a multilingual
 code sandbox to provide code execution feedback, while an LLM is utilized for human
-judgment feedback. For the <code class="docutils literal notranslate"><span class="pre">algorithm-like</span> <span class="pre">and</span> <span class="pre">self-contained</span> <span class="pre">code</span> <span class="pre">snippets</span></code>, we generate
-the test cases to check the correctness of the code as the code execution feedback, including
-Python, Java, and other languages. For other complex code snippets, we use <code class="docutils literal notranslate"><span class="pre">LLM-as-ajudge</span></code> to decide which code snippet is better. Further, we combine the
+judgment feedback. <span style="color: red">For the algorithm-like and self-contained code snippets, we generate
+the test cases to check the correctness</span> of the code as the code execution feedback, including
+Python, Java, and other languages. <span style="color: red">For other complex code snippets, we use LLM-as-ajudge</span> to decide which code snippet is better. Further, we combine the
 code DPO data and common data for offline DPO training.</p>
 </section>
-</section>
-<section id="decontamination">
-<h2>Decontamination<a class="headerlink" href="#decontamination" title="Link to this heading">#</a></h2>
-<p>To ensure that Qwen2.5-Coder does not produce inflated results due to test set leakage,
-we performed decontamination on all data, including both pre-training and post-training
-datasets. We removed key datasets such as HumanEval, MBPP, GSM8K, and MATH. The
-filtering was done using a 10-gram overlap method, where any training data with a 10-gram
-word-level overlap with the test data was removed.</p>
-</section>
-<section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
-<section id="base-models">
-<h3>Base Models<a class="headerlink" href="#base-models" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/qwen25-coder-3.png" src="../_images/qwen25-coder-3.png" />
-</figure>
-</section>
-<section id="instruct-models">
-<h3>Instruct Models<a class="headerlink" href="#instruct-models" title="Link to this heading">#</a></h3>
-<figure class="align-default">
-<img alt="../_images/qwen25-coder-4.png" src="../_images/qwen25-coder-4.png" />
-</figure>
-</section>
-</section>
-<section id="takeaway">
-<h2>Takeaway<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Recipe:</p>
-<ul class="simple">
-<li><p>Keep the instruction data of the mainstream programming languages and randomly discard a portion of the instruction data of the long-tail languages. Remove most of the samples without code snippets</p></li>
-<li><p>Instruction Synthesis using Magicoder, Unicoder and Wavecoder. GitHub code snippet and open-source instructions as the seed.</p></li>
-<li><p>Multilingual Code Instruction Data to bridge the gap among different programming languages.</p></li>
-<li><p>Checklist-based Scoring for Instruction Data, <span class="math notranslate nohighlight">\(s = w_1s_1 + \dots + w_ns_n\)</span></p></li>
-<li><p>A multilingual sandbox for code verification (organizes samples by language, difficulty level, and programming concepts)</p></li>
-<li><p>For the algorithm-like and self-contained code snippets, we generate the test cases to check the correctness of the code as the code execution feedback. For other complex code snippets, we use LLM-as-ajudge to decide which code snippet is better.</p></li>
-</ul>
-</div>
 </section>
 </section>
 
@@ -727,11 +674,11 @@ word-level overlap with the test data was removed.</p>
       </div>
     </a>
     <a class="right-next"
-       href="deepseek-v2.html"
+       href="qwen3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DeepSeek-V2</p>
+        <p class="prev-next-title">Qwen3</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -759,16 +706,10 @@ word-level overlap with the test data was removed.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-training">Post-training</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-recipe-for-instruction-data">A Recipe for Instruction Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Training Policy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Training Policy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decontamination">Decontamination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-models">Base Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruct-models">Instruct Models</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway</a></li>
 </ul>
   </nav></div>
 

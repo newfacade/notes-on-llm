@@ -58,14 +58,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'data/self-instruct';</script>
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Code Alpaca" href="code-alpaca.html" />
-    <link rel="prev" title="AlphaCode" href="alphacode.html" />
+    <link rel="prev" title="TACO" href="taco.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,21 +191,30 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,44 +232,64 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acecoder.html">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/1.4M.html">1.4 Million Open-Source Distilled Reasoning Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/adaptive-step.html">AdaptiveStep</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dpo/0.html">DPO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpo/dpo.html">DPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/0.html">RL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/grpo.html">GRPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/r1-critic.html">Understanding R1-Zero-Like Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/vapo.html">VAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/gspo.html">GSPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/skywork-or1.html">Skywork Open Reasoner 1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/shorter-better.html">ShorterBetter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,13 +498,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">Data Generation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-generation">Instruction Generation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-task-identification">Classification Task Identification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-generation">Instance Generation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-postprocessing">Filtering and Postprocessing</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-generation">Instruction Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-task-identification">Classification Task Identification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-generation">Instance Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-postprocessing">Filtering and Postprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning-the-lm-to-follow-instructions">Finetuning the LM to Follow Instructions</a></li>
 </ul>
             </nav>
@@ -492,13 +516,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="self-instruct">
 <h1>SELF-INSTRUCT<a class="headerlink" href="#self-instruct" title="Link to this heading">#</a></h1>
-<p><img alt="" src="../_images/self-instruct1.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this work, we introduce SELF-INSTRUCT, a
-semi-automated process for instruction-tuning a
-pretrained LM using <strong>instructional signals from the
-model itself</strong>. The overall process is an iterative bootstrapping
+<p>We introduce SELF-INSTRUCT, a
+semi-automated process for <span style="color: red">instruction-tuning a
+pretrained LM using instructional signals from the
+model itself.</span> The overall process is an iterative bootstrapping
 algorithm, which starts off
 with a limited (e.g., 175 in our study) seed set of
 manually-written tasks that are used to guide the
@@ -509,7 +532,7 @@ is prompted to generate instructions for new tasks.
 This step leverages the existing collection of instructions
 to create more broad-coverage instructions
 that define (often new) tasks.</p></li>
-<li><p>Given the newlygenerated
+<li><p>Given the newly-generated
 set of instructions, the framework also
 creates input-output instances for them, which can
 be later used for supervising the instruction tuning.</p></li>
@@ -520,36 +543,17 @@ adding the remaining valid tasks to the task pool.</p></li>
 <p>This process can be repeated for many iterations
 until reaching a large number of tasks.</p>
 </div>
-<p>paper: <a class="reference external" href="https://arxiv.org/pdf/2212.10560">https://arxiv.org/pdf/2212.10560</a></p>
-<section id="data-generation">
-<h2>Data Generation<a class="headerlink" href="#data-generation" title="Link to this heading">#</a></h2>
-<p>The instruction data we want to generate contains a
-set of instructions <span class="math notranslate nohighlight">\(\{I_{t}\}\)</span>, each of which defines a task <span class="math notranslate nohighlight">\(t\)</span> in natural language.</p>
-<p>Task <span class="math notranslate nohighlight">\(t\)</span> has <span class="math notranslate nohighlight">\(n_{t}\ge 1\)</span> input-output
-instances <span class="math notranslate nohighlight">\(\{(X_{t,i}, Y_{t,i})\}_{i=1}^{n_t}\)</span>. A model <span class="math notranslate nohighlight">\(M\)</span> is expected
-to produce the output, given the task instruction
-and the corresponding input: <span class="math notranslate nohighlight">\(M(I_t, X_{t,i}) = Y_{t,i}\)</span>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Instruction and
-instance input does not have a strict boundary in
-many cases.</p>
-</div>
+<figure class="align-default">
+<img alt="../_images/self-instruct1.png" src="../_images/self-instruct1.png" />
+</figure>
 <section id="instruction-generation">
-<h3>Instruction Generation<a class="headerlink" href="#instruction-generation" title="Link to this heading">#</a></h3>
-<p>At the first step, SELFINSTRUCT
-generates new instructions from a small
-set of seed human-written instructions in a bootstrapping
-fashion. We initiate the task pool with
-175 tasks (1 instruction and 1 instance for each
-task). For every step, we sample 8 task instructions
-from this pool as in-context examples. Of
-the 8 instructions, 6 are from the human-written tasks, and 2 are from the model-generated tasks in
-previous steps to promote diversity.</p>
-<p><img alt="" src="../_images/self-instruct2.png" /></p>
+<h2>Instruction Generation<a class="headerlink" href="#instruction-generation" title="Link to this heading">#</a></h2>
+<figure class="align-default">
+<img alt="../_images/self-instruct2.png" src="../_images/self-instruct2.png" />
+</figure>
 </section>
 <section id="classification-task-identification">
-<h3>Classification Task Identification<a class="headerlink" href="#classification-task-identification" title="Link to this heading">#</a></h3>
+<h2>Classification Task Identification<a class="headerlink" href="#classification-task-identification" title="Link to this heading">#</a></h2>
 <p>Because we
 need two different approaches for classification and
 non-classification tasks, we next identify whether
@@ -557,33 +561,35 @@ the generated instruction represents a classification
 task or not in a few-shot way.</p>
 </section>
 <section id="instance-generation">
-<h3>Instance Generation<a class="headerlink" href="#instance-generation" title="Link to this heading">#</a></h3>
+<h2>Instance Generation<a class="headerlink" href="#instance-generation" title="Link to this heading">#</a></h2>
 <p>Given the instructions and
 their task type, we generate instances for each instruction
 independently.</p>
-<p>A natural way to do this is the <strong>Input-first
-Approach</strong>, where we can ask an LM to come
+<p>A natural way to do this is the Input-first
+Approach, where we can ask an LM to come
 up with the input fields first based on the instruction,
 and then produce the corresponding output.</p>
-<p><img alt="" src="../_images/self-instruct3.png" />
-<img alt="" src="../_images/self-instruct4.png" /></p>
 <p>However, we found that this approach can generate
 inputs biased toward one label, especially for
-classification tasks (e.g., for grammar error detection,
-it usually generates grammatical input). Therefore,
-we additionally propose an <strong>Output-first Approach</strong>
-for classification tasks, where we first generate
+classification tasks. Therefore,
+we additionally propose an <code class="docutils literal notranslate"><span class="pre">Output-first</span> <span class="pre">Approach</span> <span class="pre">for</span> <span class="pre">classification</span> <span class="pre">tasks</span></code>, where we first generate
 the possible class labels, and then condition the
 input generation on each class label.</p>
-<p><img alt="" src="../_images/self-instruct5.png" />
-<img alt="" src="../_images/self-instruct6.png" /></p>
 </section>
 <section id="filtering-and-postprocessing">
-<h3>Filtering and Postprocessing<a class="headerlink" href="#filtering-and-postprocessing" title="Link to this heading">#</a></h3>
+<h2>Filtering and Postprocessing<a class="headerlink" href="#filtering-and-postprocessing" title="Link to this heading">#</a></h2>
 <p>To encourage diversity,
 a new instruction is added to the task pool
-only when its ROUGE-L similarity with any existing instruction is less than 0.7, etc.</p>
-</section>
+<span style="color: red">only when its ROUGE-L similarity with any existing instruction is less than 0.7.</span></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>ROUGE-L focuses on measuring <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">longest</span> <span class="pre">common</span> <span class="pre">subsequence</span></code> (LCS) between the two texts. ROUGE-L combines two scores to produce a final similarity score:</p>
+<ol class="arabic simple">
+<li><p>Precision = LCS_length / Candidate_length</p></li>
+<li><p>Recall = LCS_length / Reference_length</p></li>
+<li><p>The final ROUGE-L score, balancing precision and recall through F1-Score.</p></li>
+</ol>
+</div>
 </section>
 <section id="finetuning-the-lm-to-follow-instructions">
 <h2>Finetuning the LM to Follow Instructions<a class="headerlink" href="#finetuning-the-lm-to-follow-instructions" title="Link to this heading">#</a></h2>
@@ -596,8 +602,7 @@ and 82K instances).</p>
 input as a prompt and train the model to
 generate the instance output in a standard supervised
 way. To make the model robust to different
-formats, we use multiple templates to encode the
-instruction and instance input together. For example,
+formats, we use <code class="docutils literal notranslate"><span class="pre">multiple</span> <span class="pre">templates</span> <span class="pre">to</span> <span class="pre">encode</span> <span class="pre">the</span> <span class="pre">instruction</span> <span class="pre">and</span> <span class="pre">instance</span> <span class="pre">input</span> <span class="pre">together</span></code>. For example,
 the instruction can be prefixed with “Task:” or
 not, the input can be prefixed with “Input:” or not,
 “Output:” can be appended at the end of the prompt
@@ -638,12 +643,12 @@ put in the middle, etc.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="alphacode.html"
+       href="taco.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">AlphaCode</p>
+        <p class="prev-next-title">TACO</p>
       </div>
     </a>
     <a class="right-next"
@@ -671,13 +676,10 @@ put in the middle, etc.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-generation">Data Generation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-generation">Instruction Generation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-task-identification">Classification Task Identification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-generation">Instance Generation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-postprocessing">Filtering and Postprocessing</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-generation">Instruction Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-task-identification">Classification Task Identification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-generation">Instance Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-postprocessing">Filtering and Postprocessing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning-the-lm-to-follow-instructions">Finetuning the LM to Follow Instructions</a></li>
 </ul>
   </nav></div>

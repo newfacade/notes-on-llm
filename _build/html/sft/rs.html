@@ -65,7 +65,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LIMA: Less Is More for Alignment" href="lima.html" />
-    <link rel="prev" title="SFT" href="0.html" />
+    <link rel="prev" title="SFT with RL2" href="sft-source-code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,21 +193,30 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../techniques/0.html">Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../techniques/deepseek-moe.html">DeepSeekMoE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/parallel.html">Parallelisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention.html">Flash Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../techniques/flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,44 +234,64 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">SFT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.4M.html">1.4 Million Open-Source Distilled Reasoning Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/adaptive-step.html">AdaptiveStep</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dpo/0.html">DPO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpo/dpo.html">DPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/0.html">RL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/grpo.html">GRPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/r1-critic.html">Understanding R1-Zero-Like Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/vapo.html">VAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/gspo.html">GSPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/skywork-or1.html">Skywork Open Reasoner 1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/shorter-better.html">ShorterBetter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -471,12 +500,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-factors-of-math-reasoning-ability-in-supervised-llm">The Factors of Math Reasoning Ability in Supervised LLM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-pre-training-loss">Model Accuracy VS. Pre-training Loss</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-supervised-data-count">Model Accuracy VS. Supervised Data Count</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-augmented-data-count">Model Accuracy VS. Augmented Data Count</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-pre-training-loss">Model Accuracy VS. Pre-training Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-supervised-data-count">Model Accuracy VS. Supervised Data Count</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-augmented-data-count">Model Accuracy VS. Augmented Data Count</a></li>
 </ul>
             </nav>
         </div>
@@ -492,33 +518,16 @@ document.write(`
 <h1>Scaling Relationship on Learning Mathematical Reasoning with Large Language Models<a class="headerlink" href="#scaling-relationship-on-learning-mathematical-reasoning-with-large-language-models" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this paper<span id="id1">[<a class="reference internal" href="../reference.html#id15" title="Zheng Yuan, Hongyi Yuan, Chengpeng Li, Guanting Dong, Keming Lu, Chuanqi Tan, Chang Zhou, and Jingren Zhou. Scaling relationship on learning mathematical reasoning with large language models. 2023. URL: https://arxiv.org/abs/2308.01825, arXiv:2308.01825.">YYL+23</a>]</span>, we investigate how the pre-training loss, supervised data amount,
-and augmented data amount influence the reasoning performances of a supervised
-LLM. We find that:</p>
-<ol class="arabic simple">
-<li><p>Pre-training loss is a better indicator of the model’s performance
-than the model’s parameter count.</p></li>
-<li><p>We apply supervised fine-tuning (SFT)
-with different amounts of supervised data and empirically find a log-linear relation
-between data amount and model performance.</p></li>
-<li><p>We propose to apply
-Rejection sampling Fine-Tuning (RFT). RFT uses supervised models to generate
-and collect correct reasoning paths as augmented fine-tuning datasets. We
-find with augmented samples containing more distinct reasoning paths, RFT improves
-mathematical reasoning performance more for LLMs.</p></li>
-</ol>
-</div>
-<section id="the-factors-of-math-reasoning-ability-in-supervised-llm">
-<h2>The Factors of Math Reasoning Ability in Supervised LLM<a class="headerlink" href="#the-factors-of-math-reasoning-ability-in-supervised-llm" title="Link to this heading">#</a></h2>
 <p>The target of this paper is to try to understand the performances of supervised LLMs in math reasoning.
 We expect a pre-trained LLM <span class="math notranslate nohighlight">\(\rho\)</span> to learn reasoning ability from a supervised reasoning dataset
 <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. The dataset is defined by <span class="math notranslate nohighlight">\(\mathcal{D} = \{q_i, r_i, a_i\}_i\)</span>, where <span class="math notranslate nohighlight">\(q\)</span> is a question, <span class="math notranslate nohighlight">\(r\)</span> is a chain-of-thought reasoning
 path, and <span class="math notranslate nohighlight">\(a\)</span> is a numerical answer. We perform supervised fine-tuning on dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> to obtain an
 SFT model <span class="math notranslate nohighlight">\(\pi\)</span>. We use <span class="math notranslate nohighlight">\(\pi\)</span> to generate reasoning paths and answers in the test set by greedy decoding
 and report the accuracy as our metric here.</p>
+</div>
 <section id="model-accuracy-vs-pre-training-loss">
-<h3>Model Accuracy VS. Pre-training Loss<a class="headerlink" href="#model-accuracy-vs-pre-training-loss" title="Link to this heading">#</a></h3>
-<p>We analyze the SFT and ICL (8-shot) performance of GPT-3, LLaMA, LLaMA2, and GPT-4. The pre-training losses of these models are observed in their paper. We use the results of GPT-3 fine-tuning from<span id="id2">[<a class="reference internal" href="../reference.html#id13" title="Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, and John Schulman. Training verifiers to solve math word problems. 2021. URL: https://arxiv.org/abs/2110.14168, arXiv:2110.14168.">CKB+21</a>]</span> and
+<h2>Model Accuracy VS. Pre-training Loss<a class="headerlink" href="#model-accuracy-vs-pre-training-loss" title="Link to this heading">#</a></h2>
+<p>We analyze the SFT and ICL (8-shot) performance of GPT-3, LLaMA, LLaMA2, and GPT-4. The pre-training losses of these models are observed in their paper. We use the results of GPT-3 fine-tuning from<span id="id1">[<a class="reference internal" href="../reference.html#id13" title="Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, and John Schulman. Training verifiers to solve math word problems. 2021. URL: https://arxiv.org/abs/2110.14168, arXiv:2110.14168.">CKB+21</a>]</span> and
 we fine-tune LLaMA and LLaMA2 on the GSM8K training set.</p>
 <figure class="align-default">
 <img alt="../_images/rs-1.png" src="../_images/rs-1.png" />
@@ -531,11 +540,11 @@ accuracy during the given pre-training loss interval.</p></li>
 loss is lower.</p></li>
 </ul>
 <p>From the observations,
-one effective way to improve reasoning ability is to train a better base model with lower pre-training
-loss (Pre-training is all you need!).</p>
+one effective way to improve reasoning ability is to <span style="color: red">train a better base model with lower pre-training
+loss</span> (Pre-training is all you need!).</p>
 </section>
 <section id="model-accuracy-vs-supervised-data-count">
-<h3>Model Accuracy VS. Supervised Data Count<a class="headerlink" href="#model-accuracy-vs-supervised-data-count" title="Link to this heading">#</a></h3>
+<h2>Model Accuracy VS. Supervised Data Count<a class="headerlink" href="#model-accuracy-vs-supervised-data-count" title="Link to this heading">#</a></h2>
 <p>Supervised fine-tuning does improve LLMs’ reasoning ability, we want to know how the supervised
 data amount influences the model’s improvement. We fine-tune LLaMA and LLaMA2 with
 {1, 1/2, 1/4, 1/8, 1/16, 1/32} amount of the training set from GSM8K.</p>
@@ -549,28 +558,27 @@ data amount influences the model’s improvement. We fine-tune LLaMA and LLaMA2 
 <li><p>Better model benefits less when supervised data amount doubles.</p></li>
 </ul>
 <p>From the observation,
-it is straightforward to enlarge the training dataset to improve the performance, especially
+it is straightforward to <span style="color: red">enlarge the training dataset to improve the performance,</span> especially
 for worse models. For better models, it benefits less which echoes that better models have learned
 more reasoning ability during pre-training.</p>
 </section>
 <section id="model-accuracy-vs-augmented-data-count">
-<h3>Model Accuracy VS. Augmented Data Count<a class="headerlink" href="#model-accuracy-vs-augmented-data-count" title="Link to this heading">#</a></h3>
+<h2>Model Accuracy VS. Augmented Data Count<a class="headerlink" href="#model-accuracy-vs-augmented-data-count" title="Link to this heading">#</a></h2>
 <p>Increasing the amount of math reasoning labeled data is difficult, especially proposing a new question. We find a simplified version of rejection sampling is a naive and effective way to augment new reasoning paths and can improve the model
 performance. And we find the key factor influences fine-tuning on rejection sampling (RFT) augmented
 data is <code class="docutils literal notranslate"><span class="pre">distinct</span> <span class="pre">reasoning</span> <span class="pre">path</span> <span class="pre">amount</span></code>.</p>
 <p><strong>Rejection Sampling Fine-tuning</strong> The SFT model <span class="math notranslate nohighlight">\(\pi\)</span> obtains the ability to perform zero-shot chainof-
 thought reasoning, and we use <span class="math notranslate nohighlight">\(\pi\)</span> to generate more correct reasoning paths <span class="math notranslate nohighlight">\(r_{ij}\)</span> to supply the
 training dataset. For each <span class="math notranslate nohighlight">\(q_i\)</span>, we generate <span class="math notranslate nohighlight">\(k\)</span> candidate reasoning paths and answers <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(a\)</span> with a
-temperature of 0.7. We first filter out reasoning paths with wrong
-answers <span class="math notranslate nohighlight">\(a\ne a_i\)</span> or wrong calculations based on Python evaluation. Each reasoning path contains
+temperature of 0.7. We first <span style="color: red">filter out reasoning paths with wrong
+answers <span class="math notranslate nohighlight">\(a\ne a_i\)</span> or wrong calculations</span> based on Python evaluation. Each reasoning path contains
 a list of equations <span class="math notranslate nohighlight">\(e_j\)</span> , and we select one reasoning path <span class="math notranslate nohighlight">\(r_{ij}\)</span> for each distinct equation list as the
 augmented data and remove other reasoning paths with the same list of equations to deduplicate
-similar reasoning paths. We define <span class="math notranslate nohighlight">\(\mathcal{D}_{\pi}' = \mathcal{D}_{\pi}\cup\{q_i,r_{ij},a_i\}_{ij}\)</span> as the augmented
+similar reasoning paths. We define <span class="math notranslate nohighlight">\(\mathcal{D}_{\pi}' = \mathcal{D}\cup\{q_i,r_{ij},a_i\}_{ij}\)</span> as the augmented
 dataset. We fine-tune <span class="math notranslate nohighlight">\(\mathcal{D}'\)</span> on pre-trained LLM <span class="math notranslate nohighlight">\(\rho\)</span> to <span class="math notranslate nohighlight">\(\pi_{\text{RFT}}\)</span> as RFT.</p>
 <figure class="align-default">
 <img alt="../_images/rs-3.png" src="../_images/rs-3.png" />
 </figure>
-</section>
 </section>
 </section>
 
@@ -605,12 +613,12 @@ dataset. We fine-tune <span class="math notranslate nohighlight">\(\mathcal{D}'\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0.html"
+       href="sft-source-code.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SFT</p>
+        <p class="prev-next-title">SFT with RL2</p>
       </div>
     </a>
     <a class="right-next"
@@ -638,12 +646,9 @@ dataset. We fine-tune <span class="math notranslate nohighlight">\(\mathcal{D}'\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-factors-of-math-reasoning-ability-in-supervised-llm">The Factors of Math Reasoning Ability in Supervised LLM</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-pre-training-loss">Model Accuracy VS. Pre-training Loss</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-supervised-data-count">Model Accuracy VS. Supervised Data Count</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-augmented-data-count">Model Accuracy VS. Augmented Data Count</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-pre-training-loss">Model Accuracy VS. Pre-training Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-supervised-data-count">Model Accuracy VS. Supervised Data Count</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-accuracy-vs-augmented-data-count">Model Accuracy VS. Augmented Data Count</a></li>
 </ul>
   </nav></div>
 

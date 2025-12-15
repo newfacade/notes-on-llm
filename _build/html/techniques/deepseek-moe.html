@@ -64,7 +64,7 @@
     <link rel="icon" href="../_static/github.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Benchmarks" href="../bench/0.html" />
+    <link rel="next" title="Parallelisms" href="parallel.html" />
     <link rel="prev" title="Multi-Head Latent Attention" href="mla.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,21 +193,30 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../models/0.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3.html">Llama 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/llama3-source-code.html">Llama 3 Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v2.html">DeepSeek-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-coder-v2.html">DeepSeek-Coder-V2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/deepseek-v3.html">DeepSeek V3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/deepseek-r1.html">DeepSeek-R1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25.html">Qwen 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen25-coder.html">Qwen2.5-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/qwen3.html">Qwen3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/gemini2.5.html">Gemini 2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/seed1.5.html">Seed1.5-Thinking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../models/seed-coder.html">Seed-Coder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../models/am-think.html">AM-Thinking-v1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.html">Techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpe.html">Byte Pair Encoding (BPE)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="norm.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rope.html">RoPE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extending.html">Extending context window of LLMs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mla.html">Multi-Head Latent Attention</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">DeepSeekMoE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallelisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash-attention.html">Flash Attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flash-attention-2.html">Flash Attention 2</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../bench/0.html">Benchmarks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -225,44 +234,64 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../data/0.html">Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../data/apps.html">APPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/codecontests.html">CodeContests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/taco.html">TACO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/alphacode.html">AlphaCode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/self-instruct.html">SELF-INSTRUCT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/code-alpaca.html">Code Alpaca</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/wizard.html">WizardCoder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data/magic.html">Magicoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/unicoder.html">UNICODER</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/opencoder.html">OpenCoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/magpie.html">MAGPIE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/acecoder.html">Acecoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/kod.html">KodCode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/instag.html">Instag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/tree-sitter.html">Tree-sitter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../sft/0.html">SFT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sft/sft-source-code.html">SFT with RL2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/rs.html">Scaling Relationship on Learning Mathematical Reasoning with Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sft/lima.html">LIMA: Less Is More for Alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/ac-rs.html">Breaking the Attention Trap in Code LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/openthoughts.html">OpenThoughts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/1.4M.html">1.4 Million Open-Source Distilled Reasoning Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sft/not-all-equal.html">Not All Correct Answers Are Equal</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../preference/0.html">Preference Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlaif-2.html">RLAIF vs. RLHF</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rm/0.html">RM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-1.html">Constitutional AI: Harmlessness from AI Feedback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlaif-2.html">RLAIF vs. RLHF</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../preference/rlcd.html">RLCD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/west-of-n.html">West-of-N</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ee.html">Efficient Exploration for LLMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/deepseek-grm.html">DeepSeek-GRM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/ppo.html">PPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dpo.html">DPO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/grpo.html">Group Relative Policy Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/reinforce%2B%2B.html">REINFORCE++</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../preference/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/rlcd.html">RLCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/west-of-n.html">West-of-N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/ee.html">Efficient Exploration for LLMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/deepseek-grm.html">DeepSeek-GRM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rm/adaptive-step.html">AdaptiveStep</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dpo/0.html">DPO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dpo/dpo.html">DPO</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rl/0.html">RL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rl/ppo.html">PPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/grpo.html">GRPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/reinforce%2B%2B.html">REINFORCE++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/r1-critic.html">Understanding R1-Zero-Like Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/dapo.html">DAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/vapo.html">VAPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/gspo.html">GSPO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rl/skywork-or1.html">Skywork Open Reasoner 1</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../reasoning/0.html">Reasoning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/cot.html">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/verify.html">Let’s Verify Step by Step</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/self-correct-rl.html">Training Language Models to Self-Correct via Reinforcement Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/deepseek-r1.html">DeepSeek-R1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reasoning/s1.html">s1: Simple test-time scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reasoning/opencodereasoning.html">OpenCodeReasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/concise-reason.html">Concise Reasoning via Reinforcement Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reasoning/shorter-better.html">ShorterBetter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../agent/0.html">Agent</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -478,9 +507,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expert-level-balance-loss">Expert-Level Balance Loss</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-level-balance-loss">Device-Level Balance Loss</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-balance-loss">Communication Balance Loss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#token-dropping-strategy">Token-Dropping Strategy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#token-dropping-strategy">Token-Dropping Strategy</a></li>
 </ul>
             </nav>
         </div>
@@ -496,12 +525,11 @@ document.write(`
 <span id="id1"></span><h1>DeepSeekMoE<a class="headerlink" href="#deepseekmoe" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We propose the <code class="docutils literal notranslate"><span class="pre">DeepSeekMoE</span></code><span id="id2">[]</span> architecture towards ultimate expert specialization. It
+<p>We propose the DeepSeekMoE architecture towards ultimate expert specialization. It
 involves two principal strategies:<br></p>
 <ol class="arabic simple">
-<li><p>Finely segmenting the experts into <span class="math notranslate nohighlight">\(mN\)</span> ones and activating
-<span class="math notranslate nohighlight">\(mK\)</span> from them, allowing for a more flexible combination of activated experts.<br></p></li>
-<li><p>Isolating <span class="math notranslate nohighlight">\(Ks\)</span>
+<li><p>Finely segmenting the experts into <span class="math notranslate nohighlight">\(mN\)</span> ones and activating <span class="math notranslate nohighlight">\(mK\)</span> from them, allowing for a more flexible combination of activated experts.<br></p></li>
+<li><p>Isolating <span class="math notranslate nohighlight">\(K_s\)</span>
 experts as shared ones, aiming at capturing common knowledge and mitigating redundancy
 in routed experts.</p></li>
 </ol>
@@ -537,52 +565,23 @@ s_{i,t} &amp;= \text{Softmax}_{i}({\mathbf{u}_{t}^{l}}^{\intercal}\mathbf{e}_{i}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> denotes the total number of experts, <span class="math notranslate nohighlight">\(\text{FFN}_{i}\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th expert FFN, <span class="math notranslate nohighlight">\(g_{i,t}\)</span> denotes the
 gate value for the <span class="math notranslate nohighlight">\(i\)</span>-th expert, <span class="math notranslate nohighlight">\(s_{i,t}\)</span> denotes the token-to-expert affinity, <span class="math notranslate nohighlight">\(\text{Topk}(\cdot,K)\)</span> denotes the set
-comprising <span class="math notranslate nohighlight">\(K\)</span> highest affinity scores among those calculated for the <span class="math notranslate nohighlight">\(t\)</span>-th token and all <span class="math notranslate nohighlight">\(N\)</span> experts, and <span class="math notranslate nohighlight">\(\mathbf{e}_{i}^{l}\)</span> is the centroid of the <span class="math notranslate nohighlight">\(i\)</span>-th expert in the <span class="math notranslate nohighlight">\(l\)</span>-th layer (parameter of the gate).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Part of MoEGate</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">gating_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">hidden_size</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_routed_experts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gating_dim</span><span class="p">)))</span>
-</pre></div>
-</div>
+comprising <span class="math notranslate nohighlight">\(K\)</span> highest affinity scores among those calculated for the <span class="math notranslate nohighlight">\(t\)</span>-th token and all <span class="math notranslate nohighlight">\(N\)</span> experts, and <span class="math notranslate nohighlight">\(\mathbf{e}_{i}^{l}\)</span> is the parameter of the gate.</p>
 </section>
 <section id="fine-grained-expert-segmentation">
 <h2>Fine-Grained Expert Segmentation<a class="headerlink" href="#fine-grained-expert-segmentation" title="Link to this heading">#</a></h2>
-<p>While maintaining a consistent number of expert parameters and
-computational cost, we segment the experts with a finer grain. The finer expert segmentation
+<p>The finer expert segmentation
 enables a more flexible and adaptable combination of activated experts.</p>
-<p>To be specific, we segment each expert FFN into <span class="math notranslate nohighlight">\(m\)</span> smaller
-experts by reducing the FFN intermediate hidden dimension to <span class="math notranslate nohighlight">\(\frac{1}{m}\)</span> times its original size. Since
-each expert becomes smaller, in response, we also increase the number of activated experts to
-<span class="math notranslate nohighlight">\(m\)</span> times to keep the same computation cost.</p>
 <p><img alt="" src="../_images/deepseek-moe.png" /></p>
 </section>
 <section id="shared-expert-isolation">
 <h2>Shared Expert Isolation<a class="headerlink" href="#shared-expert-isolation" title="Link to this heading">#</a></h2>
 <p>Tokens assigned to different experts may necessitate some
-common knowledge or information. As a result, multiple experts may converge in acquiring
-shared knowledge in their respective parameters, thereby resulting in redundancy in expert
-parameters. However, if there are shared experts dedicated to capturing and consolidating
-common knowledge across varying contexts, the parameter redundancy among other routed
-experts will be alleviated.</p>
-<p>Towards this objective, in addition to the fine-grained expert segmentation strategy, we
-further isolate <span class="math notranslate nohighlight">\(K_{s}\)</span> experts to serve as shared experts. In order to maintain a constant
-computational cost, the number of activated experts among the other routed experts will be
-decreased by <span class="math notranslate nohighlight">\(K_{s}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{h}_{t}^{l} &amp;= \sum_{i=1}^{K_s}\text{FFN}_{i}(\mathbf{u}_{t}^{l}) + \sum_{i=K_s}^{mN}(g_{i,t}\text{FFN}_{i}(\mathbf{u_{t}^{l}})) + \mathbf{u}_{t}^{l}\\
-g_{i,t} &amp;= 
-\begin{cases}
-s_{i,t},\quad &amp;s_{i,t}\in\text{Topk}(\{s_{j,t}|K_s\le j\le mN\}, mK-K_s)\\
-0, &amp;\text{otherwise}
-\end{cases}\\
-s_{i,t} &amp;= \text{Softmax}_{i}({\mathbf{u}_{t}^{l}}^{\intercal}\mathbf{e}_{i}^{l})
-\end{aligned}
-\end{split}\]</div>
+common knowledge or information. So in addition to the fine-grained expert segmentation strategy, we
+further isolate <span class="math notranslate nohighlight">\(K_{s}\)</span> experts to serve as shared experts.</p>
 </section>
 <section id="load-balance-consideration">
 <h2>Load Balance Consideration<a class="headerlink" href="#load-balance-consideration" title="Link to this heading">#</a></h2>
-<p>Automatically learned routing strategies may encounter the issue of load imbalance.</p>
+<p><span style="color: red">Automatically learned routing strategies may encounter the issue of load imbalance.</span></p>
 <section id="expert-level-balance-loss">
 <h3>Expert-Level Balance Loss<a class="headerlink" href="#expert-level-balance-loss" title="Link to this heading">#</a></h3>
 <p>Imbalance leeds to higher loss.</p>
@@ -598,6 +597,11 @@ P_{i} &amp;= \frac{1}{T}\sum_{t=1}^{T}s_{i,t}
 <li><p><span class="math notranslate nohighlight">\(f_{i}\)</span>: normalized frequency of the <span class="math notranslate nohighlight">\(i\)</span>-th expert, <span class="math notranslate nohighlight">\(\sum_{i=1}^{N'}f_{i}=N'\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(P_{i}\)</span>: normalized weight of the <span class="math notranslate nohighlight">\(i\)</span>-th expert, <span class="math notranslate nohighlight">\(\sum_{i=1}^{N'}P_{i}=N'\)</span>.</p></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For DeepSeek-V2, beyond the naive top-<span class="math notranslate nohighlight">\(K\)</span> selection of routed experts, we additionally ensure
+that the target experts of each token will be distributed on at most <span class="math notranslate nohighlight">\(M\)</span> devices.</p>
+</div>
 </section>
 <section id="device-level-balance-loss">
 <h3>Device-Level Balance Loss<a class="headerlink" href="#device-level-balance-loss" title="Link to this heading">#</a></h3>
@@ -615,20 +619,11 @@ P_{i}' &amp;= \sum_{j\in\mathcal{E}_{i}}P_{j}
 </section>
 <section id="communication-balance-loss">
 <h3>Communication Balance Loss<a class="headerlink" href="#communication-balance-loss" title="Link to this heading">#</a></h3>
-<p>Introduced in DeepSeek-V2<span id="id3">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>.</p>
+<p>Introduced in DeepSeek-V2<span id="id2">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>.</p>
 <p>When expert parallelism is employed, the routed experts will be distributed across multiple
 devices. For each token, its MoE-related communication frequency is proportional to the
-number of devices covered by its target experts. Due to the fine-grained expert segmentation in
-DeepSeekMoE, the number of activated experts can be large, so the MoE-related communication
-will be more costly if we apply expert parallelism.</p>
-<p>For DeepSeek-V2, beyond the naive top-K selection of routed experts, we additionally ensure
-that the target experts of each token will be distributed on at most <span class="math notranslate nohighlight">\(M\)</span> devices, which are selected according to
-the sum of the highest <span class="math notranslate nohighlight">\({K_r}/{M}\)</span> affinity scores of the experts distributed on each node..
-Then, we perform top-K selection among experts on these <span class="math notranslate nohighlight">\(M\)</span> devices.</p>
-<p>Finally, we introduce a communication balance loss to ensure
-that the communication of each device is balanced. Although the device-limited routing mechanism
-guarantees that the sending communication of each device is bounded, if a certain device receives more tokens than other devices, the practical communication efficiency will also be
-affected. In order to mitigate this issue, we design a communication balance loss as follows:</p>
+number of devices covered by its target experts. We introduce a communication balance loss to ensure
+that the communication of each device is balanced:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -639,27 +634,19 @@ P_{i}'' &amp;= \sum_{j\in\mathcal{E}_{i}}P_{j}
 \end{split}\]</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Suppose <span class="math notranslate nohighlight">\(T=3\)</span> and expert1, expert2, expert3 are in the same device, think about two situations:</p>
+<p>Suppose expert1 and expert2 are in device1, expert3 and expert4 are in device2. Think about two situations:</p>
 <ol class="arabic simple">
-<li><p>token1 selects expert1, expert2 and expert3.</p></li>
-<li><p>token1 selects expert1, token2 selects expert2, token3 selects expert3.</p></li>
+<li><p>token1 selects expert1 and expert2, token2 selects expert3 and expert4.</p></li>
+<li><p>token1 selects expert1 and expert3, token2 selects expert2 and expert4.</p></li>
 </ol>
 <p>They have the same device-Level Balance, but different communication balance.</p>
 </div>
 </section>
-</section>
 <section id="token-dropping-strategy">
-<h2>Token-Dropping Strategy<a class="headerlink" href="#token-dropping-strategy" title="Link to this heading">#</a></h2>
-<p>Introduced in DeepSeek-V2<span id="id4">[<a class="reference internal" href="../reference.html#id6" title="DeepSeek-AI, Aixin Liu, Bei Feng, Bin Wang, Bingxuan Wang, Bo Liu, Chenggang Zhao, Chengqi Dengr, Chong Ruan, Damai Dai, Daya Guo, Dejian Yang, Deli Chen, Dongjie Ji, Erhang Li, Fangyun Lin, Fuli Luo, Guangbo Hao, Guanting Chen, Guowei Li, H. Zhang, Hanwei Xu, Hao Yang, Haowei Zhang, Honghui Ding, Huajian Xin, Huazuo Gao, Hui Li, Hui Qu, J. L. Cai, Jian Liang, Jianzhong Guo, Jiaqi Ni, Jiashi Li, Jin Chen, Jingyang Yuan, Junjie Qiu, Junxiao Song, Kai Dong, Kaige Gao, Kang Guan, Lean Wang, Lecong Zhang, Lei Xu, Leyi Xia, Liang Zhao, Liyue Zhang, Meng Li, Miaojun Wang, Mingchuan Zhang, Minghua Zhang, Minghui Tang, Mingming Li, Ning Tian, Panpan Huang, Peiyi Wang, Peng Zhang, Qihao Zhu, Qinyu Chen, Qiushi Du, R. J. Chen, R. L. Jin, Ruiqi Ge, Ruizhe Pan, Runxin Xu, Ruyi Chen, S. S. Li, Shanghao Lu, Shangyan Zhou, Shanhuang Chen, Shaoqing Wu, Shengfeng Ye, Shirong Ma, Shiyu Wang, Shuang Zhou, Shuiping Yu, Shunfeng Zhou, Size Zheng, T. Wang, Tian Pei, Tian Yuan, Tianyu Sun, W. L. Xiao, Wangding Zeng, Wei An, Wen Liu, Wenfeng Liang, Wenjun Gao, Wentao Zhang, X. Q. Li, Xiangyue Jin, Xianzu Wang, Xiao Bi, Xiaodong Liu, Xiaohan Wang, Xiaojin Shen, Xiaokang Chen, Xiaosha Chen, Xiaotao Nie, Xiaowen Sun, Xiaoxiang Wang, Xin Liu, Xin Xie, Xingkai Yu, Xinnan Song, Xinyi Zhou, Xinyu Yang, Xuan Lu, Xuecheng Su, Y. Wu, Y. K. Li, Y. X. Wei, Y. X. Zhu, Yanhong Xu, Yanping Huang, Yao Li, Yao Zhao, Yaofeng Sun, Yaohui Li, Yaohui Wang, Yi Zheng, Yichao Zhang, Yiliang Xiong, Yilong Zhao, Ying He, Ying Tang, Yishi Piao, Yixin Dong, Yixuan Tan, Yiyuan Liu, Yongji Wang, Yongqiang Guo, Yuchen Zhu, Yuduan Wang, Yuheng Zou, Yukun Zha, Yunxian Ma, Yuting Yan, Yuxiang You, Yuxuan Liu, Z. Z. Ren, Zehui Ren, Zhangli Sha, Zhe Fu, Zhen Huang, Zhen Zhang, Zhenda Xie, Zhewen Hao, Zhihong Shao, Zhiniu Wen, Zhipeng Xu, Zhongyu Zhang, Zhuoshu Li, Zihan Wang, Zihui Gu, Zilin Li, and Ziwei Xie. Deepseek-v2: a strong, economical, and efficient mixture-of-experts language model. 2024. URL: https://arxiv.org/abs/2405.04434, arXiv:2405.04434.">DALF+24</a>]</span>.</p>
-<p>In order to further mitigate the computation
-wastage caused by unbalanced load, we introduce a device-level token-dropping strategy during
-training.</p>
-<p>This approach first computes the average computational budget for each device, which
-means that the capacity factor for each device is equivalent to 1.0. Then, we drop tokens with the lowest affinity scores on each device until reaching the
-computational budget. In addition, we ensure that the tokens belonging to approximately 10%
-of the training sequences will never be dropped. In this way, we can flexibly decide whether
-to drop tokens during inference according to the efficiency requirements, and always ensure
-consistency between training and inference.</p>
+<h3>Token-Dropping Strategy<a class="headerlink" href="#token-dropping-strategy" title="Link to this heading">#</a></h3>
+<p>In order to further mitigate the computation wastage caused by unbalanced load, we introduce a device-level token-dropping strategy during training.</p>
+<p>This approach first computes the average computational budget for each device, which means that the capacity factor for each device is equivalent to 1.0. Then, we drop tokens with the lowest affinity scores on each device until reaching the computational budget (<span class="math notranslate nohighlight">\(\le 1.0\)</span>). In addition, we ensure that the tokens belonging to approximately 10% of the training sequences will never be dropped. In this way, we can flexibly decide whether to drop tokens during inference according to the efficiency requirements, and always ensure consistency between training and inference.</p>
+</section>
 </section>
 </section>
 
@@ -703,11 +690,11 @@ consistency between training and inference.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../bench/0.html"
+       href="parallel.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Benchmarks</p>
+        <p class="prev-next-title">Parallelisms</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -734,9 +721,9 @@ consistency between training and inference.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expert-level-balance-loss">Expert-Level Balance Loss</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#device-level-balance-loss">Device-Level Balance Loss</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-balance-loss">Communication Balance Loss</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#token-dropping-strategy">Token-Dropping Strategy</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#token-dropping-strategy">Token-Dropping Strategy</a></li>
 </ul>
   </nav></div>
 

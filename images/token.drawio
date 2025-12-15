@@ -1,0 +1,111 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.9">
+  <diagram name="第 1 页" id="sOh3pxYvz6rklwJWHDcR">
+    <mxGraphModel dx="2013" dy="708" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="knVb8A4te83hqovdPDhn-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="knVb8A4te83hqovdPDhn-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="175" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-1" value="1+1=?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="170" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-2" value="1+1=2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="210" y="170" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knVb8A4te83hqovdPDhn-3" target="knVb8A4te83hqovdPDhn-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-3" value="explain why" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="170" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-4" value="The equation &quot;1 + 1 = 2&quot; is a fundamental principle in basic arithmetic." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="350" y="170" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knVb8A4te83hqovdPDhn-10" target="knVb8A4te83hqovdPDhn-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-10" value="&lt;pre style=&quot;line-height: 1.3077; color: rgba(0, 0, 0, 0.87); border: none; margin: 0px; padding: 0px; overflow: auto; word-break: break-all; overflow-wrap: break-word; text-wrap-mode: wrap; text-align: left;&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&amp;lt;|im_start|&amp;gt;system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;user\n1+1=?&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;assistant\n&lt;/font&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="280" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knVb8A4te83hqovdPDhn-11" target="knVb8A4te83hqovdPDhn-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-11" value="1+1=2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="210" y="280" width="70" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knVb8A4te83hqovdPDhn-12" target="knVb8A4te83hqovdPDhn-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-12" value="&lt;pre style=&quot;line-height: 1.3077; color: rgba(0, 0, 0, 0.87); border: none; margin: 0px; padding: 0px; overflow: auto; word-break: break-all; overflow-wrap: break-word; text-wrap-mode: wrap; text-align: left;&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;user\nexplain why&amp;lt;|im_end|&amp;gt;\n&amp;lt;|im_start|&amp;gt;assistant\n&lt;/font&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="70" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="knVb8A4te83hqovdPDhn-13" target="knVb8A4te83hqovdPDhn-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-13" value="&lt;pre style=&quot;line-height: 1.3077; color: rgba(0, 0, 0, 0.87); border: none; margin: 0px; padding: 0px; overflow: auto; word-break: break-all; overflow-wrap: break-word; text-wrap-mode: wrap; text-align: left;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; text-align: center; white-space-collapse: collapse;&quot;&gt;The equation &quot;1 + 1 = 2&quot; is a fundamental principle in basic arithmetic.&lt;/span&gt;&lt;/pre&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="350" y="280" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-15" value="apply_chat_template" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="220" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-17" value="[151644, 8948, ..., 198]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="470" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-18" value="[16, 10, 16, 28, 17]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="210" y="470" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-19" value="[151645, 198, ..., 198]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="470" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-20" value="[785, 23606, ..., 34784, &lt;font style=&quot;color: rgb(255, 51, 51);&quot;&gt;13&lt;/font&gt;]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="350" y="470" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-28" value="tokenize" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="544.5" y="210" as="sourcePoint" />
+            <mxPoint x="544.5" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-32" value="states" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="470" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-33" value="[&lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;0&lt;/font&gt;, 0, ...,0]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="545" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-34" value="[16, 10, 16, 28, 17]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="210" y="545" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-35" value="[0, 0, ..., 0]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="545" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-36" value="[785, 23606, ..., 34784, 13]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="350" y="545" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-37" value="actions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="545" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-43" value="[&lt;font style=&quot;color: rgb(255, 0, 0);&quot;&gt;0&lt;/font&gt;, 0, ...,0]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="620" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-44" value="[1, 1, 1, 1, 1]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="210" y="620" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-45" value="[0, 0, ..., 0]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="620" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-46" value="[1, 1, ..., 1, 1]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="350" y="620" width="390" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="knVb8A4te83hqovdPDhn-47" value="action_mask" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="620" width="70" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
